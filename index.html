@@ -605,61 +605,86 @@
       line-height: 1.45;
     }
 
-    .detail-services {
+    .detail-service-preview {
       margin-top: 30px;
-    }
-
-    .detail-services-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 20px;
-      margin-bottom: 10px;
-    }
-
-    .detail-services-head h2 {
-      margin: 6px 0 0;
-      color: var(--blue-dark);
-      font-size: 24px;
-      line-height: 1;
-      letter-spacing: -.035em;
-    }
-
-    .detail-services-count {
-      color: var(--blue-soft);
-      font-size: 9px;
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .service-list {
+      padding-top: 22px;
       border-top: 1px solid var(--line);
     }
 
-    .service-item {
-      display: grid;
-      grid-template-columns: 30px minmax(0, 1fr);
-      gap: 10px;
-      align-items: start;
-      padding: 13px 0;
-      border-bottom: 1px solid var(--line);
-      color: var(--blue-dark);
+    .detail-service-preview-head {
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:18px;
+      margin-bottom:14px;
     }
 
-    .service-item span {
-      color: var(--blue-soft);
-      font-size: 9px;
-      font-weight: 900;
-      letter-spacing: .06em;
-      padding-top: 2px;
+    .detail-service-preview-head strong {
+      color:var(--blue-dark);
+      font-size:18px;
+      letter-spacing:-.035em;
     }
 
-    .service-item strong {
-      font-size: 12px;
-      line-height: 1.45;
-      font-weight: 800;
+    .detail-service-preview-head span {
+      color:var(--blue-soft);
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    .detail-service-preview-list {
+      display:grid;
+      gap:0;
+      border-top:1px solid var(--line);
+    }
+
+    .detail-service-preview-item {
+      display:grid;
+      grid-template-columns:30px 1fr;
+      gap:10px;
+      align-items:center;
+      padding:10px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .detail-service-preview-item span {
+      color:var(--blue-soft);
+      font-size:8px;
+      font-weight:900;
+      letter-spacing:.08em;
+    }
+
+    .detail-service-preview-item strong {
+      color:var(--blue-dark);
+      font-size:11px;
+      line-height:1.35;
+    }
+
+    .detail-services-jump {
+      width:100%;
+      margin-top:16px;
+      border:1px solid var(--blue-dark);
+      background:var(--blue-dark);
+      color:white;
+      min-height:44px;
+      padding:11px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      font-size:9px;
+      font-weight:950;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      cursor:pointer;
+      transition:.2s ease;
+    }
+
+    .detail-services-jump:hover {
+      background:var(--blue);
+      border-color:var(--blue);
     }
 
     .detail-sidebar-foot {
@@ -670,6 +695,269 @@
       font-weight: 850;
       letter-spacing: .11em;
       text-transform: uppercase;
+    }
+
+    /* Passeio pela execução */
+    .detail-execution {
+      position:relative;
+      background:white;
+      border-top:1px solid var(--line);
+      scroll-margin-top:calc(var(--nav-h) + 10px);
+    }
+
+    .detail-execution-inner {
+      width:min(var(--max),calc(100% - 2 * var(--page-x)));
+      margin:auto;
+      padding:clamp(74px,9vh,118px) 0 clamp(88px,11vh,142px);
+    }
+
+    .detail-execution-head {
+      display:grid;
+      grid-template-columns:minmax(0,.72fr) minmax(420px,1.28fr);
+      gap:clamp(40px,7vw,110px);
+      align-items:end;
+      padding-bottom:clamp(38px,5vh,64px);
+      border-bottom:1px solid var(--line);
+    }
+
+    .detail-execution-head .title {
+      margin-bottom:0;
+      font-size:clamp(46px,5.8vw,84px);
+      max-width:760px;
+    }
+
+    .detail-execution-intro {
+      max-width:690px;
+      justify-self:end;
+    }
+
+    .detail-execution-intro p {
+      margin:0;
+      color:var(--muted);
+      font-size:clamp(15px,1.25vw,18px);
+      line-height:1.7;
+    }
+
+    .detail-execution-meta {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:22px;
+    }
+
+    .detail-execution-meta span {
+      border:1px solid var(--line);
+      background:var(--paper);
+      color:var(--blue-dark);
+      padding:8px 11px;
+      border-radius:999px;
+      font-size:8px;
+      font-weight:900;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+    }
+
+    .service-journey-list {
+      display:block;
+    }
+
+    .service-journey-item {
+      min-height:64svh;
+      padding:clamp(46px,6vh,76px) 0;
+      border-bottom:1px solid var(--line);
+      display:grid;
+      grid-template-columns:minmax(360px,.82fr) minmax(0,1.18fr);
+      gap:clamp(42px,7vw,112px);
+      align-items:center;
+    }
+
+    .service-journey-item:nth-child(even) {
+      grid-template-columns:minmax(0,1.18fr) minmax(360px,.82fr);
+    }
+
+    .service-journey-copy {
+      position:relative;
+      padding-left:clamp(52px,5vw,78px);
+      max-width:650px;
+    }
+
+    .service-journey-item:nth-child(even) .service-journey-copy {
+      order:2;
+      justify-self:end;
+    }
+
+    .service-journey-number {
+      position:absolute;
+      top:-10px;
+      left:0;
+      color:#c8d9e4;
+      font-size:clamp(38px,4.5vw,66px);
+      line-height:1;
+      letter-spacing:-.06em;
+      font-weight:300;
+    }
+
+    .service-journey-kicker {
+      color:var(--blue);
+      font-size:9px;
+      font-weight:950;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      margin-bottom:13px;
+    }
+
+    .service-journey-copy h3 {
+      margin:0;
+      color:var(--blue-dark);
+      font-size:clamp(34px,4vw,62px);
+      line-height:.96;
+      letter-spacing:-.055em;
+    }
+
+    .service-journey-copy p {
+      margin:22px 0 0;
+      max-width:560px;
+      color:var(--muted);
+      font-size:clamp(14px,1.18vw,17px);
+      line-height:1.72;
+    }
+
+    .service-journey-proof {
+      margin-top:26px;
+      padding-top:16px;
+      border-top:1px solid var(--line);
+      color:var(--blue-soft);
+      font-size:9px;
+      font-weight:900;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+
+    .service-journey-visual {
+      height:min(58svh,600px);
+      min-height:390px;
+      position:relative;
+      overflow:hidden;
+      background:var(--paper);
+      border-radius:24px;
+    }
+
+    .service-journey-item:nth-child(even) .service-journey-visual {
+      order:1;
+    }
+
+    .service-journey-visual img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .65s cubic-bezier(.2,.7,.2,1), filter .4s ease;
+    }
+
+    .service-journey-item:hover .service-journey-visual img {
+      transform:scale(1.025);
+      filter:saturate(1.04);
+    }
+
+    .service-journey-visual::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,transparent 55%,rgba(4,29,52,.52) 100%);
+      pointer-events:none;
+    }
+
+    .service-journey-caption {
+      position:absolute;
+      z-index:2;
+      left:18px;
+      right:18px;
+      bottom:16px;
+      padding-top:12px;
+      border-top:1px solid rgba(255,255,255,.62);
+      color:white;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      font-size:8px;
+      font-weight:900;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+
+    .detail-endcap {
+      min-height:58svh;
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      align-items:flex-end;
+      background:var(--blue-dark);
+      color:white;
+    }
+
+    .detail-endcap-bg {
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter:saturate(.85);
+    }
+
+    .detail-endcap::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg,rgba(4,29,52,.94),rgba(4,29,52,.68) 50%,rgba(4,29,52,.25));
+    }
+
+    .detail-endcap-inner {
+      position:relative;
+      z-index:2;
+      width:min(var(--max),calc(100% - 2 * var(--page-x)));
+      margin:auto;
+      padding:clamp(58px,8vh,92px) 0;
+    }
+
+    .detail-endcap h2 {
+      margin:10px 0 18px;
+      max-width:900px;
+      font-size:clamp(48px,6.5vw,96px);
+      line-height:.9;
+      letter-spacing:-.065em;
+    }
+
+    .detail-endcap p {
+      max-width:620px;
+      margin:0;
+      color:#cfe0ea;
+      font-size:15px;
+      line-height:1.65;
+    }
+
+    .detail-endcap-actions {
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .detail-endcap-button {
+      border:1px solid rgba(255,255,255,.7);
+      background:transparent;
+      color:white;
+      min-height:44px;
+      padding:11px 16px;
+      font-size:9px;
+      font-weight:950;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      cursor:pointer;
+    }
+
+    .detail-endcap-button.primary {
+      background:white;
+      color:var(--blue-dark);
+      border-color:white;
     }
 
     .toast { position:fixed; z-index:2000; bottom:22px; right:22px; padding:13px 16px; background:white; color:var(--blue-dark); box-shadow:var(--shadow); transform:translateY(18px); opacity:0; transition:.2s ease; pointer-events:none; font-size:12px; }
@@ -702,6 +990,13 @@
       .detail-workspace { grid-template-columns:minmax(0,1.2fr) minmax(320px,.8fr); }
       .detail-gallery-grid { grid-template-columns:1fr; grid-template-rows:1.25fr .75fr .75fr; min-height:760px; }
       .detail-gallery-item:first-child { grid-row:auto; }
+      .detail-execution-head { grid-template-columns:1fr; gap:18px; }
+      .detail-execution-intro { justify-self:start; }
+      .service-journey-item,
+      .service-journey-item:nth-child(even) {
+        grid-template-columns:minmax(300px,.9fr) minmax(0,1.1fr);
+        gap:38px;
+      }
     }
 
     @media (max-width: 760px) {
@@ -754,6 +1049,33 @@
       .detail-sidebar { order:1; height:auto; overflow:visible; padding:42px 22px 46px; }
       .detail-sidebar h1 { font-size:clamp(44px,14vw,70px); }
       .detail-data-row { grid-template-columns:96px 1fr; }
+      .detail-execution-inner { padding:64px 0 76px; }
+      .detail-execution-head { grid-template-columns:1fr; gap:18px; padding-bottom:34px; }
+      .detail-execution-intro { justify-self:start; }
+      .service-journey-item,
+      .service-journey-item:nth-child(even) {
+        min-height:0;
+        grid-template-columns:1fr;
+        gap:26px;
+        padding:42px 0;
+      }
+      .service-journey-copy,
+      .service-journey-item:nth-child(even) .service-journey-copy {
+        order:1;
+        justify-self:start;
+        padding-left:46px;
+      }
+      .service-journey-visual,
+      .service-journey-item:nth-child(even) .service-journey-visual {
+        order:2;
+        height:54vh;
+        min-height:330px;
+        border-radius:18px;
+      }
+      .service-journey-number { font-size:40px; }
+      .detail-endcap { min-height:68svh; }
+      .detail-endcap-actions { flex-direction:column; align-items:stretch; }
+      .detail-endcap-button { width:100%; }
     }
 
     @media (max-width: 1040px) {
@@ -1311,10 +1633,62 @@
     }
     customElements.define('home-view', HomeView);
 
+    function serviceNarrative(service, work) {
+      const key = normalizeName(service);
+
+      if (/(planejamento|mobilizacao|preparacao do terreno|demolicoes)/.test(key))
+        return `Organizamos esta frente como ponto de partida da execução, preparando condições, sequência de trabalho e interfaces necessárias para que as etapas seguintes avancem com clareza.`;
+
+      if (/(fundacao|fundacoes)/.test(key))
+        return `Executamos a base da edificação com atenção à estabilidade e à integração com a estrutura, consolidando a etapa que sustenta o desenvolvimento da obra.`;
+
+      if (/(estrutura)/.test(key))
+        return `Conduzimos a estrutura como eixo técnico da obra, coordenando sua execução com as demais frentes para manter continuidade, precisão e ritmo de avanço.`;
+
+      if (/(eletric|hidraul|instalacoes)/.test(key))
+        return `Integramos as instalações à construção de forma coordenada, compatibilizando passagens, pontos e interfaces para reduzir retrabalho e preservar a qualidade do conjunto.`;
+
+      if (/(drenagem)/.test(key))
+        return `Tratamos a drenagem como parte da infraestrutura permanente do espaço, conduzindo a água de forma organizada e preparando a área para receber as etapas de acabamento urbano.`;
+
+      if (/(pavimentacao|pisos|calcadas|regularizacao)/.test(key))
+        return `Executamos esta etapa para consolidar circulação, uso e acabamento do espaço, conectando desempenho técnico à leitura final da obra.`;
+
+      if (/(sinalizacao)/.test(key))
+        return `Aplicamos a sinalização como componente de orientação e funcionamento do espaço, integrando leitura, circulação e uso cotidiano da área executada.`;
+
+      if (/(cobertura|impermeabilizacao)/.test(key))
+        return `Trabalhamos proteção e estanqueidade como camadas essenciais de desempenho, preservando a construção e preparando-a para uma entrega mais durável.`;
+
+      if (/(vedacao|alvenaria)/.test(key))
+        return `Executamos os fechamentos e divisões em diálogo com estrutura e instalações, definindo ambientes e preparando a edificação para as camadas finais.`;
+
+      if (/(acabamento|pintura)/.test(key))
+        return `É a etapa em que precisão de execução e percepção final se encontram. Organizamos os acabamentos para consolidar qualidade visual, funcionalidade e padrão de entrega.`;
+
+      if (/(paisagismo|urbanizacao externa)/.test(key))
+        return `Integramos o entorno à obra para completar sua relação com o espaço de uso, articulando circulação, acabamento externo e presença urbana.`;
+
+      if (/(comissionamento|entrega tecnica)/.test(key))
+        return `Fechamos o ciclo com conferência, organização dos pontos finais e preparação para entrega, transformando a sequência de serviços em uma obra pronta para uso.`;
+
+      return `Integramos esta frente ao conjunto da obra com planejamento e acompanhamento técnico, conectando sua execução às etapas anteriores e posteriores para manter continuidade na entrega.`;
+    }
+
     class WorkDetail extends HTMLElement {
       static get observedAttributes(){ return ['slug']; }
       attributeChangedCallback(){ if(this.isConnected) this.render(); }
-      connectedCallback(){ this.render(); this.addEventListener('click',e=>{ if(e.target.closest('[data-back]')) navigateHome('obras'); }); }
+      connectedCallback(){
+        this.render();
+        this.addEventListener('click',e=>{
+          if(e.target.closest('[data-back]')) { navigateHome('obras'); return; }
+          if(e.target.closest('[data-services-jump]')) {
+            this.querySelector('#execucao')?.scrollIntoView({behavior:'smooth',block:'start'});
+            return;
+          }
+          if(e.target.closest('[data-contact]')) { navigateHome('contato'); return; }
+        });
+      }
       render(){
         const work=WORKS.find(w=>w.slug===this.getAttribute('slug')) || WORKS[0];
         this.innerHTML=`<main class="detail-route">
@@ -1324,7 +1698,7 @@
                 ${work.photos.map((src,i)=>`<figure class="detail-gallery-item"><img src="${src}" alt="${escapeHTML(work.name)} — foto ${i+1}"><span class="detail-gallery-index">${String(i+1).padStart(2,'0')}</span></figure>`).join('')}
               </div>
             </div>
-            <aside class="detail-sidebar" aria-label="Informações e serviços da obra">
+            <aside class="detail-sidebar" aria-label="Informações da obra">
               <button class="detail-back" data-back>← Voltar às obras</button>
               <div class="eyebrow">${escapeHTML(work.city)} · ${escapeHTML(work.state)}</div>
               <h1>${escapeHTML(work.name)}</h1>
@@ -1335,21 +1709,70 @@
                 <div class="detail-data-row"><span>Tipo de obra</span><strong>${escapeHTML(work.type)}</strong></div>
               </div>
 
-              <section class="detail-services" aria-labelledby="services-title">
-                <div class="detail-services-head">
-                  <div>
-                    <div class="eyebrow">O que executamos</div>
-                    <h2 id="services-title">Serviços realizados</h2>
-                  </div>
-                  <span class="detail-services-count">${work.services.length} serviços</span>
+              <section class="detail-service-preview" aria-label="Resumo dos serviços executados">
+                <div class="detail-service-preview-head">
+                  <strong>Execução da obra</strong>
+                  <span>${work.services.length} etapas</span>
                 </div>
-                <div class="service-list">
-                  ${work.services.map((s,i)=>`<div class="service-item"><span>${String(i+1).padStart(2,'0')}</span><strong>${escapeHTML(s)}</strong></div>`).join('')}
+                <div class="detail-service-preview-list">
+                  ${work.services.slice(0,3).map((s,i)=>`<div class="detail-service-preview-item"><span>${String(i+1).padStart(2,'0')}</span><strong>${escapeHTML(s)}</strong></div>`).join('')}
                 </div>
+                <button class="detail-services-jump" data-services-jump><span>Percorrer serviços executados</span><span>↓</span></button>
               </section>
 
               <div class="detail-sidebar-foot">Confidence Construtora · Engenharia que deixa marca</div>
             </aside>
+          </section>
+
+          <section class="detail-execution" id="execucao" aria-labelledby="execution-title">
+            <div class="detail-execution-inner">
+              <header class="detail-execution-head">
+                <div>
+                  <div class="eyebrow">Serviços executados</div>
+                  <h2 class="title" id="execution-title">A obra, etapa por etapa.</h2>
+                </div>
+                <div class="detail-execution-intro">
+                  <p>Cada frente compõe uma parte da entrega. Percorra abaixo os serviços que estruturam esta obra e a forma como eles se encaixam na execução conduzida pela Confidence.</p>
+                  <div class="detail-execution-meta">
+                    <span>${escapeHTML(work.city)}</span>
+                    <span>${escapeHTML(work.type)}</span>
+                    <span>${work.services.length} frentes de execução</span>
+                  </div>
+                </div>
+              </header>
+
+              <div class="service-journey-list">
+                ${work.services.map((service,i)=>{
+                  const photo=work.photos[i % work.photos.length];
+                  return `<article class="service-journey-item">
+                    <div class="service-journey-copy">
+                      <span class="service-journey-number">${String(i+1).padStart(2,'0')}</span>
+                      <div class="service-journey-kicker">Etapa de execução</div>
+                      <h3>${escapeHTML(service)}</h3>
+                      <p>${escapeHTML(serviceNarrative(service,work))}</p>
+                      <div class="service-journey-proof">Confidence Construtora · ${escapeHTML(work.city)}</div>
+                    </div>
+                    <figure class="service-journey-visual">
+                      <img src="${photo}" alt="${escapeHTML(work.name)} — ${escapeHTML(service)}">
+                      <figcaption class="service-journey-caption"><span>${String(i+1).padStart(2,'0')} · ${escapeHTML(service)}</span><span>${escapeHTML(work.type)}</span></figcaption>
+                    </figure>
+                  </article>`;
+                }).join('')}
+              </div>
+            </div>
+          </section>
+
+          <section class="detail-endcap">
+            <img class="detail-endcap-bg" src="${work.photos[(work.photos.length-1)]}" alt="">
+            <div class="detail-endcap-inner">
+              <div class="eyebrow light">Confidence Construtora</div>
+              <h2>Cada etapa compõe a entrega.</h2>
+              <p>${escapeHTML(work.summary)}</p>
+              <div class="detail-endcap-actions">
+                <button class="detail-endcap-button primary" data-back>Voltar ao portfólio</button>
+                <button class="detail-endcap-button" data-contact>Falar com a Confidence</button>
+              </div>
+            </div>
           </section>
         </main>`;
       }
