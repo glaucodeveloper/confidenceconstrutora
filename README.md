@@ -89,6 +89,24 @@ No modo de edição é possível:
 - editar textos;
 - alterar imagens.
 
+### Sessão guiada para adicionar registro
+
+O botão **Adicionar registro** não abre um formulário modal. Ele insere uma nova sessão visual diretamente na página da obra, antes da sequência dos registros existentes.
+
+Essa sessão segue a mesma linguagem visual da própria página da obra e possui áreas de preenchimento destacadas por hover:
+
+- **Título do registro** — clique no bloco para preencher;
+- **Descrição da atividade** — clique no bloco para preencher;
+- **Imagem do registro** — clique na área visual para selecionar ou trocar a foto.
+
+Ao passar o mouse, o campo recebe destaque visual e a indicação **Clique para preencher**.
+
+O botão **Adicionar registro ao rascunho** incorpora o novo registro ao estado local do CMS sem gravá-lo imediatamente no GitHub. Ele passa a aparecer na sequência da obra e também na lista de alterações pendentes.
+
+O registro só é persistido em `data/site-data.json` e a imagem só é enviada para `assets/uploads/` quando o usuário utiliza **Salvar alterações** ao final da página.
+
+O botão **Cancelar** descarta apenas a sessão de criação ainda não adicionada ao rascunho.
+
 As novas imagens são preparadas em rascunho e enviadas para `assets/uploads/` somente durante o salvamento consolidado.
 
 ## Rascunho, backups e desfazer

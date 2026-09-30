@@ -870,6 +870,212 @@
     .work-create-status { min-height:20px; margin-top:12px; text-align:right; color:var(--muted); font-size:10px; }
     @media (max-width:900px) { .work-create-layout { grid-template-columns:1fr; } .work-create-cover { min-height:440px; } }
 
+
+    /* CMS - SESSAO GUIADA PARA NOVO REGISTRO */
+    .cms-record-create-session {
+      margin:clamp(34px,5vh,64px) 0;
+      padding:clamp(22px,3vw,34px);
+      border:2px dashed #8eafc3;
+      border-radius:26px;
+      background:linear-gradient(145deg,#f9fcfe,#eef4f8);
+      box-shadow:0 22px 60px rgba(8,45,76,.08);
+    }
+    .cms-record-create-head {
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:20px;
+      padding-bottom:20px;
+      margin-bottom:22px;
+      border-bottom:1px solid var(--line);
+    }
+    .cms-record-create-head h3 {
+      margin:6px 0 0;
+      color:var(--blue-dark);
+      font-size:clamp(28px,3.4vw,48px);
+      line-height:.96;
+      letter-spacing:-.05em;
+    }
+    .cms-record-create-head p {
+      margin:0;
+      max-width:520px;
+      color:var(--muted);
+      font-size:11px;
+      line-height:1.6;
+    }
+    .cms-record-create-layout {
+      display:grid;
+      grid-template-columns:minmax(320px,.86fr) minmax(0,1.14fr);
+      gap:clamp(20px,3.5vw,46px);
+      align-items:stretch;
+    }
+    .cms-record-draft-fields { display:grid; gap:12px; align-content:start; }
+    .cms-record-draft-field {
+      position:relative;
+      min-height:112px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:white;
+      padding:20px;
+      cursor:pointer;
+      transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease,background .18s ease;
+    }
+    .cms-record-draft-field.description { min-height:190px; }
+    .cms-record-draft-field:hover {
+      border-color:var(--blue);
+      background:#fff;
+      box-shadow:0 18px 38px rgba(8,45,76,.10);
+      transform:translateY(-2px);
+    }
+    .cms-record-draft-field::after {
+      content:'Clique para preencher';
+      position:absolute;
+      right:14px;
+      top:12px;
+      opacity:0;
+      color:var(--blue);
+      font-size:8px;
+      font-weight:950;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+      transition:opacity .18s ease;
+    }
+    .cms-record-draft-field:hover::after { opacity:1; }
+    .cms-record-draft-field label {
+      display:block;
+      color:var(--blue-soft);
+      font-size:8px;
+      font-weight:950;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      pointer-events:none;
+    }
+    .cms-record-draft-field strong,
+    .cms-record-draft-field p {
+      display:block;
+      margin:12px 0 0;
+      color:var(--blue-dark);
+      pointer-events:none;
+    }
+    .cms-record-draft-field strong {
+      font-size:clamp(22px,2.3vw,34px);
+      line-height:1.02;
+      letter-spacing:-.035em;
+    }
+    .cms-record-draft-field p {
+      font-size:13px;
+      line-height:1.65;
+    }
+    .cms-record-draft-empty {
+      color:#93a8b6!important;
+      font-style:italic;
+      font-weight:650!important;
+    }
+    .cms-record-draft-image {
+      min-height:430px;
+      position:relative;
+      overflow:hidden;
+      border:2px dashed #9bb7c8;
+      border-radius:22px;
+      background:linear-gradient(145deg,#e9f1f6,#dce9f1);
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      isolation:isolate;
+      transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease;
+    }
+    .cms-record-draft-image.has-image { border-style:solid; }
+    .cms-record-draft-image:hover {
+      border-color:var(--blue);
+      box-shadow:0 22px 50px rgba(8,45,76,.13);
+      transform:translateY(-2px);
+    }
+    .cms-record-draft-image img {
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:-2;
+    }
+    .cms-record-draft-image::before {
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(4,29,52,.03),rgba(4,29,52,.66));
+      opacity:0;
+      transition:opacity .18s ease;
+      z-index:-1;
+    }
+    .cms-record-draft-image.has-image::before { opacity:.42; }
+    .cms-record-draft-image:hover::before { opacity:.72; }
+    .cms-record-draft-image-prompt {
+      padding:26px;
+      text-align:center;
+      color:var(--blue-dark);
+      pointer-events:none;
+    }
+    .cms-record-draft-image.has-image .cms-record-draft-image-prompt {
+      color:white;
+      align-self:end;
+    }
+    .cms-record-draft-image-prompt strong {
+      display:block;
+      font-size:25px;
+      letter-spacing:-.04em;
+    }
+    .cms-record-draft-image-prompt span {
+      display:block;
+      margin-top:8px;
+      font-size:9px;
+      font-weight:900;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+    .cms-record-create-actions {
+      display:flex;
+      justify-content:flex-end;
+      gap:10px;
+      flex-wrap:wrap;
+      padding-top:22px;
+      margin-top:22px;
+      border-top:1px solid var(--line);
+    }
+    .cms-record-create-actions button {
+      min-height:42px;
+      padding:10px 16px;
+      border-radius:999px;
+      font-size:9px;
+      font-weight:950;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+      cursor:pointer;
+    }
+    .cms-record-draft-cancel {
+      border:1px solid var(--line);
+      background:white;
+      color:var(--blue-dark);
+    }
+    .cms-record-draft-save {
+      border:1px solid var(--blue);
+      background:var(--blue);
+      color:white;
+    }
+    .cms-record-draft-save:hover { background:var(--blue-dark); border-color:var(--blue-dark); }
+    .cms-record-draft-status {
+      min-height:18px;
+      margin-top:10px;
+      color:var(--muted);
+      text-align:right;
+      font-size:10px;
+    }
+    @media (max-width:860px) {
+      .cms-record-create-head { display:block; }
+      .cms-record-create-head p { margin-top:10px; }
+      .cms-record-create-layout { grid-template-columns:1fr; }
+      .cms-record-draft-image { min-height:340px; }
+    }
+
     .cms-record-modal {
       position:fixed;
       z-index:5400;
@@ -2545,7 +2751,7 @@
 
     const cmsIgnoredTextTags = new Set(['SCRIPT','STYLE','INPUT','TEXTAREA','SELECT','OPTION','SVG','PATH']);
     function cmsHasDirectText(el) {
-      if (!el || cmsIgnoredTextTags.has(el.tagName) || el.closest('.cms-toolbar,.cms-modal,.cms-login,.cms-record-modal')) return false;
+      if (!el || cmsIgnoredTextTags.has(el.tagName) || el.closest('.cms-toolbar,.cms-modal,.cms-login,.cms-record-modal,.cms-record-create-session')) return false;
       return [...el.childNodes].some(node=>node.nodeType===Node.TEXT_NODE && node.textContent.trim());
     }
     function cmsTextElements(root=document) {
@@ -2808,6 +3014,7 @@
         sessionStorage.removeItem('confidence.cms.token');
         cmsState.token='';
         document.querySelector('.cms-record-modal')?.remove();
+        document.querySelector('.cms-record-create-session')?.remove();
         this.deactivate();
         history.replaceState(null,'',location.pathname + location.search + '#/');
         location.reload();
@@ -2843,7 +3050,7 @@
       onPointerMove(event){
         if(!this.active || this.modal.classList.contains('open')) return;
         if(event.target.closest?.('.work-create-route')) { this.hideControls(); return; }
-        if(event.target.closest?.('.cms-hover-control,.cms-toolbar,.cms-contact-remove,.cms-contact-add,.cms-record-add,.cms-record-remove,.cms-record-modal')) return;
+        if(event.target.closest?.('.cms-hover-control,.cms-toolbar,.cms-contact-remove,.cms-contact-add,.cms-record-add,.cms-record-remove,.cms-record-modal,.cms-record-create-session')) return;
         const img=event.target.closest?.('img');
         if(img && !img.closest('.cms-toolbar,.cms-modal,.cms-login')) { this.setImageTarget({el:img,kind:'image'}); this.clearTextTarget(); return; }
         const text=this.textCandidate(event.target);
@@ -3068,8 +3275,14 @@
       connectedCallback(){
         this.render();
         this.addEventListener('click',e=>{
+          if(e.target.matches('[data-record-draft-image-input]')) return;
           const add=e.target.closest('[data-cms-record-add]');
           if(add) { e.preventDefault(); this.openAddRecord(); return; }
+          const draftField=e.target.closest('[data-record-draft-field]');
+          if(draftField) { e.preventDefault(); this.editRecordDraftField(draftField.dataset.recordDraftField); return; }
+          if(e.target.closest('[data-record-draft-image]')) { e.preventDefault(); this.querySelector('[data-record-draft-image-input]')?.click(); return; }
+          if(e.target.closest('[data-record-draft-cancel]')) { e.preventDefault(); this.cancelRecordDraft(); return; }
+          if(e.target.closest('[data-record-draft-save]')) { e.preventDefault(); this.addRecord(); return; }
           const remove=e.target.closest('[data-cms-record-remove]');
           if(remove) { e.preventDefault(); this.removeRecord(remove.dataset.cmsRecordRemove); return; }
           if(e.target.closest('[data-back]')) { navigateHome('obras'); return; }
@@ -3078,6 +3291,9 @@
             return;
           }
           if(e.target.closest('[data-contact]')) { navigateHome('contato'); return; }
+        });
+        this.addEventListener('change',e=>{
+          if(e.target.matches('[data-record-draft-image-input]')) this.pickRecordDraftImage(e.target.files?.[0]);
         });
       }
       currentWork(){
@@ -3095,63 +3311,84 @@
         this.render();
         requestAnimationFrame(()=>{cmsApply(this);cmsEditor?.updateSaveFooter();});
       }
-      closeRecordModal(){
-        document.querySelector('.cms-record-modal')?.remove();
+      revokeRecordDraftPreview(){
+        const preview=this.recordDraft?.imagePreview;
+        if(preview?.startsWith('blob:')) URL.revokeObjectURL(preview);
+      }
+      cancelRecordDraft(){
+        this.revokeRecordDraftPreview();
+        this.recordDraft=null;
+        this.render();
+        requestAnimationFrame(()=>{ cmsApply(this); cmsEditor?.updateSaveFooter(); });
       }
       openAddRecord(){
         if(!cmsState.token) { navigateLogin(); return; }
-        const work=this.currentWork();
-        if(!work) return;
-        this.closeRecordModal();
-        const modal=document.createElement('div');
-        modal.className='cms-record-modal';
-        modal.innerHTML=`<form class="cms-record-card" data-cms-record-form>
-          <header><div><div class="eyebrow">${escapeHTML(work.name)}</div><h2>Adicionar registro</h2></div><button class="cms-record-close" type="button" data-cms-record-close aria-label="Fechar">×</button></header>
-          <div class="cms-record-fields">
-            <div class="cms-record-field"><label for="cms-record-title">Título do registro</label><input id="cms-record-title" name="title" type="text" required placeholder="Ex.: Execução de alvenaria"></div>
-            <div class="cms-record-field"><label for="cms-record-description">Descrição</label><textarea id="cms-record-description" name="description" required placeholder="Descreva a atividade executada e o que aparece no registro."></textarea></div>
-            <div class="cms-record-field"><label for="cms-record-image">Imagem</label><input id="cms-record-image" name="image" type="file" accept="image/*" required></div>
-          </div>
-          <div class="cms-record-actions"><button class="cms-record-cancel" type="button" data-cms-record-close>Cancelar</button><button class="cms-record-save" type="submit">Adicionar ao rascunho</button></div>
-          <div class="cms-record-status" data-cms-record-status role="status"></div>
-        </form>`;
-        document.body.appendChild(modal);
-        modal.addEventListener('click',e=>{
-          if(e.target===modal || e.target.closest('[data-cms-record-close]')) this.closeRecordModal();
-        });
-        modal.querySelector('[data-cms-record-form]').addEventListener('submit',e=>this.addRecord(e));
-        setTimeout(()=>modal.querySelector('[name=title]')?.focus(),20);
+        if(!this.recordDraft) {
+          this.recordDraft={title:'',description:'',imageFile:null,imagePreview:''};
+          this.render();
+          requestAnimationFrame(()=>{
+            cmsApply(this);
+            this.querySelector('[data-record-draft-session]')?.scrollIntoView({behavior:'smooth',block:'center'});
+          });
+          return;
+        }
+        this.querySelector('[data-record-draft-session]')?.scrollIntoView({behavior:'smooth',block:'center'});
       }
-      async addRecord(event){
-        event.preventDefault();
-        if(!cmsState.token) { this.closeRecordModal(); navigateLogin(); return; }
-        const form=event.currentTarget;
-        if(!form.reportValidity()) return;
+      editRecordDraftField(field){
+        if(!this.recordDraft) return;
+        const labels={title:'Título do registro',description:'Descrição do registro'};
+        const value=prompt(`${labels[field] || field}:`,this.recordDraft[field] || '');
+        if(value===null) return;
+        this.recordDraft[field]=String(value).trim();
+        this.render();
+        requestAnimationFrame(()=>{
+          cmsApply(this);
+          this.querySelector('[data-record-draft-session]')?.scrollIntoView({behavior:'smooth',block:'center'});
+        });
+      }
+      pickRecordDraftImage(file){
+        if(!this.recordDraft || !file) return;
+        if(!file.type?.startsWith('image/')) { alert('Selecione uma imagem para o registro.'); return; }
+        this.revokeRecordDraftPreview();
+        this.recordDraft.imageFile=file;
+        this.recordDraft.imagePreview=URL.createObjectURL(file);
+        this.render();
+        requestAnimationFrame(()=>{
+          cmsApply(this);
+          this.querySelector('[data-record-draft-session]')?.scrollIntoView({behavior:'smooth',block:'center'});
+        });
+      }
+      async addRecord(){
+        if(!cmsState.token) { navigateLogin(); return; }
         const work=this.currentWork();
-        if(!work) return;
-        const data=new FormData(form);
-        const title=String(data.get('title')||'').trim();
-        const description=String(data.get('description')||'').trim();
-        const imageFile=data.get('image');
-        const status=form.querySelector('[data-cms-record-status]');
-        const submit=form.querySelector('[type=submit]');
-        submit.disabled=true;
-        status.textContent='Adicionando registro ao rascunho…';
+        const draft=this.recordDraft;
+        if(!work || !draft) return;
+        const title=String(draft.title||'').trim();
+        const description=String(draft.description||'').trim();
+        if(!title) { alert('Clique no campo Título e preencha o registro.'); return; }
+        if(!description) { alert('Clique no campo Descrição e preencha o registro.'); return; }
+        if(!draft.imageFile) { alert('Clique na área da imagem e selecione uma foto.'); return; }
+        const button=this.querySelector('[data-record-draft-save]');
+        const status=this.querySelector('[data-record-draft-status]');
+        if(button) button.disabled=true;
+        if(status) status.textContent='Adicionando registro ao rascunho…';
         try {
           work.activities ||= [];
           const id=`${work.slug}-${Date.now().toString(36)}`;
           const changeKey=`record-add:${work.slug}:${id}`;
-          const image=cmsStageAsset(imageFile,`${changeKey}:image`,`registro-${work.slug}`);
+          const image=cmsStageAsset(draft.imageFile,`${changeKey}:image`,`registro-${work.slug}`);
+          const preview=draft.imagePreview;
           cmsRegisterChange({key:changeKey,label:`Novo registro: ${title}`,undo:()=>{ cmsRemovePendingAsset(`${changeKey}:image`); work.activities=(work.activities||[]).filter(item=>String(item.id)!==String(id)); this.normalizeWorkMedia(work); SITE_DATA.works=WORKS; cmsState.content.works=WORKS; }});
           work.activities.push({id,title,image,description});
           this.normalizeWorkMedia(work);
+          if(preview?.startsWith('blob:')) URL.revokeObjectURL(preview);
+          this.recordDraft=null;
           await this.persistWorkChange();
-          this.closeRecordModal();
-          this.querySelector('#execucao')?.scrollIntoView({behavior:'smooth',block:'start'});
+          requestAnimationFrame(()=>this.querySelector(`[data-record-id="${CSS.escape(id)}"]`)?.scrollIntoView({behavior:'smooth',block:'center'}));
         } catch(error) {
           console.error(error);
-          status.textContent=error.message || 'Falha ao adicionar registro.';
-          submit.disabled=false;
+          if(status) status.textContent=error.message || 'Falha ao adicionar registro.';
+          if(button) button.disabled=false;
         }
       }
       async removeRecord(id){
@@ -3175,6 +3412,10 @@
         const photos=workPhotos(work);
         const gallery=photos.slice(0,3);
         const endPhoto=photos[photos.length-1] || work.cover || '';
+        const draft=this.recordDraft;
+        const draftTitle=draft?.title || '';
+        const draftDescription=draft?.description || '';
+        const draftImage=draft?.imagePreview || '';
         this.innerHTML=`<main class="detail-route">
           <section class="detail-workspace">
             <div class="detail-gallery-panel" aria-label="Galeria de imagens da obra">
@@ -3227,6 +3468,40 @@
               </header>
 
               <div class="service-journey-list">
+                ${draft ? `<section class="cms-record-create-session" data-record-draft-session aria-label="Novo registro em rascunho">
+                  <header class="cms-record-create-head">
+                    <div>
+                      <div class="eyebrow">CMS · Novo registro</div>
+                      <h3>Preencha o registro pela própria sessão.</h3>
+                    </div>
+                    <p>Passe o mouse sobre os campos destacados e clique para preencher. O registro só entra no GitHub quando você usar <strong>Salvar alterações</strong> ao final da página.</p>
+                  </header>
+                  <div class="cms-record-create-layout">
+                    <div class="cms-record-draft-fields">
+                      <div class="cms-record-draft-field" data-record-draft-field="title">
+                        <label>Título do registro</label>
+                        <strong class="${draftTitle ? '' : 'cms-record-draft-empty'}">${escapeHTML(draftTitle || 'Clique para informar o título')}</strong>
+                      </div>
+                      <div class="cms-record-draft-field description" data-record-draft-field="description">
+                        <label>Descrição da atividade</label>
+                        <p class="${draftDescription ? '' : 'cms-record-draft-empty'}">${escapeHTML(draftDescription || 'Clique para descrever o serviço executado e o que aparece na imagem.')}</p>
+                      </div>
+                    </div>
+                    <div class="cms-record-draft-image${draftImage ? ' has-image' : ''}" data-record-draft-image title="Clique para selecionar a imagem">
+                      ${draftImage ? `<img src="${escapeHTML(draftImage)}" alt="Prévia do novo registro">` : ''}
+                      <div class="cms-record-draft-image-prompt">
+                        <strong>${draftImage ? 'Trocar imagem' : 'Adicionar imagem'}</strong>
+                        <span>Clique para selecionar a foto do registro</span>
+                      </div>
+                      <input type="file" accept="image/*" hidden data-record-draft-image-input>
+                    </div>
+                  </div>
+                  <div class="cms-record-create-actions">
+                    <button class="cms-record-draft-cancel" type="button" data-record-draft-cancel>Cancelar</button>
+                    <button class="cms-record-draft-save" type="button" data-record-draft-save>Adicionar registro ao rascunho</button>
+                  </div>
+                  <div class="cms-record-draft-status" data-record-draft-status role="status"></div>
+                </section>` : ''}
                 ${activities.map((activity,i)=>`<article class="service-journey-item" data-record-id="${escapeHTML(activity.id)}">
                     <button class="cms-record-remove" type="button" data-cms-record-remove="${escapeHTML(activity.id)}">Remover registro</button>
                     <div class="service-journey-copy">
