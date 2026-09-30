@@ -231,7 +231,7 @@ O painel é remontado automaticamente caso a Home seja renderizada novamente dur
 
 O CMS utiliza o SHA atual de `data/site-data.json` exigido pela GitHub Contents API.
 
-Antes de cada salvamento consolidado, o site busca novamente o arquivo remoto com `cache: no-store`, parâmetro anti-cache e cabeçalhos `no-cache`.
+Antes de cada salvamento consolidado, o site busca novamente o arquivo remoto usando um parâmetro anti-cache único na URL. A chamada mantém somente os headers aceitos pelo CORS da API do GitHub.
 
 Se o GitHub responder `409 Conflict` indicando que o SHA mudou entre a leitura e a escrita:
 
@@ -242,3 +242,9 @@ Se o GitHub responder `409 Conflict` indicando que o SHA mudou entre a leitura e
 5. o rascunho só é marcado como salvo depois de uma resposta de sucesso do GitHub.
 
 Isso evita que um SHA armazenado em cache impeça o salvamento e mantém o conteúdo pendente disponível caso a segunda tentativa também falhe.
+
+### Compatibilidade CORS da API do GitHub
+
+As chamadas executadas diretamente pelo navegador não enviam `Cache-Control` nem `Pragma`, pois esses headers não fazem parte da lista aceita pelo preflight CORS da API do GitHub.
+
+A atualização do SHA usa um parâmetro único na query string para impedir reutilização da URL anterior, preservando o retry automático de conflitos `409`.

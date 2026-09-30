@@ -2824,13 +2824,7 @@
     async function cmsReadContentShaFresh(attempt=0) {
       const nonce=`${Date.now()}-${attempt}-${Math.random().toString(36).slice(2,8)}`;
       const url=`${cmsApiUrl(CMS_CONFIG.contentPath)}?ref=${encodeURIComponent(CMS_CONFIG.branch)}&_=${nonce}`;
-      const response=await cmsApi(url,{
-        cache:'no-store',
-        headers:{
-          'Cache-Control':'no-cache, no-store, max-age=0',
-          'Pragma':'no-cache'
-        }
-      });
+      const response=await cmsApi(url);
       if(response.status===404) return null;
       if(!response.ok) throw new Error(`Falha ao ler conteúdo atual (${response.status}).`);
       const current=await response.json();
@@ -2863,11 +2857,8 @@
 
           const response=await cmsApi(cmsApiUrl(CMS_CONFIG.contentPath),{
             method:'PUT',
-            cache:'no-store',
             headers:{
-              'Content-Type':'application/json',
-              'Cache-Control':'no-cache, no-store, max-age=0',
-              'Pragma':'no-cache'
+              'Content-Type':'application/json'
             },
             body:JSON.stringify(payload)
           });
