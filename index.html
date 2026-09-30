@@ -37,7 +37,7 @@
     ::selection { background: var(--blue); color: white; }
 
     fixed-nav { display:block; }
-    site-shell, home-view, work-detail, territory-map, works-showcase { display:block; }
+    site-shell, home-view, work-detail, work-create, territory-map, works-showcase { display:block; }
 
     .nav {
       position: fixed;
@@ -811,6 +811,64 @@
     }
     .cms-editing .cms-record-remove { display:inline-flex; align-items:center; }
     .cms-record-remove:hover { background:#9f2828; color:white; }
+
+    /* CMS - CRIACAO DE OBRA */
+    .cms-work-add-card {
+      display:none;
+      min-height:230px;
+      aspect-ratio:16/9;
+      border:2px dashed #89abc0;
+      border-radius:16px;
+      background:linear-gradient(145deg,#f9fcfe,#eaf2f7);
+      color:var(--blue-dark);
+      cursor:pointer;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      gap:12px;
+      text-align:center;
+      padding:28px;
+      transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease;
+    }
+    .cms-editing .cms-work-add-card { display:flex; }
+    .cms-work-add-card:hover { transform:translateY(-5px)!important; border-color:var(--blue); background:white; box-shadow:0 20px 42px rgba(8,45,76,.12); }
+    .cms-work-add-card .cms-work-add-plus { width:56px; height:56px; border-radius:50%; display:grid; place-items:center; background:var(--blue); color:white; font-size:30px; line-height:1; }
+    .cms-work-add-card strong { font-size:19px; letter-spacing:-.03em; }
+    .cms-work-add-card span:last-child { max-width:230px; color:var(--muted); font-size:10px; line-height:1.5; }
+
+    .work-create-route { min-height:100svh; background:var(--paper); padding:calc(var(--nav-h) + 46px) var(--page-x) 72px; }
+    .work-create-shell { width:min(var(--max),100%); margin:auto; }
+    .work-create-top { display:flex; align-items:flex-end; justify-content:space-between; gap:24px; padding-bottom:26px; border-bottom:1px solid var(--line); }
+    .work-create-top h1 { margin:7px 0 0; color:var(--blue-dark); font-size:clamp(42px,6vw,82px); line-height:.92; letter-spacing:-.06em; }
+    .work-create-back { border:1px solid var(--line); background:white; color:var(--blue-dark); min-height:42px; padding:10px 14px; border-radius:999px; font-size:9px; font-weight:950; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; }
+    .work-create-guide { margin:18px 0 0; color:var(--muted); font-size:12px; line-height:1.6; max-width:720px; }
+    .work-create-layout { margin-top:30px; display:grid; grid-template-columns:minmax(0,1.15fr) minmax(330px,.85fr); gap:24px; align-items:stretch; }
+    .work-create-cover { min-height:560px; position:relative; overflow:hidden; border-radius:24px; border:2px dashed #9bb7c8; background:linear-gradient(145deg,#e9f1f6,#d9e7ef); cursor:pointer; display:grid; place-items:center; }
+    .work-create-cover.has-image { border-style:solid; }
+    .work-create-cover img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .work-create-cover::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,rgba(4,29,52,.05),rgba(4,29,52,.62)); opacity:0; transition:opacity .2s ease; }
+    .work-create-cover:hover::after { opacity:1; }
+    .work-create-cover-prompt { position:relative; z-index:2; text-align:center; padding:28px; color:var(--blue-dark); pointer-events:none; }
+    .work-create-cover.has-image .work-create-cover-prompt { color:white; align-self:end; }
+    .work-create-cover-prompt strong { display:block; font-size:25px; letter-spacing:-.04em; }
+    .work-create-cover-prompt span { display:block; margin-top:8px; font-size:10px; font-weight:850; text-transform:uppercase; letter-spacing:.09em; }
+    .work-create-fields { display:grid; gap:12px; }
+    .work-create-field { position:relative; border:1px solid var(--line); background:white; border-radius:18px; padding:18px 20px; min-height:92px; cursor:pointer; transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease; }
+    .work-create-field:hover { border-color:var(--blue); box-shadow:0 16px 34px rgba(8,45,76,.09); transform:translateY(-2px); }
+    .work-create-field::after { content:'Clique para preencher'; position:absolute; right:14px; top:12px; opacity:0; color:var(--blue); font-size:8px; font-weight:950; letter-spacing:.08em; text-transform:uppercase; transition:opacity .18s ease; }
+    .work-create-field:hover::after { opacity:1; }
+    .work-create-field label { display:block; color:var(--blue-soft); font-size:8px; font-weight:950; letter-spacing:.12em; text-transform:uppercase; pointer-events:none; }
+    .work-create-field strong,.work-create-field p { display:block; margin:9px 0 0; color:var(--blue-dark); pointer-events:none; }
+    .work-create-field strong { font-size:20px; line-height:1.12; }
+    .work-create-field p { font-size:12px; line-height:1.55; }
+    .work-create-field .empty { color:#9aaeba; font-style:italic; font-weight:650; }
+    .work-create-field.summary { min-height:138px; }
+    .work-create-actions { margin-top:24px; padding-top:22px; border-top:1px solid var(--line); display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap; }
+    .work-create-action { min-height:44px; border-radius:999px; padding:11px 18px; border:1px solid var(--line); background:white; color:var(--blue-dark); font-size:9px; font-weight:950; letter-spacing:.09em; text-transform:uppercase; cursor:pointer; }
+    .work-create-action.primary { background:var(--blue); border-color:var(--blue); color:white; }
+    .work-create-action.primary:hover { background:var(--blue-dark); border-color:var(--blue-dark); }
+    .work-create-status { min-height:20px; margin-top:12px; text-align:right; color:var(--muted); font-size:10px; }
+    @media (max-width:900px) { .work-create-layout { grid-template-columns:1fr; } .work-create-cover { min-height:440px; } }
 
     .cms-record-modal {
       position:fixed;
@@ -1772,6 +1830,7 @@
       const hash = location.hash.replace(/^#\/?/, '');
       const match = hash.match(/^obra\/(.+)$/);
       if (hash === 'login') appState.dispatch({type:'ROUTE', route:'login'});
+      else if (hash === 'nova-obra') appState.dispatch({type:'ROUTE', route:'new-work'});
       else if (match) appState.dispatch({type:'ROUTE', route:'detail', slug:decodeURIComponent(match[1])});
       else appState.dispatch({type:'ROUTE', route:'home'});
     }
@@ -1781,8 +1840,14 @@
       appState.dispatch({type:'ROUTE', route:'login'});
     }
 
+    function navigateNewWork() {
+      if(!cmsState?.token) { navigateLogin(); return; }
+      history.pushState(null,'','#/nova-obra');
+      appState.dispatch({type:'ROUTE', route:'new-work'});
+    }
+
     function navigateHome(anchor='inicio') {
-      if (location.hash.startsWith('#/obra/') || location.hash === '#/login') history.pushState(null,'',location.pathname + location.search + '#/');
+      if (location.hash.startsWith('#/obra/') || location.hash === '#/login' || location.hash === '#/nova-obra') history.pushState(null,'',location.pathname + location.search + '#/');
       appState.dispatch({type:'ROUTE', route:'home'});
       requestAnimationFrame(() => document.getElementById(anchor)?.scrollIntoView({behavior:'smooth'}));
     }
@@ -2012,12 +2077,20 @@
     customElements.define('territory-map', TerritoryMap);
 
     class WorksShowcase extends HTMLElement {
-      connectedCallback(){ this.render(); this.addEventListener('click',e=>{ const card=e.target.closest('[data-work]'); if(card) openWork(card.dataset.work); }); }
+      connectedCallback(){
+        this.render();
+        this.addEventListener('click',e=>{
+          const add=e.target.closest('[data-cms-add-work]');
+          if(add){ e.preventDefault(); navigateNewWork(); return; }
+          const card=e.target.closest('[data-work]');
+          if(card) openWork(card.dataset.work);
+        });
+      }
       render(){
         this.innerHTML=`<div class="works-head"><div><div class="eyebrow">Nossas obras</div><h2 class="title">Obras que carregam nossa assinatura.</h2></div><div class="works-count">${WORKS.length} obras selecionadas</div></div>
-        <div class="works-scatter"><svg class="works-network" viewBox="0 0 1200 620" preserveAspectRatio="none" aria-hidden="true"><path d="M150 250 C 260 226, 330 220, 465 195"></path><path d="M470 195 C 610 180, 720 188, 845 240"></path><path d="M250 430 C 360 395, 450 382, 580 365"></path><path d="M600 362 C 735 362, 840 390, 970 430"></path><path d="M468 200 C 500 248, 532 280, 595 338"></path><path d="M842 242 C 786 286, 736 314, 650 356"></path><circle cx="150" cy="250" r="5"></circle><circle cx="470" cy="195" r="5"></circle><circle cx="845" cy="240" r="5"></circle><circle cx="250" cy="430" r="5"></circle><circle cx="600" cy="362" r="5"></circle><circle cx="970" cy="430" r="5"></circle></svg><div class="works-grid">${WORKS.map(work=>`<button class="work-card" data-work="${work.slug}" aria-label="Abrir ${escapeHTML(work.name)}"><img src="${work.cover}" alt="${escapeHTML(work.name)}"><span class="work-arrow">↗</span><div class="work-card-content"><div class="work-city">${escapeHTML(work.city)} · ${escapeHTML(work.type)}</div><h3>${escapeHTML(work.name)}</h3></div></button>`).join('')}</div></div>
+        <div class="works-scatter"><svg class="works-network" viewBox="0 0 1200 620" preserveAspectRatio="none" aria-hidden="true"><path d="M150 250 C 260 226, 330 220, 465 195"></path><path d="M470 195 C 610 180, 720 188, 845 240"></path><path d="M250 430 C 360 395, 450 382, 580 365"></path><path d="M600 362 C 735 362, 840 390, 970 430"></path><path d="M468 200 C 500 248, 532 280, 595 338"></path><path d="M842 242 C 786 286, 736 314, 650 356"></path><circle cx="150" cy="250" r="5"></circle><circle cx="470" cy="195" r="5"></circle><circle cx="845" cy="240" r="5"></circle><circle cx="250" cy="430" r="5"></circle><circle cx="600" cy="362" r="5"></circle><circle cx="970" cy="430" r="5"></circle></svg><div class="works-grid">${WORKS.map(work=>`<button class="work-card" data-work="${work.slug}" aria-label="Abrir ${escapeHTML(work.name)}"><img src="${work.cover}" alt="${escapeHTML(work.name)}"><span class="work-arrow">↗</span><div class="work-card-content"><div class="work-city">${escapeHTML(work.city)} · ${escapeHTML(work.type)}</div><h3>${escapeHTML(work.name)}</h3></div></button>`).join('')}<button class="cms-work-add-card" type="button" data-cms-add-work aria-label="Adicionar nova obra"><span class="cms-work-add-plus">+</span><strong>Adicionar obra</strong><span>Abra uma página guiada e clique nos campos para preencher.</span></button></div></div>
         <div class="works-more"><span>Da infraestrutura urbana aos equipamentos públicos, nossas obras mostram a amplitude da nossa execução.</span><button data-open-first="true">Conhecer uma obra →</button></div>`;
-        this.querySelector('[data-open-first]')?.addEventListener('click',()=>openWork(WORKS[0].slug));
+        this.querySelector('[data-open-first]')?.addEventListener('click',()=>WORKS[0] && openWork(WORKS[0].slug));
       }
     }
     customElements.define('works-showcase', WorksShowcase);
@@ -2591,6 +2664,7 @@
       }
       onPointerMove(event){
         if(!this.active || this.modal.classList.contains('open')) return;
+        if(event.target.closest?.('.work-create-route')) { this.hideControls(); return; }
         if(event.target.closest?.('.cms-hover-control,.cms-toolbar,.cms-contact-remove,.cms-contact-add,.cms-record-add,.cms-record-remove,.cms-record-modal')) return;
         const img=event.target.closest?.('img');
         if(img && !img.closest('.cms-toolbar,.cms-modal,.cms-login')) { this.setImageTarget({el:img,kind:'image'}); this.clearTextTarget(); return; }
@@ -2676,6 +2750,138 @@
       if(Array.isArray(work.photos) && work.photos.length) return work.photos;
       return work.cover ? [work.cover] : [];
     }
+
+    const slugifyWork = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+
+    class WorkCreate extends HTMLElement {
+      connectedCallback(){
+        if(!cmsState.token) { navigateLogin(); return; }
+        this.draft={name:'',city:'',state:'Bahia',type:'',summary:'',cover:''};
+        this.coverFile=null;
+        this.coverPreview='';
+        this.addEventListener('click',this._click=e=>{
+          if(e.target.matches('[data-work-cover-input]')) return;
+          if(e.target.closest('[data-work-create-back],[data-work-create-cancel]')) { navigateHome('obras'); return; }
+          if(e.target.closest('[data-work-create-cover]')) { this.querySelector('[data-work-cover-input]')?.click(); return; }
+          const field=e.target.closest('[data-work-create-field]');
+          if(field) { this.editField(field.dataset.workCreateField); return; }
+          if(e.target.closest('[data-work-create-save]')) this.save();
+        });
+        this.addEventListener('change',this._change=e=>{
+          if(e.target.matches('[data-work-cover-input]')) this.pickCover(e.target.files?.[0]);
+        });
+        this.render();
+      }
+      disconnectedCallback(){
+        if(this._click) this.removeEventListener('click',this._click);
+        if(this._change) this.removeEventListener('change',this._change);
+        if(this.coverPreview?.startsWith('blob:')) URL.revokeObjectURL(this.coverPreview);
+      }
+      fieldLabel(field){ return ({name:'Nome da obra',city:'Cidade',state:'Estado',type:'Tipo de obra',summary:'Resumo da obra'})[field] || field; }
+      editField(field){
+        const label=this.fieldLabel(field);
+        const current=this.draft[field] || '';
+        const value=prompt(`${label}:`, current);
+        if(value===null) return;
+        this.draft[field]=String(value).trim();
+        this.render();
+      }
+      pickCover(file){
+        if(!file) return;
+        if(!file.type?.startsWith('image/')) { alert('Selecione uma imagem para a capa.'); return; }
+        this.coverFile=file;
+        if(this.coverPreview?.startsWith('blob:')) URL.revokeObjectURL(this.coverPreview);
+        this.coverPreview=URL.createObjectURL(file);
+        this.render();
+      }
+      uniqueSlug(){
+        const base=slugifyWork(`${this.draft.name}-${this.draft.city}`) || `obra-${Date.now().toString(36)}`;
+        let slug=base, n=2;
+        while(WORKS.some(work=>work.slug===slug)) slug=`${base}-${n++}`;
+        return slug;
+      }
+      async save(){
+        if(!cmsState.token) { navigateLogin(); return; }
+        const required=['name','city','state','type','summary'];
+        const missing=required.filter(field=>!String(this.draft[field]||'').trim());
+        if(missing.length) { alert(`Preencha: ${missing.map(field=>this.fieldLabel(field)).join(', ')}.`); return; }
+        if(!this.coverFile) { alert('Clique na capa e selecione uma imagem.'); return; }
+        const button=this.querySelector('[data-work-create-save]');
+        const status=this.querySelector('[data-work-create-status]');
+        if(button) button.disabled=true;
+        if(status) status.textContent='Enviando capa e criando obra…';
+        const slug=this.uniqueSlug();
+        let work=null;
+        try {
+          const cover=await cmsUploadAsset(this.coverFile,`capa-${slug}`);
+          work={
+            slug,
+            name:this.draft.name,
+            city:this.draft.city,
+            state:this.draft.state || 'Bahia',
+            type:this.draft.type,
+            summary:this.draft.summary,
+            cover,
+            photos:[cover],
+            activities:[]
+          };
+          WORKS.push(work);
+          SITE_DATA.works=WORKS;
+          cmsState.content.works=WORKS;
+          CITIES=[...new Set(WORKS.map(item=>item.city))].map(name=>({name}));
+          await cmsPersist(`feat(cms): adicionar obra ${work.name}`);
+          if(status) status.textContent='Obra salva. Abrindo página…';
+          openWork(slug);
+        } catch(error) {
+          if(work) {
+            const index=WORKS.indexOf(work);
+            if(index>=0) WORKS.splice(index,1);
+            SITE_DATA.works=WORKS;
+            cmsState.content.works=WORKS;
+            CITIES=[...new Set(WORKS.map(item=>item.city))].map(name=>({name}));
+          }
+          console.error(error);
+          if(status) status.textContent=error.message || 'Falha ao criar obra.';
+          if(button) button.disabled=false;
+        }
+      }
+      render(){
+        const value=(field,placeholder)=>escapeHTML(this.draft[field] || placeholder);
+        const emptyClass=field=>this.draft[field] ? '' : ' empty';
+        const cover=this.coverPreview || this.draft.cover || '';
+        this.innerHTML=`<main class="work-create-route">
+          <div class="work-create-shell">
+            <header class="work-create-top">
+              <div><div class="eyebrow">CMS · Nova obra</div><h1>Monte a nova obra.</h1></div>
+              <button class="work-create-back" type="button" data-work-create-back>← Voltar às obras</button>
+            </header>
+            <p class="work-create-guide">Passe o mouse sobre cada campo e clique para preencher. A capa é enviada ao repositório somente ao salvar a obra. Depois de criada, a página normal da obra será aberta para você adicionar os registros de execução.</p>
+            <div class="work-create-layout">
+              <div class="work-create-cover${cover?' has-image':''}" data-work-create-cover title="Clique para selecionar a capa">
+                ${cover?`<img src="${escapeHTML(cover)}" alt="Prévia da capa">`:''}
+                <div class="work-create-cover-prompt"><strong>${cover?'Trocar capa':'Adicionar capa'}</strong><span>Clique para selecionar imagem</span></div>
+                <input type="file" accept="image/*" hidden data-work-cover-input>
+              </div>
+              <div>
+                <div class="work-create-fields">
+                  <div class="work-create-field" data-work-create-field="name"><label>Nome da obra</label><strong class="${emptyClass('name')}">${value('name','Clique para informar o nome')}</strong></div>
+                  <div class="work-create-field" data-work-create-field="city"><label>Cidade</label><strong class="${emptyClass('city')}">${value('city','Clique para informar a cidade')}</strong></div>
+                  <div class="work-create-field" data-work-create-field="state"><label>Estado</label><strong>${value('state','Bahia')}</strong></div>
+                  <div class="work-create-field" data-work-create-field="type"><label>Tipo de obra</label><strong class="${emptyClass('type')}">${value('type','Construção, reforma, infraestrutura…')}</strong></div>
+                  <div class="work-create-field summary" data-work-create-field="summary"><label>Resumo da obra</label><p class="${emptyClass('summary')}">${value('summary','Clique para escrever uma descrição resumida da execução.')}</p></div>
+                </div>
+                <div class="work-create-actions">
+                  <button class="work-create-action" type="button" data-work-create-cancel>Cancelar</button>
+                  <button class="work-create-action primary" type="button" data-work-create-save>Salvar obra no repo</button>
+                </div>
+                <div class="work-create-status" data-work-create-status></div>
+              </div>
+            </div>
+          </div>
+        </main>`;
+      }
+    }
+    customElements.define('work-create', WorkCreate);
 
     class WorkDetail extends HTMLElement {
       static get observedAttributes(){ return ['slug']; }
@@ -2895,6 +3101,12 @@
         if(state.route==='login') {
           cmsEditor.deactivate();
           if(!(this.slotEl.firstElementChild instanceof CmsLogin)) this.slotEl.innerHTML='<cms-login></cms-login>';
+          return;
+        }
+        if(state.route==='new-work') {
+          if(!cmsState.token) { navigateLogin(); return; }
+          if(!(this.slotEl.firstElementChild instanceof WorkCreate)) this.slotEl.innerHTML='<work-create></work-create>';
+          requestAnimationFrame(()=>cmsEditor.activate());
           return;
         }
         if(state.route==='detail') {
