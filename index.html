@@ -1324,6 +1324,33 @@
     .cms-toolbar button:hover { background:white; color:var(--blue-dark); }
     .cms-save-state { min-width:94px; color:#a8cfdf; font-size:8px; text-align:center; text-transform:uppercase; letter-spacing:.08em; }
 
+
+    .cms-save-footer {
+      width:min(var(--max),calc(100% - 2 * var(--page-x)));
+      margin:34px auto 54px;
+      padding:22px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:white;
+      box-shadow:0 18px 52px rgba(8,45,76,.11);
+      display:none;
+      gap:20px;
+      align-items:flex-start;
+      justify-content:space-between;
+    }
+    .cms-save-footer.visible { display:flex; }
+    .cms-save-footer-copy { min-width:0; flex:1; }
+    .cms-save-footer-copy > strong { display:block; color:var(--blue-dark); font-size:18px; letter-spacing:-.03em; margin-top:4px; }
+    .cms-save-footer-copy > p { margin:7px 0 0; color:var(--muted); font-size:11px; line-height:1.5; }
+    .cms-change-list { display:grid; gap:7px; margin-top:15px; }
+    .cms-change-row { display:flex; align-items:center; justify-content:space-between; gap:14px; min-height:38px; padding:8px 10px 8px 12px; border:1px solid var(--line); border-radius:11px; background:var(--paper); }
+    .cms-change-row span { min-width:0; color:var(--blue-dark); font-size:10px; font-weight:800; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .cms-change-row button { flex:none; border:1px solid var(--line); background:white; color:var(--blue); border-radius:999px; padding:6px 10px; font-size:8px; font-weight:950; letter-spacing:.07em; text-transform:uppercase; cursor:pointer; }
+    .cms-change-row button:hover { border-color:var(--blue); background:var(--blue); color:white; }
+    .cms-save-all { flex:none; border:1px solid var(--blue-dark); background:var(--blue-dark); color:white; border-radius:999px; min-height:44px; padding:11px 18px; font-size:9px; font-weight:950; letter-spacing:.09em; text-transform:uppercase; cursor:pointer; }
+    .cms-save-all:disabled { opacity:.55; cursor:wait; }
+    .cms-pending-change { box-shadow:0 0 0 2px rgba(198,151,61,.28)!important; }
+
     .cms-hover-control {
       position:fixed;
       z-index:4900;
@@ -1374,6 +1401,8 @@
       .section-brand-logo { width:min(190px,60vw); }
       .cms-toolbar { left:12px; right:12px; transform:none; justify-content:center; flex-wrap:wrap; border-radius:18px; }
       .cms-save-state { min-width:72px; }
+      .cms-save-footer { margin:24px 18px 40px; width:auto; flex-direction:column; }
+      .cms-save-all { width:100%; }
       .cms-login-actions { align-items:stretch; flex-direction:column-reverse; }
       .cms-login-submit { width:100%; }
     }
@@ -2136,21 +2165,24 @@
       const panel=contactPanelData();
       let id=contactItemId(label);
       if(panel.items.some(item=>item.id===id)) id=`${id}-${Date.now().toString(36)}`;
-      panel.items.push({id,label:label.trim(),value:value.trim()});
-      SITE_DATA.contactPanel=panel;
-      try { await cmsPersist('chore(cms): adicionar informação de contato'); cmsRefreshHome(); }
-      catch(error){ console.error(error); alert(error.message); }
+      const item={id,label:label.trim(),value:value.trim()};
+      cmsRegisterChange({key:`contact-add:${id}`,label:`Nova informação: ${item.label}`,undo:()=>{ const current=contactPanelData(); current.items=current.items.filter(entry=>entry.id!==id); SITE_DATA.contactPanel=current; cmsState.content.contactPanel=current; }});
+      panel.items.push(item);
+      SITE_DATA.contactPanel=panel; cmsState.content.contactPanel=panel;
+      cmsRefreshHome();
     }
 
     async function cmsRemoveContactInfo(id){
       if(!cmsState.token) { navigateLogin(); return; }
       const panel=contactPanelData();
-      const item=panel.items.find(entry=>entry.id===id);
+      const index=panel.items.findIndex(entry=>entry.id===id);
+      const item=panel.items[index];
       if(!item || !confirm(`Remover ${item.label}?`)) return;
+      const backup=cmsClone(item);
+      cmsRegisterChange({key:`contact-remove:${id}`,label:`Remover informação: ${item.label}`,undo:()=>{ const current=contactPanelData(); if(!current.items.some(entry=>entry.id===id)) current.items.splice(Math.min(index,current.items.length),0,backup); SITE_DATA.contactPanel=current; cmsState.content.contactPanel=current; }});
       panel.items=panel.items.filter(entry=>entry.id!==id);
-      SITE_DATA.contactPanel=panel;
-      try { await cmsPersist('chore(cms): remover informação de contato'); cmsRefreshHome(); }
-      catch(error){ console.error(error); alert(error.message); }
+      SITE_DATA.contactPanel=panel; cmsState.content.contactPanel=panel;
+      cmsRefreshHome();
     }
 
     class HomeView extends HTMLElement {
@@ -2331,8 +2363,87 @@
       content: {...SITE_DATA, text:{...(SITE_DATA.text||{})}, images:{...(SITE_DATA.images||{})}},
       loaded: false,
       token: sessionStorage.getItem(CMS_SESSION_KEY) || '',
-      saving: false
+      saving: false,
+      dirty: false,
+      changes: [],
+      backups: [],
+      pendingAssets: new Map()
     };
+    const CMS_BACKUP_KEY = 'confidence.cms.backups.v1';
+
+    const cmsClone = value => JSON.parse(JSON.stringify(value));
+
+    function cmsSerializableSnapshot(){
+      return {
+        content: cmsClone({...cmsState.content, brand:BRAND, works:WORKS, contactPanel:contactPanelData()}),
+        route: appState?.snapshot?.route || 'home',
+        slug: appState?.snapshot?.slug || null
+      };
+    }
+
+    function cmsBackup(label){
+      const version={id:`backup-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,7)}`,label,time:new Date().toISOString(),snapshot:cmsSerializableSnapshot()};
+      cmsState.backups.unshift(version);
+      cmsState.backups=cmsState.backups.slice(0,20);
+      try { localStorage.setItem(CMS_BACKUP_KEY,JSON.stringify(cmsState.backups)); } catch(_) {}
+      return version;
+    }
+
+    function cmsRegisterChange({key,label,undo}){
+      cmsBackup(label);
+      const existing=cmsState.changes.find(change=>change.key===key);
+      if(existing){ existing.label=label; }
+      else cmsState.changes.push({id:`change-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,6)}`,key,label,undo});
+      cmsState.dirty=true;
+      cmsEditor?.setStatus(`${cmsState.changes.length} alteração(ões) pendente(s)`);
+      cmsEditor?.updateSaveFooter();
+    }
+
+    function cmsRemovePendingAsset(key){
+      const pending=cmsState.pendingAssets.get(key);
+      if(pending?.tempUrl?.startsWith('blob:')) URL.revokeObjectURL(pending.tempUrl);
+      cmsState.pendingAssets.delete(key);
+    }
+
+    function cmsStageAsset(file,key,scope='imagem'){
+      if(!file?.type?.startsWith('image/')) throw new Error('Selecione um arquivo de imagem.');
+      cmsRemovePendingAsset(key);
+      const tempUrl=URL.createObjectURL(file);
+      cmsState.pendingAssets.set(key,{file,tempUrl,scope});
+      return tempUrl;
+    }
+
+    function cmsReplaceDeep(value,from,to){
+      if(value===from) return to;
+      if(Array.isArray(value)) return value.map(item=>cmsReplaceDeep(item,from,to));
+      if(value && typeof value==='object') {
+        for(const key of Object.keys(value)) value[key]=cmsReplaceDeep(value[key],from,to);
+      }
+      return value;
+    }
+
+    function cmsRefreshCurrentView(){
+      const home=document.querySelector('home-view');
+      if(home){ home._heroDispose?.(); home.render(); home._heroDispose=mountHeroSlideshow(home); cmsApply(home); }
+      const detail=document.querySelector('work-detail');
+      if(detail){ detail.render(); cmsApply(detail); }
+      document.querySelector('works-showcase')?.render?.();
+      cmsApply(document);
+      cmsEditor?.updateSaveFooter();
+    }
+
+    async function cmsUndoChange(id){
+      const index=cmsState.changes.findIndex(change=>change.id===id);
+      if(index<0) return;
+      const change=cmsState.changes[index];
+      try { await change.undo?.(); }
+      finally {
+        cmsState.changes.splice(index,1);
+        cmsState.dirty=cmsState.changes.length>0;
+        cmsRefreshCurrentView();
+        cmsEditor?.setStatus(cmsState.dirty ? `${cmsState.changes.length} alteração(ões) pendente(s)` : 'Modo edição');
+      }
+    }
 
     const cmsRawUrl = path => `https://raw.githubusercontent.com/${CMS_CONFIG.owner}/${CMS_CONFIG.repo}/${CMS_CONFIG.branch}/${path}`;
     const cmsApiUrl = path => `https://api.github.com/repos/${CMS_CONFIG.owner}/${CMS_CONFIG.repo}/contents/${path.split('/').map(encodeURIComponent).join('/')}`;
@@ -2494,7 +2605,7 @@
       return repo;
     }
 
-    async function cmsPersist(message='chore(cms): atualizar conteúdo do site') {
+    async function cmsPersistNow(message='chore(cms): atualizar conteúdo do site') {
       if(!cmsState.token) throw new Error('Faça login em #/login para editar.');
       cmsState.saving=true; cmsEditor?.setStatus('Salvando…');
       let sha=null;
@@ -2522,6 +2633,45 @@
       return response.json();
     }
 
+
+    async function cmsSaveAllChanges(){
+      if(!cmsState.token) { navigateLogin(); return; }
+      if(!cmsState.dirty || !cmsState.changes.length) return;
+      const button=cmsEditor?.saveFooter?.querySelector('[data-cms-save-all]');
+      if(button) button.disabled=true;
+      cmsState.saving=true;
+      cmsEditor?.setStatus('Salvando alterações…');
+      try {
+        for(const [key,pending] of [...cmsState.pendingAssets.entries()]) {
+          const remoteUrl=await cmsUploadAsset(pending.file,pending.scope);
+          cmsReplaceDeep(WORKS,pending.tempUrl,remoteUrl);
+          cmsReplaceDeep(SITE_DATA,pending.tempUrl,remoteUrl);
+          cmsReplaceDeep(cmsState.content,pending.tempUrl,remoteUrl);
+          if(pending.tempUrl?.startsWith('blob:')) URL.revokeObjectURL(pending.tempUrl);
+          cmsState.pendingAssets.delete(key);
+        }
+        SITE_DATA.works=WORKS;
+        cmsState.content.works=WORKS;
+        cmsState.content.contactPanel=contactPanelData();
+        await cmsPersistNow(`feat(cms): salvar ${cmsState.changes.length} alterações do site`);
+        cmsState.changes=[];
+        cmsState.dirty=false;
+        cmsState.backups=[];
+        try { localStorage.removeItem(CMS_BACKUP_KEY); } catch(_) {}
+        cmsRefreshCurrentView();
+        cmsEditor?.setStatus('Salvo no repo');
+        setTimeout(()=>cmsEditor?.setStatus('Modo edição'),1800);
+      } catch(error) {
+        console.error(error);
+        cmsEditor?.setStatus('Erro ao salvar');
+        alert(error.message || 'Falha ao salvar alterações.');
+      } finally {
+        cmsState.saving=false;
+        if(button) button.disabled=false;
+        cmsEditor?.updateSaveFooter();
+      }
+    }
+
     async function cmsUploadAsset(file, scope='imagem') {
       if(!file?.type?.startsWith('image/')) throw new Error('Selecione um arquivo de imagem.');
       const safeName=(file.name || 'imagem').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9._-]+/g,'-').replace(/^-+|-+$/g,'').toLowerCase();
@@ -2541,11 +2691,7 @@
     }
 
     async function cmsUploadImage(file, key) {
-      const url=await cmsUploadAsset(file, key);
-      cmsState.content.images ||= {};
-      cmsState.content.images[key]=url;
-      await cmsPersist(`chore(cms): aplicar imagem ${file?.name || 'imagem'}`);
-      return url;
+      return cmsStageAsset(file,`image:${key}`,key);
     }
 
     class CmsLogin extends HTMLElement {
@@ -2602,13 +2748,20 @@
             <button type="button" data-cmd="bold"><b>B</b></button><button type="button" data-cmd="italic"><i>I</i></button><button type="button" data-cmd="underline"><u>U</u></button><button type="button" data-cmd="createLink">Link</button><button type="button" data-cmd="removeFormat">Limpar</button>
           </div>
           <div class="cms-rich-editor" contenteditable="true" data-cms-rich-editor></div>
-          <footer class="cms-modal-actions"><button type="button" class="cms-modal-cancel" data-cms-modal-close>Cancelar</button><button type="button" class="cms-modal-save" data-cms-modal-save>Salvar no repo</button></footer>
+          <footer class="cms-modal-actions"><button type="button" class="cms-modal-cancel" data-cms-modal-close>Cancelar</button><button type="button" class="cms-modal-save" data-cms-modal-save>Aplicar alteração</button></footer>
         </section>`;
-        document.body.append(toolbar,textBtn,imageBtn,file,modal);
-        this.toolbar=toolbar; this.textBtn=textBtn; this.imageBtn=imageBtn; this.file=file; this.modal=modal; this.rich=modal.querySelector('[data-cms-rich-editor]');
+        const saveFooter=document.createElement('section'); saveFooter.className='cms-save-footer'; saveFooter.dataset.cmsSaveFooter='';
+        saveFooter.innerHTML=`<div class="cms-save-footer-copy"><div class="eyebrow">Rascunho do CMS</div><strong data-cms-pending-title>Alterações pendentes</strong><p>As mudanças abaixo ainda não foram gravadas no GitHub. Cada item pode ser desfeito individualmente.</p><div class="cms-change-list" data-cms-change-list></div></div><button class="cms-save-all" type="button" data-cms-save-all>Salvar alterações</button>`;
+        document.body.append(toolbar,textBtn,imageBtn,file,modal,saveFooter);
+        this.toolbar=toolbar; this.textBtn=textBtn; this.imageBtn=imageBtn; this.file=file; this.modal=modal; this.rich=modal.querySelector('[data-cms-rich-editor]'); this.saveFooter=saveFooter;
         toolbar.addEventListener('click',e=>{
           if(e.target.closest('[data-cms-logout]')) this.logout();
           if(e.target.closest('[data-cms-login]')) navigateLogin();
+        });
+        saveFooter.addEventListener('click',e=>{
+          const undo=e.target.closest('[data-cms-undo]');
+          if(undo) { cmsUndoChange(undo.dataset.cmsUndo); return; }
+          if(e.target.closest('[data-cms-save-all]')) cmsSaveAllChanges();
         });
         textBtn.addEventListener('click',()=>this.openTextEditor());
         imageBtn.addEventListener('click',()=>{ if(this.imageTarget) this.file.click(); });
@@ -2634,17 +2787,21 @@
         document.addEventListener('pointermove',this.onPointerMove,{passive:true});
         window.addEventListener('scroll',this.onScroll,{passive:true,capture:true});
         window.addEventListener('resize',this.onScroll,{passive:true});
-        cmsApply(document); this.setStatus('Modo edição');
+        cmsApply(document); this.setStatus(cmsState.dirty ? `${cmsState.changes.length} alteração(ões) pendente(s)` : 'Modo edição'); this.updateSaveFooter();
       }
       deactivate(){
         this.active=false;
         if(this.toolbar) this.toolbar.hidden=true;
         if(!cmsState.token && this.toolbar?.isConnected) this.toolbar.remove();
+        this.saveFooter?.classList.remove('visible');
         document.body.classList.remove('cms-editing'); this.hideControls(); this.closeModal();
         document.removeEventListener('pointermove',this.onPointerMove);
         window.removeEventListener('scroll',this.onScroll,true); window.removeEventListener('resize',this.onScroll);
       }
       logout(){
+        if(cmsState.dirty && !confirm('Existem alterações não salvas. Sair e descartar o rascunho?')) return;
+        for(const key of [...cmsState.pendingAssets.keys()]) cmsRemovePendingAsset(key);
+        cmsState.changes=[]; cmsState.dirty=false;
         sessionStorage.removeItem(CMS_SESSION_KEY);
         localStorage.removeItem(CMS_SESSION_KEY);
         localStorage.removeItem('confidence.cms.token');
@@ -2654,6 +2811,18 @@
         this.deactivate();
         history.replaceState(null,'',location.pathname + location.search + '#/');
         location.reload();
+      }
+      updateSaveFooter(){
+        if(!this.saveFooter) return;
+        const host=document.querySelector('.detail-route') || document.querySelector('.work-create-route') || document.querySelector('home-view') || document.body;
+        if(this.saveFooter.parentElement!==host) host.appendChild(this.saveFooter);
+        const visible=!!cmsState.token && cmsState.dirty && cmsState.changes.length>0;
+        this.saveFooter.classList.toggle('visible',visible);
+        if(!visible) return;
+        const title=this.saveFooter.querySelector('[data-cms-pending-title]');
+        if(title) title.textContent=`${cmsState.changes.length} alteração(ões) pendente(s)`;
+        const list=this.saveFooter.querySelector('[data-cms-change-list]');
+        if(list) list.innerHTML=cmsState.changes.map(change=>`<div class="cms-change-row"><span>${escapeHTML(change.label)}</span><button type="button" data-cms-undo="${escapeHTML(change.id)}">Desfazer</button></div>`).join('');
       }
       setStatus(text){ this.toolbar?.querySelector('[data-cms-state]') && (this.toolbar.querySelector('[data-cms-state]').textContent=text); }
       textCandidate(node){
@@ -2701,9 +2870,21 @@
       async saveText(){
         if(!this.modalTarget)return;
         const target=this.modalTarget; const key=cmsKeyFor(target,'text'); const html=sanitizeRichHTML(this.rich.innerHTML);
-        cmsState.content.text ||= {}; cmsState.content.text[key]=html; target.innerHTML=html;
+        cmsState.content.text ||= {};
+        const beforeExists=Object.prototype.hasOwnProperty.call(cmsState.content.text,key);
+        const beforeText=cmsState.content.text[key];
+        const beforeDom=target.innerHTML;
         const explicit=target.dataset?.cmsKey || '';
         const panel=contactPanelData();
+        let panelUndo=()=>{};
+        if(explicit==='contact-panel-eyebrow' || explicit==='contact-panel-title' || explicit==='contact-panel-description') {
+          const field=explicit.replace('contact-panel-',''); const oldValue=panel[field]; panelUndo=()=>{ const current=contactPanelData(); current[field]=oldValue; SITE_DATA.contactPanel=current; cmsState.content.contactPanel=current; };
+        } else {
+          const match=explicit.match(/^contact-item-(.+)-(label|value)$/);
+          if(match){ const item=panel.items.find(entry=>entry.id===match[1]); const oldValue=item?.[match[2]]; panelUndo=()=>{ const current=contactPanelData(); const currentItem=current.items.find(entry=>entry.id===match[1]); if(currentItem) currentItem[match[2]]=oldValue; SITE_DATA.contactPanel=current; cmsState.content.contactPanel=current; }; }
+        }
+        cmsRegisterChange({key:`text:${key}`,label:`Texto: ${(target.textContent||'conteúdo').trim().slice(0,70)}`,undo:()=>{ if(beforeExists) cmsState.content.text[key]=beforeText; else delete cmsState.content.text[key]; panelUndo(); if(target?.isConnected) target.innerHTML=beforeDom; }});
+        cmsState.content.text[key]=html; target.innerHTML=html;
         if(explicit==='contact-panel-eyebrow') panel.eyebrow=target.textContent.trim();
         else if(explicit==='contact-panel-title') panel.title=target.textContent.trim();
         else if(explicit==='contact-panel-description') panel.description=target.textContent.trim();
@@ -2713,17 +2894,25 @@
         }
         cmsState.content.contactPanel=panel; SITE_DATA.contactPanel=panel;
         this.closeModal();
-        try { await cmsPersist('chore(cms): editar texto do site'); }
-        catch(error){ console.error(error); alert(error.message); this.setStatus('Erro ao salvar'); }
+        this.updateSaveFooter();
       }
       async handleImage(){
         const file=this.file.files?.[0]; const target=this.imageTarget; const kind=this.imageKind; this.file.value=''; if(!file||!target)return;
-        const key=cmsKeyFor(target,kind);
+        const key=cmsKeyFor(target,kind); const changeKey=`image:${key}`;
+        cmsState.content.images ||= {};
+        const beforeExists=Object.prototype.hasOwnProperty.call(cmsState.content.images,key);
+        const beforeValue=cmsState.content.images[key];
+        const beforePanel=cmsClone(contactPanelData());
+        const beforeSrc=kind==='image' ? target.getAttribute('src') : null;
+        const beforeBackground=kind==='background' ? target.style.backgroundImage : null;
+        cmsRegisterChange({key:changeKey,label:`Imagem: ${file.name || 'novo arquivo'}`,undo:()=>{ cmsRemovePendingAsset(changeKey); if(beforeExists) cmsState.content.images[key]=beforeValue; else delete cmsState.content.images[key]; cmsState.content.contactPanel=cmsClone(beforePanel); SITE_DATA.contactPanel=cmsState.content.contactPanel; if(target?.isConnected){ if(kind==='image') target.setAttribute('src',beforeSrc || ''); else target.style.backgroundImage=beforeBackground || ''; } }});
         try {
           const url=await cmsUploadImage(file,key);
+          cmsState.content.images[key]=url;
           if(kind==='image') target.src=url; else replaceBackgroundUrl(target,url);
-           if(target.dataset?.cmsKey==='contact-panel-background') { const panel=contactPanelData(); panel.background=url; cmsState.content.contactPanel=panel; SITE_DATA.contactPanel=panel; await cmsPersist('chore(cms): atualizar fundo do contato'); }
-        } catch(error){ console.error(error); alert(error.message); this.setStatus('Erro no upload'); }
+          if(target.dataset?.cmsKey==='contact-panel-background') { const panel=contactPanelData(); panel.background=url; cmsState.content.contactPanel=panel; SITE_DATA.contactPanel=panel; }
+          this.updateSaveFooter();
+        } catch(error){ console.error(error); alert(error.message); this.setStatus('Erro no rascunho'); }
       }
     }
 
@@ -2818,37 +3007,18 @@
         const button=this.querySelector('[data-work-create-save]');
         const status=this.querySelector('[data-work-create-status]');
         if(button) button.disabled=true;
-        if(status) status.textContent='Enviando capa e criando obra…';
+        if(status) status.textContent='Adicionando obra ao rascunho…';
         const slug=this.uniqueSlug();
         let work=null;
+        const changeKey=`work-new:${slug}`;
         try {
-          const cover=await cmsUploadAsset(this.coverFile,`capa-${slug}`);
-          work={
-            slug,
-            name:this.draft.name,
-            city:this.draft.city,
-            state:this.draft.state || 'Bahia',
-            type:this.draft.type,
-            summary:this.draft.summary,
-            cover,
-            photos:[cover],
-            activities:[]
-          };
-          WORKS.push(work);
-          SITE_DATA.works=WORKS;
-          cmsState.content.works=WORKS;
-          CITIES=[...new Set(WORKS.map(item=>item.city))].map(name=>({name}));
-          await cmsPersist(`feat(cms): adicionar obra ${work.name}`);
-          if(status) status.textContent='Obra salva. Abrindo página…';
+          const cover=cmsStageAsset(this.coverFile,`${changeKey}:cover`,`capa-${slug}`);
+          work={slug,name:this.draft.name,city:this.draft.city,state:this.draft.state || 'Bahia',type:this.draft.type,summary:this.draft.summary,cover,photos:[cover],activities:[]};
+          cmsRegisterChange({key:changeKey,label:`Nova obra: ${work.name}`,undo:()=>{ cmsRemovePendingAsset(`${changeKey}:cover`); WORKS=WORKS.filter(item=>item.slug!==slug); SITE_DATA.works=WORKS; cmsState.content.works=WORKS; CITIES=[...new Set(WORKS.map(item=>item.city))].map(name=>({name})); }});
+          WORKS.push(work); SITE_DATA.works=WORKS; cmsState.content.works=WORKS; CITIES=[...new Set(WORKS.map(item=>item.city))].map(name=>({name}));
+          if(status) status.textContent='Obra adicionada ao rascunho. Salve as alterações no final da página.';
           openWork(slug);
         } catch(error) {
-          if(work) {
-            const index=WORKS.indexOf(work);
-            if(index>=0) WORKS.splice(index,1);
-            SITE_DATA.works=WORKS;
-            cmsState.content.works=WORKS;
-            CITIES=[...new Set(WORKS.map(item=>item.city))].map(name=>({name}));
-          }
           console.error(error);
           if(status) status.textContent=error.message || 'Falha ao criar obra.';
           if(button) button.disabled=false;
@@ -2864,7 +3034,7 @@
               <div><div class="eyebrow">CMS · Nova obra</div><h1>Monte a nova obra.</h1></div>
               <button class="work-create-back" type="button" data-work-create-back>← Voltar às obras</button>
             </header>
-            <p class="work-create-guide">Passe o mouse sobre cada campo e clique para preencher. A capa é enviada ao repositório somente ao salvar a obra. Depois de criada, a página normal da obra será aberta para você adicionar os registros de execução.</p>
+            <p class="work-create-guide">Passe o mouse sobre cada campo e clique para preencher. A capa fica em rascunho e só é enviada ao repositório quando você usar Salvar alterações no final da página. Depois de criada, a página normal da obra será aberta para você adicionar os registros de execução.</p>
             <div class="work-create-layout">
               <div class="work-create-cover${cover?' has-image':''}" data-work-create-cover title="Clique para selecionar a capa">
                 ${cover?`<img src="${escapeHTML(cover)}" alt="Prévia da capa">`:''}
@@ -2881,7 +3051,7 @@
                 </div>
                 <div class="work-create-actions">
                   <button class="work-create-action" type="button" data-work-create-cancel>Cancelar</button>
-                  <button class="work-create-action primary" type="button" data-work-create-save>Salvar obra no repo</button>
+                  <button class="work-create-action primary" type="button" data-work-create-save>Adicionar obra ao rascunho</button>
                 </div>
                 <div class="work-create-status" data-work-create-status></div>
               </div>
@@ -2919,12 +3089,11 @@
         work.photos=photos;
         if(!photos.includes(work.cover)) work.cover=photos[0] || '';
       }
-      async persistWorkChange(message){
+      async persistWorkChange(){
         SITE_DATA.works=WORKS;
         cmsState.content.works=WORKS;
-        await cmsPersist(message);
         this.render();
-        requestAnimationFrame(()=>cmsApply(this));
+        requestAnimationFrame(()=>{cmsApply(this);cmsEditor?.updateSaveFooter();});
       }
       closeRecordModal(){
         document.querySelector('.cms-record-modal')?.remove();
@@ -2943,7 +3112,7 @@
             <div class="cms-record-field"><label for="cms-record-description">Descrição</label><textarea id="cms-record-description" name="description" required placeholder="Descreva a atividade executada e o que aparece no registro."></textarea></div>
             <div class="cms-record-field"><label for="cms-record-image">Imagem</label><input id="cms-record-image" name="image" type="file" accept="image/*" required></div>
           </div>
-          <div class="cms-record-actions"><button class="cms-record-cancel" type="button" data-cms-record-close>Cancelar</button><button class="cms-record-save" type="submit">Enviar e adicionar</button></div>
+          <div class="cms-record-actions"><button class="cms-record-cancel" type="button" data-cms-record-close>Cancelar</button><button class="cms-record-save" type="submit">Adicionar ao rascunho</button></div>
           <div class="cms-record-status" data-cms-record-status role="status"></div>
         </form>`;
         document.body.appendChild(modal);
@@ -2967,14 +3136,16 @@
         const status=form.querySelector('[data-cms-record-status]');
         const submit=form.querySelector('[type=submit]');
         submit.disabled=true;
-        status.textContent='Enviando imagem e salvando registro…';
+        status.textContent='Adicionando registro ao rascunho…';
         try {
-          const image=await cmsUploadAsset(imageFile,`registro-${work.slug}`);
           work.activities ||= [];
           const id=`${work.slug}-${Date.now().toString(36)}`;
+          const changeKey=`record-add:${work.slug}:${id}`;
+          const image=cmsStageAsset(imageFile,`${changeKey}:image`,`registro-${work.slug}`);
+          cmsRegisterChange({key:changeKey,label:`Novo registro: ${title}`,undo:()=>{ cmsRemovePendingAsset(`${changeKey}:image`); work.activities=(work.activities||[]).filter(item=>String(item.id)!==String(id)); this.normalizeWorkMedia(work); SITE_DATA.works=WORKS; cmsState.content.works=WORKS; }});
           work.activities.push({id,title,image,description});
           this.normalizeWorkMedia(work);
-          await this.persistWorkChange(`feat(cms): adicionar registro em ${work.name}`);
+          await this.persistWorkChange();
           this.closeRecordModal();
           this.querySelector('#execucao')?.scrollIntoView({behavior:'smooth',block:'start'});
         } catch(error) {
@@ -2990,17 +3161,12 @@
         const activity=work.activities.find(item=>String(item.id)===String(id));
         if(!activity) return;
         if(!confirm(`Remover o registro "${activity.title || activity.description || id}" desta obra?`)) return;
-        const previous=work.activities.slice();
+        const index=work.activities.findIndex(item=>String(item.id)===String(id));
+        const backup=cmsClone(activity);
+        cmsRegisterChange({key:`record-remove:${work.slug}:${id}`,label:`Remover registro: ${activity.title || id}`,undo:()=>{ if(!(work.activities||[]).some(item=>String(item.id)===String(id))) work.activities.splice(Math.min(index,work.activities.length),0,backup); this.normalizeWorkMedia(work); SITE_DATA.works=WORKS; cmsState.content.works=WORKS; }});
         work.activities=work.activities.filter(item=>String(item.id)!==String(id));
         this.normalizeWorkMedia(work);
-        try {
-          await this.persistWorkChange(`chore(cms): remover registro de ${work.name}`);
-        } catch(error) {
-          work.activities=previous;
-          this.normalizeWorkMedia(work);
-          console.error(error);
-          alert(error.message || 'Falha ao remover registro.');
-        }
+        await this.persistWorkChange();
       }
       render(){
         const work=this.currentWork();
@@ -3133,6 +3299,7 @@
     }
     customElements.define('site-shell', SiteShell);
 
+    window.addEventListener('beforeunload',event=>{ if(cmsState.dirty){ event.preventDefault(); event.returnValue=''; } });
     window.addEventListener('hashchange', routeFromHash);
     window.addEventListener('popstate', routeFromHash);
   </script>
