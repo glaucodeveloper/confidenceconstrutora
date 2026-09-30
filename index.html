@@ -2652,7 +2652,8 @@
         cmsState.token='';
         document.querySelector('.cms-record-modal')?.remove();
         this.deactivate();
-        navigateHome('inicio');
+        history.replaceState(null,'',location.pathname + location.search + '#/');
+        location.reload();
       }
       setStatus(text){ this.toolbar?.querySelector('[data-cms-state]') && (this.toolbar.querySelector('[data-cms-state]').textContent=text); }
       textCandidate(node){
