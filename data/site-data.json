@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "brand": {
     "name": "Confidence Construtora",
     "logoBlue": "https://raw.githubusercontent.com/glaucodeveloper/proposta-confidence/main/imagens/logo_oficial_aplicacao_azul.png",
@@ -47,121 +47,145 @@
       "activities": [
         {
           "id": "barra-001",
+          "title": "Escavação e movimentação de terra",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.27.jpeg",
           "description": "Execução de escavação mecanizada e movimentação de terra em área externa da areninha, com abertura e regularização do terreno."
         },
         {
           "id": "barra-002",
+          "title": "Cercamento e alambrado",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.27 (1).jpeg",
           "description": "Vista geral da areninha com estrutura metálica e alambrado perimetral da quadra implantados."
         },
         {
           "id": "barra-003",
+          "title": "Cercamento e alambrado",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.27 (2).jpeg",
           "description": "Detalhe da instalação e fixação da tela de alambrado na estrutura metálica da quadra."
         },
         {
           "id": "barra-004",
+          "title": "Execução de passeio intertravado",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.28.jpeg",
           "description": "Execução de passeio em piso intertravado e instalação de ponto de infraestrutura elétrica junto ao fechamento da quadra."
         },
         {
           "id": "barra-005",
+          "title": "Cercamento e alambrado",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.28 (1).jpeg",
           "description": "Registro do cercamento perimetral em tela metálica e da estrutura de proteção da área esportiva."
         },
         {
           "id": "barra-006",
+          "title": "Cercamento e alambrado",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.28 (2).jpeg",
           "description": "Vista lateral do alambrado, estrutura metálica e fechamento da quadra."
         },
         {
           "id": "barra-007",
+          "title": "Cercamento e alambrado",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.28 (3).jpeg",
           "description": "Execução do fechamento e acesso da quadra com estrutura metálica e alambrado."
         },
         {
           "id": "barra-008",
+          "title": "Execução de base de concreto",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.29.jpeg",
           "description": "Implantação de base ou pedestal de concreto junto à área externa e ao passeio da areninha."
         },
         {
           "id": "barra-009",
+          "title": "Execução de base de concreto",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.29 (1).jpeg",
           "description": "Acabamento de base de concreto instalada junto ao passeio externo da quadra."
         },
         {
           "id": "barra-010",
+          "title": "Cercamento e alambrado",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.30.jpeg",
           "description": "Vista interna da área esportiva com cercamento perimetral executado e terreno em fase de regularização."
         },
         {
           "id": "barra-011",
+          "title": "Registro de execução 11",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.31.jpeg",
           "description": "Detalhe da estrutura superior e tela de proteção do fechamento da quadra."
         },
         {
           "id": "barra-012",
+          "title": "Execução de passeio intertravado",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.31 (1).jpeg",
           "description": "Execução do passeio externo em piso intertravado ao longo do cercamento da areninha."
         },
         {
           "id": "barra-013",
+          "title": "Execução de acesso e fechamento",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.31 (2).jpeg",
           "description": "Vista geral do acesso à areninha, incluindo cercamento, passeio e elementos externos implantados."
         },
         {
           "id": "barra-014",
+          "title": "Execução de passeio intertravado",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.32.jpeg",
           "description": "Continuidade da execução do passeio intertravado junto ao fechamento lateral da quadra."
         },
         {
           "id": "barra-015",
+          "title": "Implantação de fechamento metálico",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.32 (1).jpeg",
           "description": "Vista interna do terreno da quadra e do fechamento metálico perimetral executado."
         },
         {
           "id": "barra-016",
+          "title": "Estrutura metálica de proteção",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.32 (2).jpeg",
           "description": "Registro do acesso lateral, passeio e estrutura metálica de proteção da areninha."
         },
         {
           "id": "barra-017",
+          "title": "Cercamento e alambrado",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.32 (3).jpeg",
           "description": "Execução de passeio acessível e fechamento lateral em alambrado ao longo da quadra."
         },
         {
           "id": "barra-018",
+          "title": "Cercamento e alambrado",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.32 (4).jpeg",
           "description": "Detalhamento da instalação das telas e perfis metálicos do cercamento perimetral."
         },
         {
           "id": "barra-019",
+          "title": "Cercamento e alambrado",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.33.jpeg",
           "description": "Acabamento do encontro entre alambrado, passeio e área externa da areninha."
         },
         {
           "id": "barra-020",
+          "title": "Infraestrutura elétrica",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.33 (1).jpeg",
           "description": "Instalação de caixa ou quadro de infraestrutura elétrica em abrigo junto ao passeio externo."
         },
         {
           "id": "barra-021",
+          "title": "Infraestrutura elétrica",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.34.jpeg",
           "description": "Registro da infraestrutura elétrica externa implantada junto ao fechamento da quadra."
         },
         {
           "id": "barra-022",
+          "title": "Registro geral de avanço da obra",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.34 (1).jpeg",
           "description": "Vista geral da areninha demonstrando avanço do cercamento e das áreas externas."
         },
         {
           "id": "barra-023",
+          "title": "Execução de passeio intertravado",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.35.jpeg",
           "description": "Finalização de trecho do passeio intertravado junto ao alambrado perimetral."
         },
         {
           "id": "barra-024",
+          "title": "Execução de base de concreto",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.36.jpeg",
           "description": "Execução e acabamento de base ou pedestal de concreto em área externa da areninha."
         }
@@ -197,86 +221,103 @@
       "activities": [
         {
           "id": "seabra-001",
+          "title": "Escavação e movimentação de terra",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.36 (1).jpeg",
           "description": "Movimentação de terra, escavação e conformação do terreno para implantação das estruturas do estádio."
         },
         {
           "id": "seabra-002",
+          "title": "Movimentação mecanizada de solo",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.36 (2).jpeg",
           "description": "Operação de máquina retroescavadeira em serviços de movimentação, carga e regularização de solo."
         },
         {
           "id": "seabra-003",
+          "title": "Revestimento cerâmico",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.36 (3).jpeg",
           "description": "Execução de revestimento cerâmico em ambiente interno da edificação de apoio do estádio."
         },
         {
           "id": "seabra-004",
+          "title": "Regularização e conformação do terreno",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.37.jpeg",
           "description": "Regularização do terreno com material de escavação distribuído na área da obra."
         },
         {
           "id": "seabra-005",
+          "title": "Regularização e conformação do terreno",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.37 (1).jpeg",
           "description": "Movimentação e conformação de solo em área externa, preparando níveis para continuidade dos serviços."
         },
         {
           "id": "seabra-006",
+          "title": "Escavação e movimentação de terra",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.37 (2).jpeg",
           "description": "Formação e distribuição de montes de material proveniente dos serviços de terraplenagem."
         },
         {
           "id": "seabra-007",
+          "title": "Armação estrutural",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.38.jpeg",
           "description": "Montagem de armadura metálica para execução de elemento em concreto armado."
         },
         {
           "id": "seabra-008",
+          "title": "Fôrmas para concretagem",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.38 (1).jpeg",
           "description": "Montagem de fôrmas de madeira e preparação de trecho estrutural para concretagem."
         },
         {
           "id": "seabra-009",
+          "title": "Revestimento cerâmico",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.39.jpeg",
           "description": "Execução de revestimento cerâmico de paredes e piso em ambiente interno."
         },
         {
           "id": "seabra-010",
+          "title": "Serviços de acabamento",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.39 (1).jpeg",
           "description": "Avanço dos serviços de revestimento e acabamento interno em área de apoio do estádio."
         },
         {
           "id": "seabra-011",
+          "title": "Serviços de acabamento",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.39 (2).jpeg",
           "description": "Serviços de construção e acabamento da edificação, com materiais e equipamentos distribuídos na frente de trabalho."
         },
         {
           "id": "seabra-012",
+          "title": "Execução de alvenaria",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.39 (3).jpeg",
           "description": "Execução de alvenaria, com equipe atuando no levantamento e continuidade dos elementos construtivos."
         },
         {
           "id": "seabra-013",
+          "title": "Execução de alvenaria",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.40.jpeg",
           "description": "Execução de trecho longitudinal de alvenaria, com esperas metálicas para continuidade da estrutura."
         },
         {
           "id": "seabra-014",
+          "title": "Revestimento cerâmico",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.40 (1).jpeg",
           "description": "Revestimento cerâmico interno em fase avançada, incluindo paredes e piso."
         },
         {
           "id": "seabra-015",
+          "title": "Revestimento e acabamento de fachada",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.40 (2).jpeg",
           "description": "Execução de revestimento externo da edificação, com apoio de andaime e serviços de acabamento da fachada."
         },
         {
           "id": "seabra-016",
+          "title": "Implantação de fechamento metálico",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.40 (3).jpeg",
           "description": "Implantação de elementos metálicos lineares de fechamento ou cercamento na área externa do estádio."
         },
         {
           "id": "seabra-017",
+          "title": "Execução de alvenaria",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.11.40 (4).jpeg",
           "description": "Vista geral do avanço da estrutura linear em alvenaria e dos elementos de infraestrutura externa do estádio."
         }
@@ -304,46 +345,55 @@
       "activities": [
         {
           "id": "ubaitaba-001",
+          "title": "Recuperação da circulação externa",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.14.13.jpeg",
           "description": "Reforma de ambiente voltado para o rio, com intervenção em esquadrias, abertura e área de circulação externa."
         },
         {
           "id": "ubaitaba-002",
+          "title": "Recuperação da circulação externa",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.14.13 (1).jpeg",
           "description": "Recuperação e adequação da circulação externa situada às margens do rio."
         },
         {
           "id": "ubaitaba-003",
+          "title": "Instalação e acabamento de forro",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.14.14.jpeg",
           "description": "Instalação de novo forro interno para recuperação e acabamento dos ambientes do centro de canoagem."
         },
         {
           "id": "ubaitaba-004",
+          "title": "Instalação e acabamento de forro",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.14.14 (1).jpeg",
           "description": "Execução de forro e acabamento superior em ambiente interno reformado."
         },
         {
           "id": "ubaitaba-005",
+          "title": "Instalação e acabamento de forro",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.14.14 (2).jpeg",
           "description": "Continuidade dos serviços de instalação do forro e adequação do acabamento interno."
         },
         {
           "id": "ubaitaba-006",
+          "title": "Instalação e acabamento de forro",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.14.14 (3).jpeg",
           "description": "Detalhe do novo revestimento de teto ou forro instalado no ambiente interno."
         },
         {
           "id": "ubaitaba-007",
+          "title": "Execução de piso",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.14.15.jpeg",
           "description": "Execução de revestimento de piso na área externa voltada para o rio, com preparação da base e assentamento das peças."
         },
         {
           "id": "ubaitaba-008",
+          "title": "Execução de piso",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.14.15 (1).jpeg",
           "description": "Regularização da base e aplicação de argamassa para execução do novo piso da área externa."
         },
         {
           "id": "ubaitaba-009",
+          "title": "Adequação de infraestrutura externa",
           "image": "assets/WhatsApp Image 2026-09-30 at 11.14.15 (2).jpeg",
           "description": "Abertura e intervenção no piso ou solo para adequação de infraestrutura e recomposição da área externa."
         }
@@ -375,5 +425,10 @@
   },
   "text": {},
   "images": {},
-  "updatedAt": null
+  "updatedAt": "2026-09-30T17:35:11-03:00",
+  "worksSource": {
+    "file": "obras_organizadas(1).zip",
+    "works": 3,
+    "activities": 50
+  }
 }
