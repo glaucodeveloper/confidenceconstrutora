@@ -2585,6 +2585,7 @@
       constructor(){
         this.active=false; this.textTarget=null; this.imageTarget=null; this.modalTarget=null;
         this.ensureUI();
+        if(!cmsState.token && this.toolbar?.isConnected) this.toolbar.remove();
         this.onPointerMove=this.onPointerMove.bind(this);
         this.onScroll=this.onScroll.bind(this);
       }
@@ -2624,7 +2625,11 @@
         });
       }
       activate(){
-        if(!cmsState.token) return;
+        if(!cmsState.token) {
+          if(this.toolbar?.isConnected) this.toolbar.remove();
+          return;
+        }
+        if(this.toolbar && !this.toolbar.isConnected) document.body.appendChild(this.toolbar);
         this.active=true; this.toolbar.hidden=false; document.body.classList.add('cms-editing');
         document.addEventListener('pointermove',this.onPointerMove,{passive:true});
         window.addEventListener('scroll',this.onScroll,{passive:true,capture:true});
@@ -2632,7 +2637,10 @@
         cmsApply(document); this.setStatus('Modo edição');
       }
       deactivate(){
-        this.active=false; this.toolbar.hidden=true; document.body.classList.remove('cms-editing'); this.hideControls(); this.closeModal();
+        this.active=false;
+        if(this.toolbar) this.toolbar.hidden=true;
+        if(!cmsState.token && this.toolbar?.isConnected) this.toolbar.remove();
+        document.body.classList.remove('cms-editing'); this.hideControls(); this.closeModal();
         document.removeEventListener('pointermove',this.onPointerMove);
         window.removeEventListener('scroll',this.onScroll,true); window.removeEventListener('resize',this.onScroll);
       }
