@@ -226,3 +226,19 @@ Essa área contém:
 - botão **Salvar alterações** para consolidar o rascunho no repositório.
 
 O painel é remontado automaticamente caso a Home seja renderizada novamente durante a edição, evitando que a interface de salvamento desapareça após alterações estruturais.
+
+## Tratamento de conflito de versão
+
+O CMS utiliza o SHA atual de `data/site-data.json` exigido pela GitHub Contents API.
+
+Antes de cada salvamento consolidado, o site busca novamente o arquivo remoto com `cache: no-store`, parâmetro anti-cache e cabeçalhos `no-cache`.
+
+Se o GitHub responder `409 Conflict` indicando que o SHA mudou entre a leitura e a escrita:
+
+1. o rascunho permanece intacto;
+2. o CMS não limpa a lista de alterações;
+3. o SHA remoto é consultado novamente;
+4. o PUT é repetido automaticamente uma vez com a versão atual;
+5. o rascunho só é marcado como salvo depois de uma resposta de sucesso do GitHub.
+
+Isso evita que um SHA armazenado em cache impeça o salvamento e mantém o conteúdo pendente disponível caso a segunda tentativa também falhe.
