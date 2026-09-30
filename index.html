@@ -1103,6 +1103,129 @@
       .footer-bottom { padding:16px 0; min-height:0; align-items:flex-start; flex-direction:column; }
     }
 
+
+    /* CMS / edição por PAT */
+    .section-brand-head {
+      width:100%;
+      display:grid;
+      grid-template-columns:minmax(160px,220px) minmax(0,1fr);
+      gap:clamp(28px,4vw,62px);
+      align-items:end;
+    }
+    .section-brand-head-copy { min-width:0; }
+    .section-brand-logo-wrap {
+      min-height:112px;
+      display:flex;
+      align-items:flex-end;
+      padding-bottom:4px;
+    }
+    .section-brand-logo { width:min(100%,205px); height:auto; object-fit:contain; }
+    .clients .section-brand-logo { filter:none; }
+
+    .cms-login {
+      min-height:100svh;
+      padding:calc(var(--nav-h) + 54px) var(--page-x) 54px;
+      background:linear-gradient(135deg,var(--blue-deep),var(--blue-dark));
+      display:grid;
+      place-items:center;
+    }
+    .cms-login-card {
+      width:min(100%,620px);
+      background:white;
+      color:var(--blue-dark);
+      border:1px solid rgba(255,255,255,.24);
+      border-radius:24px;
+      padding:clamp(28px,4.5vw,54px);
+      box-shadow:0 32px 90px rgba(0,0,0,.24);
+    }
+    .cms-login-logo { width:min(250px,72%); margin-bottom:34px; }
+    .cms-login-card h1 { margin:8px 0 12px; font-size:clamp(34px,5vw,58px); line-height:.96; letter-spacing:-.055em; }
+    .cms-login-card p { color:var(--muted); line-height:1.6; font-size:13px; }
+    .cms-login-field { display:grid; gap:8px; margin-top:26px; }
+    .cms-login-field label { font-size:9px; font-weight:950; letter-spacing:.12em; text-transform:uppercase; }
+    .cms-login-field input { width:100%; border:1px solid var(--line); border-radius:11px; padding:14px; outline:none; }
+    .cms-login-field input:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(16,85,132,.1); }
+    .cms-login-actions { margin-top:18px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .cms-login-submit { border:0; border-radius:999px; background:var(--blue-dark); color:white; padding:13px 20px; font-weight:900; font-size:10px; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; }
+    .cms-login-back { border:0; background:transparent; color:var(--blue); font-size:10px; font-weight:900; cursor:pointer; padding:8px 0; }
+    .cms-login-status { min-height:20px; margin-top:14px; color:#8a3340; font-size:11px; }
+
+    .cms-toolbar {
+      position:fixed;
+      z-index:4800;
+      left:50%;
+      bottom:18px;
+      transform:translateX(-50%);
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      background:rgba(4,29,52,.95);
+      color:white;
+      box-shadow:0 18px 55px rgba(0,0,0,.28);
+      backdrop-filter:blur(14px);
+    }
+    .cms-toolbar strong { padding:0 8px; font-size:9px; letter-spacing:.11em; text-transform:uppercase; white-space:nowrap; }
+    .cms-toolbar button { border:1px solid rgba(255,255,255,.24); background:rgba(255,255,255,.07); color:white; border-radius:999px; min-height:34px; padding:7px 12px; font-size:9px; font-weight:900; cursor:pointer; }
+    .cms-toolbar button:hover { background:white; color:var(--blue-dark); }
+    .cms-save-state { min-width:94px; color:#a8cfdf; font-size:8px; text-align:center; text-transform:uppercase; letter-spacing:.08em; }
+
+    .cms-hover-control {
+      position:fixed;
+      z-index:4900;
+      width:30px;
+      height:30px;
+      display:none;
+      place-items:center;
+      border:1px solid rgba(255,255,255,.75);
+      border-radius:50%;
+      background:var(--blue-dark);
+      color:white;
+      box-shadow:0 8px 24px rgba(0,0,0,.25);
+      cursor:pointer;
+      font-size:14px;
+      line-height:1;
+    }
+    .cms-hover-control.visible { display:grid; }
+    .cms-edit-highlight { outline:2px dashed rgba(16,85,132,.65)!important; outline-offset:3px; }
+    .clients .cms-edit-highlight, .hero .cms-edit-highlight { outline-color:rgba(255,255,255,.72)!important; }
+
+    .cms-modal {
+      position:fixed;
+      z-index:5200;
+      inset:0;
+      display:none;
+      place-items:center;
+      padding:24px;
+      background:rgba(2,17,29,.68);
+      backdrop-filter:blur(8px);
+    }
+    .cms-modal.open { display:grid; }
+    .cms-modal-card { width:min(760px,100%); max-height:min(82svh,780px); overflow:auto; background:white; border-radius:22px; box-shadow:0 32px 100px rgba(0,0,0,.36); }
+    .cms-modal-head { padding:20px 22px; display:flex; align-items:center; justify-content:space-between; gap:18px; border-bottom:1px solid var(--line); }
+    .cms-modal-head strong { color:var(--blue-dark); font-size:15px; }
+    .cms-modal-close { border:0; background:transparent; font-size:24px; cursor:pointer; color:var(--blue-dark); }
+    .cms-rich-toolbar { padding:11px 18px; display:flex; flex-wrap:wrap; gap:7px; border-bottom:1px solid var(--line); background:var(--paper); }
+    .cms-rich-toolbar button { border:1px solid var(--line); background:white; border-radius:8px; min-width:36px; padding:8px 10px; font-weight:900; cursor:pointer; }
+    .cms-rich-editor { min-height:210px; margin:20px; padding:18px; border:1px solid var(--line); border-radius:12px; outline:none; color:var(--ink); line-height:1.6; }
+    .cms-rich-editor:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(16,85,132,.08); }
+    .cms-modal-actions { display:flex; justify-content:flex-end; gap:10px; padding:0 20px 20px; }
+    .cms-modal-actions button { min-height:40px; border-radius:999px; padding:9px 16px; font-size:9px; font-weight:950; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; }
+    .cms-modal-cancel { background:white; border:1px solid var(--line); color:var(--blue-dark); }
+    .cms-modal-save { background:var(--blue-dark); border:1px solid var(--blue-dark); color:white; }
+
+    @media (max-width:760px) {
+      .section-brand-head { grid-template-columns:1fr; gap:18px; }
+      .section-brand-logo-wrap { min-height:0; }
+      .section-brand-logo { width:min(190px,60vw); }
+      .cms-toolbar { left:12px; right:12px; transform:none; justify-content:center; flex-wrap:wrap; border-radius:18px; }
+      .cms-save-state { min-width:72px; }
+      .cms-login-actions { align-items:stretch; flex-direction:column-reverse; }
+      .cms-login-submit { width:100%; }
+    }
+
   </style>
 </head>
 <body>
@@ -1119,6 +1242,16 @@
       email: 'comercial@construtoraconfidence.com',
       address: 'Av. Juracy Magalhães, 3340 — Vitória da Conquista, BA'
     };
+
+
+    const CMS_CONFIG = Object.freeze({
+      owner: 'glaucodeveloper',
+      repo: 'confidenceconstrutora',
+      branch: 'main',
+      contentPath: 'content/site-content.json',
+      uploadDir: 'uploads'
+    });
+    const CMS_SESSION_KEY = 'confidence.cms.pat';
 
     const WORKS = [
       {
@@ -1213,12 +1346,18 @@
     function routeFromHash() {
       const hash = location.hash.replace(/^#\/?/, '');
       const match = hash.match(/^obra\/(.+)$/);
-      if (match) appState.dispatch({type:'ROUTE', route:'detail', slug:decodeURIComponent(match[1])});
+      if (hash === 'login') appState.dispatch({type:'ROUTE', route:'login'});
+      else if (match) appState.dispatch({type:'ROUTE', route:'detail', slug:decodeURIComponent(match[1])});
       else appState.dispatch({type:'ROUTE', route:'home'});
     }
 
+    function navigateLogin() {
+      history.pushState(null,'','#/login');
+      appState.dispatch({type:'ROUTE', route:'login'});
+    }
+
     function navigateHome(anchor='inicio') {
-      if (location.hash.startsWith('#/obra/')) history.pushState(null,'',location.pathname + location.search + '#/');
+      if (location.hash.startsWith('#/obra/') || location.hash === '#/login') history.pushState(null,'',location.pathname + location.search + '#/');
       appState.dispatch({type:'ROUTE', route:'home'});
       requestAnimationFrame(() => document.getElementById(anchor)?.scrollIntoView({behavior:'smooth'}));
     }
@@ -1232,7 +1371,7 @@
       const media = root.querySelector('.hero-media');
       if (!media || media.dataset.bound === '1') return () => {};
       media.dataset.bound = '1';
-      media.innerHTML = HERO_SLIDES.map((slide, index) => `<div class="hero-slide${index === 0 ? ' active' : ''}" style="background-image:url('${slide.image}')" aria-hidden="true"></div>`).join('');
+      media.innerHTML = HERO_SLIDES.map((slide, index) => `<div class="hero-slide${index === 0 ? ' active' : ''}" data-cms-background style="background-image:url('${slide.image}')" aria-hidden="true"></div>`).join('');
       const slides = [...media.querySelectorAll('.hero-slide')];
       let timer = null;
       const rapidStepMs = 780;
@@ -1466,7 +1605,7 @@
             <div class="footer-col"><h3>Navegação</h3><div class="footer-links"><button data-go="institucional">Institucional</button><button data-go="obras">Obras e atuação</button><button data-go="clientes">Clientes</button><button data-go="certificacoes">Certificações</button><button data-go="contato">Contato</button></div></div>
             <div class="footer-col"><h3>Contato</h3><div class="footer-contact"><div><span>Telefone</span>${BRAND.phone}</div><div><span>E-mail</span>${BRAND.email}</div><div><span>Endereço</span>${BRAND.address}</div></div></div>
           </div>
-          <div class="footer-bottom"><span>© ${new Date().getFullYear()} Confidence Construtora</span><span>Vitória da Conquista · Bahia</span></div>
+          <div class="footer-bottom"><span>© ${new Date().getFullYear()} Confidence Construtora</span><span>Vitória da Conquista · Bahia · <a href="#/login" aria-label="Acessar edição do site">Editar</a></span></div>
         </footer>`;
         this.addEventListener('click',e=>{ const go=e.target.closest('[data-go]'); if(go) navigateHome(go.dataset.go); });
       }
@@ -1540,7 +1679,7 @@
               </header>
 
               <div class="institutional-stage">
-                <div class="institutional-photo">
+                <div class="institutional-photo" data-cms-background>
                   <div class="photo-caption"><span>Nossa engenharia em campo.</span><span>Confidence Construtora</span></div>
                 </div>
 
@@ -1583,7 +1722,10 @@
           </section>
 
           <section class="screen clients" id="clientes"><div class="screen-inner"><div class="clients-layout">
-            <div><div class="eyebrow light">Nossos clientes</div><h2 class="title">Confiança que se transforma em parceria.</h2><p class="copy">Coca-Cola e SUDESB fazem parte das relações construídas pela Confidence por meio do trabalho entregue.</p></div>
+            <div class="section-brand-head">
+              <div class="section-brand-logo-wrap"><img class="section-brand-logo" src="${BRAND.logoLight}" alt="Confidence Construtora"></div>
+              <div class="section-brand-head-copy"><div class="eyebrow light">Nossos clientes</div><h2 class="title">Confiança que se transforma em parceria.</h2><p class="copy">Coca-Cola e SUDESB fazem parte das relações construídas pela Confidence por meio do trabalho entregue.</p></div>
+            </div>
             <div class="client-board">
               <article class="client-card"><div class="client-logo-wrap"><img class="client-logo coca" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/960px-Coca-Cola_logo.svg.png" alt="Coca-Cola"></div><div class="client-meta"><strong>Coca-Cola</strong><span>Parceria Confidence</span></div></article>
               <article class="client-card"><div class="client-logo-wrap"><img class="client-logo sudesb-logo" src="https://absbmx.com.br/wp-content/uploads/2020/03/SUDESB-LOGO.jpg" alt="SUDESB — Superintendência dos Desportos do Estado da Bahia"></div><div class="client-meta"><strong>SUDESB</strong><span>Superintendência dos Desportos do Estado da Bahia</span></div></article>
@@ -1591,7 +1733,10 @@
           </div></div></section>
 
           <section class="screen certs" id="certificacoes"><div class="screen-inner"><div class="certs-layout">
-            <div><div class="eyebrow">Certificações</div><h2 class="title">Qualidade reconhecida.</h2><p class="copy">Nosso padrão de gestão e execução é orientado por referências consolidadas de qualidade na construção.</p></div>
+            <div class="section-brand-head">
+              <div class="section-brand-logo-wrap"><img class="section-brand-logo" src="${BRAND.logoBlue}" alt="Confidence Construtora"></div>
+              <div class="section-brand-head-copy"><div class="eyebrow">Certificações</div><h2 class="title">Qualidade reconhecida.</h2><p class="copy">Nosso padrão de gestão e execução é orientado por referências consolidadas de qualidade na construção.</p></div>
+            </div>
             <div class="cert-board">
               <article class="cert-card"><div class="cert-logo-wrap"><img class="cert-logo" src="https://www.gov.br/cidades/pt-br/assuntos/habitacao/pbqp-h/arquivos/2020_12_16_pbqph_colorida_respiro_selo.png" alt="PBQP-H — Programa Brasileiro da Qualidade e Produtividade do Habitat"></div><div class="cert-card-body"><h3>PBQP-H</h3><p>Programa Brasileiro da Qualidade e Produtividade do Habitat, referência que integra nosso compromisso com a qualidade da construção.</p></div></article>
               <article class="cert-card"><div class="cert-logo-wrap"><div class="iso-reference-logo" role="img" aria-label="Referência à norma ISO 9001:2015"><span class="iso-word">ISO</span><span class="iso-number">9001</span><small>Gestão da qualidade</small></div></div><div class="cert-card-body"><h3>ISO 9001</h3><p>Gestão da qualidade orientada por processos, controle, melhoria contínua e consistência na entrega.</p></div></article>
@@ -1619,7 +1764,7 @@
                   <button class="whatsapp-submit" type="submit"><span aria-hidden="true">↗</span> Abrir no WhatsApp</button>
                 </div>
               </form>
-              <aside class="contact-whatsapp-panel">
+              <aside class="contact-whatsapp-panel" data-cms-background>
                 <div class="whatsapp-mark" aria-hidden="true">W</div>
                 <div class="eyebrow">Confidence Construtora</div>
                 <h3>Estamos disponíveis para conversar.</h3>
@@ -1632,6 +1777,375 @@
       }
     }
     customElements.define('home-view', HomeView);
+
+
+    const cmsState = {
+      content: { version:1, text:{}, images:{} },
+      loaded: false,
+      token: sessionStorage.getItem(CMS_SESSION_KEY) || '',
+      saving: false
+    };
+
+    const cmsRawUrl = path => `https://raw.githubusercontent.com/${CMS_CONFIG.owner}/${CMS_CONFIG.repo}/${CMS_CONFIG.branch}/${path}`;
+    const cmsApiUrl = path => `https://api.github.com/repos/${CMS_CONFIG.owner}/${CMS_CONFIG.repo}/contents/${path.split('/').map(encodeURIComponent).join('/')}`;
+
+    function cmsHeaders(token = cmsState.token) {
+      const headers = {
+        'Accept':'application/vnd.github+json',
+        'X-GitHub-Api-Version':'2022-11-28'
+      };
+      if (token) headers.Authorization = `Bearer ${token}`;
+      return headers;
+    }
+
+    function utf8ToBase64(text) {
+      const bytes = new TextEncoder().encode(text);
+      let binary = '';
+      const chunk = 0x8000;
+      for (let i=0; i<bytes.length; i+=chunk) binary += String.fromCharCode(...bytes.subarray(i,i+chunk));
+      return btoa(binary);
+    }
+
+    function bytesToBase64(buffer) {
+      const bytes = new Uint8Array(buffer);
+      let binary = '';
+      const chunk = 0x8000;
+      for (let i=0; i<bytes.length; i+=chunk) binary += String.fromCharCode(...bytes.subarray(i,i+chunk));
+      return btoa(binary);
+    }
+
+    function sanitizeRichHTML(html) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(`<body>${html}</body>`, 'text/html');
+      const allowed = new Set(['B','STRONG','I','EM','U','BR','A','SPAN','SUP','SUB']);
+      const clean = node => {
+        [...node.children].forEach(child => {
+          clean(child);
+          if (!allowed.has(child.tagName)) {
+            child.replaceWith(...child.childNodes);
+            return;
+          }
+          [...child.attributes].forEach(attr => {
+            if (child.tagName === 'A' && attr.name === 'href') return;
+            child.removeAttribute(attr.name);
+          });
+          if (child.tagName === 'A') {
+            const href = child.getAttribute('href') || '';
+            if (!/^(https?:|mailto:|tel:|#|\/)/i.test(href)) child.removeAttribute('href');
+            else { child.setAttribute('target','_blank'); child.setAttribute('rel','noopener noreferrer'); }
+          }
+        });
+      };
+      clean(doc.body);
+      return doc.body.innerHTML;
+    }
+
+    function cmsElementSignature(el) {
+      if (!el || el.nodeType !== 1) return '';
+      if (el.id) return `${el.tagName.toLowerCase()}#${el.id}`;
+      for (const name of ['data-work','data-work-link','data-city','data-section','name','aria-label']) {
+        const value = el.getAttribute?.(name);
+        if (value) return `${el.tagName.toLowerCase()}[${name}=${normalizeName(value).replace(/[^a-z0-9_-]+/g,'-').slice(0,64)}]`;
+      }
+      const classes = [...el.classList].filter(c=>!c.startsWith('cms-') && c!=='active' && c!=='open').slice(0,3);
+      let sig = el.tagName.toLowerCase() + (classes.length ? '.'+classes.join('.') : '');
+      if (el.parentElement) {
+        const siblings = [...el.parentElement.children].filter(sib => {
+          const sc=[...sib.classList].filter(c=>!c.startsWith('cms-') && c!=='active' && c!=='open').slice(0,3);
+          return sib.tagName===el.tagName && sc.join('.')===classes.join('.');
+        });
+        if (siblings.length>1) sig += `:nth-${siblings.indexOf(el)+1}`;
+      }
+      return sig;
+    }
+
+    function cmsKeyFor(el, kind='text') {
+      if (!el) return '';
+      const explicit = el.dataset?.cmsKey;
+      if (explicit) return `${kind}:${explicit}`;
+      const section = el.closest?.('section[id]');
+      const detail = el.closest?.('work-detail');
+      const root = section || detail || el.closest?.('fixed-nav,site-footer,home-view,territory-map,works-showcase') || document.body;
+      let scope = section?.id || (detail ? `obra-${detail.getAttribute('slug') || 'detalhe'}` : root.tagName.toLowerCase());
+      const parts=[];
+      let node=el;
+      while(node && node!==root && node!==document.body) {
+        parts.unshift(cmsElementSignature(node));
+        node=node.parentElement;
+      }
+      if (root && root!==document.body && root!==section) parts.unshift(cmsElementSignature(root));
+      return `${kind}:${scope}:${parts.join('>') || cmsElementSignature(el)}`;
+    }
+
+    function replaceBackgroundUrl(el, url) {
+      const current = getComputedStyle(el).backgroundImage || '';
+      const quoted = `url("${String(url).replace(/"/g,'%22')}")`;
+      if (/url\([^)]+\)/.test(current)) el.style.backgroundImage = current.replace(/url\([^)]+\)(?![\s\S]*url\([^)]+\))/, quoted);
+      else el.style.backgroundImage = quoted;
+    }
+
+    const cmsIgnoredTextTags = new Set(['SCRIPT','STYLE','INPUT','TEXTAREA','SELECT','OPTION','SVG','PATH']);
+    function cmsHasDirectText(el) {
+      if (!el || cmsIgnoredTextTags.has(el.tagName) || el.closest('.cms-toolbar,.cms-modal,.cms-login')) return false;
+      return [...el.childNodes].some(node=>node.nodeType===Node.TEXT_NODE && node.textContent.trim());
+    }
+    function cmsTextElements(root=document) {
+      const list=[];
+      if (root.nodeType===1 && cmsHasDirectText(root)) list.push(root);
+      root.querySelectorAll?.('*').forEach(el=>{ if(cmsHasDirectText(el)) list.push(el); });
+      return list;
+    }
+
+    function cmsApply(root=document) {
+      if (!cmsState.loaded) return;
+      const textMap = cmsState.content.text || {};
+      const imageMap = cmsState.content.images || {};
+      cmsTextElements(root).forEach(el=>{
+        const key=cmsKeyFor(el,'text');
+        if (key && Object.prototype.hasOwnProperty.call(textMap,key)) {
+          const safe=sanitizeRichHTML(textMap[key]);
+          if (el.innerHTML!==safe) el.innerHTML=safe;
+        }
+      });
+      root.querySelectorAll?.('img').forEach(img=>{
+        if (img.closest('.cms-toolbar,.cms-modal,.cms-login')) return;
+        const key=cmsKeyFor(img,'image');
+        if (imageMap[key] && img.src!==imageMap[key]) img.src=imageMap[key];
+      });
+      root.querySelectorAll?.('[data-cms-background]').forEach(el=>{
+        const key=cmsKeyFor(el,'background');
+        if (imageMap[key]) replaceBackgroundUrl(el,imageMap[key]);
+      });
+    }
+
+    async function cmsLoad() {
+      try {
+        const response = await fetch(`${cmsRawUrl(CMS_CONFIG.contentPath)}?v=${Date.now()}`, {cache:'no-store'});
+        if (response.ok) {
+          const data=await response.json();
+          cmsState.content={version:1,text:{},images:{},...data,text:{...(data.text||{})},images:{...(data.images||{})}};
+        }
+      } catch(error) { console.warn('CMS content indisponível; usando conteúdo incorporado.', error); }
+      cmsState.loaded=true;
+      cmsApply(document);
+      window.dispatchEvent(new CustomEvent('cms-content-loaded'));
+    }
+
+    async function cmsApi(path, options={}) {
+      if (!cmsState.token) throw new Error('Sessão de edição não autenticada.');
+      return fetch(path, {...options, headers:{...cmsHeaders(), ...(options.headers||{})}});
+    }
+
+    async function cmsValidateToken(token) {
+      const repoUrl=`https://api.github.com/repos/${CMS_CONFIG.owner}/${CMS_CONFIG.repo}`;
+      const response=await fetch(repoUrl,{headers:cmsHeaders(token)});
+      if(!response.ok) throw new Error(response.status===401 ? 'PAT inválido.' : `GitHub respondeu ${response.status}.`);
+      const repo=await response.json();
+      if(repo.full_name?.toLowerCase()!==`${CMS_CONFIG.owner}/${CMS_CONFIG.repo}`.toLowerCase()) throw new Error('PAT não acessa o repositório configurado.');
+      const root=await fetch(`https://api.github.com/repos/${CMS_CONFIG.owner}/${CMS_CONFIG.repo}/contents/?ref=${encodeURIComponent(CMS_CONFIG.branch)}`,{headers:cmsHeaders(token)});
+      if(!root.ok) throw new Error('O PAT não possui acesso de conteúdo ao repositório.');
+      return repo;
+    }
+
+    async function cmsPersist(message='chore(cms): atualizar conteúdo do site') {
+      if(!cmsState.token) throw new Error('Faça login em #/login para editar.');
+      cmsState.saving=true; cmsEditor?.setStatus('Salvando…');
+      let sha=null;
+      const current=await cmsApi(`${cmsApiUrl(CMS_CONFIG.contentPath)}?ref=${encodeURIComponent(CMS_CONFIG.branch)}`);
+      if(current.ok) sha=(await current.json()).sha;
+      else if(current.status!==404) throw new Error(`Falha ao ler conteúdo atual (${current.status}).`);
+      const payload={
+        message,
+        content:utf8ToBase64(JSON.stringify({...cmsState.content,updatedAt:new Date().toISOString()},null,2)),
+        branch:CMS_CONFIG.branch
+      };
+      if(sha) payload.sha=sha;
+      const response=await cmsApi(cmsApiUrl(CMS_CONFIG.contentPath),{
+        method:'PUT',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(payload)
+      });
+      if(!response.ok) {
+        const detail=await response.text();
+        cmsState.saving=false; cmsEditor?.setStatus('Erro ao salvar');
+        throw new Error(`Falha ao salvar no GitHub (${response.status}): ${detail.slice(0,180)}`);
+      }
+      cmsState.saving=false; cmsEditor?.setStatus('Salvo no repo');
+      setTimeout(()=>cmsEditor?.setStatus('Modo edição'),1800);
+      return response.json();
+    }
+
+    async function cmsUploadImage(file, key) {
+      if(!file?.type?.startsWith('image/')) throw new Error('Selecione um arquivo de imagem.');
+      const safeName=(file.name || 'imagem').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9._-]+/g,'-').replace(/^-+|-+$/g,'').toLowerCase();
+      const stamp=new Date().toISOString().replace(/[:.]/g,'-');
+      const path=`${CMS_CONFIG.uploadDir}/${new Date().getFullYear()}/${stamp}-${safeName || 'imagem'}`;
+      cmsEditor?.setStatus('Enviando imagem…');
+      const response=await cmsApi(cmsApiUrl(path),{
+        method:'PUT', headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({message:`chore(cms): upload ${safeName || 'imagem'}`,content:bytesToBase64(await file.arrayBuffer()),branch:CMS_CONFIG.branch})
+      });
+      if(!response.ok) throw new Error(`Upload falhou (${response.status}).`);
+      const result=await response.json();
+      const url=`${cmsRawUrl(path)}?v=${result.content?.sha || Date.now()}`;
+      cmsState.content.images ||= {};
+      cmsState.content.images[key]=url;
+      await cmsPersist(`chore(cms): aplicar imagem ${safeName || 'imagem'}`);
+      return url;
+    }
+
+    class CmsLogin extends HTMLElement {
+      connectedCallback(){ this.render(); this.addEventListener('submit',this._submit=e=>this.login(e)); this.addEventListener('click',this._click=e=>{if(e.target.closest('[data-cms-back]')) navigateHome('inicio');}); }
+      disconnectedCallback(){ if(this._submit)this.removeEventListener('submit',this._submit); if(this._click)this.removeEventListener('click',this._click); }
+      render(){
+        this.innerHTML=`<main class="cms-login"><form class="cms-login-card" data-cms-login-form>
+          <img class="cms-login-logo" src="${BRAND.logoBlue}" alt="Confidence Construtora">
+          <div class="eyebrow">Área de edição</div>
+          <h1>Editar o site.</h1>
+          <p>Entre com um GitHub Personal Access Token com acesso de leitura e escrita ao repositório <strong>${CMS_CONFIG.owner}/${CMS_CONFIG.repo}</strong>. A chave fica somente nesta sessão do navegador e é enviada apenas à API do GitHub.</p>
+          <div class="cms-login-field"><label for="cms-pat">GitHub PAT</label><input id="cms-pat" name="pat" type="password" autocomplete="off" spellcheck="false" required placeholder="github_pat_… ou ghp_…"></div>
+          <div class="cms-login-actions"><button class="cms-login-back" type="button" data-cms-back>Voltar ao site</button><button class="cms-login-submit" type="submit">Ativar modo de edição</button></div>
+          <div class="cms-login-status" data-cms-login-status role="status"></div>
+        </form></main>`;
+      }
+      async login(event){
+        event.preventDefault();
+        const form=event.target.closest('[data-cms-login-form]'); if(!form) return;
+        const token=String(new FormData(form).get('pat')||'').trim();
+        const status=this.querySelector('[data-cms-login-status]'); const submit=form.querySelector('[type=submit]');
+        status.textContent='Validando acesso ao repositório…'; submit.disabled=true;
+        try {
+          await cmsValidateToken(token);
+          cmsState.token=token; sessionStorage.setItem(CMS_SESSION_KEY,token);
+          status.textContent='Acesso validado.';
+          history.pushState(null,'','#/');
+          appState.dispatch({type:'ROUTE',route:'home'});
+          requestAnimationFrame(()=>cmsEditor.activate());
+        } catch(error) { status.textContent=error.message || 'Não foi possível validar o PAT.'; }
+        finally { submit.disabled=false; }
+      }
+    }
+    customElements.define('cms-login', CmsLogin);
+
+    class CmsEditor {
+      constructor(){
+        this.active=false; this.textTarget=null; this.imageTarget=null; this.modalTarget=null;
+        this.ensureUI();
+        this.onPointerMove=this.onPointerMove.bind(this);
+        this.onScroll=this.onScroll.bind(this);
+      }
+      ensureUI(){
+        if(document.querySelector('[data-cms-toolbar]')) return;
+        const toolbar=document.createElement('div'); toolbar.className='cms-toolbar'; toolbar.dataset.cmsToolbar=''; toolbar.hidden=true;
+        toolbar.innerHTML='<strong>Confidence CMS</strong><span class="cms-save-state" data-cms-state>Modo edição</span><button type="button" data-cms-login>Trocar PAT</button><button type="button" data-cms-logout>Sair</button>';
+        const textBtn=document.createElement('button'); textBtn.type='button'; textBtn.className='cms-hover-control'; textBtn.dataset.cmsTextControl=''; textBtn.title='Editar texto'; textBtn.textContent='✎';
+        const imageBtn=document.createElement('button'); imageBtn.type='button'; imageBtn.className='cms-hover-control'; imageBtn.dataset.cmsImageControl=''; imageBtn.title='Enviar/substituir imagem'; imageBtn.textContent='↑';
+        const file=document.createElement('input'); file.type='file'; file.accept='image/*'; file.hidden=true; file.dataset.cmsFile='';
+        const modal=document.createElement('div'); modal.className='cms-modal'; modal.dataset.cmsModal=''; modal.innerHTML=`<section class="cms-modal-card" role="dialog" aria-modal="true" aria-label="Editor de texto">
+          <header class="cms-modal-head"><strong>Editar texto</strong><button type="button" class="cms-modal-close" data-cms-modal-close aria-label="Fechar">×</button></header>
+          <div class="cms-rich-toolbar">
+            <button type="button" data-cmd="bold"><b>B</b></button><button type="button" data-cmd="italic"><i>I</i></button><button type="button" data-cmd="underline"><u>U</u></button><button type="button" data-cmd="createLink">Link</button><button type="button" data-cmd="removeFormat">Limpar</button>
+          </div>
+          <div class="cms-rich-editor" contenteditable="true" data-cms-rich-editor></div>
+          <footer class="cms-modal-actions"><button type="button" class="cms-modal-cancel" data-cms-modal-close>Cancelar</button><button type="button" class="cms-modal-save" data-cms-modal-save>Salvar no repo</button></footer>
+        </section>`;
+        document.body.append(toolbar,textBtn,imageBtn,file,modal);
+        this.toolbar=toolbar; this.textBtn=textBtn; this.imageBtn=imageBtn; this.file=file; this.modal=modal; this.rich=modal.querySelector('[data-cms-rich-editor]');
+        toolbar.addEventListener('click',e=>{
+          if(e.target.closest('[data-cms-logout]')) this.logout();
+          if(e.target.closest('[data-cms-login]')) navigateLogin();
+        });
+        textBtn.addEventListener('click',()=>this.openTextEditor());
+        imageBtn.addEventListener('click',()=>{ if(this.imageTarget) this.file.click(); });
+        file.addEventListener('change',()=>this.handleImage());
+        modal.addEventListener('click',e=>{
+          if(e.target===modal || e.target.closest('[data-cms-modal-close]')) this.closeModal();
+          const cmd=e.target.closest('[data-cmd]')?.dataset.cmd;
+          if(cmd){
+            this.rich.focus();
+            if(cmd==='createLink') { const href=prompt('URL do link:','https://'); if(href) document.execCommand('createLink',false,href); }
+            else document.execCommand(cmd,false,null);
+          }
+          if(e.target.closest('[data-cms-modal-save]')) this.saveText();
+        });
+      }
+      activate(){
+        if(!cmsState.token) return;
+        this.active=true; this.toolbar.hidden=false;
+        document.addEventListener('pointermove',this.onPointerMove,{passive:true});
+        window.addEventListener('scroll',this.onScroll,{passive:true,capture:true});
+        window.addEventListener('resize',this.onScroll,{passive:true});
+        cmsApply(document); this.setStatus('Modo edição');
+      }
+      deactivate(){
+        this.active=false; this.toolbar.hidden=true; this.hideControls(); this.closeModal();
+        document.removeEventListener('pointermove',this.onPointerMove);
+        window.removeEventListener('scroll',this.onScroll,true); window.removeEventListener('resize',this.onScroll);
+      }
+      logout(){ sessionStorage.removeItem(CMS_SESSION_KEY); cmsState.token=''; this.deactivate(); navigateHome('inicio'); }
+      setStatus(text){ this.toolbar?.querySelector('[data-cms-state]') && (this.toolbar.querySelector('[data-cms-state]').textContent=text); }
+      textCandidate(node){
+        let el=node?.nodeType===1 ? node : node?.parentElement;
+        while(el && el!==document.body) {
+          if(cmsHasDirectText(el)) return el;
+          el=el.parentElement;
+        }
+        return null;
+      }
+      imageCandidate(node){
+        const img=node?.closest?.('img');
+        if(img && !img.closest('.cms-toolbar,.cms-modal,.cms-login')) return {el:img,kind:'image'};
+        const bg=node?.closest?.('[data-cms-background]');
+        if(bg && !bg.closest('.cms-toolbar,.cms-modal,.cms-login')) return {el:bg,kind:'background'};
+        return null;
+      }
+      onPointerMove(event){
+        if(!this.active || this.modal.classList.contains('open')) return;
+        if(event.target.closest?.('.cms-hover-control,.cms-toolbar')) return;
+        const image=this.imageCandidate(event.target);
+        if(image){ this.setImageTarget(image); this.clearTextTarget(); return; }
+        const text=this.textCandidate(event.target);
+        if(text){ this.setTextTarget(text); this.clearImageTarget(); return; }
+        this.hideControls();
+      }
+      onScroll(){ if(this.textTarget) this.position(this.textBtn,this.textTarget); if(this.imageTarget) this.position(this.imageBtn,this.imageTarget); }
+      position(btn,target){
+        const rect=target.getBoundingClientRect();
+        if(rect.width<2 || rect.height<2 || rect.bottom<0 || rect.top>innerHeight) {btn.classList.remove('visible'); return;}
+        btn.style.left=`${Math.min(innerWidth-38,Math.max(8,rect.right-22))}px`;
+        btn.style.top=`${Math.min(innerHeight-38,Math.max(8,rect.top+6))}px`;
+        btn.classList.add('visible');
+      }
+      setTextTarget(el){ if(this.textTarget!==el){this.clearTextTarget();this.textTarget=el;el.classList.add('cms-edit-highlight');} this.position(this.textBtn,el); }
+      setImageTarget(item){ if(this.imageTarget!==item.el){this.clearImageTarget();this.imageTarget=item.el;this.imageKind=item.kind;item.el.classList.add('cms-edit-highlight');} this.position(this.imageBtn,item.el); }
+      clearTextTarget(){ this.textTarget?.classList.remove('cms-edit-highlight'); this.textTarget=null; this.textBtn.classList.remove('visible'); }
+      clearImageTarget(){ this.imageTarget?.classList.remove('cms-edit-highlight'); this.imageTarget=null; this.imageKind=null; this.imageBtn.classList.remove('visible'); }
+      hideControls(){ this.clearTextTarget(); this.clearImageTarget(); }
+      openTextEditor(){ if(!this.textTarget)return; this.modalTarget=this.textTarget; this.rich.innerHTML=this.textTarget.innerHTML; this.modal.classList.add('open'); this.textBtn.classList.remove('visible'); setTimeout(()=>this.rich.focus(),30); }
+      closeModal(){ this.modal.classList.remove('open'); this.modalTarget=null; }
+      async saveText(){
+        if(!this.modalTarget)return;
+        const target=this.modalTarget; const key=cmsKeyFor(target,'text'); const html=sanitizeRichHTML(this.rich.innerHTML);
+        cmsState.content.text ||= {}; cmsState.content.text[key]=html; target.innerHTML=html;
+        this.closeModal();
+        try { await cmsPersist('chore(cms): editar texto do site'); }
+        catch(error){ console.error(error); alert(error.message); this.setStatus('Erro ao salvar'); }
+      }
+      async handleImage(){
+        const file=this.file.files?.[0]; const target=this.imageTarget; const kind=this.imageKind; this.file.value=''; if(!file||!target)return;
+        const key=cmsKeyFor(target,kind);
+        try {
+          const url=await cmsUploadImage(file,key);
+          if(kind==='image') target.src=url; else replaceBackgroundUrl(target,url);
+        } catch(error){ console.error(error); alert(error.message); this.setStatus('Erro no upload'); }
+      }
+    }
+
+    const cmsEditor = new CmsEditor();
+    const cmsObserver = new MutationObserver(()=>queueMicrotask(()=>cmsApply(document)));
+    cmsObserver.observe(document.documentElement,{childList:true,subtree:true});
+    window.addEventListener('cms-content-loaded',()=>cmsApply(document));
+    cmsLoad();
 
     function serviceNarrative(service, work) {
       const key = normalizeName(service);
@@ -1790,6 +2304,11 @@
       disconnectedCallback(){ appState.removeEventListener('change', this._onState); }
       renderRoute(state){
         document.body.classList.toggle('detail-open', state.route==='detail');
+        if(state.route==='login') {
+          cmsEditor.deactivate();
+          if(!(this.slotEl.firstElementChild instanceof CmsLogin)) this.slotEl.innerHTML='<cms-login></cms-login>';
+          return;
+        }
         if(state.route==='detail') {
           if(!(this.slotEl.firstElementChild instanceof WorkDetail)) this.slotEl.innerHTML='<work-detail></work-detail>';
           this.slotEl.firstElementChild.setAttribute('slug', state.slug || WORKS[0].slug);
@@ -1797,6 +2316,10 @@
         } else {
           if(!(this.slotEl.firstElementChild instanceof HomeView)) this.slotEl.innerHTML='<home-view></home-view>';
         }
+        requestAnimationFrame(()=>{
+          cmsApply(this.slotEl);
+          if(cmsState.token) cmsEditor.activate();
+        });
       }
     }
     customElements.define('site-shell', SiteShell);
