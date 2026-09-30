@@ -1,0 +1,169 @@
+{
+  "version": 2,
+  "brand": {
+    "name": "Confidence Construtora",
+    "logoBlue": "https://raw.githubusercontent.com/glaucodeveloper/proposta-confidence/main/imagens/logo_oficial_aplicacao_azul.png",
+    "logoLight": "https://raw.githubusercontent.com/glaucodeveloper/proposta-confidence/main/imagens/logo_oficial_aplicacao_clara.png",
+    "phone": "(77) 99824-3876",
+    "whatsapp": "5577998243876",
+    "email": "comercial@construtoraconfidence.com",
+    "address": "Av. Juracy Magalhães, 3340 — Vitória da Conquista, BA"
+  },
+  "works": [
+    {
+      "slug": "campo-esportivo-vitoria-da-conquista",
+      "name": "Complexo esportivo",
+      "city": "Vitória da Conquista",
+      "state": "Bahia",
+      "type": "Instalação esportiva e recreativa",
+      "summary": "Executamos o complexo esportivo com foco em durabilidade, circulação e uso intensivo do equipamento público.",
+      "services": [
+        "Preparação do terreno",
+        "Fundações e estruturas",
+        "Instalações elétricas",
+        "Instalações hidráulicas",
+        "Acabamentos",
+        "Urbanização externa"
+      ],
+      "cover": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1600&q=86",
+      "photos": [
+        "https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1800&q=86",
+        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=84",
+        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=84"
+      ]
+    },
+    {
+      "slug": "urbanizacao-itabuna",
+      "name": "Urbanização e infraestrutura",
+      "city": "Itabuna",
+      "state": "Bahia",
+      "type": "Infraestrutura urbana",
+      "summary": "Executamos a urbanização com frentes coordenadas de infraestrutura, pavimentação e qualificação do espaço público.",
+      "services": [
+        "Mobilização de canteiro",
+        "Drenagem",
+        "Pavimentação",
+        "Sinalização",
+        "Calçadas",
+        "Entrega técnica"
+      ],
+      "cover": "https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?auto=format&fit=crop&w=1600&q=86",
+      "photos": [
+        "https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?auto=format&fit=crop&w=1800&q=86",
+        "https://images.unsplash.com/photo-1531835551805-16d864c8d311?auto=format&fit=crop&w=1200&q=84",
+        "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=84"
+      ]
+    },
+    {
+      "slug": "obra-publica-porto-seguro",
+      "name": "Equipamento público",
+      "city": "Porto Seguro",
+      "state": "Bahia",
+      "type": "Construção civil",
+      "summary": "Conduzimos a execução completa, da coordenação dos serviços ao controle de qualidade e acabamento final.",
+      "services": [
+        "Estrutura",
+        "Alvenaria",
+        "Cobertura",
+        "Instalações",
+        "Impermeabilização",
+        "Pintura e acabamento"
+      ],
+      "cover": "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1600&q=86",
+      "photos": [
+        "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1800&q=86",
+        "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=84",
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=84"
+      ]
+    },
+    {
+      "slug": "requalificacao-jequie",
+      "name": "Requalificação urbana",
+      "city": "Jequié",
+      "state": "Bahia",
+      "type": "Urbanização",
+      "summary": "Requalificamos o espaço urbano com serviços coordenados por etapas e controle de execução.",
+      "services": [
+        "Demolições controladas",
+        "Regularização",
+        "Pisos",
+        "Instalações",
+        "Paisagismo"
+      ],
+      "cover": "https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?auto=format&fit=crop&w=1600&q=86",
+      "photos": [
+        "https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?auto=format&fit=crop&w=1800&q=86",
+        "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=84",
+        "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=84"
+      ]
+    },
+    {
+      "slug": "estrutura-guanambi",
+      "name": "Estrutura e acabamento",
+      "city": "Guanambi",
+      "state": "Bahia",
+      "type": "Edificação",
+      "summary": "Executamos a edificação integrando estrutura, instalações e acabamento sob o mesmo controle técnico.",
+      "services": [
+        "Fundação",
+        "Estrutura",
+        "Vedação",
+        "Instalações",
+        "Acabamento"
+      ],
+      "cover": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=86",
+      "photos": [
+        "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1800&q=86",
+        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=84",
+        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=84"
+      ]
+    },
+    {
+      "slug": "obra-teixeira-de-freitas",
+      "name": "Obra institucional",
+      "city": "Teixeira de Freitas",
+      "state": "Bahia",
+      "type": "Construção institucional",
+      "summary": "Executamos a obra institucional por etapas coordenadas, com acompanhamento técnico e registro da evolução.",
+      "services": [
+        "Planejamento",
+        "Infraestrutura",
+        "Edificação",
+        "Instalações",
+        "Comissionamento"
+      ],
+      "cover": "https://images.unsplash.com/photo-1485083269755-a7b559a4fe5e?auto=format&fit=crop&w=1600&q=86",
+      "photos": [
+        "https://images.unsplash.com/photo-1485083269755-a7b559a4fe5e?auto=format&fit=crop&w=1800&q=86",
+        "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=84",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=84"
+      ]
+    }
+  ],
+  "contactPanel": {
+    "background": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=86",
+    "eyebrow": "Confidence Construtora",
+    "title": "Estamos disponíveis para conversar.",
+    "description": "Entre em contato para dúvidas, informações, propostas, parcerias ou qualquer outra mensagem para nossa equipe.",
+    "items": [
+      {
+        "id": "whatsapp",
+        "label": "WhatsApp",
+        "value": "(77) 99824-3876"
+      },
+      {
+        "id": "email",
+        "label": "E-mail",
+        "value": "comercial@construtoraconfidence.com"
+      },
+      {
+        "id": "endereco",
+        "label": "Endereço",
+        "value": "Av. Juracy Magalhães, 3340 — Vitória da Conquista, BA"
+      }
+    ]
+  },
+  "text": {},
+  "images": {},
+  "updatedAt": null
+}
