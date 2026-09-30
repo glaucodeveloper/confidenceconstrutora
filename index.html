@@ -1531,6 +1531,14 @@
     .cms-save-state { min-width:94px; color:#a8cfdf; font-size:8px; text-align:center; text-transform:uppercase; letter-spacing:.08em; }
 
 
+
+    .cms-home-save-anchor {
+      display:block;
+      width:100%;
+    }
+    .cms-home-save-anchor:empty { display:none; }
+    .cms-home-save-anchor > .cms-save-footer { margin-top:42px; margin-bottom:54px; }
+
     .cms-save-footer {
       width:min(var(--max),calc(100% - 2 * var(--page-x)));
       margin:34px auto 54px;
@@ -2360,6 +2368,7 @@
       home.render();
       home._heroDispose=mountHeroSlideshow(home);
       cmsApply(home);
+      cmsEditor?.updateSaveFooter();
     }
 
     async function cmsAddContactInfo(){
@@ -2559,6 +2568,7 @@
               </aside>
             </article>
           </div></section>
+          <div class="cms-home-save-anchor" data-cms-home-save-anchor aria-live="polite"></div>
           <site-footer></site-footer>`;
       }
     }
@@ -3021,7 +3031,8 @@
       }
       updateSaveFooter(){
         if(!this.saveFooter) return;
-        const host=document.querySelector('.detail-route') || document.querySelector('.work-create-route') || document.querySelector('home-view') || document.body;
+        const homeAnchor=document.querySelector('[data-cms-home-save-anchor]');
+        const host=homeAnchor || document.querySelector('.detail-route') || document.querySelector('.work-create-route') || document.querySelector('home-view') || document.body;
         if(this.saveFooter.parentElement!==host) host.appendChild(this.saveFooter);
         const visible=!!cmsState.token && cmsState.dirty && cmsState.changes.length>0;
         this.saveFooter.classList.toggle('visible',visible);
