@@ -424,13 +424,15 @@
       {
         "id": "instagram",
         "label": "instagram",
-        "value": "construtoraconfidence"
+        "value": "@ConstrutoraConfidence"
       }
     ]
   },
-  "text": {},
+  "text": {
+    "text:contact-item-instagram-value": "@ConstrutoraConfidence"
+  },
   "images": {},
-  "updatedAt": "2026-09-30T21:54:14.777Z",
+  "updatedAt": "2026-09-30T22:26:16.611Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
