@@ -420,12 +420,17 @@
         "id": "endereco",
         "label": "Endereço",
         "value": "Av. Juracy Magalhães, 3340 — Vitória da Conquista, BA"
+      },
+      {
+        "id": "instagram",
+        "label": "instagram",
+        "value": "construtoraconfidence"
       }
     ]
   },
   "text": {},
   "images": {},
-  "updatedAt": "2026-09-30T17:35:11-03:00",
+  "updatedAt": "2026-09-30T21:54:14.777Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
