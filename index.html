@@ -444,6 +444,16 @@
     .contact-row { padding:11px 0; border-bottom:1px solid rgba(255,255,255,.16); display:grid; grid-template-columns:90px 1fr; gap:16px; font-size:11px; }
     .contact-row span { color:#91bad0; font-size:8px; font-weight:900; letter-spacing:.11em; text-transform:uppercase; }
     .contact-row strong { color:white; font-weight:800; }
+    .contact-whatsapp-panel[data-cms-background] { position:relative; }
+    .cms-contact-list-controls { display:none; margin-top:12px; padding-top:12px; border-top:1px dashed rgba(255,255,255,.28); }
+    body.cms-editing .cms-contact-list-controls { display:flex; }
+    .cms-contact-add { border:1px solid rgba(255,255,255,.55); background:rgba(255,255,255,.09); color:white; border-radius:999px; padding:8px 11px; font-size:9px; font-weight:900; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; }
+    .contact-row { position:relative; }
+    .cms-contact-remove { display:none; position:absolute; right:0; top:50%; transform:translateY(-50%); width:25px; height:25px; border-radius:50%; border:1px solid rgba(255,255,255,.48); background:rgba(4,29,52,.62); color:white; cursor:pointer; place-items:center; font-size:14px; z-index:3; }
+    body.cms-editing .contact-row { padding-right:34px; }
+    body.cms-editing .cms-contact-remove { display:grid; }
+    body.cms-editing .contact-whatsapp-panel { outline:1px dashed rgba(255,255,255,.24); outline-offset:-8px; }
+
 
     /* FOOTER */
     .site-footer { background:#061f35; color:white; border-top:1px solid rgba(255,255,255,.1); }
@@ -1190,7 +1200,7 @@
     }
     .cms-hover-control.visible { display:grid; }
     .cms-edit-highlight { outline:2px dashed rgba(16,85,132,.65)!important; outline-offset:3px; }
-    .clients .cms-edit-highlight, .hero .cms-edit-highlight { outline-color:rgba(255,255,255,.72)!important; }
+    .clients .cms-edit-highlight, .hero .cms-edit-highlight, .contact-whatsapp-panel .cms-edit-highlight { outline-color:rgba(255,255,255,.72)!important; }
 
     .cms-modal {
       position:fixed;
@@ -1233,7 +1243,7 @@
   <div class="toast" id="toast"></div>
 
   <script type="module">
-    const BRAND = {
+    let BRAND = {
       name: 'Confidence Construtora',
       logoBlue: 'https://raw.githubusercontent.com/glaucodeveloper/proposta-confidence/main/imagens/logo_oficial_aplicacao_azul.png',
       logoLight: 'https://raw.githubusercontent.com/glaucodeveloper/proposta-confidence/main/imagens/logo_oficial_aplicacao_clara.png',
@@ -1248,12 +1258,12 @@
       owner: 'glaucodeveloper',
       repo: 'confidenceconstrutora',
       branch: 'main',
-      contentPath: 'content/site-content.json',
-      uploadDir: 'uploads'
+      contentPath: 'data/site-data.json',
+      uploadDir: 'assets/uploads'
     });
     const CMS_SESSION_KEY = 'confidence.cms.pat';
 
-    const WORKS = [
+    let WORKS = [
       {
         slug:'campo-esportivo-vitoria-da-conquista',
         name:'Complexo esportivo',
@@ -1311,6 +1321,51 @@
     ];
 
     const CITIES = [...new Set(WORKS.map(work => work.city))].map(name => ({name}));
+    let SITE_DATA = {
+      version: 2,
+      brand: BRAND,
+      works: WORKS,
+      contactPanel: {
+        background: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=86',
+        eyebrow: 'Confidence Construtora',
+        title: 'Estamos disponíveis para conversar.',
+        description: 'Entre em contato para dúvidas, informações, propostas, parcerias ou qualquer outra mensagem para nossa equipe.',
+        items: [
+          {id:'whatsapp',label:'WhatsApp',value:BRAND.phone},
+          {id:'email',label:'E-mail',value:BRAND.email},
+          {id:'endereco',label:'Endereço',value:BRAND.address}
+        ]
+      },
+      text: {},
+      images: {},
+      updatedAt: null
+    };
+
+    const publicRepoUrl = path => new URL(path, location.href.split('#')[0]).href;
+
+    async function loadPublicSiteData(){
+      try {
+        const response = await fetch(`${publicRepoUrl(CMS_CONFIG.contentPath)}?v=${Date.now()}`, {cache:'no-store'});
+        if(!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        SITE_DATA = {
+          ...SITE_DATA,
+          ...data,
+          brand: {...BRAND, ...(data.brand || {})},
+          works: Array.isArray(data.works) && data.works.length ? data.works : WORKS,
+          contactPanel: {...SITE_DATA.contactPanel, ...(data.contactPanel || {}), items:Array.isArray(data.contactPanel?.items) ? data.contactPanel.items : SITE_DATA.contactPanel.items},
+          text: {...(data.text || {})},
+          images: {...(data.images || {})}
+        };
+        BRAND = SITE_DATA.brand;
+        WORKS = SITE_DATA.works;
+      } catch(error) {
+        console.warn('data/site-data.json indisponível; usando dados incorporados.', error);
+      }
+    }
+
+    await loadPublicSiteData();
+
     const HERO_SLIDES = WORKS.slice(0, 5).map(work => ({ image: work.cover, city: work.city, name: work.name }));
 
     function* stateIterator(initial) {
@@ -1612,11 +1667,58 @@
     }
     customElements.define('site-footer', SiteFooter);
 
+    function contactPanelData(){
+      cmsState.content.contactPanel ||= {...SITE_DATA.contactPanel};
+      cmsState.content.contactPanel.items ||= [];
+      return cmsState.content.contactPanel;
+    }
+
+    const contactItemId = value => String(value || 'info').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') || `info-${Date.now()}`;
+
+    function cmsRefreshHome(){
+      const home=document.querySelector('home-view');
+      if(!home) return;
+      home._heroDispose?.();
+      home.render();
+      home._heroDispose=mountHeroSlideshow(home);
+      cmsApply(home);
+    }
+
+    async function cmsAddContactInfo(){
+      if(!cmsState.token) { navigateLogin(); return; }
+      const label=prompt('Nome da informação (ex.: Telefone, CREA, Atendimento):','');
+      if(label===null || !label.trim()) return;
+      const value=prompt(`Valor para ${label.trim()}:`,'');
+      if(value===null) return;
+      const panel=contactPanelData();
+      let id=contactItemId(label);
+      if(panel.items.some(item=>item.id===id)) id=`${id}-${Date.now().toString(36)}`;
+      panel.items.push({id,label:label.trim(),value:value.trim()});
+      SITE_DATA.contactPanel=panel;
+      try { await cmsPersist('chore(cms): adicionar informação de contato'); cmsRefreshHome(); }
+      catch(error){ console.error(error); alert(error.message); }
+    }
+
+    async function cmsRemoveContactInfo(id){
+      if(!cmsState.token) { navigateLogin(); return; }
+      const panel=contactPanelData();
+      const item=panel.items.find(entry=>entry.id===id);
+      if(!item || !confirm(`Remover ${item.label}?`)) return;
+      panel.items=panel.items.filter(entry=>entry.id!==id);
+      SITE_DATA.contactPanel=panel;
+      try { await cmsPersist('chore(cms): remover informação de contato'); cmsRefreshHome(); }
+      catch(error){ console.error(error); alert(error.message); }
+    }
+
     class HomeView extends HTMLElement {
       connectedCallback(){
         this.render();
         this._heroDispose = mountHeroSlideshow(this);
-        this.addEventListener('click', this._onClick = e=>{ const anchor=e.target.closest('[data-go]'); if(anchor) navigateHome(anchor.dataset.go); });
+        this.addEventListener('click', this._onClick = e=>{
+          const add=e.target.closest('[data-cms-contact-add]'); if(add){ e.preventDefault(); cmsAddContactInfo(); return; }
+          const remove=e.target.closest('[data-cms-contact-remove]'); if(remove){ e.preventDefault(); cmsRemoveContactInfo(remove.dataset.cmsContactRemove); return; }
+          const anchor=e.target.closest('[data-go]'); if(anchor) navigateHome(anchor.dataset.go);
+        });
         this.addEventListener('submit', this._onSubmit = e=>{
           const form=e.target.closest('[data-whatsapp-form]');
           if(!form) return;
@@ -1764,12 +1866,15 @@
                   <button class="whatsapp-submit" type="submit"><span aria-hidden="true">↗</span> Abrir no WhatsApp</button>
                 </div>
               </form>
-              <aside class="contact-whatsapp-panel" data-cms-background>
+              <aside class="contact-whatsapp-panel" data-cms-background data-cms-key="contact-panel-background" style="background-image:linear-gradient(180deg,rgba(7,40,67,.22),rgba(7,40,67,.94)),url('${escapeHTML(contactPanelData().background || SITE_DATA.contactPanel.background)}')">
                 <div class="whatsapp-mark" aria-hidden="true">W</div>
-                <div class="eyebrow">Confidence Construtora</div>
-                <h3>Estamos disponíveis para conversar.</h3>
-                <p>Entre em contato para dúvidas, informações, propostas, parcerias ou qualquer outra mensagem para nossa equipe.</p>
-                <div class="contact-data"><div class="contact-row"><span>WhatsApp</span><strong>${BRAND.phone}</strong></div><div class="contact-row"><span>E-mail</span><strong>${BRAND.email}</strong></div><div class="contact-row"><span>Endereço</span><strong>${BRAND.address}</strong></div></div>
+                <div class="eyebrow" data-cms-key="contact-panel-eyebrow">${escapeHTML(contactPanelData().eyebrow || '')}</div>
+                <h3 data-cms-key="contact-panel-title">${escapeHTML(contactPanelData().title || '')}</h3>
+                <p data-cms-key="contact-panel-description">${escapeHTML(contactPanelData().description || '')}</p>
+                <div class="contact-data">
+                  ${(contactPanelData().items || []).map(item=>`<div class="contact-row" data-contact-info="${escapeHTML(item.id)}"><span data-cms-key="contact-item-${escapeHTML(item.id)}-label">${escapeHTML(item.label)}</span><strong data-cms-key="contact-item-${escapeHTML(item.id)}-value">${escapeHTML(item.value)}</strong><button class="cms-contact-remove" type="button" data-cms-contact-remove="${escapeHTML(item.id)}" title="Remover informação" aria-label="Remover ${escapeHTML(item.label)}">×</button></div>`).join('')}
+                </div>
+                <div class="cms-contact-list-controls"><button class="cms-contact-add" type="button" data-cms-contact-add>+ Adicionar informação</button></div>
               </aside>
             </article>
           </div></section>
@@ -1780,7 +1885,7 @@
 
 
     const cmsState = {
-      content: { version:1, text:{}, images:{} },
+      content: {...SITE_DATA, text:{...(SITE_DATA.text||{})}, images:{...(SITE_DATA.images||{})}},
       loaded: false,
       token: sessionStorage.getItem(CMS_SESSION_KEY) || '',
       saving: false
@@ -1919,13 +2024,11 @@
     }
 
     async function cmsLoad() {
-      try {
-        const response = await fetch(`${cmsRawUrl(CMS_CONFIG.contentPath)}?v=${Date.now()}`, {cache:'no-store'});
-        if (response.ok) {
-          const data=await response.json();
-          cmsState.content={version:1,text:{},images:{},...data,text:{...(data.text||{})},images:{...(data.images||{})}};
-        }
-      } catch(error) { console.warn('CMS content indisponível; usando conteúdo incorporado.', error); }
+      cmsState.content = {
+        ...SITE_DATA,
+        text: {...(SITE_DATA.text || {})},
+        images: {...(SITE_DATA.images || {})}
+      };
       cmsState.loaded=true;
       cmsApply(document);
       window.dispatchEvent(new CustomEvent('cms-content-loaded'));
@@ -1956,7 +2059,7 @@
       else if(current.status!==404) throw new Error(`Falha ao ler conteúdo atual (${current.status}).`);
       const payload={
         message,
-        content:utf8ToBase64(JSON.stringify({...cmsState.content,updatedAt:new Date().toISOString()},null,2)),
+        content:utf8ToBase64(JSON.stringify({...cmsState.content,brand:BRAND,works:WORKS,contactPanel:contactPanelData(),updatedAt:new Date().toISOString()},null,2)),
         branch:CMS_CONFIG.branch
       };
       if(sha) payload.sha=sha;
@@ -1987,7 +2090,7 @@
       });
       if(!response.ok) throw new Error(`Upload falhou (${response.status}).`);
       const result=await response.json();
-      const url=`${cmsRawUrl(path)}?v=${result.content?.sha || Date.now()}`;
+      const url=`${publicRepoUrl(path)}?v=${result.content?.sha || Date.now()}`;
       cmsState.content.images ||= {};
       cmsState.content.images[key]=url;
       await cmsPersist(`chore(cms): aplicar imagem ${safeName || 'imagem'}`);
@@ -2002,7 +2105,7 @@
           <img class="cms-login-logo" src="${BRAND.logoBlue}" alt="Confidence Construtora">
           <div class="eyebrow">Área de edição</div>
           <h1>Editar o site.</h1>
-          <p>Entre com um GitHub Personal Access Token com acesso de leitura e escrita ao repositório <strong>${CMS_CONFIG.owner}/${CMS_CONFIG.repo}</strong>. A chave fica somente nesta sessão do navegador e é enviada apenas à API do GitHub.</p>
+          <p>A leitura pública do site não exige autenticação. Informe um GitHub Personal Access Token somente para habilitar alterações e uploads no repositório <strong>${CMS_CONFIG.owner}/${CMS_CONFIG.repo}</strong>. A chave fica somente nesta sessão do navegador e é enviada apenas à API do GitHub.</p>
           <div class="cms-login-field"><label for="cms-pat">GitHub PAT</label><input id="cms-pat" name="pat" type="password" autocomplete="off" spellcheck="false" required placeholder="github_pat_… ou ghp_…"></div>
           <div class="cms-login-actions"><button class="cms-login-back" type="button" data-cms-back>Voltar ao site</button><button class="cms-login-submit" type="submit">Ativar modo de edição</button></div>
           <div class="cms-login-status" data-cms-login-status role="status"></div>
@@ -2071,14 +2174,14 @@
       }
       activate(){
         if(!cmsState.token) return;
-        this.active=true; this.toolbar.hidden=false;
+        this.active=true; this.toolbar.hidden=false; document.body.classList.add('cms-editing');
         document.addEventListener('pointermove',this.onPointerMove,{passive:true});
         window.addEventListener('scroll',this.onScroll,{passive:true,capture:true});
         window.addEventListener('resize',this.onScroll,{passive:true});
         cmsApply(document); this.setStatus('Modo edição');
       }
       deactivate(){
-        this.active=false; this.toolbar.hidden=true; this.hideControls(); this.closeModal();
+        this.active=false; this.toolbar.hidden=true; document.body.classList.remove('cms-editing'); this.hideControls(); this.closeModal();
         document.removeEventListener('pointermove',this.onPointerMove);
         window.removeEventListener('scroll',this.onScroll,true); window.removeEventListener('resize',this.onScroll);
       }
@@ -2101,11 +2204,13 @@
       }
       onPointerMove(event){
         if(!this.active || this.modal.classList.contains('open')) return;
-        if(event.target.closest?.('.cms-hover-control,.cms-toolbar')) return;
-        const image=this.imageCandidate(event.target);
-        if(image){ this.setImageTarget(image); this.clearTextTarget(); return; }
+        if(event.target.closest?.('.cms-hover-control,.cms-toolbar,.cms-contact-remove,.cms-contact-add')) return;
+        const img=event.target.closest?.('img');
+        if(img && !img.closest('.cms-toolbar,.cms-modal,.cms-login')) { this.setImageTarget({el:img,kind:'image'}); this.clearTextTarget(); return; }
         const text=this.textCandidate(event.target);
         if(text){ this.setTextTarget(text); this.clearImageTarget(); return; }
+        const bg=event.target.closest?.('[data-cms-background]');
+        if(bg && !bg.closest('.cms-toolbar,.cms-modal,.cms-login')) { this.setImageTarget({el:bg,kind:'background'}); this.clearTextTarget(); return; }
         this.hideControls();
       }
       onScroll(){ if(this.textTarget) this.position(this.textBtn,this.textTarget); if(this.imageTarget) this.position(this.imageBtn,this.imageTarget); }
@@ -2127,6 +2232,16 @@
         if(!this.modalTarget)return;
         const target=this.modalTarget; const key=cmsKeyFor(target,'text'); const html=sanitizeRichHTML(this.rich.innerHTML);
         cmsState.content.text ||= {}; cmsState.content.text[key]=html; target.innerHTML=html;
+        const explicit=target.dataset?.cmsKey || '';
+        const panel=contactPanelData();
+        if(explicit==='contact-panel-eyebrow') panel.eyebrow=target.textContent.trim();
+        else if(explicit==='contact-panel-title') panel.title=target.textContent.trim();
+        else if(explicit==='contact-panel-description') panel.description=target.textContent.trim();
+        else {
+          const match=explicit.match(/^contact-item-(.+)-(label|value)$/);
+          if(match){ const item=panel.items.find(entry=>entry.id===match[1]); if(item) item[match[2]]=target.textContent.trim(); }
+        }
+        cmsState.content.contactPanel=panel; SITE_DATA.contactPanel=panel;
         this.closeModal();
         try { await cmsPersist('chore(cms): editar texto do site'); }
         catch(error){ console.error(error); alert(error.message); this.setStatus('Erro ao salvar'); }
@@ -2137,6 +2252,7 @@
         try {
           const url=await cmsUploadImage(file,key);
           if(kind==='image') target.src=url; else replaceBackgroundUrl(target,url);
+           if(target.dataset?.cmsKey==='contact-panel-background') { const panel=contactPanelData(); panel.background=url; cmsState.content.contactPanel=panel; SITE_DATA.contactPanel=panel; await cmsPersist('chore(cms): atualizar fundo do contato'); }
         } catch(error){ console.error(error); alert(error.message); this.setStatus('Erro no upload'); }
       }
     }
