@@ -429,10 +429,21 @@
     ]
   },
   "text": {
-    "text:contact-item-instagram-value": "@ConstrutoraConfidence"
+    "text:contact-item-instagram-value": "@ConstrutoraConfidence",
+    "text:fixed-nav:fixed-nav>header.nav>div.nav-inner>nav[aria-label=principal]>a[data-section=obras]": "Atuações",
+    "text:fixed-nav:fixed-nav>header.nav>div.nav-inner>nav[aria-label=principal]>a[data-section=clientes]": "Contratantes",
+    "text:fixed-nav:fixed-nav>header.nav>div.nav-inner>nav[aria-label=principal]>a[data-section=institucional]": "Corporativo",
+    "text:clientes:div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-2>div.client-meta>span": "Superintendência dos Desportos do Estado da Bahia",
+    "text:fixed-nav:fixed-nav>header.nav>div.nav-inner>button[data-section=contato]": "Entre em contato conosco",
+    "text:contato:div.screen-inner>header.contact-head>div.eyebrow": "Tem algum projeto em mente?&nbsp;",
+    "text:contato:div.screen-inner>header.contact-head>h2.title": "Entre em contato com a nossa equipe para tirar dúvidas e transformar a ideia do seu projeto em realidade."
   },
-  "images": {},
-  "updatedAt": "2026-09-30T22:26:57.363Z",
+  "images": {
+    "image:clientes:div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-2>div.client-logo-wrap>img.client-logo.sudesb-logo": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-15-658Z-sudesblogo.png?v=3d0e6703ad85936bbced688f8e2f940aca29d3c4",
+    "image:clientes:div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-1>div.client-logo-wrap>img.client-logo.coca": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-17-314Z-coca-cola_logo.svg?v=ef664f97948ac19a57d088ee344c226a3e50a188",
+    "image:certificacoes:div.screen-inner>div.certs-layout>div.cert-board>article.cert-card:nth-1>div.cert-logo-wrap>img.cert-logo": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-18-862Z-2020_12_16_pbqph_colorida_horizontal.png?v=880f9588b2454038c076d21a03953be37ba4781d"
+  },
+  "updatedAt": "2026-10-02T14:43:20.301Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
