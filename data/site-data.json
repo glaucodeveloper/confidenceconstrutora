@@ -457,14 +457,16 @@
     "text:contact-panel-eyebrow": "<u>Confidence Construtora</u>",
     "text:institucional:div.screen-inner>header.institutional-unified-head>div>div.eyebrow": "Quem somos",
     "text:institucional:div.screen-inner>header.institutional-unified-head>div>h2.title": "A confiança que sustenta cada projeto.",
-    "text:institucional:div.screen-inner>header.institutional-unified-head>p.copy": "<span>Atuamos com responsabilidade social e ambiental, garantindo a sustentabilidade em todas as obras&nbsp;</span><span>e contribuindo positivamente para as comunidades onde estamos presentes.</span>"
+    "text:institucional:div.screen-inner>header.institutional-unified-head>p.copy": "<span>Atuamos com responsabilidade social e ambiental, garantindo a sustentabilidade em todas as obras&nbsp;</span><span>e contribuindo positivamente para as comunidades onde estamos presentes.</span>",
+    "text:certificacoes:div.screen-inner>div.certs-layout>div.section-brand-head>div.section-brand-head-copy>h2.title": "Qualidade que se constrói em cada etapa.<br>",
+    "text:certificacoes:div.screen-inner>div.certs-layout>div.section-brand-head>div.section-brand-head-copy>p.copy": "Temos compromisso com a gestão de qualidade, a melhoria contínua e a excelência dos processos que sustentam cada empreendimento, controle e execução, fortalecendo a qualidade e a eficiência em cada projeto."
   },
   "images": {
     "image:clientes:div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-2>div.client-logo-wrap>img.client-logo.sudesb-logo": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-15-658Z-sudesblogo.png?v=3d0e6703ad85936bbced688f8e2f940aca29d3c4",
     "image:clientes:div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-1>div.client-logo-wrap>img.client-logo.coca": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-17-314Z-coca-cola_logo.svg?v=ef664f97948ac19a57d088ee344c226a3e50a188",
     "image:certificacoes:div.screen-inner>div.certs-layout>div.cert-board>article.cert-card:nth-1>div.cert-logo-wrap>img.cert-logo": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-18-862Z-2020_12_16_pbqph_colorida_horizontal.png?v=880f9588b2454038c076d21a03953be37ba4781d"
   },
-  "updatedAt": "2026-10-02T19:58:04.078Z",
+  "updatedAt": "2026-10-02T20:04:41.096Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
