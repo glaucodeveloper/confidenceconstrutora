@@ -403,7 +403,7 @@
   "contactPanel": {
     "background": "assets/WhatsApp Image 2026-09-30 at 11.14.13.jpeg",
     "eyebrow": "Confidence Construtora",
-    "title": "Estamos disponíveis para conversar.",
+    "title": "Estamos prontos para construir o próximo passo com você.",
     "description": "Entre em contato para dúvidas, informações, propostas, parcerias ou qualquer outra mensagem para nossa equipe.",
     "items": [
       {
@@ -442,14 +442,26 @@
     "text:inicio:div.hero-inner>aside.hero-aside>p": "Onde boas ideias encontram quem sabe construir.",
     "text:inicio:div.hero-inner>aside.hero-aside>strong": "<b>Construindo caminhos e marcando presença em cada canto da Bahia.</b>",
     "text:inicio:div.hero-inner>div>div.hero-identity-stage>div.hero-title-phase>h1": "Construímos hoje os espaços&nbsp; que <span>contarão histórias amanhã.</span>",
-    "text:body:span": "Endereço:"
+    "text:body:span": "Endereço:",
+    "text:inicio:div.hero-inner>div>div.hero-identity-stage>div.hero-title-phase>div.eyebrow.light": "Projetos · Engenharia · Construção · Infraestrutura · Transformação&nbsp;",
+    "text:fixed-nav:fixed-nav>header.nav>div.nav-inner>button[data-section=contato]>i": "<b>Vamos construir juntos?</b><br>",
+    "text:fixed-nav:fixed-nav>header.nav>div.nav-inner>button[data-section=contato]>i>b": "Vamos construir juntos?",
+    "text:contato:div.screen-inner>header.contact-head>p.copy": "Escolha o canal que preferir.&nbsp;Através do formulário, sua mensagem será organizada e encaminhada ao WhatsApp para você revisar e enviar com praticidade.",
+    "text:contato:div.screen-inner>article.contact-card>form.contact-form>div.contact-form-head>h3": "Vamos conversar sobre o seu projeto",
+    "text:contato:div.screen-inner>article.contact-card>form.contact-form>div.contact-form-head>span": "Canal de contato com a Confidence Construtora para projetos, obras, parcerias e demais assuntos.",
+    "text:contato:div.screen-inner>article.contact-card>form.contact-form>div.field-grid>div.field:nth-1>label": "Nome completo",
+    "text:contato:div.screen-inner>article.contact-card>form.contact-form>div.field-grid>div.field:nth-2>label": "Empresa ou instituição",
+    "text:contato:div.screen-inner>article.contact-card>form.contact-form>div.field-grid>div.field:nth-3>label": "Telefone ou WhatsApp<br>",
+    "text:contato:div.screen-inner>article.contact-card>form.contact-form>div.field-grid>div.field:nth-4>label": "E-mail para contato",
+    "text:contact-panel-title": "Estamos prontos para construir o próximo passo com você.\n",
+    "text:contact-panel-eyebrow": "<u>Confidence Construtora</u>"
   },
   "images": {
     "image:clientes:div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-2>div.client-logo-wrap>img.client-logo.sudesb-logo": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-15-658Z-sudesblogo.png?v=3d0e6703ad85936bbced688f8e2f940aca29d3c4",
     "image:clientes:div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-1>div.client-logo-wrap>img.client-logo.coca": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-17-314Z-coca-cola_logo.svg?v=ef664f97948ac19a57d088ee344c226a3e50a188",
     "image:certificacoes:div.screen-inner>div.certs-layout>div.cert-board>article.cert-card:nth-1>div.cert-logo-wrap>img.cert-logo": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-18-862Z-2020_12_16_pbqph_colorida_horizontal.png?v=880f9588b2454038c076d21a03953be37ba4781d"
   },
-  "updatedAt": "2026-10-02T19:33:33.235Z",
+  "updatedAt": "2026-10-02T19:48:11.986Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
