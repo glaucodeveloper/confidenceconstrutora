@@ -91,6 +91,24 @@ No modo de edição é possível:
 
 As novas imagens são preparadas em rascunho e enviadas para `assets/uploads/` somente durante o salvamento consolidado.
 
+### Isolamento dos conteúdos por obra
+
+Os textos editáveis dentro de uma página de obra são identificados também pelo `slug` da obra. Assim, seções com o mesmo `id` HTML — por exemplo, `#execucao` — não compartilham o mesmo override do CMS: editar um título ou uma descrição em uma obra não altera os slots das demais.
+
+Na inicialização, o CMS migra overrides antigos `text:execucao:*` para o escopo da obra `areninha-barra-do-choca`, preservando os valores legados dessa página e removendo as chaves globais ambíguas do estado carregado. A migração passa a ser persistida em `data/site-data.json` no próximo salvamento administrativo.
+
+### Verificações do fluxo de obras
+
+Foram verificados visualmente os casos abaixo na publicação e em uma execução local:
+
+- abrir Areninha Barra do Choça, Seabra e Canoagem Ubaitaba e confirmar que cada página mostra títulos, descrições, imagens e quantidade de registros próprios;
+- percorrer registros do início ao fim, incluindo os últimos IDs de cada obra;
+- carregar a migração dos overrides legados e confirmar que os valores são preservados sob a chave da Areninha, sem chaves globais `text:execucao:*` restantes;
+- conferir larguras desktop e móveis (1280, 768, 390 e 320 px), sem rolagem horizontal;
+- conferir as URLs das 50 imagens referenciadas, sem imagens inexistentes.
+
+O teste visual não executa um salvamento autenticado na publicação nem envia dados de teste ao repositório. A gravação final deve ser validada em ambiente administrativo com PAT autorizado, verificando que somente o arquivo JSON e os assets esperados sejam alterados.
+
 ## Rascunho, backups e desfazer
 
 As alterações do CMS não são persistidas imediatamente.
