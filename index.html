@@ -2629,7 +2629,10 @@
 
     function cmsReplaceDeep(value,from,to){
       if(value===from) return to;
-      if(Array.isArray(value)) return value.map(item=>cmsReplaceDeep(item,from,to));
+      if(Array.isArray(value)) {
+        for(let i=0;i<value.length;i+=1) value[i]=cmsReplaceDeep(value[i],from,to);
+        return value;
+      }
       if(value && typeof value==='object') {
         for(const key of Object.keys(value)) value[key]=cmsReplaceDeep(value[key],from,to);
       }
