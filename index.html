@@ -3195,6 +3195,17 @@
       }));
     }
 
+    let activityIdSequence=0;
+    function createActivityId(work) {
+      const existing=new Set((work.activities || []).map(activity=>String(activity.id)));
+      let id;
+      do {
+        const nonce=globalThis.crypto?.randomUUID?.() || `${Date.now().toString(36)}-${(++activityIdSequence).toString(36)}-${Math.random().toString(36).slice(2,8)}`;
+        id=`${work.slug}-${nonce}`;
+      } while(existing.has(id));
+      return id;
+    }
+
     function workPhotos(work) {
       const activities = workActivities(work);
       const fromActivities = activities.map(item=>item.image).filter(Boolean);
@@ -3421,7 +3432,7 @@
         if(status) status.textContent='Adicionando registro ao rascunho…';
         try {
           work.activities ||= [];
-          const id=`${work.slug}-${Date.now().toString(36)}`;
+          const id=createActivityId(work);
           const changeKey=`record-add:${work.slug}:${id}`;
           const image=cmsStageAsset(draft.imageFile,`${changeKey}:image`,`registro-${work.slug}`);
           const preview=draft.imagePreview;
