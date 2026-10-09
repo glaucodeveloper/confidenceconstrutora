@@ -398,6 +398,33 @@
           "description": "Abertura e intervenção no piso ou solo para adequação de infraestrutura e recomposição da área externa."
         }
       ]
+    },
+    {
+      "slug": "reforma-do-estadio-esportivo-cafarnaum",
+      "name": "Reforma do Estádio Esportivo",
+      "city": "Cafarnaum",
+      "state": "Bahia",
+      "type": "Reforma",
+      "summary": "Implantação do sistema de iluminação em LED. Construção da arquibancada. Pavimentação dos acessos principais. Instalação do totem institucional.",
+      "cover": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-09T11-45-12-192Z-whatsapp-image-2026-10-09-at-08.29.21.jpeg?v=da5fe9364dfc6cf95e18d89e0a392507a90db261",
+      "photos": [
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-09T11-45-12-192Z-whatsapp-image-2026-10-09-at-08.29.21.jpeg?v=da5fe9364dfc6cf95e18d89e0a392507a90db261",
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-09T11-45-14-212Z-d.jpeg?v=08838c95e4db90bc4983e02c9ba3c589878ebf59"
+      ],
+      "activities": [
+        {
+          "id": "reforma-do-estadio-esportivo-cafarnaum-e0c2109f-6252-417b-83ba-10fd79aef244",
+          "title": "Implantação do sistema de iluminação em LED.",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-09T11-45-12-192Z-whatsapp-image-2026-10-09-at-08.29.21.jpeg?v=da5fe9364dfc6cf95e18d89e0a392507a90db261",
+          "description": "Implantação do sistema de iluminação em LED, com instalação de postes e luminárias para garantir melhor visibilidade e uso adequado da área esportiva."
+        },
+        {
+          "id": "reforma-do-estadio-esportivo-cafarnaum-c915db4d-7bd9-48cf-928a-7b0461773ef4",
+          "title": "Construção da arquibancada.",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-09T11-45-14-212Z-d.jpeg?v=08838c95e4db90bc4983e02c9ba3c589878ebf59",
+          "description": "Execução da estrutura em alvenaria e concreto, com formação dos degraus e adequação dos níveis para acomodação do público."
+        }
+      ]
     }
   ],
   "contactPanel": {
@@ -478,29 +505,31 @@
     "text:obra-areninha-barra-do-choca:work-detail>main.detail-route>section.detail-workspace>aside[aria-label=informacoes-da-obra]>h1": "Construção de Arena Esportiva",
     "text:obra-areninha-barra-do-choca:work-detail>main.detail-route>section.detail-endcap>div.detail-endcap-inner>h2": "Cada registro corresponde a uma etapa da execução da obra.<span></span>\n",
     "text:obra-areninha-barra-do-choca:work-detail>main.detail-route>section.detail-endcap>div.detail-endcap-inner>p": "<strong>Execução de serviços de escavação, movimentação, nivelamento e regularização do terreno para implantação da arena esportiva.</strong>",
-    "text:execucao:div.detail-execution-inner>header.detail-execution-head>div.detail-execution-intro>p": "A seguir, estão apresentados os registros das atividades e dos serviços efetuados na obra, com a respectiva descrição técnica e o detalhamento de cada etapa executada.",
-    "text:execucao:div.detail-execution-inner>header.detail-execution-head>div.detail-execution-intro>div.detail-execution-meta>span:nth-3": "24 registros de atividade",
     "text:institucional:div.screen-inner>header.institutional-unified-head>p.copy>span:nth-1": "Construir com propósito, entregar com excelência e transformar com responsabilidade.<br>",
     "text:institucional:div.screen-inner>header.institutional-unified-head>p.copy>span:nth-2": "Nosso compromisso vai além da execução de cada obra.",
     "text:institucional:div.screen-inner>div.institutional-stage>div.institutional-side>article.institutional-statement>div.eyebrow": "Nosso caminho",
-    "text:execucao:div.detail-execution-inner>header.detail-execution-head>div>h2#execution-title": "Acompanhe a evolução da obra.",
-    "text:execucao:div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-1>div.service-journey-copy>p": "Execução dos serviços de escavação mecanizada e movimentação do solo na área externa da areninha, com preparação, nivelamento e regularização do terreno para o seguimento da obra.&nbsp;",
-    "text:execucao:div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-1>div.service-journey-copy>h3": "Preparação, terraplenagem e escavação.",
-    "text:execucao:div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-1>figure.service-journey-visual>figcaption.service-journey-caption>span:nth-2": "Preparação e escavação",
-    "text:execucao:div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-2>div.service-journey-copy>h3": "Montagem e instalação do alambrado.",
-    "text:execucao:div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-2>figure.service-journey-visual>figcaption.service-journey-caption>span:nth-2": "Cercamento",
-    "text:execucao:div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-2>div.service-journey-copy>p": "Execução do fechamento perimetral da quadra, com instalação de postes, alambrado e elementos de fixação, visando a delimitação e proteção da área esportiva.<br>(TIRA)",
-    "text:execucao:div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-3>div.service-journey-copy>p": "Execução e montagem da estrutura metálica da areninha, incluindo a instalação dos elementos estruturais da cobertura.&nbsp;",
-    "text:execucao:div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-3>div.service-journey-copy>h3": "Instalação do alambrado e fechamento perimetral.",
-    "text:execucao:div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-3>figure.service-journey-visual>figcaption.service-journey-caption>span:nth-2": "Cercamento",
-    "text:execucao:div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-4>div.service-journey-copy>h3": "Execução de passeio em pavimento intertravado"
+    "text:obra-areninha-barra-do-choca:work-detail>main.detail-route>section#execucao>div.detail-execution-inner>header.detail-execution-head>div.detail-execution-intro>p": "A seguir, estão apresentados os registros das atividades e dos serviços efetuados na obra, com a respectiva descrição técnica e o detalhamento de cada etapa executada.",
+    "text:obra-areninha-barra-do-choca:work-detail>main.detail-route>section#execucao>div.detail-execution-inner>header.detail-execution-head>div.detail-execution-intro>div.detail-execution-meta>span:nth-3": "24 registros de atividade",
+    "text:obra-areninha-barra-do-choca:work-detail>main.detail-route>section#execucao>div.detail-execution-inner>header.detail-execution-head>div>h2#execution-title": "Acompanhe a evolução da obra.",
+    "text:obra-areninha-barra-do-choca:work-detail>main.detail-route>section#execucao>div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-1>div.service-journey-copy>p": "Execução dos serviços de escavação mecanizada e movimentação do solo na área externa da areninha, com preparação, nivelamento e regularização do terreno para o seguimento da obra.&nbsp;",
+    "text:obra-areninha-barra-do-choca:work-detail>main.detail-route>section#execucao>div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-1>div.service-journey-copy>h3": "Preparação, terraplenagem e escavação.",
+    "text:obra-areninha-barra-do-choca:work-detail>main.detail-route>section#execucao>div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-1>figure.service-journey-visual>figcaption.service-journey-caption>span:nth-2": "Preparação e escavação",
+    "text:obra-areninha-barra-do-choca:work-detail>main.detail-route>section#execucao>div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-2>div.service-journey-copy>h3": "Montagem e instalação do alambrado.",
+    "text:obra-areninha-barra-do-choca:work-detail>main.detail-route>section#execucao>div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-2>figure.service-journey-visual>figcaption.service-journey-caption>span:nth-2": "Cercamento",
+    "text:obra-areninha-barra-do-choca:work-detail>main.detail-route>section#execucao>div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-2>div.service-journey-copy>p": "Execução do fechamento perimetral da quadra, com instalação de postes, alambrado e elementos de fixação, visando a delimitação e proteção da área esportiva.<br><br>",
+    "text:obra-areninha-barra-do-choca:work-detail>main.detail-route>section#execucao>div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-3>div.service-journey-copy>p": "Execução e montagem da estrutura metálica da areninha, incluindo a instalação dos elementos estruturais da cobertura.&nbsp;",
+    "text:obra-areninha-barra-do-choca:work-detail>main.detail-route>section#execucao>div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-3>div.service-journey-copy>h3": "Instalação do alambrado e fechamento perimetral.",
+    "text:obra-areninha-barra-do-choca:work-detail>main.detail-route>section#execucao>div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-3>figure.service-journey-visual>figcaption.service-journey-caption>span:nth-2": "Cercamento",
+    "text:obra-areninha-barra-do-choca:work-detail>main.detail-route>section#execucao>div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-4>div.service-journey-copy>h3": "Execução de passeio em pavimento intertravado",
+    "text:obras:section#obras>div.portfolio-region-inner>territory-map>div.territory-grid>div.territory-intro>div.city-columns>div[data-city=barra-do-choca]>span.city-button-copy>a[data-work-link=areninha-barra-do-choca]": "Construção de Arena Esportiva",
+    "text:obras:section#obras>div.portfolio-region-inner>div.portfolio-works-block>works-showcase>div.works-scatter>div.works-grid>button[data-work=areninha-barra-do-choca]>div.work-card-content>h3": "Construção de Arena Esportiva"
   },
   "images": {
     "image:clientes:div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-2>div.client-logo-wrap>img.client-logo.sudesb-logo": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-15-658Z-sudesblogo.png?v=3d0e6703ad85936bbced688f8e2f940aca29d3c4",
     "image:clientes:div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-1>div.client-logo-wrap>img.client-logo.coca": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-17-314Z-coca-cola_logo.svg?v=ef664f97948ac19a57d088ee344c226a3e50a188",
     "image:certificacoes:div.screen-inner>div.certs-layout>div.cert-board>article.cert-card:nth-1>div.cert-logo-wrap>img.cert-logo": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-18-862Z-2020_12_16_pbqph_colorida_horizontal.png?v=880f9588b2454038c076d21a03953be37ba4781d"
   },
-  "updatedAt": "2026-10-05T23:38:04.642Z",
+  "updatedAt": "2026-10-09T11:45:15.969Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
