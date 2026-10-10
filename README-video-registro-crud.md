@@ -1,6 +1,10 @@
 # Confidence CMS: vídeos por registro e CRUD ao lado da ordenação
 
-Atualização integrada à versão atual do `index.html` (blob Git `575aea1e1747bc987f539600789dc8fe7456f945`). Preserva o cache local completo, Markdown, reordenação, carrossel mobile, desfazer e salvamento manual.
+Atualização sobre o commit `477a3e7e44dc780d119d01682a5f9a73021f3da4` (blob Git do `index.html`: `dd9b82da0e9ee4e1b0736cd91b9033b51c1813d4`). Preserva o cache local completo, Markdown, reordenação, carrossel mobile, desfazer e salvamento manual.
+
+## Controles ao passar o mouse nos textos
+
+No modo de edição, os textos de corpo e as descrições das obras exibem os botões **Editar** e **Remover** ao passar o mouse pelo bloco. Os botões entram com transição curta, mantêm realce visível ao receber foco pelo teclado e respeitam a preferência do sistema por movimento reduzido. A remoção continua sendo uma alteração de rascunho que pode ser desfeita.
 
 ## Verificação de mesclagem dos registros publicados
 
