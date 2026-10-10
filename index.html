@@ -2080,6 +2080,55 @@
       .nav .brand .nav-brand-mark {width:41px;height:41px;max-width:41px;}
       .hero .hero-logo {width:min(88vw,520px);padding:0;border-radius:0;background:transparent;box-shadow:none;}
     }
+    /* CONFIDENCE_LANDING_PHOTOS_EDITOR_V1 — editor exclusivo da landing */
+    .landing-photo-rail {display:none;position:absolute;z-index:45;top:calc(var(--nav-h) + 12px);
+      right:clamp(10px,1.6vw,28px);bottom:16px;width:150px;max-height:calc(100% - var(--nav-h) - 28px);
+      flex-direction:column;padding:10px 8px;gap:8px;background:rgba(4,29,52,.95);
+      border:1px solid rgba(225,240,249,.28);border-radius:14px;color:#fff;
+      box-shadow:0 16px 48px rgba(0,0,0,.24);isolation:isolate;}
+    body.cms-editing home-view .landing-photo-rail {display:flex;}
+    .landing-photo-rail header {display:grid;gap:3px;text-align:center;flex:none;}
+    .landing-photo-rail header strong {font-size:12px;font-weight:850;}
+    .landing-photo-rail header span {font-size:10px;color:#bbd5e4;}
+    .landing-photo-rail-list {display:flex;flex-direction:column;gap:7px;flex:1;min-height:0;
+      overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;overscroll-behavior:contain;}
+    .landing-photo-entry {display:flex;align-items:center;flex:none;gap:3px;border:1px solid rgba(255,255,255,.24);
+      background:rgba(255,255,255,.06);padding:4px;border-radius:9px;min-width:0;}
+    .landing-photo-entry.is-target {outline:2px solid #edc779;outline-offset:1px;}
+    .landing-photo-entry.is-dragging {opacity:.55;}
+    .landing-photo-handle {width:23px;min-width:23px;align-self:stretch;border:0;background:rgba(255,255,255,.11);
+      color:#fff;border-radius:6px;cursor:grab;touch-action:none;user-select:none;font-size:16px;}
+    .landing-photo-handle:active{cursor:grabbing;}
+    .landing-photo-thumb {width:60px;height:60px;flex:none;object-fit:cover;border-radius:6px;
+      background:rgba(255,255,255,.1);}
+    .landing-photo-actions {display:flex;flex-direction:column;gap:3px;min-width:0;flex:1;}
+    .landing-photo-actions button,.landing-photo-add,.landing-photo-url {border:1px solid rgba(255,255,255,.28);
+      color:#fff;background:rgba(255,255,255,.1);border-radius:6px;font-weight:700;cursor:pointer;}
+    .landing-photo-actions button {min-height:26px;padding:2px;line-height:1;font-size:13px;}
+    .landing-photo-actions button:hover,.landing-photo-add:hover,.landing-photo-url:hover{background:#21628c;}
+    .landing-photo-actions button:focus-visible,.landing-photo-add:focus-visible,.landing-photo-handle:focus-visible
+      {outline:2px solid #fff;outline-offset:2px;}
+    .landing-photo-add,.landing-photo-url {flex:none;min-height:34px;padding:7px 4px;font-size:11px;}
+    .landing-photo-add:disabled {opacity:.45;cursor:not-allowed;}
+    .landing-photo-rail .landing-photo-note {margin:0;font-size:9px;line-height:1.3;color:#c9dce8;text-align:center;}
+    .landing-photo-rail .landing-photo-empty {font-size:11px;padding:12px 4px;color:#d7e8f0;}
+    body.cms-editing home-view .hero-inner {padding-right:clamp(124px,12vw,175px);}
+    @media(max-width:900px) {
+      body.cms-editing home-view .hero-inner {padding-right:0;}
+      body.cms-editing home-view .hero {padding-bottom:145px;}
+      body.cms-editing home-view .landing-photo-rail {top:auto;left:10px;right:10px;bottom:8px;width:auto;
+        height:125px;max-height:125px;gap:5px;padding:6px 9px;}
+      .landing-photo-rail header {display:flex;justify-content:space-between;align-items:center;}
+      .landing-photo-rail-list {flex-direction:row;overflow-x:auto;overflow-y:hidden;min-height:65px;}
+      .landing-photo-entry {width:115px;min-width:115px;}
+      .landing-photo-thumb {width:48px;height:48px;}
+      .landing-photo-handle {min-width:22px;}
+      .landing-photo-actions button {min-height:22px;}
+      .landing-photo-rail .landing-photo-note {display:none;}
+      .landing-photo-add,.landing-photo-url {position:absolute;bottom:6px;right:8px;min-height:29px;padding:3px 9px;}
+      .landing-photo-url {right:106px;}
+      .landing-photo-rail-list {padding-bottom:30px;}
+    }
   </style>
 </head>
 <body>
@@ -2763,6 +2812,10 @@
     // Reune fotos de todas as obras. Mantem as capas primeiro para nao mudar os
     // primeiros slots editaveis existentes no CMS; distribui os registros em rodadas.
     function heroSlidesFromWorks() {
+      if (Array.isArray(SITE_DATA.heroSlides)) {
+        return SITE_DATA.heroSlides.filter(item=>item && typeof item.image==='string' && item.image.trim())
+          .slice(0,19).map(item=>({image:item.image,city:'',name:'Landing'}));
+      }
       const works = Array.isArray(WORKS) ? WORKS : [];
       const collected = [];
       const seen = new Set();
@@ -3346,11 +3399,170 @@
       cmsRefreshHome();
     }
 
+    /* CONFIDENCE_LANDING_PHOTOS_EDITOR_V1: sequencia propria, nao afeta obras/registro. */
+    function cmsLandingSlideList() {
+      if (Array.isArray(SITE_DATA.heroSlides)) return SITE_DATA.heroSlides;
+      return heroSlidesFromWorks().map((slide,index)=>({
+        id:`inicio-${index+1}`,image:slide.image
+      }));
+    }
+    function cmsLandingSetSlides(items) {
+      SITE_DATA.heroSlides=items;
+      cmsState.content.heroSlides=items;
+      cmsRefreshHome();
+    }
+    function cmsLandingChange(label, apply, newAssetKey=null) {
+      if(!cmsState.token) { navigateLogin(); return; }
+      // Um unico item Desfazer reverte o conjunto de edicoes da landing.
+      const previous=Array.isArray(SITE_DATA.heroSlides) ? cmsClone(SITE_DATA.heroSlides) : null;
+      const originalAssets=new Set(cmsState.pendingAssets.keys());
+      if(newAssetKey)originalAssets.delete(newAssetKey);
+      cmsRegisterChange({key:'landing:hero-slides',label:`Fotos da landing · ${label}`,
+        undo:()=>{
+          if(previous===null){delete SITE_DATA.heroSlides;delete cmsState.content.heroSlides;}
+          else{SITE_DATA.heroSlides=cmsClone(previous);cmsState.content.heroSlides=SITE_DATA.heroSlides;}
+          for(const key of [...cmsState.pendingAssets.keys()]){
+            if(key.startsWith('hero-photo:') && !originalAssets.has(key)) cmsRemovePendingAsset(key);
+          }
+        }
+      });
+      const slides=cmsClone(cmsLandingSlideList());
+      apply(slides);
+      cmsLandingSetSlides(slides);
+    }
+    function cmsLandingMove(fromId,toId) {
+      const items=cmsLandingSlideList();
+      const a=items.findIndex(item=>item.id===fromId);
+      const b=items.findIndex(item=>item.id===toId);
+      if(a<0 || b<0 || a===b) return;
+      cmsLandingChange('ordem ajustada',slides=>{
+        const [entry]=slides.splice(a,1);
+        slides.splice(b,0,entry);
+      });
+    }
+    function cmsLandingRemove(id) {
+      const item=cmsLandingSlideList().find(x=>x.id===id);
+      if(!item || !confirm('Remover esta foto apenas do slideshow da landing?'))return;
+      cmsLandingChange('foto removida',slides=>{
+        const index=slides.findIndex(x=>x.id===id);
+        if(index>=0)slides.splice(index,1);
+      });
+    }
+    function cmsLandingUrl(id=null) {
+      const url=prompt('URL HTTPS da foto da landing:');
+      if(url===null)return;
+      const image=url.trim();
+      if(!/^https:\/\/\S+$/i.test(image)) {alert('Informe uma URL HTTPS valida.');return;}
+      if(!id && cmsLandingSlideList().length>=19){alert('Limite de 19 fotos. Remova uma antes de adicionar.');return;}
+      cmsLandingChange(id?'foto substituida':'foto adicionada',slides=>{
+        const row=id ? slides.find(x=>x.id===id) : null;
+        if(row)row.image=image;
+        else if(!id)slides.push({id:`inicio-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,6)}`,image});
+      });
+    }
+    async function cmsLandingFile(file,id=null) {
+      if(!file)return;
+      if(!file.type.startsWith('image/'))throw new Error('Selecione uma imagem.');
+      if(file.size>15*1024*1024)throw new Error('A imagem deve ter no maximo 15 MB.');
+      if(!id && cmsLandingSlideList().length>=19)throw new Error('Limite de 19 fotos. Remova uma antes de adicionar.');
+      let tempUrl=null;
+      const key=`hero-photo:${Date.now().toString(36)}-${Math.random().toString(36).slice(2,9)}`;
+      try {
+        tempUrl=cmsStageAsset(file,key,'foto-landing');
+        cmsLandingChange(id?'foto substituida':'foto adicionada',slides=>{
+          const row=id ? slides.find(x=>x.id===id) : null;
+          if(row)row.image=tempUrl;
+          else if(!id)slides.push({id:key,image:tempUrl});
+        },key);
+      }catch(error){if(tempUrl)cmsRemovePendingAsset(key);throw error;}
+    }
+    function cmsLandingRailHTML() {
+      if(!cmsState.token)return '';
+      const slides=cmsLandingSlideList();
+      return `<aside class="landing-photo-rail" aria-label="Organizar fotos da landing">
+        <header><strong>Fotos da landing</strong><span>${slides.length} / 19 · arraste ↕</span></header>
+        <div class="landing-photo-rail-list" data-landing-list>
+          ${slides.length ? slides.map((item,index)=>`<div class="landing-photo-entry" data-landing-item="${escapeHTML(item.id)}">
+            <button type="button" class="landing-photo-handle" data-landing-handle title="Arrastar; setas para ordenar" aria-label="Mover foto ${index+1}" >↕</button>
+            <img class="landing-photo-thumb" src="${escapeHTML(item.image)}" alt="Foto ${index+1}" loading="lazy">
+            <div class="landing-photo-actions"><button type="button" data-landing-replace="${escapeHTML(item.id)}" title="Substituir foto" aria-label="Substituir foto ${index+1}">✎</button>
+            <button type="button" data-landing-remove="${escapeHTML(item.id)}" title="Remover foto" aria-label="Remover foto ${index+1}">×</button></div>
+          </div>`).join('') : '<span class="landing-photo-empty">Sem fotos. Adicione a primeira.</span>'}
+        </div>
+        <button class="landing-photo-add" type="button" data-landing-add ${slides.length>=19?'disabled':''}>+ Foto</button>
+        <button class="landing-photo-url" type="button" data-landing-add-url ${slides.length>=19?'disabled':''}>+ URL</button>
+        <input type="file" accept="image/*" data-landing-file hidden>
+        <p class="landing-photo-note">Exclusivo da landing · salvo somente em Salvar alterações</p>
+      </aside>`;
+    }
+    function cmsLandingBindDrag(home) {
+      let drag=null;
+      home.addEventListener('pointerdown',e=>{
+        const handle=e.target.closest('[data-landing-handle]');
+        if(!handle || !cmsState.token || e.button!==0)return;
+        const row=handle.closest('[data-landing-item]');if(!row)return;
+        drag={id:e.pointerId,from:row.dataset.landingItem,target:null,handle,startX:e.clientX,startY:e.clientY,active:false};
+        handle.setPointerCapture?.(e.pointerId);
+      });
+      home.addEventListener('pointermove',e=>{
+        if(!drag || drag.id!==e.pointerId)return;
+        if(!drag.active && Math.hypot(e.clientX-drag.startX,e.clientY-drag.startY)>5)drag.active=true;
+        if(!drag.active)return;
+        e.preventDefault();
+        const row=document.elementFromPoint(e.clientX,e.clientY)?.closest('[data-landing-item]');
+        home.querySelectorAll('.landing-photo-entry.is-target').forEach(el=>el.classList.remove('is-target'));
+        drag.handle.closest('[data-landing-item]')?.classList.add('is-dragging');
+        if(row && row.dataset.landingItem!==drag.from){row.classList.add('is-target');drag.target=row.dataset.landingItem;}
+        else drag.target=null;
+      });
+      const finish=e=>{
+        if(!drag||drag.id!==e.pointerId)return;
+        const {from,target,active}=drag;drag=null;
+        home.querySelectorAll('.landing-photo-entry').forEach(el=>el.classList.remove('is-target','is-dragging'));
+        if(active && target)cmsLandingMove(from,target);
+      };
+      home.addEventListener('pointerup',finish);
+      home.addEventListener('pointercancel',e=>{if(drag?.id===e.pointerId){drag=null;home.querySelectorAll('.landing-photo-entry').forEach(el=>el.classList.remove('is-target','is-dragging'));}});
+      home.addEventListener('keydown',e=>{
+        const handle=e.target.closest('[data-landing-handle]');
+        if(!handle||!['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key))return;
+        e.preventDefault();
+        const row=handle.closest('[data-landing-item]');
+        const items=[...home.querySelectorAll('[data-landing-item]')];
+        const index=items.indexOf(row);
+        const next=index+(['ArrowUp','ArrowLeft'].includes(e.key)?-1:1);
+        if(next<0||next>=items.length)return;
+        const to=items[next].dataset.landingItem;
+        const from=row.dataset.landingItem;
+        cmsLandingMove(from,to);
+        home.querySelector(`[data-landing-item="${CSS.escape(from)}"] [data-landing-handle]`)?.focus();
+      });
+    }
+
     class HomeView extends HTMLElement {
       connectedCallback(){
         this.render();
         this._heroDispose = mountHeroSlideshow(this);
+        cmsLandingBindDrag(this);
+        this.addEventListener('change',e=>{
+          const field=e.target.closest('[data-landing-file]');
+          if(!field)return;
+          const file=field.files?.[0];
+          const id=this._landingReplaceId||null;
+          this._landingReplaceId=null;field.value='';
+          cmsLandingFile(file,id).catch(error=>alert(error.message||'Falha ao adicionar foto.'));
+        });
         this.addEventListener('click', this._onClick = e=>{
+          if(e.target.closest('[data-landing-add]')) {
+            e.preventDefault();this._landingReplaceId=null;
+            this.querySelector('[data-landing-file]')?.click();return;
+          }
+          if(e.target.closest('[data-landing-add-url]')){e.preventDefault();cmsLandingUrl();return;}
+          const replace=e.target.closest('[data-landing-replace]');
+          if(replace){e.preventDefault();this._landingReplaceId=replace.dataset.landingReplace;
+            this.querySelector('[data-landing-file]')?.click();return;}
+          const removePhoto=e.target.closest('[data-landing-remove]');
+          if(removePhoto){e.preventDefault();cmsLandingRemove(removePhoto.dataset.landingRemove);return;}
           const add=e.target.closest('[data-cms-contact-add]'); if(add){ e.preventDefault(); this.contactDraft=true; cmsRefreshHome(); requestAnimationFrame(()=>this.querySelector('[data-cms-contact-label]')?.focus()); return; }
           if(e.target.closest('[data-cms-contact-cancel]')) { e.preventDefault(); this.contactDraft=false; cmsRefreshHome(); return; }
           const remove=e.target.closest('[data-cms-contact-remove]'); if(remove){ e.preventDefault(); cmsRemoveContactInfo(remove.dataset.cmsContactRemove); return; }
@@ -3407,6 +3619,7 @@
               <aside class="hero-aside"><strong>Nossa presença na Bahia.</strong><p>Engenharia aplicada em obras que transformam espaços, conectam cidades e permanecem no território.</p></aside>
             </div>
             <div class="hero-indicator">Conheça a Confidence</div>
+            ${cmsLandingRailHTML()}
           </section>
 
           <section class="screen institutional-unified" id="institucional">
@@ -4284,7 +4497,7 @@
       }
       onPointerMove(event){
         if(!this.active || this.modal.classList.contains('open') || this.inlineTarget || this.markdownTarget) return;
-        if(event.target.closest?.('.work-create-route')) { this.hideControls(); return; }
+        if(event.target.closest?.('.work-create-route,.landing-photo-rail')) { this.hideControls(); return; }
         if(event.target.closest?.('.cms-hover-control,.cms-toolbar,.cms-contact-remove,.cms-contact-add,.cms-record-add,.cms-record-remove,.cms-record-modal,.cms-record-create-session,.service-record-carousel,.work-gallery-section,.cms-inline-actions,.cms-contact-inline,.cms-md-panel')) return;
         const img=event.target.closest?.('img');
         if(img && !img.closest('.cms-toolbar,.cms-modal,.cms-login')) { this.setImageTarget({el:img,kind:'image'}); this.clearTextTarget(); return; }
