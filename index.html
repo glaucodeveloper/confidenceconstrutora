@@ -1616,6 +1616,20 @@
     }
 
 
+
+    /* Ordem de cards, somente no CMS */
+    .cms-card-order-handle{display:none;position:absolute;z-index:15;top:10px;right:10px;
+      border:1px solid rgba(255,255,255,.5);border-radius:12px;padding:9px 11px;
+      background:rgba(4,29,52,.92);color:white;box-shadow:0 5px 22px #0004;
+      font-weight:900;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;}
+    body.cms-editing .cms-card-order-handle{display:block;}
+    .cms-card-order-handle:active{cursor:grabbing;}
+    .work-card .cms-card-order-handle{right:10px;top:10px;}
+    .service-journey-item .cms-card-order-handle{right:145px;top:18px;}
+    .work-card.cms-order-target,.service-journey-item.cms-order-target{outline:4px solid #65b6e9;outline-offset:3px;}
+    .work-card.cms-order-dragging,.service-journey-item.cms-order-dragging{opacity:.65;}
+    @media(max-width:600px){.cms-card-order-handle{min-width:44px;min-height:44px;font-size:18px;}}
+
     /* CMS: campos editaveis em linha, sem prompt/modal */
     .work-create-field,.cms-record-draft-field { display:block; cursor:text; }
     .work-create-field > span,.cms-record-draft-field > span {display:block; font-size:10px; color:var(--blue-soft); font-weight:850; letter-spacing:.1em; text-transform:uppercase; }
@@ -1851,7 +1865,71 @@
       .cms-draft-shortcut{left:12px;right:12px;bottom:12px;text-align:center;}
     }
 
-  </style>
+  
+    /* CMS Video Rail — videos by route (home / work), narrow right side */
+    site-video-rail { display:block; }
+    .site-video-rail {
+      position:fixed;top:calc(var(--nav-h) + 10px);right:8px;bottom:12px;width:94px;
+      z-index:1350;display:flex;flex-direction:column;gap:9px;padding:9px 7px;
+      border:1px solid rgba(202,217,227,.8);border-radius:16px;
+      background:rgba(244,247,249,.97);box-shadow:0 12px 45px rgba(4,29,52,.20);
+      backdrop-filter:blur(14px);overflow:hidden;
+    }
+    .site-video-rail[hidden],.site-video-backdrop[hidden],.site-video-compose[hidden] {display:none!important;}
+    .site-video-rail-head {text-align:center;color:var(--blue-dark);font-size:9px;letter-spacing:.1em;font-weight:950;text-transform:uppercase;}
+    .site-video-rail-list {display:flex;flex-direction:column;gap:9px;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;}
+    .site-video-item {position:relative;flex:none;min-width:0;}
+    .site-video-thumb {position:relative;display:block;width:100%;height:112px;background:#061d31;border:1px solid #54758d;padding:0;border-radius:10px;overflow:hidden;cursor:pointer;}
+    .site-video-thumb video {display:block;width:100%;height:100%;object-fit:cover;pointer-events:none;}
+    .site-video-play {position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(180deg,transparent,rgba(0,0,0,.38));color:white;font-size:25px;text-shadow:0 1px 7px #000;}
+    .site-video-name {display:block;font-size:9px;font-weight:850;color:var(--blue-dark);margin-top:4px;line-height:1.2;overflow-wrap:anywhere;}
+    .site-video-badge {position:absolute;top:4px;right:4px;color:#fff;background:rgba(4,29,52,.84);border-radius:4px;font-size:10px;padding:2px 3px;pointer-events:none;}
+    .site-video-admin {display:flex;gap:3px;margin-top:4px;}
+    .site-video-admin button {border:1px solid #adc6d6;background:#fff;border-radius:5px;font-size:9px;line-height:1.15;padding:4px 2px;min-width:0;flex:1;cursor:pointer;}
+    .site-video-admin .site-video-delete {color:#9b2c35;}
+    .site-video-add {flex:none;min-height:44px;border:2px dashed #719bb6;border-radius:10px;background:#eaf2f7;color:var(--blue-dark);font-weight:900;font-size:11px;cursor:pointer;}
+    .site-video-add:hover,.site-video-thumb:hover {outline:2px solid #76b4dd;outline-offset:2px;}
+    .site-video-compose {position:fixed;z-index:6000;top:calc(var(--nav-h) + 12px);right:111px;width:min(370px,calc(100vw - 136px));max-height:calc(100dvh - var(--nav-h) - 28px);overflow:auto;border-radius:16px;background:white;padding:20px;box-shadow:0 18px 70px rgba(3,24,42,.32);border:1px solid #b4cfdf;}
+    .site-video-compose form {display:grid;gap:12px;}
+    .site-video-compose h3 {margin:0;font-size:20px;letter-spacing:-.03em;color:var(--blue-dark);}
+    .site-video-compose label {display:grid;gap:5px;font-size:11px;font-weight:800;color:var(--blue-dark);}
+    .site-video-compose input:not([type=checkbox]) {width:100%;min-width:0;padding:10px;border:1px solid var(--line);border-radius:8px;font-size:12px;}
+    .site-video-compose .site-video-check {display:flex;align-items:center;gap:9px;}
+    .site-video-compose .site-video-check input {width:18px;height:18px;}
+    .site-video-compose small {color:var(--muted);font-weight:500;line-height:1.5;}
+    .site-video-form-actions {display:flex;gap:9px;flex-wrap:wrap;}
+    .site-video-form-actions button {border:1px solid var(--blue);background:var(--blue);color:white;border-radius:9px;padding:10px 12px;font-weight:850;font-size:11px;cursor:pointer;}
+    .site-video-form-actions [data-video-cancel] {background:white;color:var(--blue-dark);}
+    .site-video-error {font-size:11px;color:#a51c30;min-height:15px;}
+    .site-video-backdrop {position:fixed;z-index:7200;inset:0;background:rgba(2,13,27,.9);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:clamp(14px,3vw,36px);gap:13px;}
+    .site-video-backdrop-top {width:min(1160px,94vw);display:flex;align-items:center;justify-content:space-between;gap:20px;color:#fff;}
+    .site-video-backdrop-title {font-size:clamp(16px,2vw,22px);font-weight:850;overflow-wrap:anywhere;}
+    .site-video-close {background:#fff;color:#071f36;border:0;border-radius:50%;width:43px;height:43px;font-size:24px;cursor:pointer;flex:none;}
+    .site-video-player {width:min(1160px,94vw);height:min(79dvh,780px);max-height:79dvh;background:#000;border-radius:12px;object-fit:contain;box-shadow:0 16px 60px #0009;}
+    .site-video-player-note {font-size:11px;color:#c5d7e6;text-align:center;}
+    body.has-site-video-rail home-view {margin-right:110px;}
+    body.has-site-video-rail .detail-route {right:110px;}
+    body.has-site-video-rail .cms-draft-shortcut {right:126px;}
+    body.site-video-viewing {overflow:hidden;}
+    @media(max-width:760px) {
+      .site-video-rail {top:auto;left:8px;right:8px;bottom:6px;width:auto;height:112px;flex-direction:row;align-items:stretch;padding:7px;gap:7px;border-radius:12px;}
+      .site-video-rail-head {writing-mode:vertical-rl;transform:rotate(180deg);align-self:center;font-size:9px;}
+      .site-video-rail-list {flex:1;flex-direction:row;align-items:flex-start;gap:8px;overflow-x:auto;overflow-y:hidden;}
+      .site-video-item {width:78px;}
+      .site-video-thumb {height:72px;}
+      .site-video-name {font-size:8px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
+      .site-video-admin {position:absolute;right:1px;top:47px;left:1px;}
+      .site-video-admin button {font-size:8px;padding:2px 1px;}
+      .site-video-add {width:66px;height:90px;min-height:0;font-size:10px;}
+      .site-video-compose {top:auto;right:8px;left:8px;bottom:126px;width:auto;max-height:calc(100dvh - 160px);}
+      body.has-site-video-rail home-view {margin-right:0;padding-bottom:120px;}
+      body.has-site-video-rail .detail-route {right:0;bottom:120px;}
+      body.has-site-video-rail .cms-toolbar {bottom:124px;max-width:calc(100vw - 18px);}
+      body.has-site-video-rail .cms-draft-shortcut {bottom:185px;left:12px;right:12px;}
+      .site-video-backdrop {padding:10px;}
+      .site-video-player {width:96vw;height:75dvh;}
+    }
+</style>
 </head>
 <body>
   <site-shell></site-shell>
@@ -2087,6 +2165,33 @@
       uploadDir: 'assets/uploads'
     });
     const CMS_SESSION_KEY = 'confidence.cms.pat';
+    const CMS_LOCAL_VIEW_FLAG='confidence.cms.local-view.active.v2';
+    const CMS_LOCAL_VIEW_KEY='confidence.cms.local-view.glaucodeveloper.confidenceconstrutora.v2';
+    const CMS_LOCAL_VERSIONS_KEY='confidence.cms.local-versions.glaucodeveloper.confidenceconstrutora.v2';
+    const CMS_LOCAL_MEDIA_DB='confidence-cms-local-media-v2';
+    const cmsEditorLocalAllowed=()=>!!sessionStorage.getItem(CMS_LOCAL_VIEW_FLAG) && !!sessionStorage.getItem(CMS_SESSION_KEY);
+    function cmsReadStorage(key,fallback=null){try {const raw=localStorage.getItem(key);return raw ? JSON.parse(raw):fallback;}catch(error){console.warn('Cache local indisponível',error);return fallback;}}
+    const cmsLocalMedia=(()=>{
+      let dbPromise;
+      const open=()=>dbPromise ||= new Promise((resolve,reject)=>{
+        if(!('indexedDB' in window)){reject(new Error('IndexedDB indisponível'));return;}
+        const req=indexedDB.open(CMS_LOCAL_MEDIA_DB,1);
+        req.onupgradeneeded=()=>req.result.createObjectStore('pending');
+        req.onsuccess=()=>resolve(req.result);
+        req.onerror=()=>reject(req.error);
+      });
+      const operation=async(mode,key,value)=>{
+        const db=await open();return new Promise((resolve,reject)=>{
+          const transaction=db.transaction('pending',mode);
+          const store=transaction.objectStore('pending');
+          const req=mode==='readonly'?store.get(key):value===null?store.delete(key):store.put(value,key);
+          req.onsuccess=()=>resolve(req.result);
+          req.onerror=()=>reject(req.error);
+        });
+      };
+      return {get:key=>operation('readonly',key),set:(key,value)=>operation('readwrite',key,value),remove:key=>operation('readwrite',key,null)};
+    })();
+
 
     let WORKS = [
           {
@@ -2448,6 +2553,7 @@
       },
       text: {},
       images: {},
+      videos: [],
       updatedAt: null
     };
 
@@ -2476,6 +2582,16 @@
     }
 
     await loadPublicSiteData();
+    if(cmsEditorLocalAllowed()) {
+      const entry=cmsReadStorage(CMS_LOCAL_VIEW_KEY);
+      if(entry?.snapshot?.content && entry.repo==='glaucodeveloper/confidenceconstrutora'){
+        SITE_DATA={...SITE_DATA,...entry.snapshot.content};
+        BRAND={...BRAND,...SITE_DATA.brand};
+        WORKS=Array.isArray(SITE_DATA.works)?SITE_DATA.works:WORKS;
+        CITIES=[...new Set(WORKS.map(w=>w.city))].map(name=>({name}));
+      }
+    }
+
 
     const HERO_SLIDES = WORKS.slice(0, 5).map(work => ({ image: work.cover, city: work.city, name: work.name }));
 
@@ -2759,10 +2875,75 @@
     }
     customElements.define('territory-map', TerritoryMap);
 
+    function cmsInstallCardOrder(root,selector,attribute,onMove){
+      let gesture=null,ignoreClick=false;
+      root.addEventListener('click',e=>{
+        if(ignoreClick && e.target.closest(selector)){e.preventDefault();e.stopImmediatePropagation();ignoreClick=false;}
+      },true);
+      root.addEventListener('pointerdown',e=>{
+        const handle=e.target.closest('[data-cms-order-handle]');
+        if(!cmsState.token || !handle || !root.contains(handle))return;
+        const card=handle.closest(selector);if(!card)return;
+        e.preventDefault();e.stopPropagation();
+        gesture={handle,card,target:null,x:e.clientX,y:e.clientY,active:false,id:e.pointerId};
+        handle.setPointerCapture?.(e.pointerId);
+      },true);
+      root.addEventListener('pointermove',e=>{
+        if(!gesture || gesture.id!==e.pointerId)return;
+        if(Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y)>6)gesture.active=true;
+        if(!gesture.active)return;
+        gesture.card.classList.add('cms-order-dragging');
+        const target=document.elementFromPoint(e.clientX,e.clientY)?.closest(selector);
+        if(target && root.contains(target) && target!==gesture.card)gesture.target=target;
+        root.querySelectorAll('.cms-order-target').forEach(el=>el.classList.remove('cms-order-target'));
+        gesture.target?.classList.add('cms-order-target');
+      },true);
+      const finish=e=>{
+        if(!gesture || gesture.id!==e.pointerId)return;
+        const {card,target,active}=gesture;
+        card.classList.remove('cms-order-dragging');
+        target?.classList.remove('cms-order-target');
+        gesture=null;
+        if(active){ignoreClick=true;setTimeout(()=>ignoreClick=false,200);}
+        if(active && target)onMove(card.getAttribute(attribute),target.getAttribute(attribute));
+      };
+      root.addEventListener('pointerup',finish,true);
+      root.addEventListener('pointercancel',e=>{if(gesture?.id===e.pointerId){root.querySelectorAll('.cms-order-target,.cms-order-dragging').forEach(el=>el.classList.remove('cms-order-target','cms-order-dragging'));gesture=null;}},true);
+      root.addEventListener('keydown',e=>{
+        const handle=e.target.closest('[data-cms-order-handle]');
+        if(!handle || !['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key))return;
+        e.preventDefault();
+        const cards=[...root.querySelectorAll(selector)];const card=handle.closest(selector);const ix=cards.indexOf(card);
+        const next=ix+(['ArrowUp','ArrowLeft'].includes(e.key)?-1:1);
+        if(ix>=0 && next>=0 && next<cards.length)onMove(card.getAttribute(attribute),cards[next].getAttribute(attribute));
+      });
+    }
+    function cmsReorderByKey(array,attribute,source,target){
+      const old=array.map(item=>item[attribute]);
+      const start=array.findIndex(item=>String(item[attribute])===source);
+      const dest=array.findIndex(item=>String(item[attribute])===target);
+      if(start<0 || dest<0 || start===dest)return null;
+      const [moving]=array.splice(start,1);array.splice(dest,0,moving);
+      return old;
+    }
+    function cmsRestoreOrder(array,attribute,order){
+      const indices=new Map(order.map((item,i)=>[String(item),i]));
+      array.sort((a,b)=>(indices.get(String(a[attribute]))??99999)-(indices.get(String(b[attribute]))??99999));
+    }
+
     class WorksShowcase extends HTMLElement {
       connectedCallback(){
         this.render();
+        cmsInstallCardOrder(this,'.work-card','data-work',(src,dst)=>{
+          const original=WORKS.map(w=>w.slug);
+          if(src===dst || !original.includes(src) || !original.includes(dst))return;
+          cmsRegisterChange({key:'works-order',label:'Alterar ordem dos cards de obras',undo:()=>{cmsRestoreOrder(WORKS,'slug',original);SITE_DATA.works=WORKS;cmsState.content.works=WORKS;}});
+          cmsReorderByKey(WORKS,'slug',src,dst);
+          SITE_DATA.works=WORKS;cmsState.content.works=WORKS;
+          this.render();cmsEditor?.updateSaveFooter();cmsQueueLocalPersist();
+        });
         this.addEventListener('click',e=>{
+          if(e.target.closest('[data-cms-order-handle]'))return;
           const add=e.target.closest('[data-cms-add-work]');
           if(add){ e.preventDefault(); navigateNewWork(); return; }
           const card=e.target.closest('[data-work]');
@@ -2771,7 +2952,7 @@
       }
       render(){
         this.innerHTML=`<div class="works-head"><div><div class="eyebrow">Nossas obras</div><h2 class="title">Obras que carregam nossa assinatura.</h2></div><div class="works-count">${WORKS.length} obras selecionadas</div></div>
-        <div class="works-scatter"><svg class="works-network" viewBox="0 0 1200 620" preserveAspectRatio="none" aria-hidden="true"><path d="M150 250 C 260 226, 330 220, 465 195"></path><path d="M470 195 C 610 180, 720 188, 845 240"></path><path d="M250 430 C 360 395, 450 382, 580 365"></path><path d="M600 362 C 735 362, 840 390, 970 430"></path><path d="M468 200 C 500 248, 532 280, 595 338"></path><path d="M842 242 C 786 286, 736 314, 650 356"></path><circle cx="150" cy="250" r="5"></circle><circle cx="470" cy="195" r="5"></circle><circle cx="845" cy="240" r="5"></circle><circle cx="250" cy="430" r="5"></circle><circle cx="600" cy="362" r="5"></circle><circle cx="970" cy="430" r="5"></circle></svg><div class="works-grid">${WORKS.map(work=>`<button class="work-card" data-work="${work.slug}" aria-label="Abrir ${escapeHTML(work.name)}"><img src="${work.cover}" alt="${escapeHTML(work.name)}"><span class="work-arrow">↗</span><div class="work-card-content"><div class="work-city">${escapeHTML(work.city)} · ${escapeHTML(work.type)}</div><h3>${escapeHTML(work.name)}</h3></div></button>`).join('')}<button class="cms-work-add-card" type="button" data-cms-add-work aria-label="Adicionar nova obra"><span class="cms-work-add-plus">+</span><strong>Adicionar obra</strong><span>Abra uma página guiada e clique nos campos para preencher.</span></button></div></div>
+        <div class="works-scatter"><svg class="works-network" viewBox="0 0 1200 620" preserveAspectRatio="none" aria-hidden="true"><path d="M150 250 C 260 226, 330 220, 465 195"></path><path d="M470 195 C 610 180, 720 188, 845 240"></path><path d="M250 430 C 360 395, 450 382, 580 365"></path><path d="M600 362 C 735 362, 840 390, 970 430"></path><path d="M468 200 C 500 248, 532 280, 595 338"></path><path d="M842 242 C 786 286, 736 314, 650 356"></path><circle cx="150" cy="250" r="5"></circle><circle cx="470" cy="195" r="5"></circle><circle cx="845" cy="240" r="5"></circle><circle cx="250" cy="430" r="5"></circle><circle cx="600" cy="362" r="5"></circle><circle cx="970" cy="430" r="5"></circle></svg><div class="works-grid">${WORKS.map(work=>`<button class="work-card" data-work="${work.slug}" aria-label="Abrir ${escapeHTML(work.name)}"><img src="${work.cover}" alt="${escapeHTML(work.name)}"><span class="cms-card-order-handle" data-cms-order-handle role="button" tabindex="0" aria-label="Arrastar para mudar ordem">↕</span><span class="work-arrow">↗</span><div class="work-card-content"><div class="work-city">${escapeHTML(work.city)} · ${escapeHTML(work.type)}</div><h3>${escapeHTML(work.name)}</h3></div></button>`).join('')}<button class="cms-work-add-card" type="button" data-cms-add-work aria-label="Adicionar nova obra"><span class="cms-work-add-plus">+</span><strong>Adicionar obra</strong><span>Abra uma página guiada e clique nos campos para preencher.</span></button></div></div>
         <div class="works-more"><span>Da infraestrutura urbana aos equipamentos públicos, nossas obras mostram a amplitude da nossa execução.</span><button data-open-first="true">Conhecer uma obra →</button></div>`;
         this.querySelector('[data-open-first]')?.addEventListener('click',()=>WORKS[0] && openWork(WORKS[0].slug));
       }
@@ -3041,6 +3222,69 @@
       };
     }
 
+    let cmsLocalPersistTimer=0;
+    function cmsLocalEntry(status='draft'){
+      return {
+        repo:'glaucodeveloper/confidenceconstrutora',schema:2,updatedAt:new Date().toISOString(),status,
+        snapshot:cmsSerializableSnapshot(),
+        changes:cmsState.changes.map(c=>({id:c.id,key:c.key,label:c.label})),
+        media:[...cmsState.pendingAssets.entries()].map(([key,v])=>({key,tempUrl:v.tempUrl,scope:v.scope}))
+      };
+    }
+    function cmsLocalPersist(status='draft'){
+      if(!cmsEditorLocalAllowed())return false;
+      const entry=cmsLocalEntry(status);
+      try{localStorage.setItem(CMS_LOCAL_VIEW_KEY,JSON.stringify(entry));return true;}
+      catch(error){console.warn('Falha ao armazenar versão completa no localStorage',error);cmsEditor?.setStatus('Cache local cheio · alterações mantidas na memória');return false;}
+    }
+    function cmsQueueLocalPersist(){
+      if(!cmsEditorLocalAllowed())return;
+      clearTimeout(cmsLocalPersistTimer);
+      cmsLocalPersistTimer=setTimeout(()=>cmsLocalPersist('draft'),120);
+    }
+    function cmsRecordLocalVersion(){
+      const latest=cmsLocalEntry('saved');
+      try{
+        const history=cmsReadStorage(CMS_LOCAL_VERSIONS_KEY,[]);
+        const safeHistory=Array.isArray(history)?history:[];
+        // Keep current and 6 previous full snapshots. An unavailable quota never destroys latest.
+        const versions=[latest,...safeHistory].slice(0,7);
+        while(versions.length){
+          try{localStorage.setItem(CMS_LOCAL_VERSIONS_KEY,JSON.stringify(versions));break;}
+          catch(error){versions.pop();if(!versions.length)console.warn('Histórico local cheio',error);}
+        }
+      }catch(error){console.warn('Falha no histórico local',error);}
+      return cmsLocalPersist('saved');
+    }
+    async function cmsRestoreLocalVersion({force=false}={}){
+      if(!cmsState.token)return false;
+      const entry=cmsReadStorage(CMS_LOCAL_VIEW_KEY);
+      if(!entry?.snapshot?.content || entry.repo!=='glaucodeveloper/confidenceconstrutora')return false;
+      if(!force && !cmsEditorLocalAllowed())return false;
+      let state=cmsClone(entry.snapshot.content);
+      cmsState.pendingAssets.clear();
+      for(const media of entry.media||[]){
+        try{
+          const cached=await cmsLocalMedia.get(media.key);
+          if(!cached?.file)continue;
+          const url=URL.createObjectURL(cached.file);
+          cmsReplaceDeep(state,media.tempUrl,url);
+          cmsState.pendingAssets.set(media.key,{file:cached.file,tempUrl:url,scope:media.scope});
+        }catch(error){console.warn('Não foi possível restaurar mídia local',error);}
+      }
+      SITE_DATA={...SITE_DATA,...state};
+      BRAND={...BRAND,...SITE_DATA.brand};
+      WORKS=SITE_DATA.works||WORKS;
+      CITIES=[...new Set(WORKS.map(w=>w.city))].map(name=>({name}));
+      cmsState.content={...SITE_DATA};
+      cmsState.loaded=true;
+      if(entry.status==='draft' && entry.changes?.length){
+        cmsState.changes=[{id:'restored-'+Date.now(),key:'restored-local',label:`${entry.changes.length} alteração(ões) restaurada(s) do cache`,undo:()=>{const saved=cmsReadStorage(CMS_LOCAL_VERSIONS_KEY,[])[0];if(saved?.snapshot?.content){SITE_DATA={...SITE_DATA,...cmsClone(saved.snapshot.content)};WORKS=SITE_DATA.works;cmsState.content={...SITE_DATA};}else cmsState.changes=[];}}];
+        cmsState.dirty=true;
+      }else{cmsState.changes=[];cmsState.dirty=false;}
+      cmsRefreshCurrentView();
+      return true;
+    }
     function cmsBackup(label){
       const version={id:`backup-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,7)}`,label,time:new Date().toISOString(),snapshot:cmsSerializableSnapshot()};
       cmsState.backups.unshift(version);
@@ -3057,19 +3301,25 @@
       cmsState.dirty=true;
       cmsEditor?.setStatus(`${cmsState.changes.length} alteração(ões) pendente(s)`);
       cmsEditor?.updateSaveFooter();
+      cmsQueueLocalPersist();
     }
 
     function cmsRemovePendingAsset(key){
       const pending=cmsState.pendingAssets.get(key);
       if(pending?.tempUrl?.startsWith('blob:')) URL.revokeObjectURL(pending.tempUrl);
       cmsState.pendingAssets.delete(key);
+      cmsLocalMedia.remove(key).catch(()=>{});
+      cmsQueueLocalPersist();
     }
 
     function cmsStageAsset(file,key,scope='imagem'){
-      if(!file?.type?.startsWith('image/')) throw new Error('Selecione um arquivo de imagem.');
+      if(!file || !(file.type?.startsWith('image/') || file.type?.startsWith('video/'))) throw new Error('Selecione uma imagem ou vídeo compatível.');
+      if(file.type.startsWith('video/') && file.size > 20*1024*1024) throw new Error('Vídeo excede 20 MB. Comprima em MP4/WebM ou use uma URL hospedada.');
       cmsRemovePendingAsset(key);
       const tempUrl=URL.createObjectURL(file);
       cmsState.pendingAssets.set(key,{file,tempUrl,scope});
+      cmsLocalMedia.set(key,{file,scope}).catch(error=>console.warn('Mídia não entrou no cache local',error));
+      cmsQueueLocalPersist();
       return tempUrl;
     }
 
@@ -3092,7 +3342,9 @@
       if(detail){ detail.render(); cmsApply(detail); }
       document.querySelector('works-showcase')?.render?.();
       cmsApply(document);
+      document.querySelector('site-video-rail')?.render();
       cmsEditor?.updateSaveFooter();
+      cmsQueueLocalPersist();
     }
 
     async function cmsUndoChange(id){
@@ -3105,6 +3357,7 @@
         cmsState.dirty=cmsState.changes.length>0;
         cmsRefreshCurrentView();
         cmsEditor?.setStatus(cmsState.dirty ? `${cmsState.changes.length} alteração(ões) pendente(s)` : 'Modo edição');
+        cmsQueueLocalPersist();
       }
     }
 
@@ -3164,7 +3417,7 @@
 
 
     function cmsIsMarkdownBody(el) {
-      if(!el || el.nodeType!==1 || el.closest('.cms-toolbar,.cms-modal,.cms-md-panel,.cms-save-footer,.cms-login,.cms-inline-actions,.cms-record-create-session,.work-create-route')) return false;
+      if(!el || el.nodeType!==1 || el.closest('.site-video-rail,.site-video-compose,.site-video-backdrop,.cms-toolbar,.cms-modal,.cms-md-panel,.cms-save-footer,.cms-login,.cms-inline-actions,.cms-record-create-session,.work-create-route')) return false;
       return ['P','BLOCKQUOTE','LI'].includes(el.tagName) || el.matches('.copy,.hero-lead,.footer-about,.cms-markdown-body');
     }
 
@@ -3300,7 +3553,7 @@
 
     const cmsIgnoredTextTags = new Set(['SCRIPT','STYLE','INPUT','TEXTAREA','SELECT','OPTION','SVG','PATH']);
     function cmsHasDirectText(el) {
-      if (!el || cmsIgnoredTextTags.has(el.tagName) || el.closest('.cms-md-prose,.cms-md-panel,.asset-retry-action,.cms-toolbar,.cms-modal,.cms-login,.cms-record-modal,.cms-record-create-session')) return false;
+      if (!el || cmsIgnoredTextTags.has(el.tagName) || el.closest('.cms-md-prose,.cms-md-panel,.asset-retry-action,.cms-toolbar,.cms-modal,.cms-login,.cms-record-modal,.cms-record-create-session,[data-cms-order-handle]')) return false;
       if(cmsIsMarkdownBody(el))return true;
       return [...el.childNodes].some(node=>node.nodeType===Node.TEXT_NODE && node.textContent.trim());
     }
@@ -3369,6 +3622,7 @@
         removedBlocks: {...(SITE_DATA.removedBlocks || {})}
       };
       cmsState.loaded=true;
+      if(cmsEditorLocalAllowed())await cmsRestoreLocalVersion();
       cmsApply(document);
       window.dispatchEvent(new CustomEvent('cms-content-loaded'));
     }
@@ -3466,21 +3720,26 @@
       cmsEditor?.setStatus('Salvando alterações…');
       try {
         for(const [key,pending] of [...cmsState.pendingAssets.entries()]) {
+          const draftText=JSON.stringify({works:WORKS,videos:SITE_DATA.videos,content:cmsState.content});
+          if(!draftText.includes(pending.tempUrl)) { cmsRemovePendingAsset(key); continue; }
           const remoteUrl=await cmsUploadAsset(pending.file,pending.scope);
           cmsReplaceDeep(WORKS,pending.tempUrl,remoteUrl);
           cmsReplaceDeep(SITE_DATA,pending.tempUrl,remoteUrl);
           cmsReplaceDeep(cmsState.content,pending.tempUrl,remoteUrl);
           if(pending.tempUrl?.startsWith('blob:')) URL.revokeObjectURL(pending.tempUrl);
           cmsState.pendingAssets.delete(key);
+          cmsLocalMedia.remove(key).catch(()=>{});
         }
         SITE_DATA.works=WORKS;
         cmsState.content.works=WORKS;
         cmsState.content.contactPanel=contactPanelData();
+        cmsLocalPersist('draft');
         await cmsPersistNow(`feat(cms): salvar ${cmsState.changes.length} alterações do site`);
         cmsState.changes=[];
         cmsState.dirty=false;
         cmsState.backups=[];
         try { localStorage.removeItem(CMS_BACKUP_KEY); } catch(_) {}
+        cmsRecordLocalVersion();
         cmsRefreshCurrentView();
         cmsEditor?.setStatus('Salvo no repo');
         setTimeout(()=>cmsEditor?.setStatus('Modo edição'),1800);
@@ -3496,11 +3755,12 @@
     }
 
     async function cmsUploadAsset(file, scope='imagem') {
-      if(!file?.type?.startsWith('image/')) throw new Error('Selecione um arquivo de imagem.');
+      if(!file || !(file.type?.startsWith('image/') || file.type?.startsWith('video/'))) throw new Error('Arquivo de mídia inválido.');
+      if(file.type.startsWith('video/') && file.size > 20*1024*1024) throw new Error('Vídeo excede 20 MB. Comprima ou use uma URL hospedada.');
       const safeName=(file.name || 'imagem').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9._-]+/g,'-').replace(/^-+|-+$/g,'').toLowerCase();
       const stamp=new Date().toISOString().replace(/[:.]/g,'-');
       const path=`${CMS_CONFIG.uploadDir}/${new Date().getFullYear()}/${stamp}-${Math.random().toString(36).slice(2,8)}-${safeName || 'imagem'}`;
-      cmsEditor?.setStatus('Enviando imagem…');
+      cmsEditor?.setStatus('Enviando mídia…');
       const response=await cmsApi(cmsApiUrl(path),{
         method:'PUT', headers:{'Content-Type':'application/json'},
         body:JSON.stringify({message:`chore(cms): upload ${scope} ${safeName || 'imagem'}`,content:bytesToBase64(await file.arrayBuffer()),branch:CMS_CONFIG.branch})
@@ -3540,6 +3800,9 @@
         try {
           await cmsValidateToken(token);
           cmsState.token=token; sessionStorage.setItem(CMS_SESSION_KEY,token);
+          sessionStorage.setItem(CMS_LOCAL_VIEW_FLAG,'1');
+          const restored=await cmsRestoreLocalVersion({force:true});
+          if(!restored)cmsRecordLocalVersion();
           status.textContent='Acesso validado.';
           history.pushState(null,'','#/');
           appState.dispatch({type:'ROUTE',route:'home'});
@@ -3648,6 +3911,7 @@
         if(cmsState.dirty && !confirm('Existem alterações não salvas. Sair e descartar o rascunho?')) return;
         for(const key of [...cmsState.pendingAssets.keys()]) cmsRemovePendingAsset(key);
         cmsState.changes=[]; cmsState.dirty=false;
+        sessionStorage.removeItem(CMS_LOCAL_VIEW_FLAG);
         sessionStorage.removeItem(CMS_SESSION_KEY);
         localStorage.removeItem(CMS_SESSION_KEY);
         localStorage.removeItem('confidence.cms.token');
@@ -3661,6 +3925,7 @@
       }
       updateSaveFooter(){
         if(!this.saveFooter) return;
+        if(cmsState.dirty)cmsQueueLocalPersist();
         const homeAnchor=document.querySelector('[data-cms-home-save-anchor]');
         const host=homeAnchor || document.querySelector('.detail-route') || document.querySelector('.work-create-route') || document.querySelector('home-view') || document.body;
         if(this.saveFooter.parentElement!==host) host.appendChild(this.saveFooter);
@@ -3706,7 +3971,7 @@
       }
       onPointerDown(event){
         if(!this.active || !cmsState.token || event.pointerType!=='touch' || this.markdownTarget || this.inlineTarget)return;
-        if(event.target.closest?.('.cms-hover-control,.cms-toolbar,.cms-md-panel,.cms-save-footer,.cms-inline-actions'))return;
+        if(event.target.closest?.('.site-video-rail,.site-video-compose,.site-video-backdrop,.cms-hover-control,.cms-toolbar,.cms-md-panel,.cms-save-footer,.cms-inline-actions'))return;
         const candidate=this.textCandidate(event.target);
         if(candidate && cmsIsMarkdownBody(candidate)) {this.setTextTarget(candidate);this.clearImageTarget();}
       }
@@ -4199,7 +4464,17 @@
         this.positionTarget=null;
         this.pointerGesture=null;
         this.render();
+        cmsInstallCardOrder(this,'.service-journey-item','data-record-id',(src,dst)=>{
+          const work=this.currentWork();if(!work?.activities)return;
+          const original=work.activities.map(a=>String(a.id));
+          if(src===dst || !original.includes(src) || !original.includes(dst))return;
+          cmsRegisterChange({key:`records-order:${work.slug}`,label:`Alterar ordem dos registros: ${work.name}`,undo:()=>{cmsRestoreOrder(work.activities,'id',original);SITE_DATA.works=WORKS;cmsState.content.works=WORKS;}});
+          cmsReorderByKey(work.activities,'id',src,dst);
+          SITE_DATA.works=WORKS;cmsState.content.works=WORKS;
+          this.render();cmsEditor?.updateSaveFooter();cmsQueueLocalPersist();
+        });
         this.addEventListener('click',e=>{
+          if(e.target.closest('[data-cms-order-handle]'))return;
           const nav=e.target.closest('[data-record-carousel-nav]');
           if(nav){e.preventDefault();this.changeCarousel(nav.dataset.recordCarouselNav,Number(nav.dataset.direction||0));return;}
           const thumb=e.target.closest('[data-record-carousel-thumb]');
@@ -4660,6 +4935,7 @@
                   <div class="cms-record-draft-status" data-record-draft-status role="status"></div>
                 </section>` : ''}
                 ${activities.map((activity,i)=>`<article class="service-journey-item" data-record-id="${escapeHTML(activity.id)}">
+                    <button class="cms-card-order-handle" type="button" data-cms-order-handle aria-label="Arrastar registro para mudar ordem">↕</button>
                     <button class="cms-record-remove" type="button" data-cms-record-remove="${escapeHTML(activity.id)}">Remover registro</button>
                     <div class="service-journey-copy">
                       <span class="service-journey-number">${String(i+1).padStart(2,'0')}</span>
@@ -4712,9 +4988,151 @@
     }
     customElements.define('work-detail', WorkDetail);
 
+
+    /* Video strip, scoped to current page, independently saved via the CMS draft. */
+    class SiteVideoRail extends HTMLElement {
+      connectedCallback(){
+        this._routeHandler=()=>{this.closePlayer();this.composing=false;this.render();};
+        appState.addEventListener('change',this._routeHandler);
+        this._keydown=e=>{if(e.key==='Escape'){this.closePlayer();if(this.composing){this.composing=false;this.render();}}};
+        document.addEventListener('keydown',this._keydown);
+        this.addEventListener('click',this._click=e=>{
+          const open=e.target.closest('[data-video-open]');if(open){this.openPlayer(open.dataset.videoOpen);return;}
+          if(e.target.closest('[data-video-add]')){this.composing=true;this.render();return;}
+          if(e.target.closest('[data-video-cancel]')){this.composing=false;this.render();return;}
+          const remove=e.target.closest('[data-video-remove]');if(remove){this.removeVideo(remove.dataset.videoRemove);return;}
+          const mute=e.target.closest('[data-video-mute]');if(mute){this.toggleMuted(mute.dataset.videoMute);return;}
+        });
+        this.addEventListener('submit',this._submit=e=>{
+          if(!e.target.matches('[data-video-form]'))return;
+          e.preventDefault();this.addVideo(e.target);
+        });
+        this.render();
+      }
+      disconnectedCallback(){
+        appState.removeEventListener('change',this._routeHandler);
+        document.removeEventListener('keydown',this._keydown);
+        if(this._click)this.removeEventListener('click',this._click);
+        if(this._submit)this.removeEventListener('submit',this._submit);
+        this.closePlayer();
+        document.body.classList.remove('has-site-video-rail');
+      }
+      scope(){
+        const route=appState.snapshot.route;
+        if(route==='login' || route==='new-work')return null;
+        if(route==='detail'){
+          const work=WORKS.find(w=>w.slug===appState.snapshot.slug);
+          return work ? {type:'work',key:work.slug,owner:work} : null;
+        }
+        return {type:'home',key:'home',owner:SITE_DATA};
+      }
+      videos(){const sc=this.scope();return sc && Array.isArray(sc.owner.videos) ? sc.owner.videos : [];}
+      syncContent(){
+        SITE_DATA.works=WORKS;cmsState.content.works=WORKS;
+        cmsState.content.videos=SITE_DATA.videos || [];
+      }
+      render(){
+        const sc=this.scope();
+        const videos=this.videos();
+        const edit=!!cmsState.token;
+        const show=!!sc && (videos.length>0 || edit);
+        document.body.classList.toggle('has-site-video-rail',show);
+        if(!show){this.innerHTML='';this.closePlayer();return;}
+        this.innerHTML=`<aside class="site-video-rail" aria-label="Vídeos ${sc.type==='home'?'do site':'da obra'}">
+          <div class="site-video-rail-head">Vídeos</div>
+          <div class="site-video-rail-list">${videos.map(v=>`<div class="site-video-item">
+            <button class="site-video-thumb" type="button" data-video-open="${escapeHTML(v.id)}" aria-label="Reproduzir vídeo ${escapeHTML(v.title||'da obra')}">
+              <video src="${escapeHTML(v.src||'')}" muted playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video>
+              <span class="site-video-play">▶</span><span class="site-video-badge">${v.muted!==false?'◁̸':'♫'}</span>
+            </button>
+            <span class="site-video-name" title="${escapeHTML(v.title||'Vídeo')}">${escapeHTML(v.title||'Vídeo')}</span>
+            ${edit?`<div class="site-video-admin"><button type="button" data-video-mute="${escapeHTML(v.id)}" title="Alternar áudio inicial">${v.muted!==false?'Mutado':'Áudio'}</button><button type="button" class="site-video-delete" data-video-remove="${escapeHTML(v.id)}" title="Remover vídeo">×</button></div>`:''}
+          </div>`).join('')}</div>
+          ${edit?'<button type="button" class="site-video-add" data-video-add>+ Vídeo</button>':''}
+        </aside>${edit&&this.composing?`<div class="site-video-compose" role="region" aria-label="Adicionar vídeo">
+          <form data-video-form><h3>Adicionar vídeo</h3>
+            <label>Título<input name="title" maxlength="100" required placeholder="Ex.: Etapa de acabamento"></label>
+            <label>Arquivo de vídeo<input name="file" type="file" accept="video/mp4,video/webm,video/ogg"></label>
+            <label>Ou URL pública do vídeo<input name="url" type="url" placeholder="https://.../video.mp4"></label>
+            <label class="site-video-check"><input name="muted" type="checkbox" checked> Publicar mutado inicialmente</label>
+            <small>Selecione um arquivo MP4/WebM/OGG (até 20 MB) ou informe uma URL HTTPS. O conteúdo fica em rascunho até clicar em <b>Salvar alterações</b>. Vídeos hospedados externamente dependem da disponibilidade do serviço.</small>
+            <div class="site-video-error" role="alert" data-video-error></div>
+            <div class="site-video-form-actions"><button type="submit">Adicionar ao rascunho</button><button type="button" data-video-cancel>Cancelar</button></div>
+          </form>
+        </div>`:''}`;
+      }
+      addVideo(form){
+        if(!cmsState.token)return;
+        const sc=this.scope();if(!sc)return;
+        const title=String(form.elements.namedItem('title')?.value||'').trim();
+        const file=form.elements.namedItem('file')?.files?.[0]||null;
+        const inputUrl=String(form.elements.namedItem('url')?.value||'').trim();
+        const error=form.querySelector('[data-video-error]');
+        if(!title){error.textContent='Informe um título.';return;}
+        if(!file&&!inputUrl){error.textContent='Selecione um vídeo ou informe uma URL.';return;}
+        if(file && (!['video/mp4','video/webm','video/ogg'].includes(file.type)||file.size>20*1024*1024)){
+          error.textContent='Arquivo inválido ou superior a 20 MB. Use MP4/WebM/OGG ou URL HTTPS.';return;
+        }
+        let src=inputUrl;
+        if(!file){
+          try{const u=new URL(inputUrl);if(u.protocol!=='https:')throw Error('URL deve usar HTTPS');src=u.href;}
+          catch(_){error.textContent='Use uma URL HTTPS de arquivo de vídeo acessível publicamente.';return;}
+        }
+        const id=`video-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,10)}`;
+        const changeKey=`video-add:${sc.key}:${id}`;
+        if(file)src=cmsStageAsset(file,changeKey,`video-${sc.key}`);
+        const video={id,title,src,muted:!!form.elements.namedItem('muted')?.checked};
+        const list=sc.owner.videos ||= [];
+        cmsRegisterChange({key:changeKey,label:`Adicionar vídeo: ${title}`,undo:()=>{
+          sc.owner.videos=(sc.owner.videos||[]).filter(v=>v.id!==id);
+          if(file)cmsRemovePendingAsset(changeKey);
+          this.syncContent();
+        }});
+        list.push(video);this.syncContent();this.composing=false;this.render();
+        cmsEditor?.updateSaveFooter();
+      }
+      removeVideo(id){
+        if(!cmsState.token)return;
+        const sc=this.scope();if(!sc)return;
+        const list=sc.owner.videos||[];const index=list.findIndex(v=>v.id===id);if(index<0)return;
+        const previous=cmsClone(list[index]);
+        if(!confirm(`Remover o vídeo "${previous.title}" da página?`))return;
+        cmsRegisterChange({key:`video-remove:${sc.key}:${id}`,label:`Remover vídeo: ${previous.title}`,undo:()=>{
+          if(!(sc.owner.videos||[]).some(v=>v.id===id))(sc.owner.videos||=[]).splice(Math.min(index,sc.owner.videos.length),0,previous);
+          this.syncContent();
+        }});
+        list.splice(index,1);this.syncContent();this.render();cmsEditor?.updateSaveFooter();
+      }
+      toggleMuted(id){
+        if(!cmsState.token)return;
+        const sc=this.scope();if(!sc)return;
+        const video=(sc.owner.videos||[]).find(v=>v.id===id);if(!video)return;
+        const before=video.muted!==false;
+        cmsRegisterChange({key:`video-mute:${sc.key}:${id}`,label:`Áudio inicial: ${video.title}`,undo:()=>{video.muted=before;this.syncContent();}});
+        video.muted=!before;this.syncContent();this.render();cmsEditor?.updateSaveFooter();
+      }
+      openPlayer(id){
+        const video=this.videos().find(v=>v.id===id);if(!video)return;
+        this.closePlayer();
+        const b=document.createElement('div');b.className='site-video-backdrop';b.setAttribute('role','dialog');b.setAttribute('aria-modal','true');b.setAttribute('aria-label',`Reprodução: ${video.title||'vídeo'}`);
+        b.innerHTML=`<div class="site-video-backdrop-top"><strong class="site-video-backdrop-title">${escapeHTML(video.title||'Vídeo')}</strong><button type="button" class="site-video-close" data-video-close aria-label="Fechar vídeo">×</button></div><video class="site-video-player" controls playsinline src="${escapeHTML(video.src||'')}"></video><div class="site-video-player-note">Use os controles do player para ativar ou silenciar o áudio.</div>`;
+        document.body.appendChild(b);this.backdrop=b;
+        b.addEventListener('click',e=>{if(e.target===b||e.target.closest('[data-video-close]'))this.closePlayer();});
+        const player=b.querySelector('video');player.muted=video.muted!==false;
+        player.play().catch(()=>{});
+        b.querySelector('[data-video-close]')?.focus();
+        document.body.classList.add('site-video-viewing');
+      }
+      closePlayer(){
+        if(this.backdrop){const media=this.backdrop.querySelector('video');if(media)media.pause();this.backdrop.remove();this.backdrop=null;}
+        document.body.classList.remove('site-video-viewing');
+      }
+    }
+    customElements.define('site-video-rail',SiteVideoRail);
+
     class SiteShell extends HTMLElement {
       connectedCallback(){
-        this.innerHTML='<fixed-nav></fixed-nav><div id="route-slot"></div>';
+        this.innerHTML='<fixed-nav></fixed-nav><div id="route-slot"></div><site-video-rail></site-video-rail>';
         this.slotEl=this.querySelector('#route-slot');
         appState.addEventListener('change', this._onState=e=>this.renderRoute(e.detail));
         routeFromHash();
@@ -4751,7 +5169,7 @@
 
     imageRetry.start();
 
-    window.addEventListener('beforeunload',event=>{ if(cmsState.dirty){ event.preventDefault(); event.returnValue=''; } });
+    window.addEventListener('beforeunload',event=>{ if(cmsState.dirty && !cmsLocalPersist('draft')){ event.preventDefault(); event.returnValue=''; } });
     window.addEventListener('hashchange', routeFromHash);
     window.addEventListener('popstate', routeFromHash);
   </script>

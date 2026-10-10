@@ -281,3 +281,8 @@ Atualizacao mesclada sobre a build do commit `5d104864`:
 
 O pacote de publicacao altera somente `index.html` e `README.md`. O conteudo
 `data/site-data.json`, suas fotos, galerias e outros assets existentes ficam inalterados.
+## Cache local prioritario no modo de edicao
+
+O CMS preserva a versao completa do site no `localStorage` para a sessao autenticada de edicao, mesmo depois de Salvar alteracoes. Cada salvamento gera uma nova versao no historico local (ate 7). As midias ainda pendentes sao mantidas no IndexedDB ate serem publicadas. Visitantes publicos usam apenas `data/site-data.json` do repositorio.
+
+A interface administrativa permite arrastar cards de obras e registros para mudar a ordem; no celular funciona por toque e via alcas acessiveis ao teclado. A reordenacao participa do rascunho e pode ser desfeita antes do salvamento.
