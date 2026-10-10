@@ -324,116 +324,6 @@
       ]
     },
     {
-      "slug": "centro-canoagem-ubaitaba",
-      "name": "Reforma do Centro de Canoagem",
-      "city": "Ubaitaba",
-      "state": "Bahia",
-      "type": "Reforma",
-      "summary": "Reforma dos ambientes internos e externos do equipamento, incluindo instalação de forro, recuperação de áreas de circulação, preparação e execução de pisos e intervenções de infraestrutura junto à área externa voltada para o rio.",
-      "cover": "assets/WhatsApp Image 2026-09-30 at 11.14.13.jpeg",
-      "photos": [
-        "assets/WhatsApp Image 2026-09-30 at 11.14.13.jpeg",
-        "assets/WhatsApp Image 2026-09-30 at 11.14.13 (1).jpeg",
-        "assets/WhatsApp Image 2026-09-30 at 11.14.14.jpeg",
-        "assets/WhatsApp Image 2026-09-30 at 11.14.14 (1).jpeg",
-        "assets/WhatsApp Image 2026-09-30 at 11.14.14 (2).jpeg",
-        "assets/WhatsApp Image 2026-09-30 at 11.14.14 (3).jpeg",
-        "assets/WhatsApp Image 2026-09-30 at 11.14.15.jpeg",
-        "assets/WhatsApp Image 2026-09-30 at 11.14.15 (1).jpeg",
-        "assets/WhatsApp Image 2026-09-30 at 11.14.15 (2).jpeg"
-      ],
-      "activities": [
-        {
-          "id": "ubaitaba-001",
-          "title": "Recuperação da circulação externa",
-          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.13.jpeg",
-          "description": "Reforma de ambiente voltado para o rio, com intervenção em esquadrias, abertura e área de circulação externa."
-        },
-        {
-          "id": "ubaitaba-002",
-          "title": "Recuperação da circulação externa",
-          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.13 (1).jpeg",
-          "description": "Recuperação e adequação da circulação externa situada às margens do rio."
-        },
-        {
-          "id": "ubaitaba-003",
-          "title": "Instalação e acabamento de forro",
-          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.14.jpeg",
-          "description": "Instalação de novo forro interno para recuperação e acabamento dos ambientes do centro de canoagem."
-        },
-        {
-          "id": "ubaitaba-004",
-          "title": "Instalação e acabamento de forro",
-          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.14 (1).jpeg",
-          "description": "Execução de forro e acabamento superior em ambiente interno reformado."
-        },
-        {
-          "id": "ubaitaba-005",
-          "title": "Instalação e acabamento de forro",
-          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.14 (2).jpeg",
-          "description": "Continuidade dos serviços de instalação do forro e adequação do acabamento interno."
-        },
-        {
-          "id": "ubaitaba-006",
-          "title": "Instalação e acabamento de forro",
-          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.14 (3).jpeg",
-          "description": "Detalhe do novo revestimento de teto ou forro instalado no ambiente interno."
-        },
-        {
-          "id": "ubaitaba-007",
-          "title": "Execução de piso",
-          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.15.jpeg",
-          "description": "Execução de revestimento de piso na área externa voltada para o rio, com preparação da base e assentamento das peças."
-        },
-        {
-          "id": "ubaitaba-008",
-          "title": "Execução de piso",
-          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.15 (1).jpeg",
-          "description": "Regularização da base e aplicação de argamassa para execução do novo piso da área externa."
-        },
-        {
-          "id": "ubaitaba-009",
-          "title": "Adequação de infraestrutura externa",
-          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.15 (2).jpeg",
-          "description": "Abertura e intervenção no piso ou solo para adequação de infraestrutura e recomposição da área externa."
-        }
-      ]
-    },
-    {
-      "slug": "reforma-do-estadio-esportivo-cafarnaum",
-      "name": "Reforma do Estádio Esportivo",
-      "city": "Cafarnaum",
-      "state": "Bahia",
-      "type": "Reforma",
-      "summary": "Implantação do sistema de iluminação em LED. Construção da arquibancada. Pavimentação dos acessos principais. Instalação do totem institucional.",
-      "cover": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-09T11-45-12-192Z-whatsapp-image-2026-10-09-at-08.29.21.jpeg?v=da5fe9364dfc6cf95e18d89e0a392507a90db261",
-      "photos": [
-        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-09T11-45-12-192Z-whatsapp-image-2026-10-09-at-08.29.21.jpeg?v=da5fe9364dfc6cf95e18d89e0a392507a90db261",
-        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-09T11-45-14-212Z-d.jpeg?v=08838c95e4db90bc4983e02c9ba3c589878ebf59",
-        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T00-57-59-009Z-whatsapp-image-2026-10-09-at-08.29.22-edit.jpeg?v=0b0a8f3b2ce90f9ccd2a17b30424e74b3850f30d"
-      ],
-      "activities": [
-        {
-          "id": "reforma-do-estadio-esportivo-cafarnaum-e0c2109f-6252-417b-83ba-10fd79aef244",
-          "title": "Implantação do sistema de iluminação em LED.",
-          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-09T11-45-12-192Z-whatsapp-image-2026-10-09-at-08.29.21.jpeg?v=da5fe9364dfc6cf95e18d89e0a392507a90db261",
-          "description": "Implantação do sistema de iluminação em LED, com instalação de postes e luminárias para garantir melhor visibilidade e uso adequado da área esportiva."
-        },
-        {
-          "id": "reforma-do-estadio-esportivo-cafarnaum-c915db4d-7bd9-48cf-928a-7b0461773ef4",
-          "title": "Construção da arquibancada.",
-          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-09T11-45-14-212Z-d.jpeg?v=08838c95e4db90bc4983e02c9ba3c589878ebf59",
-          "description": "Execução da estrutura em alvenaria e concreto, com formação dos degraus e adequação dos níveis para acomodação do público."
-        },
-        {
-          "id": "reforma-do-estadio-esportivo-cafarnaum-68fbe158-355c-4815-ae73-c608ad197fdc",
-          "title": "Pavimentação do passeio intertravado.",
-          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T00-57-59-009Z-whatsapp-image-2026-10-09-at-08.29.22-edit.jpeg?v=0b0a8f3b2ce90f9ccd2a17b30424e74b3850f30d",
-          "description": "Execução dos passeios de circulaço em piso intertravado."
-        }
-      ]
-    },
-    {
       "slug": "reforma-canoagem-ubaitaba",
       "name": "Reforma canoagem",
       "city": "Ubaitaba",
@@ -523,6 +413,209 @@
         "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-13-36-091Z-u491de-whatsapp-image-2026-10-09-at-22.20.52d.jpeg?v=321136480081de154fa9419faf136731ac9f90d8"
       ],
       "activities": []
+    },
+    {
+      "slug": "centro-canoagem-ubaitaba",
+      "name": "Reforma do Centro de Canoagem",
+      "city": "Ubaitaba",
+      "state": "Bahia",
+      "type": "Reforma",
+      "summary": "Reforma dos ambientes internos e externos do equipamento, incluindo instalação de forro, recuperação de áreas de circulação, preparação e execução de pisos e intervenções de infraestrutura junto à área externa voltada para o rio.",
+      "cover": "assets/WhatsApp Image 2026-09-30 at 11.14.13.jpeg",
+      "photos": [
+        "assets/WhatsApp Image 2026-09-30 at 11.14.13.jpeg",
+        "assets/WhatsApp Image 2026-09-30 at 11.14.13 (1).jpeg",
+        "assets/WhatsApp Image 2026-09-30 at 11.14.14.jpeg",
+        "assets/WhatsApp Image 2026-09-30 at 11.14.14 (1).jpeg",
+        "assets/WhatsApp Image 2026-09-30 at 11.14.14 (2).jpeg",
+        "assets/WhatsApp Image 2026-09-30 at 11.14.14 (3).jpeg",
+        "assets/WhatsApp Image 2026-09-30 at 11.14.15.jpeg",
+        "assets/WhatsApp Image 2026-09-30 at 11.14.15 (1).jpeg",
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-52-37-081Z-x4fgxj-whatsapp-image-2026-10-09-at-23.48.32.jpeg?v=ed982bbc7c46b35c815c5a4adc133f04f844705c",
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-52-35-219Z-b6z75a-whatsapp-image-2026-10-09-at-23.43.28.jpeg?v=e9e0ddad58169e57474a6f796e6c32092cb04bc1"
+      ],
+      "activities": [
+        {
+          "id": "ubaitaba-001",
+          "title": "Recuperação da circulação externa",
+          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.13.jpeg",
+          "description": "Reforma de ambiente voltado para o rio, com intervenção em esquadrias, abertura e área de circulação externa.",
+          "images": [
+            "assets/WhatsApp Image 2026-09-30 at 11.14.13.jpeg"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ]
+        },
+        {
+          "id": "ubaitaba-002",
+          "title": "Recuperação da circulação externa",
+          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.13 (1).jpeg",
+          "description": "Recuperação e adequação da circulação externa situada às margens do rio.",
+          "images": [
+            "assets/WhatsApp Image 2026-09-30 at 11.14.13 (1).jpeg"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ]
+        },
+        {
+          "id": "ubaitaba-003",
+          "title": "Instalação e acabamento de forro",
+          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.14.jpeg",
+          "description": "Instalação de novo forro interno para recuperação e acabamento dos ambientes do centro de canoagem.",
+          "images": [
+            "assets/WhatsApp Image 2026-09-30 at 11.14.14.jpeg"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ]
+        },
+        {
+          "id": "ubaitaba-004",
+          "title": "Instalação e acabamento de forro",
+          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.14 (1).jpeg",
+          "description": "Execução de forro e acabamento superior em ambiente interno reformado.",
+          "images": [
+            "assets/WhatsApp Image 2026-09-30 at 11.14.14 (1).jpeg"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ]
+        },
+        {
+          "id": "ubaitaba-005",
+          "title": "Instalação e acabamento de forro",
+          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.14 (2).jpeg",
+          "description": "Continuidade dos serviços de instalação do forro e adequação do acabamento interno.",
+          "images": [
+            "assets/WhatsApp Image 2026-09-30 at 11.14.14 (2).jpeg"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ]
+        },
+        {
+          "id": "ubaitaba-006",
+          "title": "Instalação e acabamento de forro",
+          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.14 (3).jpeg",
+          "description": "Detalhe do novo revestimento de teto ou forro instalado no ambiente interno.",
+          "images": [
+            "assets/WhatsApp Image 2026-09-30 at 11.14.14 (3).jpeg"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ]
+        },
+        {
+          "id": "ubaitaba-007",
+          "title": "Execução de piso",
+          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.15.jpeg",
+          "description": "Execução de revestimento de piso na área externa voltada para o rio, com preparação da base e assentamento das peças.",
+          "images": [
+            "assets/WhatsApp Image 2026-09-30 at 11.14.15.jpeg"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ]
+        },
+        {
+          "id": "ubaitaba-008",
+          "title": "Execução de piso",
+          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.15 (1).jpeg",
+          "description": "Regularização da base e aplicação de argamassa para execução do novo piso da área externa.",
+          "images": [
+            "assets/WhatsApp Image 2026-09-30 at 11.14.15 (1).jpeg"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ]
+        },
+        {
+          "id": "ubaitaba-009",
+          "title": "Adequação de infraestrutura externa",
+          "image": "",
+          "description": "Abertura e intervenção no piso ou solo para adequação de infraestrutura e recomposição da área externa.",
+          "images": [],
+          "imagePositions": []
+        },
+        {
+          "id": "centro-canoagem-ubaitaba-7e5b674b-766e-43b0-8d8b-166266eac3c5",
+          "title": "Adequação e implantação do caminho seguro.",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-52-37-081Z-x4fgxj-whatsapp-image-2026-10-09-at-23.48.32.jpeg?v=ed982bbc7c46b35c815c5a4adc133f04f844705c",
+          "images": [
+            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-52-37-081Z-x4fgxj-whatsapp-image-2026-10-09-at-23.48.32.jpeg?v=ed982bbc7c46b35c815c5a4adc133f04f844705c"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ],
+          "description": "Execução de obras para adequação e implantação de caminho seguro nas instalações da fábrica da Coca-Cola."
+        }
+      ],
+      "gallery": [
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-52-35-219Z-b6z75a-whatsapp-image-2026-10-09-at-23.43.28.jpeg?v=e9e0ddad58169e57474a6f796e6c32092cb04bc1"
+      ]
+    },
+    {
+      "slug": "reforma-do-estadio-esportivo-cafarnaum",
+      "name": "Reforma do Estádio Esportivo",
+      "city": "Cafarnaum",
+      "state": "Bahia",
+      "type": "Reforma",
+      "summary": "Implantação do sistema de iluminação em LED. Construção da arquibancada. Pavimentação dos acessos principais. Instalação do totem institucional.",
+      "cover": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-09T11-45-12-192Z-whatsapp-image-2026-10-09-at-08.29.21.jpeg?v=da5fe9364dfc6cf95e18d89e0a392507a90db261",
+      "photos": [
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-09T11-45-12-192Z-whatsapp-image-2026-10-09-at-08.29.21.jpeg?v=da5fe9364dfc6cf95e18d89e0a392507a90db261",
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-09T11-45-14-212Z-d.jpeg?v=08838c95e4db90bc4983e02c9ba3c589878ebf59",
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T00-57-59-009Z-whatsapp-image-2026-10-09-at-08.29.22-edit.jpeg?v=0b0a8f3b2ce90f9ccd2a17b30424e74b3850f30d"
+      ],
+      "activities": [
+        {
+          "id": "reforma-do-estadio-esportivo-cafarnaum-e0c2109f-6252-417b-83ba-10fd79aef244",
+          "title": "Implantação do sistema de iluminação em LED.",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-09T11-45-12-192Z-whatsapp-image-2026-10-09-at-08.29.21.jpeg?v=da5fe9364dfc6cf95e18d89e0a392507a90db261",
+          "description": "Implantação do sistema de iluminação em LED, com instalação de postes e luminárias para garantir melhor visibilidade e uso adequado da área esportiva."
+        },
+        {
+          "id": "reforma-do-estadio-esportivo-cafarnaum-c915db4d-7bd9-48cf-928a-7b0461773ef4",
+          "title": "Construção da arquibancada.",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-09T11-45-14-212Z-d.jpeg?v=08838c95e4db90bc4983e02c9ba3c589878ebf59",
+          "description": "Execução da estrutura em alvenaria e concreto, com formação dos degraus e adequação dos níveis para acomodação do público."
+        },
+        {
+          "id": "reforma-do-estadio-esportivo-cafarnaum-68fbe158-355c-4815-ae73-c608ad197fdc",
+          "title": "Pavimentação do passeio intertravado.",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T00-57-59-009Z-whatsapp-image-2026-10-09-at-08.29.22-edit.jpeg?v=0b0a8f3b2ce90f9ccd2a17b30424e74b3850f30d",
+          "description": "Execução dos passeios de circulaço em piso intertravado."
+        }
+      ]
     }
   ],
   "contactPanel": {
@@ -621,17 +714,25 @@
     "text:obra-areninha-barra-do-choca:work-detail>main.detail-route>section#execucao>div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-4>div.service-journey-copy>h3": "Execução de passeio em pavimento intertravado",
     "text:obras:section#obras>div.portfolio-region-inner>territory-map>div.territory-grid>div.territory-intro>div.city-columns>div[data-city=barra-do-choca]>span.city-button-copy>a[data-work-link=areninha-barra-do-choca]": "Construção de Arena Esportiva",
     "text:obras:section#obras>div.portfolio-region-inner>div.portfolio-works-block>works-showcase>div.works-scatter>div.works-grid>button[data-work=areninha-barra-do-choca]>div.work-card-content>h3": "Construção de Arena Esportiva",
-    "text:obra-reforma-canoagem-ubaitaba:work-detail>main.detail-route>section#execucao>div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-2>div.service-journey-copy>p": "Instalação de revestimento antiderrapante."
+    "text:obra-reforma-canoagem-ubaitaba:work-detail>main.detail-route>section#execucao>div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-2>div.service-journey-copy>p": "Instalação de revestimento antiderrapante.",
+    "text:obra-centro-canoagem-ubaitaba:work-detail>main.detail-route>section.detail-workspace>aside[aria-label=informacoes-da-obra]>div.eyebrow": "Simões Filho· Bahia",
+    "text:obra-centro-canoagem-ubaitaba:work-detail>main.detail-route>section.detail-workspace>aside[aria-label=informacoes-da-obra]>h1": "Adequações de segurança."
   },
   "images": {
     "image:clientes:div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-2>div.client-logo-wrap>img.client-logo.sudesb-logo": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-15-658Z-sudesblogo.png?v=3d0e6703ad85936bbced688f8e2f940aca29d3c4",
     "image:clientes:div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-1>div.client-logo-wrap>img.client-logo.coca": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-17-314Z-coca-cola_logo.svg?v=ef664f97948ac19a57d088ee344c226a3e50a188",
-    "image:certificacoes:div.screen-inner>div.certs-layout>div.cert-board>article.cert-card:nth-1>div.cert-logo-wrap>img.cert-logo": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-18-862Z-2020_12_16_pbqph_colorida_horizontal.png?v=880f9588b2454038c076d21a03953be37ba4781d"
+    "image:certificacoes:div.screen-inner>div.certs-layout>div.cert-board>article.cert-card:nth-1>div.cert-logo-wrap>img.cert-logo": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-18-862Z-2020_12_16_pbqph_colorida_horizontal.png?v=880f9588b2454038c076d21a03953be37ba4781d",
+    "image:obra-centro-canoagem-ubaitaba:work-detail>main.detail-route>section.detail-workspace>div[aria-label=galeria-de-imagens-da-obra]>div.detail-gallery-grid>figure.detail-gallery-item:nth-1>img": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-52-31-843Z-xl35lc-whatsapp-image-2026-10-09-at-23.48.32.jpeg?v=ed982bbc7c46b35c815c5a4adc133f04f844705c",
+    "image:obra-centro-canoagem-ubaitaba:work-detail>main.detail-route>section.detail-workspace>div[aria-label=galeria-de-imagens-da-obra]>div.detail-gallery-grid>figure.detail-gallery-item:nth-2>img": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-52-28-976Z-vvh3uh-whatsapp-image-2026-10-09-at-23.34.17.jpeg?v=00db8676b1a3fe4c2d11c12cc80ea971de0739b9",
+    "image:obra-centro-canoagem-ubaitaba:work-detail>main.detail-route>section.detail-workspace>div[aria-label=galeria-de-imagens-da-obra]>div.detail-gallery-grid>figure.detail-gallery-item:nth-3>img": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-52-33-470Z-spjks1-whatsapp-image-2026-10-09-at-23.47.34.jpeg?v=d6ee23c437fd210759342dfe72ce997c4c7f51b0"
   },
-  "updatedAt": "2026-10-10T02:13:38.579Z",
+  "videos": [],
+  "updatedAt": "2026-10-10T02:52:38.369Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
     "activities": 50
-  }
+  },
+  "markdown": {},
+  "removedBlocks": {}
 }
