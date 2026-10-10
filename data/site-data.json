@@ -325,7 +325,7 @@
     },
     {
       "slug": "reforma-canoagem-ubaitaba",
-      "name": "Reforma canoagem",
+      "name": "Reforma do Centro de Canoagem",
       "city": "Ubaitaba",
       "state": "Bahia",
       "type": "Reforma",
@@ -570,7 +570,7 @@
     "image:obra-centro-canoagem-ubaitaba:work-detail>main.detail-route>section.detail-workspace>div[aria-label=galeria-de-imagens-da-obra]>div.detail-gallery-grid>figure.detail-gallery-item:nth-3>img": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-52-33-470Z-spjks1-whatsapp-image-2026-10-09-at-23.47.34.jpeg?v=d6ee23c437fd210759342dfe72ce997c4c7f51b0"
   },
   "videos": [],
-  "updatedAt": "2026-10-10T11:29:54.909Z",
+  "updatedAt": "2026-10-10T11:31:32.848Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
