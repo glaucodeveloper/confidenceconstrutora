@@ -465,7 +465,8 @@
         "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T11-56-10-708Z-fn0y5k-whatsapp-image-2026-10-09-at-23.48.32.jpeg?v=217ca413f9eecb5f981d53e63632e3882655c1c4",
         "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-01-12-599Z-47a14c-d.jpeg?v=98de862f3ad98305e1598091337a953a6acb20af",
         "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-01-14-689Z-tc23iw-whatsapp-image-2026-10-09-at-23.43.28.jpeg?v=ad15cf554cf96c2000f7516ed15ed88554226f06",
-        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-03-33-377Z-mmsas4-whatsapp-image-2026-10-09-at-23.34.17.jpeg?v=072da509ebd82bd885d317574cd4f308792fa95c"
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-03-33-377Z-mmsas4-whatsapp-image-2026-10-09-at-23.34.17.jpeg?v=072da509ebd82bd885d317574cd4f308792fa95c",
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-05-29-861Z-cwd1iu-whatsapp-image-2026-10-09-at-23.47.34.jpeg?v=de998c2914c0add17786903fa158a1137b4d13a8"
       ],
       "activities": [
         {
@@ -517,6 +518,21 @@
             }
           ],
           "description": "Execução de adequações do caminho seguro, com implantação de sinalização horizontal e instalação de guarda-corpo metálico."
+        },
+        {
+          "id": "adequacao-de-seguranca-simoes-filho-6d2e754f-ca07-4f74-a10a-8657c4663b02",
+          "title": "Instalação de plataforma",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-05-29-861Z-cwd1iu-whatsapp-image-2026-10-09-at-23.47.34.jpeg?v=de998c2914c0add17786903fa158a1137b4d13a8",
+          "images": [
+            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-05-29-861Z-cwd1iu-whatsapp-image-2026-10-09-at-23.47.34.jpeg?v=de998c2914c0add17786903fa158a1137b4d13a8"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ],
+          "description": "Fabricação e instalação de plataforma de acesso, equipada com escada fixa e guarda-corpo perimetral."
         }
       ],
       "gallery": []
@@ -638,7 +654,7 @@
     "image:obra-centro-canoagem-ubaitaba:work-detail>main.detail-route>section.detail-workspace>div[aria-label=galeria-de-imagens-da-obra]>div.detail-gallery-grid>figure.detail-gallery-item:nth-3>img": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-52-33-470Z-spjks1-whatsapp-image-2026-10-09-at-23.47.34.jpeg?v=d6ee23c437fd210759342dfe72ce997c4c7f51b0"
   },
   "videos": [],
-  "updatedAt": "2026-10-10T12:03:36.241Z",
+  "updatedAt": "2026-10-10T12:05:32.040Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
