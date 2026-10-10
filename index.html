@@ -1929,6 +1929,101 @@
       .site-video-backdrop {padding:10px;}
       .site-video-player {width:96vw;height:75dvh;}
     }
+
+    /* Vídeos são específicos de cada registro, não da Home ou da obra. */
+    record-video-rail {display:block;min-width:0;align-self:stretch;}
+    record-video-rail[hidden] {display:none!important;}
+    .service-journey-visual:has(> record-video-rail:not([hidden])) {
+      display:grid; grid-template-columns:minmax(0,1fr) 104px; gap:10px;
+      align-items:start;
+    }
+    .service-journey-visual > .service-record-carousel {min-width:0;}
+    record-video-rail .site-video-rail {
+      position:relative;top:auto;right:auto;bottom:auto;left:auto;
+      width:100%;height:auto;max-height:min(62svh,670px);
+      flex-direction:column;align-items:stretch;overflow:hidden;
+      padding:8px 6px;gap:8px;box-shadow:none;border-radius:13px;
+    }
+    record-video-rail .site-video-rail-head {writing-mode:initial;transform:none;align-self:auto;text-align:center;}
+    record-video-rail .site-video-rail-list {flex-direction:column;overflow-y:auto;overflow-x:hidden;max-height:480px;}
+    record-video-rail .site-video-item {width:100%;max-width:100%;}
+    record-video-rail .site-video-thumb {height:108px;}
+    record-video-rail .site-video-admin {position:static;}
+    record-video-rail .site-video-add {width:100%;min-height:54px;height:auto;padding:8px 2px;}
+    record-video-rail .site-video-name {white-space:normal;overflow-wrap:anywhere;}
+    record-video-rail .site-video-compose {
+      position:fixed;left:auto;right:clamp(12px,3vw,45px);top:calc(var(--nav-h) + 20px);
+      bottom:auto;width:min(390px,calc(100vw - 24px));max-height:calc(100dvh - var(--nav-h) - 35px);
+    }
+    @media(max-width:1080px) {
+      .service-journey-visual:has(> record-video-rail:not([hidden])) {grid-template-columns:minmax(0,1fr);gap:14px;}
+      record-video-rail .site-video-rail {
+        max-height:none;width:100%;min-height:0;flex-direction:row;
+        align-items:stretch;gap:10px;padding:9px;
+      }
+      record-video-rail .site-video-rail-head {
+        writing-mode:vertical-rl;transform:rotate(180deg);align-self:center;flex:none;
+      }
+      record-video-rail .site-video-rail-list {
+        flex:1;min-width:0;flex-direction:row;overflow-x:auto;overflow-y:hidden;
+        max-height:none;align-items:flex-start;overscroll-behavior-inline:contain;
+      }
+      record-video-rail .site-video-item {width:88px;min-width:88px;flex:none;}
+      record-video-rail .site-video-thumb {height:80px;}
+      record-video-rail .site-video-admin {position:static;}
+      record-video-rail .site-video-add {width:84px;min-width:84px;min-height:76px;}
+    }
+    @media(max-width:760px) {
+      record-video-rail .site-video-rail {position:relative;left:auto;right:auto;bottom:auto;top:auto;height:auto;border-radius:12px;}
+      record-video-rail .site-video-item {width:82px;min-width:82px;}
+      record-video-rail .site-video-add {width:82px;min-width:82px;height:auto;}
+      record-video-rail .site-video-compose {inset:calc(var(--nav-h) + 12px) 10px auto;max-height:calc(100dvh - var(--nav-h) - 24px);width:auto;}
+    }
+
+
+    /* CRUD integrado a alça de ordenação; ferramentas administrativas apenas. */
+    .cms-card-actions {display:none;position:absolute;right:12px;top:10px;z-index:25;
+      align-items:center;gap:4px;border:1px solid #d3e3ed44;border-radius:12px;
+      background:rgba(4,29,52,.95);padding:4px;box-shadow:0 7px 25px #031e37a8;max-width:calc(100% - 18px);}
+    body.cms-editing .cms-card-actions{display:flex;}
+    .cms-card-actions .cms-card-action,
+    .cms-card-actions .cms-card-order-handle {position:static;top:auto;right:auto;
+      display:grid;place-items:center;width:35px;height:35px;min-width:35px;min-height:35px;
+      padding:7px;margin:0;border:0;border-radius:8px;background:transparent;color:#fff;
+      cursor:pointer;touch-action:manipulation;box-shadow:none;}
+    .cms-card-actions .cms-card-action svg{display:block;width:18px;height:18px;pointer-events:none;}
+    .cms-card-actions .cms-card-action:hover,.cms-card-actions .cms-card-action:focus-visible{background:#236c9c;outline:2px solid #bbdef4;outline-offset:-2px;}
+    .cms-card-actions .cms-card-action.remove:hover,.cms-card-actions .cms-card-action.remove:focus-visible{background:#aa3037;}
+    .cms-card-actions .cms-card-action.order{cursor:grab;touch-action:none;}
+    .cms-card-actions .cms-card-action.order:active{cursor:grabbing;}
+    .service-journey-item>.cms-card-actions{right:2px;top:13px;}
+    .work-card>.cms-card-actions{right:8px;top:8px;}
+    body.cms-editing .work-card .work-arrow{display:none;}
+    .cms-work-edit-panel,.cms-record-edit-panel{margin:18px 14px 18px;border:1px solid #bed4e2;
+      border-radius:15px;background:#f1f7fb;padding:22px;color:#082d4c;box-shadow:0 12px 35px #082d4c1a;}
+    .cms-work-edit-panel h3{margin:0 0 16px;font-size:21px;}
+    .cms-work-edit-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;}
+    .cms-work-edit-fields .wide{grid-column:1/-1;}
+    .cms-work-edit-panel label,.cms-record-edit-panel label{display:block;font-size:12px;font-weight:850;line-height:1.6;min-width:0;}
+    .cms-work-edit-panel input,.cms-work-edit-panel textarea,
+    .cms-record-edit-panel input,.cms-record-edit-panel textarea{display:block;width:100%;min-width:0;margin-top:5px;padding:11px 12px;
+      background:white;border:1px solid #a7c6d9;border-radius:8px;font:inherit;font-size:14px;resize:vertical;}
+    .cms-work-edit-buttons,.cms-record-edit-buttons{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end;margin-top:16px;}
+    .cms-work-edit-buttons button,.cms-record-edit-buttons button{border:1px solid #105584;border-radius:8px;padding:10px 16px;
+      background:#fff;color:#105584;font-weight:850;cursor:pointer;}
+    .cms-work-edit-buttons button:last-child,.cms-record-edit-buttons button:last-child{background:#105584;color:#fff;}
+    .cms-work-edit-panel [role=status],.cms-record-edit-panel [role=status]{color:#ab303d;}
+    .cms-record-edit-panel{margin:0 0 18px;padding:15px;}
+    .cms-record-edit-panel label+label{margin-top:12px;}
+    @media(max-width:600px){
+      .cms-card-actions{gap:3px;padding:3px;}
+      .cms-card-actions .cms-card-action{width:36px;height:36px;min-width:36px;min-height:36px;padding:7px;}
+      .cms-work-edit-fields{grid-template-columns:1fr;}
+      .cms-work-edit-fields .wide{grid-column:1;}
+      .cms-work-edit-panel{margin:18px 2px;padding:16px;}
+      .service-journey-item>.cms-card-actions{right:0;top:8px;}
+      body.cms-editing .service-journey-item{padding-top:max(70px,7vh);}
+    }
 </style>
 </head>
 <body>
@@ -2931,8 +3026,25 @@
       array.sort((a,b)=>(indices.get(String(a[attribute]))??99999)-(indices.get(String(b[attribute]))??99999));
     }
 
+    const cmsCardSvgIcon=(name)=>({
+      order:'<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m8 6 4-4 4 4M12 2v20m-4-4 4 4 4-4"/></svg>',
+      add:'<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
+      edit:'<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m15 5 4 4M4 20l4.3-.9L20 7.4a2 2 0 0 0-3-3L5.3 16.1 4 20Z"/></svg>',
+      remove:'<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M10 3h4m-8 4 1 14h10l1-14M10 11v6m4-6v6"/></svg>'
+    }[name]||'');
+    function cmsCardActions(kind,key){
+      const work=kind==='work';
+      return `<div class="cms-card-actions" role="group" aria-label="Ações de ${work?'obra':'registro'}">
+        <button class="cms-card-action order" type="button" data-cms-order-handle title="Arrastar ou usar setas para ordenar" aria-label="Reordenar">${cmsCardSvgIcon('order')}</button>
+        <button class="cms-card-action add" type="button" data-cms-card-add="${escapeHTML(key)}" title="${work?'Adicionar nova obra':'Adicionar registro após este'}" aria-label="Adicionar">${cmsCardSvgIcon('add')}</button>
+        <button class="cms-card-action edit" type="button" data-cms-card-edit="${escapeHTML(key)}" title="Editar ${work?'obra':'registro'}" aria-label="Editar">${cmsCardSvgIcon('edit')}</button>
+        <button class="cms-card-action remove" type="button" data-cms-card-remove="${escapeHTML(key)}" title="Remover ${work?'obra':'registro'}" aria-label="Remover">${cmsCardSvgIcon('remove')}</button>
+      </div>`;
+    }
+
     class WorksShowcase extends HTMLElement {
       connectedCallback(){
+        this.workEditSlug=null;
         this.render();
         cmsInstallCardOrder(this,'.work-card','data-work',(src,dst)=>{
           const original=WORKS.map(w=>w.slug);
@@ -2944,15 +3056,92 @@
         });
         this.addEventListener('click',e=>{
           if(e.target.closest('[data-cms-order-handle]'))return;
+          const action=e.target.closest('[data-cms-card-add],[data-cms-card-edit],[data-cms-card-remove]');
+          if(action){
+            e.preventDefault();e.stopPropagation();
+            if(!cmsState.token)return;
+            if(action.dataset.cmsCardAdd!==undefined){navigateNewWork();return;}
+            if(action.dataset.cmsCardEdit!==undefined){this.openWorkEdit(action.dataset.cmsCardEdit);return;}
+            if(action.dataset.cmsCardRemove!==undefined){this.removeWork(action.dataset.cmsCardRemove);return;}
+          }
+          if(e.target.closest('[data-cms-work-edit-cancel]')){e.preventDefault();this.workEditSlug=null;this.render();return;}
+          if(e.target.closest('[data-cms-work-edit-save]')){e.preventDefault();this.saveWorkEdit();return;}
           const add=e.target.closest('[data-cms-add-work]');
           if(add){ e.preventDefault(); navigateNewWork(); return; }
           const card=e.target.closest('[data-work]');
-          if(card) openWork(card.dataset.work);
+          if(card && !e.target.closest('button,input,textarea,label'))openWork(card.dataset.work);
         });
+        this.addEventListener('keydown',e=>{
+          if(!['Enter',' '].includes(e.key) || !e.target.matches('.work-card'))return;
+          e.preventDefault();openWork(e.target.dataset.work);
+        });
+      }
+      openWorkEdit(slug){
+        if(!cmsState.token)return;
+        this.workEditSlug=slug;
+        this.render();
+        requestAnimationFrame(()=>this.querySelector('[data-cms-work-edit-form]')?.scrollIntoView({block:'nearest',behavior:'smooth'}));
+      }
+      saveWorkEdit(){
+        if(!cmsState.token)return;
+        const form=this.querySelector('[data-cms-work-edit-form]');
+        const work=WORKS.find(item=>item.slug===this.workEditSlug);
+        if(!form||!work)return;
+        const values={};
+        for(const field of ['name','city','state','type','summary'])values[field]=String(form.elements.namedItem(field)?.value||'').trim();
+        if(!values.name||!values.city){form.querySelector('[data-cms-work-error]').textContent='Preencha nome e cidade.';return;}
+        const file=form.elements.namedItem('cover')?.files?.[0];
+        if(file && !file.type.startsWith('image/')){form.querySelector('[data-cms-work-error]').textContent='Selecione uma imagem compatível.';return;}
+        if(!file && Object.entries(values).every(([key,value])=>String(work[key]||'')===value)){this.workEditSlug=null;this.render();return;}
+        const before=cmsClone(work);
+        const key=`work-edit:${work.slug}`;
+        cmsRegisterChange({key,label:`Editar obra: ${work.name}`,undo:()=>{
+          for(const field of ['name','city','state','type','summary','cover'])work[field]=before[field];
+          cmsRemovePendingAsset(`${key}:cover`);
+          SITE_DATA.works=WORKS;cmsState.content.works=WORKS;
+          CITIES=[...new Set(WORKS.map(w=>w.city))].map(name=>({name}));
+        }});
+        Object.assign(work,values);
+        if(file)work.cover=cmsStageAsset(file,`${key}:cover`,`capa-${work.slug}`);
+        SITE_DATA.works=WORKS;cmsState.content.works=WORKS;
+        CITIES=[...new Set(WORKS.map(w=>w.city))].map(name=>({name}));
+        this.workEditSlug=null;
+        cmsRefreshCurrentView();
+      }
+      removeWork(slug){
+        if(!cmsState.token)return;
+        const index=WORKS.findIndex(w=>w.slug===slug);
+        if(index<0)return;
+        const work=WORKS[index];
+        if(!confirm(`Remover a obra "${work.name}" e seus registros do portfólio? Poderá desfazer antes de salvar.`))return;
+        const backup=cmsClone(work);
+        cmsRegisterChange({key:`work-remove:${slug}`,label:`Remover obra: ${work.name}`,undo:()=>{
+          if(!WORKS.some(w=>w.slug===slug))WORKS.splice(Math.min(index,WORKS.length),0,backup);
+          SITE_DATA.works=WORKS;cmsState.content.works=WORKS;
+          CITIES=[...new Set(WORKS.map(w=>w.city))].map(name=>({name}));
+        }});
+        WORKS.splice(index,1);
+        SITE_DATA.works=WORKS;cmsState.content.works=WORKS;
+        CITIES=[...new Set(WORKS.map(w=>w.city))].map(name=>({name}));
+        if(this.workEditSlug===slug)this.workEditSlug=null;
+        cmsRefreshCurrentView();
       }
       render(){
         this.innerHTML=`<div class="works-head"><div><div class="eyebrow">Nossas obras</div><h2 class="title">Obras que carregam nossa assinatura.</h2></div><div class="works-count">${WORKS.length} obras selecionadas</div></div>
-        <div class="works-scatter"><svg class="works-network" viewBox="0 0 1200 620" preserveAspectRatio="none" aria-hidden="true"><path d="M150 250 C 260 226, 330 220, 465 195"></path><path d="M470 195 C 610 180, 720 188, 845 240"></path><path d="M250 430 C 360 395, 450 382, 580 365"></path><path d="M600 362 C 735 362, 840 390, 970 430"></path><path d="M468 200 C 500 248, 532 280, 595 338"></path><path d="M842 242 C 786 286, 736 314, 650 356"></path><circle cx="150" cy="250" r="5"></circle><circle cx="470" cy="195" r="5"></circle><circle cx="845" cy="240" r="5"></circle><circle cx="250" cy="430" r="5"></circle><circle cx="600" cy="362" r="5"></circle><circle cx="970" cy="430" r="5"></circle></svg><div class="works-grid">${WORKS.map(work=>`<button class="work-card" data-work="${work.slug}" aria-label="Abrir ${escapeHTML(work.name)}"><img src="${work.cover}" alt="${escapeHTML(work.name)}"><span class="cms-card-order-handle" data-cms-order-handle role="button" tabindex="0" aria-label="Arrastar para mudar ordem">↕</span><span class="work-arrow">↗</span><div class="work-card-content"><div class="work-city">${escapeHTML(work.city)} · ${escapeHTML(work.type)}</div><h3>${escapeHTML(work.name)}</h3></div></button>`).join('')}<button class="cms-work-add-card" type="button" data-cms-add-work aria-label="Adicionar nova obra"><span class="cms-work-add-plus">+</span><strong>Adicionar obra</strong><span>Abra uma página guiada e clique nos campos para preencher.</span></button></div></div>
+        <div class="works-scatter"><svg class="works-network" viewBox="0 0 1200 620" preserveAspectRatio="none" aria-hidden="true"><path d="M150 250 C 260 226, 330 220, 465 195"></path><path d="M470 195 C 610 180, 720 188, 845 240"></path><path d="M250 430 C 360 395, 450 382, 580 365"></path><path d="M600 362 C 735 362, 840 390, 970 430"></path><path d="M468 200 C 500 248, 532 280, 595 338"></path><path d="M842 242 C 786 286, 736 314, 650 356"></path><circle cx="150" cy="250" r="5"></circle><circle cx="470" cy="195" r="5"></circle><circle cx="845" cy="240" r="5"></circle><circle cx="250" cy="430" r="5"></circle><circle cx="600" cy="362" r="5"></circle><circle cx="970" cy="430" r="5"></circle></svg><div class="works-grid">${WORKS.map(work=>`<article class="work-card" data-work="${escapeHTML(work.slug)}" role="link" tabindex="0" aria-label="Abrir ${escapeHTML(work.name)}"><img src="${escapeHTML(work.cover)}" alt="${escapeHTML(work.name)}">${cmsCardActions('work',work.slug)}<span class="work-arrow">↗</span><div class="work-card-content"><div class="work-city">${escapeHTML(work.city)} · ${escapeHTML(work.type)}</div><h3>${escapeHTML(work.name)}</h3></div></article>`).join('')}<button class="cms-work-add-card" type="button" data-cms-add-work aria-label="Adicionar nova obra"><span class="cms-work-add-plus">+</span><strong>Adicionar obra</strong><span>Abra uma página guiada e clique nos campos para preencher.</span></button></div></div>
+        ${this.workEditSlug && WORKS.some(w=>w.slug===this.workEditSlug) ? (()=>{
+          const work=WORKS.find(w=>w.slug===this.workEditSlug);
+          return `<form class="cms-work-edit-panel" data-cms-work-edit-form onsubmit="return false" aria-label="Editar informações da obra">
+            <h3>Editar obra · ${escapeHTML(work.name)}</h3>
+            <div class="cms-work-edit-fields">
+              ${[['name','Nome'],['city','Cidade'],['state','Estado'],['type','Tipo de obra']].map(([key,label])=>`<label>${label}<input name="${key}" value="${escapeHTML(work[key]||'')}" required></label>`).join('')}
+              <label class="wide">Descrição da obra<textarea name="summary" rows="4">${escapeHTML(work.summary||'')}</textarea></label>
+              <label class="wide">Trocar capa (opcional)<input type="file" name="cover" accept="image/*"></label>
+            </div>
+            <div class="cms-work-edit-buttons"><button type="button" data-cms-work-edit-cancel>Cancelar</button><button type="button" data-cms-work-edit-save>Adicionar ao rascunho</button></div>
+            <p role="status" data-cms-work-error></p>
+          </form>`;
+        })() : ''}
         <div class="works-more"><span>Da infraestrutura urbana aos equipamentos públicos, nossas obras mostram a amplitude da nossa execução.</span><button data-open-first="true">Conhecer uma obra →</button></div>`;
         this.querySelector('[data-open-first]')?.addEventListener('click',()=>WORKS[0] && openWork(WORKS[0].slug));
       }
@@ -3342,7 +3531,6 @@
       if(detail){ detail.render(); cmsApply(detail); }
       document.querySelector('works-showcase')?.render?.();
       cmsApply(document);
-      document.querySelector('site-video-rail')?.render();
       cmsEditor?.updateSaveFooter();
       cmsQueueLocalPersist();
     }
@@ -3971,7 +4159,7 @@
       }
       onPointerDown(event){
         if(!this.active || !cmsState.token || event.pointerType!=='touch' || this.markdownTarget || this.inlineTarget)return;
-        if(event.target.closest?.('.site-video-rail,.site-video-compose,.site-video-backdrop,.cms-hover-control,.cms-toolbar,.cms-md-panel,.cms-save-footer,.cms-inline-actions'))return;
+        if(event.target.closest?.('.site-video-rail,.site-video-compose,.site-video-backdrop,.cms-hover-control,.cms-toolbar,.cms-md-panel,.cms-save-footer,.cms-inline-actions,.cms-card-actions'))return;
         const candidate=this.textCandidate(event.target);
         if(candidate && cmsIsMarkdownBody(candidate)) {this.setTextTarget(candidate);this.clearImageTarget();}
       }
@@ -4298,6 +4486,7 @@
           image: activityImages(activity)[0] || work.cover || '',
           images: activityImages(activity),
           imagePositions: activityImagePositions(activity),
+          videos: Array.isArray(activity.videos) ? activity.videos : [],
           description: activity.description || '',
           title: activity.title || `Registro de execução ${String(index + 1).padStart(2,'0')}`
         }));
@@ -4475,6 +4664,16 @@
         });
         this.addEventListener('click',e=>{
           if(e.target.closest('[data-cms-order-handle]'))return;
+          const crud=e.target.closest('[data-cms-card-add],[data-cms-card-edit],[data-cms-card-remove]');
+          if(crud){
+            e.preventDefault();e.stopPropagation();
+            if(!cmsState.token)return;
+            if(crud.dataset.cmsCardAdd!==undefined){this.openAddRecord(crud.dataset.cmsCardAdd);return;}
+            if(crud.dataset.cmsCardEdit!==undefined){this.openRecordEdit(crud.dataset.cmsCardEdit);return;}
+            if(crud.dataset.cmsCardRemove!==undefined){this.removeRecord(crud.dataset.cmsCardRemove);return;}
+          }
+          if(e.target.closest('[data-record-edit-cancel]')){e.preventDefault();this.editingRecordId=null;this.render();return;}
+          if(e.target.closest('[data-record-edit-save]')){e.preventDefault();this.saveRecordEdit();return;}
           const nav=e.target.closest('[data-record-carousel-nav]');
           if(nav){e.preventDefault();this.changeCarousel(nav.dataset.recordCarouselNav,Number(nav.dataset.direction||0));return;}
           const thumb=e.target.closest('[data-record-carousel-thumb]');
@@ -4702,7 +4901,9 @@
         this.recordDraft=null;
         this.render(); requestAnimationFrame(()=>{cmsApply(this);cmsEditor?.updateSaveFooter();});
       }
-      openAddRecord(){
+      openAddRecord(afterId=null){
+        if(afterId) this.insertRecordAfterId=afterId;
+        else this.insertRecordAfterId=null;
         if(!cmsState.token) { navigateLogin(); return; }
         if(!this.recordDraft){
           this.recordDraft={title:'',description:'',imageFiles:[],imagePreviews:[]};
@@ -4811,7 +5012,9 @@
           const changeKey=`record-add:${work.slug}:${id}`;
           const images=draft.imageFiles.map((file,i)=>cmsStageAsset(file,`${changeKey}:image:${i}`,`registro-${work.slug}`));
           cmsRegisterChange({key:changeKey,label:`Novo registro: ${title} (${images.length} fotos)`,undo:()=>{ for(let i=0;i<images.length;i++) cmsRemovePendingAsset(`${changeKey}:image:${i}`); work.activities=(work.activities||[]).filter(item=>String(item.id)!==String(id)); this.normalizeWorkMedia(work); SITE_DATA.works=WORKS; cmsState.content.works=WORKS; }});
-          work.activities.push({id,title,image:images[0],images,imagePositions:images.map(()=>({x:50,y:50})),description});
+          const index=this.insertRecordAfterId ? work.activities.findIndex(a=>String(a.id)===String(this.insertRecordAfterId)) : -1;
+          work.activities.splice(index<0?work.activities.length:index+1,0,{id,title,image:images[0],images,imagePositions:images.map(()=>({x:50,y:50})),description});
+          this.insertRecordAfterId=null;
           this.normalizeWorkMedia(work);
           this.revokeRecordDraftPreview();
           this.recordDraft=null;
@@ -4822,6 +5025,34 @@
           if(status) status.textContent=error.message || 'Falha ao adicionar registro.';
           if(button) button.disabled=false;
         }
+      }
+      openRecordEdit(id){
+        if(!cmsState.token)return;
+        this.editingRecordId=id;
+        this.render();
+        requestAnimationFrame(()=>this.querySelector('[data-record-edit-form]')?.scrollIntoView({block:'center',behavior:'smooth'}));
+      }
+      async saveRecordEdit(){
+        if(!cmsState.token)return;
+        const form=this.querySelector('[data-record-edit-form]');
+        const work=this.currentWork();
+        const id=this.editingRecordId;
+        const activity=work?.activities?.find(a=>String(a.id)===String(id));
+        if(!form||!activity)return;
+        const title=String(form.elements.namedItem('title')?.value||'').trim();
+        const description=String(form.elements.namedItem('description')?.value||'').trim();
+        if(!title||!description){form.querySelector('[data-record-edit-error]').textContent='Preencha título e descrição.';return;}
+        if(title!==activity.title || description!==activity.description){
+          const before={title:activity.title,description:activity.description};
+          cmsRegisterChange({key:`record-edit:${work.slug}:${id}`,label:`Editar registro: ${title}`,undo:()=>{
+            activity.title=before.title;activity.description=before.description;
+            SITE_DATA.works=WORKS;cmsState.content.works=WORKS;
+          }});
+          activity.title=title;activity.description=description;
+          SITE_DATA.works=WORKS;cmsState.content.works=WORKS;
+        }
+        this.editingRecordId=null;
+        await this.persistWorkChange();
       }
       async removeRecord(id){
         if(!cmsState.token) { navigateLogin(); return; }
@@ -4935,9 +5166,14 @@
                   <div class="cms-record-draft-status" data-record-draft-status role="status"></div>
                 </section>` : ''}
                 ${activities.map((activity,i)=>`<article class="service-journey-item" data-record-id="${escapeHTML(activity.id)}">
-                    <button class="cms-card-order-handle" type="button" data-cms-order-handle aria-label="Arrastar registro para mudar ordem">↕</button>
-                    <button class="cms-record-remove" type="button" data-cms-record-remove="${escapeHTML(activity.id)}">Remover registro</button>
+                    ${cmsCardActions('record',activity.id)}
                     <div class="service-journey-copy">
+                      ${this.editingRecordId===activity.id ? `<form class="cms-record-edit-panel" data-record-edit-form onsubmit="return false" aria-label="Editar registro">
+                        <label>Título do registro<input name="title" value="${escapeHTML(activity.title)}" required></label>
+                        <label>Descrição da atividade<textarea name="description" rows="5" required>${escapeHTML(activity.description)}</textarea></label>
+                        <div class="cms-record-edit-buttons"><button type="button" data-record-edit-cancel>Cancelar</button><button type="button" data-record-edit-save>Adicionar ao rascunho</button></div>
+                        <p data-record-edit-error role="status"></p>
+                      </form>`:''}
                       <span class="service-journey-number">${String(i+1).padStart(2,'0')}</span>
                       <div class="service-journey-kicker">Registro de execução</div>
                       <h3>${escapeHTML(activity.title)}</h3>
@@ -4965,6 +5201,7 @@
                           <button class="service-record-position-reset" type="button" data-record-position-reset="${escapeHTML(activity.id)}">Centralizar imagem</button>
                         </div>
                       </div>
+                    <record-video-rail work-slug="${escapeHTML(work.slug)}" record-id="${escapeHTML(activity.id)}" aria-label="Vídeos do registro: ${escapeHTML(activity.title)}"></record-video-rail>
                     </figure>
                   </article>`).join('')}
               </div>
@@ -4990,10 +5227,8 @@
 
 
     /* Video strip, scoped to current page, independently saved via the CMS draft. */
-    class SiteVideoRail extends HTMLElement {
+    class RecordVideoRail extends HTMLElement {
       connectedCallback(){
-        this._routeHandler=()=>{this.closePlayer();this.composing=false;this.render();};
-        appState.addEventListener('change',this._routeHandler);
         this._keydown=e=>{if(e.key==='Escape'){this.closePlayer();if(this.composing){this.composing=false;this.render();}}};
         document.addEventListener('keydown',this._keydown);
         this.addEventListener('click',this._click=e=>{
@@ -5010,35 +5245,30 @@
         this.render();
       }
       disconnectedCallback(){
-        appState.removeEventListener('change',this._routeHandler);
         document.removeEventListener('keydown',this._keydown);
         if(this._click)this.removeEventListener('click',this._click);
         if(this._submit)this.removeEventListener('submit',this._submit);
         this.closePlayer();
-        document.body.classList.remove('has-site-video-rail');
       }
       scope(){
-        const route=appState.snapshot.route;
-        if(route==='login' || route==='new-work')return null;
-        if(route==='detail'){
-          const work=WORKS.find(w=>w.slug===appState.snapshot.slug);
-          return work ? {type:'work',key:work.slug,owner:work} : null;
-        }
-        return {type:'home',key:'home',owner:SITE_DATA};
+        const slug=this.getAttribute('work-slug');
+        const recordId=this.getAttribute('record-id');
+        const work=WORKS.find(w=>w.slug===slug);
+        const record=work?.activities?.find(activity=>String(activity.id)===recordId);
+        return record ? {type:'record',key:`${slug}:${recordId}`,work,owner:record} : null;
       }
       videos(){const sc=this.scope();return sc && Array.isArray(sc.owner.videos) ? sc.owner.videos : [];}
       syncContent(){
         SITE_DATA.works=WORKS;cmsState.content.works=WORKS;
-        cmsState.content.videos=SITE_DATA.videos || [];
       }
       render(){
         const sc=this.scope();
         const videos=this.videos();
         const edit=!!cmsState.token;
         const show=!!sc && (videos.length>0 || edit);
-        document.body.classList.toggle('has-site-video-rail',show);
+        this.hidden=!show;
         if(!show){this.innerHTML='';this.closePlayer();return;}
-        this.innerHTML=`<aside class="site-video-rail" aria-label="Vídeos ${sc.type==='home'?'do site':'da obra'}">
+        this.innerHTML=`<aside class="site-video-rail" aria-label="Vídeos do registro ${escapeHTML(sc.owner.title || sc.key)}">
           <div class="site-video-rail-head">Vídeos</div>
           <div class="site-video-rail-list">${videos.map(v=>`<div class="site-video-item">
             <button class="site-video-thumb" type="button" data-video-open="${escapeHTML(v.id)}" aria-label="Reproduzir vídeo ${escapeHTML(v.title||'da obra')}">
@@ -5096,7 +5326,7 @@
         const sc=this.scope();if(!sc)return;
         const list=sc.owner.videos||[];const index=list.findIndex(v=>v.id===id);if(index<0)return;
         const previous=cmsClone(list[index]);
-        if(!confirm(`Remover o vídeo "${previous.title}" da página?`))return;
+        if(!confirm(`Remover o vídeo "${previous.title}" deste registro?`))return;
         cmsRegisterChange({key:`video-remove:${sc.key}:${id}`,label:`Remover vídeo: ${previous.title}`,undo:()=>{
           if(!(sc.owner.videos||[]).some(v=>v.id===id))(sc.owner.videos||=[]).splice(Math.min(index,sc.owner.videos.length),0,previous);
           this.syncContent();
@@ -5113,6 +5343,7 @@
       }
       openPlayer(id){
         const video=this.videos().find(v=>v.id===id);if(!video)return;
+        for(const rail of document.querySelectorAll('record-video-rail')) if(rail!==this)rail.closePlayer();
         this.closePlayer();
         const b=document.createElement('div');b.className='site-video-backdrop';b.setAttribute('role','dialog');b.setAttribute('aria-modal','true');b.setAttribute('aria-label',`Reprodução: ${video.title||'vídeo'}`);
         b.innerHTML=`<div class="site-video-backdrop-top"><strong class="site-video-backdrop-title">${escapeHTML(video.title||'Vídeo')}</strong><button type="button" class="site-video-close" data-video-close aria-label="Fechar vídeo">×</button></div><video class="site-video-player" controls playsinline src="${escapeHTML(video.src||'')}"></video><div class="site-video-player-note">Use os controles do player para ativar ou silenciar o áudio.</div>`;
@@ -5128,11 +5359,11 @@
         document.body.classList.remove('site-video-viewing');
       }
     }
-    customElements.define('site-video-rail',SiteVideoRail);
+    customElements.define('record-video-rail',RecordVideoRail);
 
     class SiteShell extends HTMLElement {
       connectedCallback(){
-        this.innerHTML='<fixed-nav></fixed-nav><div id="route-slot"></div><site-video-rail></site-video-rail>';
+        this.innerHTML='<fixed-nav></fixed-nav><div id="route-slot"></div>';
         this.slotEl=this.querySelector('#route-slot');
         appState.addEventListener('change', this._onState=e=>this.renderRoute(e.detail));
         routeFromHash();
