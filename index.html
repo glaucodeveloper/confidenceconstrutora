@@ -123,10 +123,8 @@
     .hero-indicator { position:absolute; z-index:3; right:var(--page-x); bottom:22px; font-size:10px; text-transform:uppercase; letter-spacing:.18em; color:#d5e5ef; writing-mode:vertical-rl; }
 
     /* 2 — INSTITUCIONAL · UMA ÚNICA SESSÃO */
-    .institutional-unified { height:auto; min-height:100svh; overflow:visible; background:#fff; }
+    .institutional-unified { background:#fff; }
     .institutional-unified .screen-inner {
-      height:auto;
-      min-height:100svh;
       justify-content:flex-start;
       gap:clamp(18px,2.4vh,28px);
       padding-top:calc(var(--nav-h) + clamp(26px,3.4vh,42px));
@@ -151,13 +149,14 @@
       padding-bottom:5px;
     }
     .institutional-stage {
-      flex:none;
+      flex:1;
+      min-height:0;
       display:grid;
       grid-template-columns:minmax(0,1.12fr) minmax(360px,.88fr);
       gap:18px;
     }
     .institutional-photo {
-      min-height:620px;
+      min-height:0;
       position:relative;
       overflow:hidden;
       border-radius:24px;
@@ -185,8 +184,9 @@
       letter-spacing:.02em;
     }
     .institutional-side {
+      min-height:0;
       display:grid;
-      grid-template-rows:auto auto minmax(260px,auto);
+      grid-template-rows:auto auto 1fr;
       gap:14px;
     }
     .institutional-statement {
@@ -218,7 +218,7 @@
     }
     .institutional-statement.primary p { color:#c8dce8; }
     .institutional-values-compact {
-      min-height:260px;
+      min-height:0;
       border-radius:20px;
       background:#0a3558;
       color:white;
@@ -394,12 +394,8 @@
     .cert-card h3 { color:var(--blue-dark); font-size:clamp(34px,3.6vw,50px); letter-spacing:-.055em; margin:0 0 12px; }
     .cert-card p { color:var(--muted); line-height:1.55; max-width:420px; font-size:13px; margin:0; }
     .cert-card-body { border-top:1px solid var(--line); padding-top:22px; }
-    .iso-reference-logo { width:min(245px,88%); aspect-ratio:1.8/1; border:3px solid var(--blue-dark); color:var(--blue-dark); display:grid; grid-template-columns:.78fr 1.22fr; grid-template-rows:1fr auto; align-items:center; justify-items:center; padding:12px 14px 10px; position:relative; }
-    .iso-reference-logo::before, .iso-reference-logo::after { content:""; position:absolute; border:1px solid rgba(8,45,76,.26); border-radius:50%; width:66px; height:66px; left:15px; top:12px; }
-    .iso-reference-logo::after { transform:scaleX(.48); }
-    .iso-reference-logo .iso-word { font-size:25px; font-weight:950; letter-spacing:-.05em; z-index:1; }
-    .iso-reference-logo .iso-number { font-size:36px; font-weight:950; letter-spacing:-.065em; border-left:1px solid var(--line); width:100%; text-align:center; }
-    .iso-reference-logo small { grid-column:1/-1; width:100%; border-top:1px solid var(--line); padding-top:7px; font-size:8px; letter-spacing:.17em; text-transform:uppercase; text-align:center; font-weight:900; }
+    .iso-reference-logo { display:block; width:min(245px,88%); height:136px; object-fit:contain; border:0; background:transparent; }
+    body.cms-editing .iso-reference-logo:hover { outline:2px dashed var(--blue); outline-offset:6px; cursor:pointer; }
 
     /* 7 — CONTACT */
     .contact { background:var(--paper); }
@@ -1322,11 +1318,13 @@
     .toast.show { transform:none; opacity:1; }
 
     @media (max-width: 980px) {
+      .institutional-unified { height:auto; min-height:100svh; overflow:visible; }
+      .institutional-unified .screen-inner { height:auto; min-height:100svh; }
       .institutional-unified-head { grid-template-columns:1fr; gap:14px; }
       .institutional-stage { grid-template-columns:1fr; }
       .institutional-photo { min-height:430px; }
       .institutional-side { grid-template-columns:1fr 1fr; grid-template-rows:auto auto; }
-      .institutional-values-compact { grid-column:1/-1; min-height:300px; }
+      .institutional-values-compact { grid-column:1/-1; min-height:210px; }
     }
 
     @media (max-width: 1040px) {
@@ -1373,7 +1371,7 @@
       .institutional-stage { grid-template-columns:1fr; }
       .institutional-side { grid-template-columns:1fr; grid-template-rows:none; }
       .institutional-photo { min-height:340px; }
-      .institutional-values-compact { grid-column:auto; min-height:380px; }
+      .institutional-values-compact { grid-column:auto; min-height:0; }
       .values-compact-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
       .value-compact { min-height:88px; padding:12px; }
       .value-compact:first-child,
@@ -1619,6 +1617,182 @@
       .cms-login-submit { width:100%; }
     }
 
+
+    /* CMS: campos editaveis em linha, sem prompt/modal */
+    .work-create-field,.cms-record-draft-field { display:block; cursor:text; }
+    .work-create-field > span,.cms-record-draft-field > span {display:block; font-size:10px; color:var(--blue-soft); font-weight:850; letter-spacing:.1em; text-transform:uppercase; }
+    .work-create-field input,.work-create-field textarea,.cms-record-draft-field input,.cms-record-draft-field textarea {display:block; width:100%; margin:12px 0 0; border:0; outline:0; padding:5px 0; background:transparent; color:var(--blue-dark); resize:vertical; font:inherit; min-width:0;}
+    .work-create-field input,.cms-record-draft-field input {font-size:clamp(19px,2vw,28px);font-weight:800;letter-spacing:-.03em;}
+    .work-create-field textarea,.cms-record-draft-field textarea {font-size:14px;line-height:1.6;}
+    .work-create-field:focus-within,.cms-record-draft-field:focus-within {border-color:var(--blue);box-shadow:0 0 0 3px rgba(16,85,132,.12);}
+    .work-create-field:focus-within::after,.cms-record-draft-field:focus-within::after {opacity:0;}
+    .work-create-field input::placeholder,.work-create-field textarea::placeholder,.cms-record-draft-field input::placeholder,.cms-record-draft-field textarea::placeholder {color:#92a8b8;}
+    .cms-inline-editing {outline:2px solid var(--blue)!important; outline-offset:4px; min-height:1em; cursor:text!important;}
+    .cms-inline-actions {position:fixed;z-index:3008;gap:6px;align-items:center;flex-wrap:wrap;max-width:calc(100vw - 16px);padding:8px;border-radius:12px;background:#082d4c;box-shadow:0 12px 40px #082d4c44;color:white;}
+    .cms-inline-actions[hidden]{display:none!important;}
+    .cms-inline-actions span{font-size:10px;padding:0 6px;}
+    .cms-inline-actions button{border:1px solid #ffffff66;background:#ffffff12;color:white;cursor:pointer;border-radius:7px;padding:7px 10px;}
+    .cms-inline-actions [data-cms-inline-save]{background:white;color:var(--blue-dark);font-weight:800;}
+    .cms-contact-inline {display:grid;gap:10px;width:100%;padding:14px;border:1px dashed #ffffff88;border-radius:14px;}
+    .cms-contact-inline label {display:grid;gap:5px;color:white;font-size:11px;}
+    .cms-contact-inline input {width:100%;border:1px solid #ffffff44;background:#ffffffec;color:#082d4c;padding:10px;border-radius:8px;}
+    .cms-contact-inline div {display:flex;gap:8px;flex-wrap:wrap;}
+    .cms-contact-inline button{cursor:pointer;padding:9px 12px;border:1px solid #fff8;color:white;background:#ffffff20;border-radius:8px;}
+    .cms-contact-inline small {color:#ffdfb5;}
+    .cms-record-draft-image {display:flex;flex-direction:column;gap:8px;align-items:stretch;justify-content:center;overflow:visible;min-width:0;}
+    .cms-record-preview-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;padding:12px;}
+    .cms-record-preview-grid figure {position:relative;height:150px;margin:0;overflow:hidden;border-radius:12px;background:#082d4c;}
+    .cms-record-preview-grid figure img {position:static;z-index:auto;width:100%;height:100%;object-fit:cover;}
+    .cms-record-preview-grid button {position:absolute;right:6px;top:6px;border:0;background:#fff;color:#082d4c;border-radius:50%;height:28px;width:28px;cursor:pointer;}
+    .cms-record-draft-image-prompt {pointer-events:none;position:relative;z-index:2;}
+    .work-gallery-section {max-width:var(--max);width:calc(100% - 2 * var(--page-x));margin:45px auto 0;padding:24px 0 45px;border-top:1px solid var(--line);}
+    .work-gallery-head h2 {font-size:clamp(26px,3vw,44px);letter-spacing:-.04em;margin:7px 0 22px;color:var(--blue-dark);}
+    .work-gallery-list {display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;}
+    .work-gallery-card {position:relative;overflow:hidden;min-height:165px;aspect-ratio:4/3;margin:0;border-radius:16px;background:#d9e8f1;}
+    .work-gallery-card img {width:100%;height:100%;object-fit:cover;}
+    .work-gallery-card button {position:absolute;top:8px;right:8px;border:0;border-radius:50%;width:28px;height:28px;background:white;color:var(--blue-dark);cursor:pointer;display:none;}
+    body.cms-editing .work-gallery-card button{display:block;}
+    .work-gallery-add {min-height:165px;border:2px dashed #91b5ca;border-radius:16px;background:#f0f7fb;color:var(--blue-dark);cursor:pointer;display:none;place-content:center;text-align:center;padding:16px;gap:9px;}
+    body.cms-editing .work-gallery-add {display:grid;}
+    .work-gallery-add:hover {background:#dcecf6;border-color:var(--blue);}
+    .work-gallery-add strong {font-size:18px;}
+    .work-gallery-add span {font-size:11px;}
+    .work-gallery-section:has(.work-gallery-list > .work-gallery-add:first-child):not(:has(.work-gallery-card)) {display:none;}
+    body.cms-editing .work-gallery-section {display:block!important;}
+    .cms-record-image-remove {display:none;position:absolute;z-index:6;top:10px;right:10px;
+      width:38px;height:38px; border:0;border-radius:50%;background:white;color:#082d4c;cursor:pointer;}
+    body.cms-editing .cms-record-image-remove {display:block;}
+    .cms-record-image-add {display:none; border:1px solid #719cb6;border-radius:10px;
+      background:#fff;color:#082d4c;padding:9px 14px;min-height:44px;font-size:12px;font-weight:850;cursor:pointer;}
+    body.cms-editing .cms-record-image-add {display:inline-flex;align-items:center;}
+
+    /* Recuperacao de imagens: estados discretos e nova tentativa manual. */
+    .asset-retry-host { position:relative; }
+    img[data-image-retry-status="retrying"] { opacity:.48; }
+    img[data-image-retry-status="unavailable"] { opacity:.23; }
+    .asset-retry-action {
+      position:absolute; z-index:60; inset:auto 8px 8px auto;
+      display:inline-flex; align-items:center; justify-content:center;
+      max-width:calc(100% - 16px); min-height:34px;
+      padding:8px 11px; border:1px solid rgba(255,255,255,.7);
+      border-radius:8px; background:#082d4c; color:white;
+      font:700 11px/1.3 Inter,"Segoe UI",sans-serif; letter-spacing:0;
+      text-transform:none; box-shadow:0 6px 16px #0004;
+      cursor:pointer; white-space:normal; text-align:center;
+    }
+    .asset-retry-action:hover, .asset-retry-action:focus-visible { background:#105584; outline:2px solid #9cd3f5; outline-offset:2px; }
+    [data-image-retry-status="retrying"].asset-retry-host::after {
+      content:"Tentando carregar imagem...";
+      position:absolute; z-index:30; left:8px; bottom:8px;
+      padding:6px 8px; border-radius:7px; background:#082d4cdd; color:white;
+      font:600 10px/1.3 Inter,"Segoe UI",sans-serif;
+      pointer-events:none;
+    }
+    @media(prefers-reduced-motion:reduce) {
+      img[data-image-retry-status="retrying"] { transition:none!important; }
+    }
+
+    /* Registro: carrossel responsivo com miniaturas e enquadramento por foto. */
+    .service-journey-visual:has(.service-record-carousel),
+    .service-journey-item:nth-child(even) .service-journey-visual:has(.service-record-carousel) {
+      height:auto; min-height:0; overflow:visible; background:transparent; border-radius:0;
+      margin:0; width:100%; min-width:0;
+    }
+    .service-journey-visual:has(.service-record-carousel)::after { content:none; }
+    .service-record-carousel { width:100%; min-width:0; display:flex; flex-direction:column; gap:10px; }
+    .service-record-viewport {
+      position:relative; width:100%; min-width:0; height:clamp(280px,40vw,550px);
+      background:#d9e8f1; overflow:hidden; border-radius:20px;
+      touch-action:pan-y; user-select:none; -webkit-user-select:none;
+    }
+    .service-record-viewport.is-adjusting { touch-action:none; cursor:grab; }
+    .service-record-viewport.is-adjusting:active { cursor:grabbing; }
+    .service-record-slide { position:absolute; inset:0; display:none; margin:0; }
+    .service-record-slide.is-active { display:block; }
+    .service-journey-visual .service-record-slide img {
+      width:100%; height:100%; object-fit:cover; position:absolute; inset:0;
+      transform:none!important; filter:none!important; transition:opacity .18s ease;
+      pointer-events:none;
+    }
+    .service-record-viewport::after {
+      content:''; position:absolute; inset:auto 0 0; height:85px;
+      background:linear-gradient(transparent,#041d3485); pointer-events:none;
+    }
+    .service-record-empty {height:100%;display:grid;place-items:center;color:#476276;font-size:13px;text-align:center;padding:24px;}
+    .service-record-nav {
+      position:absolute; top:50%; z-index:4; transform:translateY(-50%);
+      width:44px;height:44px; display:grid; place-items:center; border-radius:50%;
+      border:1px solid #ffffff80; background:#082d4ce0; color:white;
+      font-size:25px;cursor:pointer; touch-action:manipulation;
+    }
+    .service-record-nav:focus-visible,.service-record-thumb:focus-visible,.service-record-position-button:focus-visible {
+      outline:3px solid #50a5dc; outline-offset:2px;
+    }
+    .service-record-nav.prev {left:12px;} .service-record-nav.next {right:12px;}
+    .service-record-nav[disabled] {opacity:.3;pointer-events:none;}
+    .service-record-count {
+      position:absolute; bottom:12px; left:15px; z-index:4;
+      border-radius:20px;padding:6px 10px; background:#041d34cf;color:white;
+      font-size:12px;font-weight:800;font-variant-numeric:tabular-nums;
+    }
+    .service-record-thumbs {
+      display:flex; align-items:stretch; gap:8px; width:100%; min-width:0; overflow-x:auto;
+      overscroll-behavior-inline:contain;scroll-snap-type:x proximity;
+      padding:5px 2px 9px; scrollbar-width:thin; -webkit-overflow-scrolling:touch;
+    }
+    .service-record-thumb {
+      flex:0 0 83px; width:83px;height:65px;padding:2px; margin:0;
+      border:2px solid transparent; border-radius:9px; background:transparent;
+      overflow:hidden;cursor:pointer;scroll-snap-align:start;touch-action:manipulation;
+    }
+    .service-record-thumb.is-active {border-color:var(--blue); background:#e4f2fa;}
+    .service-journey-visual .service-record-thumb img {
+      width:100%;height:100%;object-fit:cover;display:block; border-radius:5px;
+      transform:none!important;filter:none!important;
+    }
+    .service-record-toolbar {display:flex; flex-wrap:wrap; align-items:center; gap:8px;min-height:0;}
+    .service-record-position-button {display:none;border:1px solid #719cb6;border-radius:10px;
+      background:#ecf5fa;color:#082d4c;min-height:44px;padding:9px 14px;font-size:12px;
+      font-weight:850;cursor:pointer;touch-action:manipulation;}
+    body.cms-editing .service-record-position-button {display:inline-flex;align-items:center;}
+    .service-record-position-controls {display:grid; gap:12px; border:1px solid #bed2df;
+      border-radius:14px; background:#f3f8fb; padding:14px; }
+    .service-record-position-controls[hidden] {display:none!important;}
+    .service-record-position-controls p {font-size:12px;color:#476276;line-height:1.4;margin:0;}
+    .service-record-position-controls label {display:grid;grid-template-columns:minmax(78px,120px) minmax(0,1fr) 43px;
+      align-items:center;gap:10px;color:#082d4c;font-size:12px;font-weight:750;}
+    .service-record-position-controls input[type=range] {width:100%;height:35px;min-width:0;cursor:pointer;accent-color:var(--blue);}
+    .service-record-position-controls output {font-variant-numeric:tabular-nums;text-align:right;}
+    .service-record-position-reset {min-height:42px;width:max-content;max-width:100%;padding:9px 13px;
+      cursor:pointer;border:1px solid #a6c3d4;border-radius:8px;color:#082d4c;background:white;font-weight:800;}
+    .service-journey-visual .service-journey-caption {z-index:4;inset:auto 16px 48px;
+      border:0;padding:0;max-width:calc(100% - 32px);pointer-events:none;}
+    @media (max-width:760px) {
+      .service-journey-item,.service-journey-item:nth-child(even) {overflow:visible; min-width:0; grid-template-columns:minmax(0,1fr);}
+      .service-journey-copy,.service-journey-item:nth-child(even) .service-journey-copy {width:100%;min-width:0;max-width:100%;}
+      .service-journey-visual:has(.service-record-carousel),
+      .service-journey-item:nth-child(even) .service-journey-visual:has(.service-record-carousel) {
+        width:100%;max-width:100%;min-width:0;min-height:0;height:auto;border-radius:0;
+      }
+      .service-record-viewport {height:auto;aspect-ratio:4/3;min-height:220px;max-height:60svh;border-radius:14px;}
+      .service-record-nav {width:44px;height:44px;}
+      .service-record-nav.prev {left:8px;} .service-record-nav.next {right:8px;}
+      .service-record-thumb {flex-basis:68px;width:68px;height:54px;}
+      .service-record-thumbs {gap:7px;}
+      .service-record-position-controls {padding:12px;gap:8px;}
+      .service-record-position-controls label {grid-template-columns:69px minmax(0,1fr) 39px;gap:6px;}
+      .service-journey-visual .service-journey-caption {font-size:8px;inset:auto 12px 44px;}
+    }
+    @media (max-width:380px) {
+      .service-record-viewport {min-height:195px;}
+      .service-record-position-controls label {grid-template-columns:1fr auto;gap:0 10px;}
+      .service-record-position-controls input {grid-column:1/-1;grid-row:2;}
+      .service-record-position-controls output {grid-column:2;grid-row:1;}
+    }
+    @media (prefers-reduced-motion:reduce) {
+      .service-record-viewport,.service-record-slide,.service-record-thumb {scroll-behavior:auto!important;animation:none!important;transition:none!important;}
+    }
+
   </style>
 </head>
 <body>
@@ -1636,6 +1810,216 @@
       address: 'Av. Juracy Magalhães, 3340 — Vitória da Conquista, BA'
     };
 
+
+
+    /* Recuperacao resiliente de imagens, sem alterar JSON nem URLs salvas no CMS.
+       Usa src normal (sem fetch/CORS), timeout, backoff, e retry manual. */
+    const imageRetry = (()=>{
+      const MAX_TRIES=4;
+      const TIMEOUT_MS=16000;
+      const DELAYS=[1200,3200,6500];
+      const images=new WeakMap();
+      const backgrounds=new WeakMap();
+      const imageWatcher='IntersectionObserver' in window
+        ? new IntersectionObserver(entries=>entries.forEach(({target,isIntersecting})=>{
+            if(!isIntersecting) return;
+            imageWatcher.unobserve(target);
+            if(target.tagName==='IMG') beginImage(target);
+            else beginBackground(target);
+          }),{rootMargin:'250px'}) : null;
+
+      function isWebUrl(value){
+        try { const u=new URL(value,document.baseURI); return u.protocol==='http:' || u.protocol==='https:'; }
+        catch(_) {return false;}
+      }
+      function retryUrl(source,attempt){
+        const u=new URL(source,document.baseURI);
+        if(attempt>0 && /^(https?:)$/.test(u.protocol)
+           && ![...u.searchParams.keys()].some(key=>/^(x-amz-|x-goog-|signature$|token$|expires$)/i.test(key))){
+          u.searchParams.set('_img_retry',`${Date.now()}-${attempt}`);
+        }
+        return u.href;
+      }
+      function clear(s){clearTimeout(s.timeout);clearTimeout(s.delay);s.timeout=null;s.delay=null;}
+      function setImageStatus(img,status){
+        if(!img.isConnected) return;
+        if(status==='ok') img.removeAttribute('data-image-retry-status');
+        else img.setAttribute('data-image-retry-status',status);
+      }
+      function removeRetryControl(s){s.control?.remove();s.control=null;}
+      function manualControl(element,s,trigger){
+        if(!element.isConnected || !element.parentElement || s.control) return;
+        const host=element.parentElement;
+        host.classList.add('asset-retry-host');
+        const control=document.createElement('span');
+        control.className='asset-retry-action';
+        control.textContent='Tentar novamente';
+        control.setAttribute('role','button');
+        control.setAttribute('tabindex','0');
+        control.setAttribute('aria-label','Tentar carregar a imagem novamente');
+        const onActivate=event=>{
+          if(event.type==='keydown' && event.key!=='Enter' && event.key!==' ') return;
+          event.preventDefault();event.stopPropagation();
+          removeRetryControl(s);trigger();
+        };
+        control.addEventListener('click',onActivate,true);
+        control.addEventListener('keydown',onActivate,true);
+        host.append(control);
+        s.control=control;
+      }
+      function watchImage(img){
+        const value=img.getAttribute('src');
+        if(!value || !isWebUrl(value)) return;
+        const existing=images.get(img);
+        if(existing && (value===existing.lastSet || value===existing.original)) return;
+        if(existing){clear(existing);removeRetryControl(existing);}
+        const s={original:value,lastSet:value,tries:0,started:false,timeout:null,delay:null,control:null,done:false};
+        images.set(img,s);
+        img.dataset.imageRetryOriginal=new URL(value,document.baseURI).href;
+        img.removeAttribute('data-image-retry-status');
+        if(img.complete && img.naturalWidth>0){s.done=true;return;}
+        if(imageWatcher && img.loading==='lazy') imageWatcher.observe(img);
+        else beginImage(img);
+      }
+      function beginImage(img){
+        const s=images.get(img);
+        if(!s || s.done || s.started || !img.isConnected) return;
+        s.started=true;
+        if(img.complete){
+          if(img.naturalWidth>0) {successfulImage(img);return;}
+          scheduleImageRetry(img,s);return;
+        }
+        s.timeout=setTimeout(()=>scheduleImageRetry(img,s),TIMEOUT_MS);
+      }
+      function successfulImage(img){
+        const s=images.get(img);if(!s)return;
+        clear(s);removeRetryControl(s);
+        s.done=true;s.started=false;s.tries=0;
+        setImageStatus(img,'ok');
+      }
+      function scheduleImageRetry(img,s){
+        if(images.get(img)!==s || s.done || !img.isConnected) {clear(s);return;}
+        if(img.complete && img.naturalWidth>0) {successfulImage(img);return;}
+        clear(s);s.started=true;
+        s.tries+=1;
+        if(s.tries>=MAX_TRIES){
+          s.started=false;
+          setImageStatus(img,'unavailable');
+          manualControl(img,s,()=>{
+            if(images.get(img)!==s)return;
+            clear(s);s.done=false;s.started=false;s.tries=0;
+            s.lastSet=retryUrl(s.original,Date.now());
+            img.src=s.lastSet;
+            setImageStatus(img,'retrying');
+            beginImage(img);
+          });
+          return;
+        }
+        setImageStatus(img,'retrying');
+        s.delay=setTimeout(()=>{
+          if(images.get(img)!==s || !img.isConnected) return;
+          s.lastSet=retryUrl(s.original,s.tries);
+          img.src=s.lastSet;
+          s.timeout=setTimeout(()=>scheduleImageRetry(img,s),TIMEOUT_MS);
+        },DELAYS[Math.min(s.tries-1,DELAYS.length-1)]);
+      }
+      const urlPattern=/url\(\s*(?:"([^"]+)"|'([^']+)'|([^)]*))\s*\)/g;
+      function backgroundUrl(el){
+        const value=getComputedStyle(el).backgroundImage;
+        const found=[...value.matchAll(urlPattern)].map(m=>(m[1]||m[2]||m[3]||'').trim());
+        return found.find(u=>isWebUrl(u))||null;
+      }
+      function watchBackground(el){
+        const source=backgroundUrl(el);
+        if(!source)return;
+        const old=backgrounds.get(el);
+        if(old && (source===old.original || source===old.lastSet))return;
+        if(old){clear(old);old.loader&&(old.loader.onload=old.loader.onerror=null);removeRetryControl(old);}
+        const s={original:source,lastSet:source,tries:0,started:false,timeout:null,delay:null,control:null,loader:null,done:false};
+        backgrounds.set(el,s);
+        if(imageWatcher)imageWatcher.observe(el);
+        else beginBackground(el);
+      }
+      function beginBackground(el){
+        const s=backgrounds.get(el);
+        if(!s || s.done || s.started || !el.isConnected)return;
+        s.started=true;
+        loadBackground(el,s,s.original);
+      }
+      function loadBackground(el,s,url){
+        if(backgrounds.get(el)!==s || !el.isConnected)return;
+        const loader=new Image();s.loader=loader;
+        loader.onload=()=>{
+          if(backgrounds.get(el)!==s || s.loader!==loader)return;
+          clear(s);removeRetryControl(s);s.done=true;s.started=false;
+          el.removeAttribute('data-image-retry-status');
+          if(url!==s.original){
+            const css=getComputedStyle(el).backgroundImage;
+            const esc=url.replace(/"/g,'%22');
+            el.style.backgroundImage=css.replace(urlPattern,(match,a,b,c)=>{
+              const found=(a||b||c||'').trim();
+              return found===s.original || found===s.lastSet ? `url("${esc}")` : match;
+            });
+          }
+        };
+        loader.onerror=()=>scheduleBackgroundRetry(el,s);
+        s.timeout=setTimeout(()=>scheduleBackgroundRetry(el,s),TIMEOUT_MS);
+        loader.src=url;
+      }
+      function scheduleBackgroundRetry(el,s){
+        if(backgrounds.get(el)!==s || s.done || !el.isConnected){clear(s);return;}
+        clear(s);
+        if(s.loader){s.loader.onload=s.loader.onerror=null;s.loader.src='';s.loader=null;}
+        s.tries+=1;
+        if(s.tries>=MAX_TRIES){
+          s.started=false;
+          el.setAttribute('data-image-retry-status','unavailable');
+          manualControl(el,s,()=>{
+            s.started=false;s.tries=0;s.done=false;
+            el.setAttribute('data-image-retry-status','retrying');
+            beginBackground(el);
+          });
+          return;
+        }
+        el.setAttribute('data-image-retry-status','retrying');
+        s.delay=setTimeout(()=>{
+          if(backgrounds.get(el)!==s || !el.isConnected)return;
+          s.lastSet=retryUrl(s.original,s.tries);
+          loadBackground(el,s,s.lastSet);
+        },DELAYS[Math.min(s.tries-1,DELAYS.length-1)]);
+      }
+      function scan(root){
+        if(!root || root.nodeType!==1)return;
+        if(root.tagName==='IMG')watchImage(root);
+        else if(root.matches?.('[data-cms-background],.hero-slide,.institutional-photo'))watchBackground(root);
+        root.querySelectorAll?.('img').forEach(watchImage);
+        root.querySelectorAll?.('[data-cms-background],.hero-slide,.institutional-photo').forEach(watchBackground);
+      }
+      function start(){
+        document.addEventListener('load',event=>{
+          if(event.target?.tagName==='IMG')successfulImage(event.target);
+        },true);
+        document.addEventListener('error',event=>{
+          if(event.target?.tagName!=='IMG')return;
+          const img=event.target;const s=images.get(img);
+          if(s && !s.done && s.started) scheduleImageRetry(img,s);
+        },true);
+        const obs=new MutationObserver(records=>{
+          for(const record of records){
+            if(record.type==='childList')record.addedNodes.forEach(scan);
+            else if(record.attributeName==='src' && record.target.tagName==='IMG')watchImage(record.target);
+            else if(record.attributeName==='style'){
+              if(record.target.matches?.('[data-cms-background],.hero-slide,.institutional-photo'))watchBackground(record.target);
+            }
+          }
+        });
+        obs.observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['src','style']});
+        document.querySelectorAll('img,[data-cms-background],.hero-slide,.institutional-photo').forEach(el=>{
+          if(el.tagName==='IMG')watchImage(el);else watchBackground(el);
+        });
+      }
+      return {start,scan};
+    })();
 
     const CMS_CONFIG = Object.freeze({
       owner: 'glaucodeveloper',
@@ -2369,19 +2753,18 @@
       cmsEditor?.updateSaveFooter();
     }
 
-    async function cmsAddContactInfo(){
+    async function cmsAddContactInfo(label,value){
       if(!cmsState.token) { navigateLogin(); return; }
-      const label=prompt('Nome da informação (ex.: Telefone, CREA, Atendimento):','');
-      if(label===null || !label.trim()) return;
-      const value=prompt(`Valor para ${label.trim()}:`,'');
-      if(value===null) return;
+      label=String(label||'').trim(); value=String(value||'').trim();
+      if(!label || !value) throw new Error('Preencha o nome e o valor da informação.');
       const panel=contactPanelData();
       let id=contactItemId(label);
       if(panel.items.some(item=>item.id===id)) id=`${id}-${Date.now().toString(36)}`;
-      const item={id,label:label.trim(),value:value.trim()};
+      const item={id,label,value};
       cmsRegisterChange({key:`contact-add:${id}`,label:`Nova informação: ${item.label}`,undo:()=>{ const current=contactPanelData(); current.items=current.items.filter(entry=>entry.id!==id); SITE_DATA.contactPanel=current; cmsState.content.contactPanel=current; }});
       panel.items.push(item);
       SITE_DATA.contactPanel=panel; cmsState.content.contactPanel=panel;
+      const home=document.querySelector('home-view'); if(home) home.contactDraft=false;
       cmsRefreshHome();
     }
 
@@ -2403,11 +2786,14 @@
         this.render();
         this._heroDispose = mountHeroSlideshow(this);
         this.addEventListener('click', this._onClick = e=>{
-          const add=e.target.closest('[data-cms-contact-add]'); if(add){ e.preventDefault(); cmsAddContactInfo(); return; }
+          const add=e.target.closest('[data-cms-contact-add]'); if(add){ e.preventDefault(); this.contactDraft=true; cmsRefreshHome(); requestAnimationFrame(()=>this.querySelector('[data-cms-contact-label]')?.focus()); return; }
+          if(e.target.closest('[data-cms-contact-cancel]')) { e.preventDefault(); this.contactDraft=false; cmsRefreshHome(); return; }
           const remove=e.target.closest('[data-cms-contact-remove]'); if(remove){ e.preventDefault(); cmsRemoveContactInfo(remove.dataset.cmsContactRemove); return; }
           const anchor=e.target.closest('[data-go]'); if(anchor) navigateHome(anchor.dataset.go);
         });
         this.addEventListener('submit', this._onSubmit = e=>{
+          const inline=e.target.closest('[data-cms-contact-form]');
+          if(inline){ e.preventDefault(); cmsAddContactInfo(inline.elements.namedItem('label').value,inline.elements.namedItem('value').value).catch(err=>{ inline.querySelector('[data-cms-contact-error]').textContent=err.message; }); return; }
           const form=e.target.closest('[data-whatsapp-form]');
           if(!form) return;
           e.preventDefault();
@@ -2529,7 +2915,7 @@
             </div>
             <div class="cert-board">
               <article class="cert-card"><div class="cert-logo-wrap"><img class="cert-logo" src="https://www.gov.br/cidades/pt-br/assuntos/habitacao/pbqp-h/arquivos/2020_12_16_pbqph_colorida_respiro_selo.png" alt="PBQP-H — Programa Brasileiro da Qualidade e Produtividade do Habitat"></div><div class="cert-card-body"><h3>PBQP-H</h3><p>Programa Brasileiro da Qualidade e Produtividade do Habitat, referência que integra nosso compromisso com a qualidade da construção.</p></div></article>
-              <article class="cert-card"><div class="cert-logo-wrap"><div class="iso-reference-logo" role="img" aria-label="Referência à norma ISO 9001:2015"><span class="iso-word">ISO</span><span class="iso-number">9001</span><small>Gestão da qualidade</small></div></div><div class="cert-card-body"><h3>ISO 9001</h3><p>Gestão da qualidade orientada por processos, controle, melhoria contínua e consistência na entrega.</p></div></article>
+              <article class="cert-card"><div class="cert-logo-wrap"><img class="iso-reference-logo" data-cms-key="iso-9001-logo" src="assets/iso-9001-reference.svg" alt="ISO 9001 — Gestão da qualidade" loading="lazy"></div><div class="cert-card-body"><h3>ISO 9001</h3><p>Gestão da qualidade orientada por processos, controle, melhoria contínua e consistência na entrega.</p></div></article>
             </div>
           </div></div></section>
 
@@ -2562,7 +2948,9 @@
                 <div class="contact-data">
                   ${(contactPanelData().items || []).map(item=>`<div class="contact-row" data-contact-info="${escapeHTML(item.id)}"><span data-cms-key="contact-item-${escapeHTML(item.id)}-label">${escapeHTML(item.label)}</span><strong data-cms-key="contact-item-${escapeHTML(item.id)}-value">${escapeHTML(item.value)}</strong><button class="cms-contact-remove" type="button" data-cms-contact-remove="${escapeHTML(item.id)}" title="Remover informação" aria-label="Remover ${escapeHTML(item.label)}">×</button></div>`).join('')}
                 </div>
-                <div class="cms-contact-list-controls"><button class="cms-contact-add" type="button" data-cms-contact-add>+ Adicionar informação</button></div>
+                <div class="cms-contact-list-controls">
+                  ${this.contactDraft ? `<form class="cms-contact-inline" data-cms-contact-form><label>Nome<input data-cms-contact-label name="label" required placeholder="Ex.: Instagram, telefone"></label><label>Informação<input name="value" required placeholder="Valor / contato"></label><div><button type="submit">Adicionar ao rascunho</button><button type="button" data-cms-contact-cancel>Cancelar</button></div><small data-cms-contact-error></small></form>` : `<button class="cms-contact-add" type="button" data-cms-contact-add>+ Adicionar informação</button>`}
+                </div>
               </aside>
             </article>
           </div></section>
@@ -2629,10 +3017,7 @@
 
     function cmsReplaceDeep(value,from,to){
       if(value===from) return to;
-      if(Array.isArray(value)) {
-        for(let i=0;i<value.length;i+=1) value[i]=cmsReplaceDeep(value[i],from,to);
-        return value;
-      }
+      if(Array.isArray(value)) return value.map(item=>cmsReplaceDeep(item,from,to));
       if(value && typeof value==='object') {
         for(const key of Object.keys(value)) value[key]=cmsReplaceDeep(value[key],from,to);
       }
@@ -2741,28 +3126,16 @@
       if (explicit) return `${kind}:${explicit}`;
       const section = el.closest?.('section[id]');
       const detail = el.closest?.('work-detail');
-      const root = detail || section || el.closest?.('fixed-nav,site-footer,home-view,territory-map,works-showcase') || document.body;
-      const scope = detail ? `obra-${detail.getAttribute('slug') || 'detalhe'}` : (section?.id || root.tagName.toLowerCase());
+      const root = section || detail || el.closest?.('fixed-nav,site-footer,home-view,territory-map,works-showcase') || document.body;
+      let scope = section?.id || (detail ? `obra-${detail.getAttribute('slug') || 'detalhe'}` : root.tagName.toLowerCase());
       const parts=[];
       let node=el;
       while(node && node!==root && node!==document.body) {
         parts.unshift(cmsElementSignature(node));
         node=node.parentElement;
       }
-      if (root && root!==document.body) parts.unshift(cmsElementSignature(root));
+      if (root && root!==document.body && root!==section) parts.unshift(cmsElementSignature(root));
       return `${kind}:${scope}:${parts.join('>') || cmsElementSignature(el)}`;
-    }
-
-    function cmsMigrateLegacyExecutionText(textMap) {
-      const legacyPrefix='text:execucao:';
-      const scopedPrefix='text:obra-areninha-barra-do-choca:work-detail>main.detail-route>section#execucao>';
-      for(const key of Object.keys(textMap)) {
-        if(!key.startsWith(legacyPrefix)) continue;
-        const scopedKey=`${scopedPrefix}${key.slice(legacyPrefix.length)}`;
-        if(!Object.prototype.hasOwnProperty.call(textMap,scopedKey)) textMap[scopedKey]=textMap[key];
-        delete textMap[key];
-      }
-      return textMap;
     }
 
     function replaceBackgroundUrl(el, url) {
@@ -2774,7 +3147,7 @@
 
     const cmsIgnoredTextTags = new Set(['SCRIPT','STYLE','INPUT','TEXTAREA','SELECT','OPTION','SVG','PATH']);
     function cmsHasDirectText(el) {
-      if (!el || cmsIgnoredTextTags.has(el.tagName) || el.closest('.cms-toolbar,.cms-modal,.cms-login,.cms-record-modal,.cms-record-create-session')) return false;
+      if (!el || cmsIgnoredTextTags.has(el.tagName) || el.closest('.asset-retry-action,.cms-toolbar,.cms-modal,.cms-login,.cms-record-modal,.cms-record-create-session')) return false;
       return [...el.childNodes].some(node=>node.nodeType===Node.TEXT_NODE && node.textContent.trim());
     }
     function cmsTextElements(root=document) {
@@ -2792,13 +3165,13 @@
         const key=cmsKeyFor(el,'text');
         if (key && Object.prototype.hasOwnProperty.call(textMap,key)) {
           const safe=sanitizeRichHTML(textMap[key]);
-          if (el.innerHTML!==safe) el.innerHTML=safe;
+          if (!el.isContentEditable && el.innerHTML!==safe) el.innerHTML=safe;
         }
       });
       root.querySelectorAll?.('img').forEach(img=>{
         if (img.closest('.cms-toolbar,.cms-modal,.cms-login')) return;
         const key=cmsKeyFor(img,'image');
-        if (imageMap[key] && img.src!==imageMap[key]) img.src=imageMap[key];
+        if (imageMap[key] && (img.dataset.imageRetryOriginal || img.src)!==new URL(imageMap[key],document.baseURI).href) img.src=imageMap[key];
       });
       root.querySelectorAll?.('[data-cms-background]').forEach(el=>{
         const key=cmsKeyFor(el,'background');
@@ -2807,11 +3180,9 @@
     }
 
     async function cmsLoad() {
-      const text=cmsMigrateLegacyExecutionText({...(SITE_DATA.text || {})});
-      SITE_DATA.text=text;
       cmsState.content = {
         ...SITE_DATA,
-        text,
+        text: {...(SITE_DATA.text || {})},
         images: {...(SITE_DATA.images || {})}
       };
       cmsState.loaded=true;
@@ -2945,7 +3316,7 @@
       if(!file?.type?.startsWith('image/')) throw new Error('Selecione um arquivo de imagem.');
       const safeName=(file.name || 'imagem').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9._-]+/g,'-').replace(/^-+|-+$/g,'').toLowerCase();
       const stamp=new Date().toISOString().replace(/[:.]/g,'-');
-      const path=`${CMS_CONFIG.uploadDir}/${new Date().getFullYear()}/${stamp}-${safeName || 'imagem'}`;
+      const path=`${CMS_CONFIG.uploadDir}/${new Date().getFullYear()}/${stamp}-${Math.random().toString(36).slice(2,8)}-${safeName || 'imagem'}`;
       cmsEditor?.setStatus('Enviando imagem…');
       const response=await cmsApi(cmsApiUrl(path),{
         method:'PUT', headers:{'Content-Type':'application/json'},
@@ -3014,7 +3385,7 @@
         const modal=document.createElement('div'); modal.className='cms-modal'; modal.dataset.cmsModal=''; modal.innerHTML=`<section class="cms-modal-card" role="dialog" aria-modal="true" aria-label="Editor de texto">
           <header class="cms-modal-head"><strong>Editar texto</strong><button type="button" class="cms-modal-close" data-cms-modal-close aria-label="Fechar">×</button></header>
           <div class="cms-rich-toolbar">
-            <button type="button" data-cmd="bold"><b>B</b></button><button type="button" data-cmd="italic"><i>I</i></button><button type="button" data-cmd="underline"><u>U</u></button><button type="button" data-cmd="createLink">Link</button><button type="button" data-cmd="removeFormat">Limpar</button>
+            <button type="button" data-cmd="bold"><b>B</b></button><button type="button" data-cmd="italic"><i>I</i></button><button type="button" data-cmd="underline"><u>U</u></button><button type="button" data-cmd="removeFormat">Limpar</button>
           </div>
           <div class="cms-rich-editor" contenteditable="true" data-cms-rich-editor></div>
           <footer class="cms-modal-actions"><button type="button" class="cms-modal-cancel" data-cms-modal-close>Cancelar</button><button type="button" class="cms-modal-save" data-cms-modal-save>Aplicar alteração</button></footer>
@@ -3032,6 +3403,16 @@
           if(undo) { cmsUndoChange(undo.dataset.cmsUndo); return; }
           if(e.target.closest('[data-cms-save-all]')) cmsSaveAllChanges();
         });
+        const inlineActions=document.createElement('div'); inlineActions.className='cms-inline-actions'; inlineActions.hidden=true;
+        inlineActions.innerHTML='<span>Editar na página</span><button type="button" data-cms-inline-cmd="bold" title="Negrito"><b>B</b></button><button type="button" data-cms-inline-cmd="italic" title="Itálico"><i>I</i></button><button type="button" data-cms-inline-cmd="underline" title="Sublinhado"><u>U</u></button><button type="button" data-cms-inline-save>Aplicar</button><button type="button" data-cms-inline-cancel>Cancelar</button>';
+        document.body.append(inlineActions); this.inlineActions=inlineActions;
+        inlineActions.addEventListener('mousedown',e=>{if(e.target.closest('button')) e.preventDefault();});
+        inlineActions.addEventListener('click',e=>{
+          if(e.target.closest('[data-cms-inline-save]')) this.commitInlineEditor();
+          if(e.target.closest('[data-cms-inline-cancel]')) this.cancelInlineEditor();
+          const command=e.target.closest('[data-cms-inline-cmd]')?.dataset.cmsInlineCmd;
+          if(command && this.inlineTarget){ this.inlineTarget.focus(); document.execCommand(command,false,null); }
+        });
         textBtn.addEventListener('click',()=>this.openTextEditor());
         imageBtn.addEventListener('click',()=>{ if(this.imageTarget) this.file.click(); });
         file.addEventListener('change',()=>this.handleImage());
@@ -3040,8 +3421,7 @@
           const cmd=e.target.closest('[data-cmd]')?.dataset.cmd;
           if(cmd){
             this.rich.focus();
-            if(cmd==='createLink') { const href=prompt('URL do link:','https://'); if(href) document.execCommand('createLink',false,href); }
-            else document.execCommand(cmd,false,null);
+            document.execCommand(cmd,false,null);
           }
           if(e.target.closest('[data-cms-modal-save]')) this.saveText();
         });
@@ -3063,7 +3443,7 @@
         if(this.toolbar) this.toolbar.hidden=true;
         if(!cmsState.token && this.toolbar?.isConnected) this.toolbar.remove();
         this.saveFooter?.classList.remove('visible');
-        document.body.classList.remove('cms-editing'); this.hideControls(); this.closeModal();
+        document.body.classList.remove('cms-editing'); this.cancelInlineEditor(); this.hideControls(); this.closeModal();
         document.removeEventListener('pointermove',this.onPointerMove);
         window.removeEventListener('scroll',this.onScroll,true); window.removeEventListener('resize',this.onScroll);
       }
@@ -3112,9 +3492,9 @@
         return null;
       }
       onPointerMove(event){
-        if(!this.active || this.modal.classList.contains('open')) return;
+        if(!this.active || this.modal.classList.contains('open') || this.inlineTarget) return;
         if(event.target.closest?.('.work-create-route')) { this.hideControls(); return; }
-        if(event.target.closest?.('.cms-hover-control,.cms-toolbar,.cms-contact-remove,.cms-contact-add,.cms-record-add,.cms-record-remove,.cms-record-modal,.cms-record-create-session')) return;
+        if(event.target.closest?.('.cms-hover-control,.cms-toolbar,.cms-contact-remove,.cms-contact-add,.cms-record-add,.cms-record-remove,.cms-record-modal,.cms-record-create-session,.service-record-carousel,.work-gallery-section,.cms-inline-actions,.cms-contact-inline')) return;
         const img=event.target.closest?.('img');
         if(img && !img.closest('.cms-toolbar,.cms-modal,.cms-login')) { this.setImageTarget({el:img,kind:'image'}); this.clearTextTarget(); return; }
         const text=this.textCandidate(event.target);
@@ -3136,7 +3516,51 @@
       clearTextTarget(){ this.textTarget?.classList.remove('cms-edit-highlight'); this.textTarget=null; this.textBtn.classList.remove('visible'); }
       clearImageTarget(){ this.imageTarget?.classList.remove('cms-edit-highlight'); this.imageTarget=null; this.imageKind=null; this.imageBtn.classList.remove('visible'); }
       hideControls(){ this.clearTextTarget(); this.clearImageTarget(); }
-      openTextEditor(){ if(!this.textTarget)return; this.modalTarget=this.textTarget; this.rich.innerHTML=this.textTarget.innerHTML; this.modal.classList.add('open'); this.textBtn.classList.remove('visible'); setTimeout(()=>this.rich.focus(),30); }
+      openTextEditor(){
+        if(!this.textTarget || !cmsState.token) return;
+        this.cancelInlineEditor();
+        const target=this.textTarget;
+        this.inlineTarget=target;
+        this.inlineOriginal=target.innerHTML;
+        target.setAttribute('contenteditable','true');
+        target.setAttribute('spellcheck','true');
+        target.classList.add('cms-inline-editing');
+        this.inlineActions.hidden=false;
+        this.inlineActions.style.display='flex';
+        this.inlineActions.style.top=`${Math.max(86,Math.min(innerHeight-70,target.getBoundingClientRect().top-54))}px`;
+        this.inlineActions.style.left=`${Math.max(8,Math.min(innerWidth-360,target.getBoundingClientRect().left))}px`;
+        this.textBtn.classList.remove('visible');
+        this.inlineKeydown=e=>{if(e.key==='Escape'){e.preventDefault();this.cancelInlineEditor();} if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();this.commitInlineEditor();}};
+        target.addEventListener('keydown',this.inlineKeydown);
+        target.focus();
+      }
+      cancelInlineEditor(){
+        if(!this.inlineTarget) return;
+        const target=this.inlineTarget;
+        target.innerHTML=this.inlineOriginal ?? target.innerHTML;
+        target.removeAttribute('contenteditable');
+        target.classList.remove('cms-inline-editing');
+        if(this.inlineKeydown) target.removeEventListener('keydown',this.inlineKeydown);
+        this.inlineTarget=null; this.inlineKeydown=null; this.inlineOriginal=null;
+        this.inlineActions.hidden=true; this.inlineActions.style.display='none';
+        this.hideControls();
+      }
+      async commitInlineEditor(){
+        if(!this.inlineTarget) return;
+        const target=this.inlineTarget;
+        const old=this.inlineOriginal;
+        const updated=sanitizeRichHTML(target.innerHTML);
+        target.innerHTML=old;
+        target.removeAttribute('contenteditable'); target.classList.remove('cms-inline-editing');
+        if(this.inlineKeydown) target.removeEventListener('keydown',this.inlineKeydown);
+        this.inlineTarget=null; this.inlineKeydown=null; this.inlineOriginal=null;
+        this.inlineActions.hidden=true; this.inlineActions.style.display='none';
+        if(updated!==sanitizeRichHTML(old)){
+          this.modalTarget=target;
+          this.rich.innerHTML=updated;
+          await this.saveText();
+        }
+      }
       closeModal(){ this.modal.classList.remove('open'); this.modalTarget=null; }
       async saveText(){
         if(!this.modalTarget)return;
@@ -3197,7 +3621,9 @@
       if (Array.isArray(work.activities) && work.activities.length) {
         return work.activities.map((activity, index) => ({
           id: activity.id || `atividade-${index + 1}`,
-          image: activity.image || work.cover || '',
+          image: activityImages(activity)[0] || work.cover || '',
+          images: activityImages(activity),
+          imagePositions: activityImagePositions(activity),
           description: activity.description || '',
           title: activity.title || `Registro de execução ${String(index + 1).padStart(2,'0')}`
         }));
@@ -3205,6 +3631,7 @@
       const photos = Array.isArray(work.photos) ? work.photos : [];
       const services = Array.isArray(work.services) ? work.services : [];
       return services.map((service,index)=>({
+        images:photos[index] ? [photos[index]] : [],
         id:`servico-${index + 1}`,
         image:photos[index % Math.max(photos.length,1)] || work.cover || '',
         title:service,
@@ -3212,23 +3639,31 @@
       }));
     }
 
-    let activityIdSequence=0;
-    function createActivityId(work) {
-      const existing=new Set((work.activities || []).map(activity=>String(activity.id)));
-      let id;
-      do {
-        const nonce=globalThis.crypto?.randomUUID?.() || `${Date.now().toString(36)}-${(++activityIdSequence).toString(36)}-${Math.random().toString(36).slice(2,8)}`;
-        id=`${work.slug}-${nonce}`;
-      } while(existing.has(id));
-      return id;
+    function activityImages(activity) {
+      // An explicit images[] is canonical, even if empty (photos may have been removed).
+      const list=Array.isArray(activity?.images)
+        ? activity.images : (activity?.image ? [activity.image] : []);
+      return [...new Set(list.filter(Boolean))];
+    }
+
+    function clampImagePosition(value){
+      const n=Number(value);
+      return Number.isFinite(n) ? Math.max(0,Math.min(100,Math.round(n))) : 50;
+    }
+    function activityImagePositions(activity){
+      const count=activityImages(activity).length;
+      const previous=Array.isArray(activity?.imagePositions) ? activity.imagePositions : [];
+      return Array.from({length:count},(_,index)=>({
+        x:clampImagePosition(previous[index]?.x),
+        y:clampImagePosition(previous[index]?.y)
+      }));
     }
 
     function workPhotos(work) {
-      const activities = workActivities(work);
-      const fromActivities = activities.map(item=>item.image).filter(Boolean);
-      if(fromActivities.length) return fromActivities;
-      if(Array.isArray(work.photos) && work.photos.length) return work.photos;
-      return work.cover ? [work.cover] : [];
+      const photos=(work.activities||[]).flatMap(activity=>activityImages(activity));
+      const gallery=Array.isArray(work.gallery) ? work.gallery : [];
+      const stored=Array.isArray(work.photos) ? work.photos : [];
+      return [...new Set([...(work.cover ? [work.cover] : []), ...photos, ...gallery, ...stored].filter(Boolean))];
     }
 
     const slugifyWork = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -3243,29 +3678,24 @@
           if(e.target.matches('[data-work-cover-input]')) return;
           if(e.target.closest('[data-work-create-back],[data-work-create-cancel]')) { navigateHome('obras'); return; }
           if(e.target.closest('[data-work-create-cover]')) { this.querySelector('[data-work-cover-input]')?.click(); return; }
-          const field=e.target.closest('[data-work-create-field]');
-          if(field) { this.editField(field.dataset.workCreateField); return; }
           if(e.target.closest('[data-work-create-save]')) this.save();
         });
         this.addEventListener('change',this._change=e=>{
           if(e.target.matches('[data-work-cover-input]')) this.pickCover(e.target.files?.[0]);
+        });
+        this.addEventListener('input',this._input=e=>{
+          const field=e.target.dataset.workInput;
+          if(field) this.draft[field]=e.target.value;
         });
         this.render();
       }
       disconnectedCallback(){
         if(this._click) this.removeEventListener('click',this._click);
         if(this._change) this.removeEventListener('change',this._change);
+        if(this._input) this.removeEventListener('input',this._input);
         if(this.coverPreview?.startsWith('blob:')) URL.revokeObjectURL(this.coverPreview);
       }
       fieldLabel(field){ return ({name:'Nome da obra',city:'Cidade',state:'Estado',type:'Tipo de obra',summary:'Resumo da obra'})[field] || field; }
-      editField(field){
-        const label=this.fieldLabel(field);
-        const current=this.draft[field] || '';
-        const value=prompt(`${label}:`, current);
-        if(value===null) return;
-        this.draft[field]=String(value).trim();
-        this.render();
-      }
       pickCover(file){
         if(!file) return;
         if(!file.type?.startsWith('image/')) { alert('Selecione uma imagem para a capa.'); return; }
@@ -3316,7 +3746,7 @@
               <div><div class="eyebrow">CMS · Nova obra</div><h1>Monte a nova obra.</h1></div>
               <button class="work-create-back" type="button" data-work-create-back>← Voltar às obras</button>
             </header>
-            <p class="work-create-guide">Passe o mouse sobre cada campo e clique para preencher. A capa fica em rascunho e só é enviada ao repositório quando você usar Salvar alterações no final da página. Depois de criada, a página normal da obra será aberta para você adicionar os registros de execução.</p>
+            <p class="work-create-guide">Preencha os campos diretamente na página; o destaque aparece no hover e ao focar. A capa fica em rascunho e só é enviada ao repositório quando você usar Salvar alterações no final da página. Depois de criada, a página normal da obra será aberta para você adicionar os registros de execução.</p>
             <div class="work-create-layout">
               <div class="work-create-cover${cover?' has-image':''}" data-work-create-cover title="Clique para selecionar a capa">
                 ${cover?`<img src="${escapeHTML(cover)}" alt="Prévia da capa">`:''}
@@ -3325,11 +3755,8 @@
               </div>
               <div>
                 <div class="work-create-fields">
-                  <div class="work-create-field" data-work-create-field="name"><label>Nome da obra</label><strong class="${emptyClass('name')}">${value('name','Clique para informar o nome')}</strong></div>
-                  <div class="work-create-field" data-work-create-field="city"><label>Cidade</label><strong class="${emptyClass('city')}">${value('city','Clique para informar a cidade')}</strong></div>
-                  <div class="work-create-field" data-work-create-field="state"><label>Estado</label><strong>${value('state','Bahia')}</strong></div>
-                  <div class="work-create-field" data-work-create-field="type"><label>Tipo de obra</label><strong class="${emptyClass('type')}">${value('type','Construção, reforma, infraestrutura…')}</strong></div>
-                  <div class="work-create-field summary" data-work-create-field="summary"><label>Resumo da obra</label><p class="${emptyClass('summary')}">${value('summary','Clique para escrever uma descrição resumida da execução.')}</p></div>
+                  ${[['name','Nome da obra','Ex.: Construção de estádio'],['city','Cidade','Município'],['state','Estado','Bahia'],['type','Tipo de obra','Construção, reforma, infraestrutura…']].map(([field,label,placeholder])=>`<label class="work-create-field"><span>${label}</span><input type="text" data-work-input="${field}" value="${escapeHTML(this.draft[field]||'')}" placeholder="${placeholder}" autocomplete="off"></label>`).join('')}
+                  <label class="work-create-field summary"><span>Resumo da obra</span><textarea data-work-input="summary" rows="5" placeholder="Descreva o serviço e a execução da obra.">${escapeHTML(this.draft.summary||'')}</textarea></label>
                 </div>
                 <div class="work-create-actions">
                   <button class="work-create-action" type="button" data-work-create-cancel>Cancelar</button>
@@ -3348,14 +3775,28 @@
       static get observedAttributes(){ return ['slug']; }
       attributeChangedCallback(){ if(this.isConnected) this.render(); }
       connectedCallback(){
+        this.carouselIndices=new Map();
+        this.positionTarget=null;
+        this.pointerGesture=null;
         this.render();
         this.addEventListener('click',e=>{
+          const nav=e.target.closest('[data-record-carousel-nav]');
+          if(nav){e.preventDefault();this.changeCarousel(nav.dataset.recordCarouselNav,Number(nav.dataset.direction||0));return;}
+          const thumb=e.target.closest('[data-record-carousel-thumb]');
+          if(thumb){e.preventDefault();this.selectCarousel(thumb.dataset.recordCarouselThumb,Number(thumb.dataset.imageIndex));return;}
+          const toggle=e.target.closest('[data-record-position-toggle]');
+          if(toggle){e.preventDefault();this.toggleImagePosition(toggle.dataset.recordPositionToggle);return;}
+          const reset=e.target.closest('[data-record-position-reset]');
+          if(reset){e.preventDefault();this.resetImagePosition(reset.dataset.recordPositionReset);return;}
           if(e.target.matches('[data-record-draft-image-input]')) return;
           const add=e.target.closest('[data-cms-record-add]');
           if(add) { e.preventDefault(); this.openAddRecord(); return; }
-          const draftField=e.target.closest('[data-record-draft-field]');
-          if(draftField) { e.preventDefault(); this.editRecordDraftField(draftField.dataset.recordDraftField); return; }
-          if(e.target.closest('[data-record-draft-image]')) { e.preventDefault(); this.querySelector('[data-record-draft-image-input]')?.click(); return; }
+          if(e.target.closest('[data-record-draft-remove-image]')) { e.preventDefault(); this.removeRecordDraftImage(Number(e.target.closest('[data-record-draft-remove-image]').dataset.recordDraftRemoveImage)); return; }
+          if(e.target.closest('[data-record-draft-image]')) { if(e.target.closest('input,button')) return; e.preventDefault(); this.querySelector('[data-record-draft-image-input]')?.click(); return; }
+          const galleryAdd=e.target.closest('[data-work-gallery-add]'); if(galleryAdd){ this.querySelector('[data-work-gallery-input]')?.click(); return; }
+          const galleryRemove=e.target.closest('[data-work-gallery-remove]'); if(galleryRemove){ e.preventDefault(); this.removeGalleryPhoto(Number(galleryRemove.dataset.workGalleryRemove)); return; }
+          const extraAdd=e.target.closest('[data-record-extra-add]'); if(extraAdd){ e.preventDefault(); this.addRecordImages(extraAdd.dataset.recordExtraAdd); return; }
+          const extraRemove=e.target.closest('[data-record-extra-remove]'); if(extraRemove){ e.preventDefault(); this.removeRecordImage(extraRemove.dataset.recordExtraRemove,Number(extraRemove.dataset.recordExtraIndex)); return; }
           if(e.target.closest('[data-record-draft-cancel]')) { e.preventDefault(); this.cancelRecordDraft(); return; }
           if(e.target.closest('[data-record-draft-save]')) { e.preventDefault(); this.addRecord(); return; }
           const remove=e.target.closest('[data-cms-record-remove]');
@@ -3368,17 +3809,189 @@
           if(e.target.closest('[data-contact]')) { navigateHome('contato'); return; }
         });
         this.addEventListener('change',e=>{
-          if(e.target.matches('[data-record-draft-image-input]')) this.pickRecordDraftImage(e.target.files?.[0]);
+          if(e.target.matches('[data-record-draft-image-input]')) { this.pickRecordDraftImages([...e.target.files]); e.target.value=''; }
+          if(e.target.matches('[data-work-gallery-input]')) { this.addGalleryPhotos([...e.target.files]); e.target.value=''; }
+          if(e.target.matches('[data-record-extra-input]')) { this.stageRecordExtraImages(e.target.dataset.recordExtraInput,[...e.target.files]); e.target.value=''; }
+        });
+        this.addEventListener('input',e=>{
+          const slider=e.target.closest('[data-record-image-position]');
+          if(slider){this.previewImagePosition(slider);return;}
+          const field=e.target.dataset.recordDraftInput;
+          if(field && this.recordDraft) this.recordDraft[field]=e.target.value;
+        });
+        this.addEventListener('change',e=>{
+          const slider=e.target.closest('[data-record-image-position]');
+          if(slider) this.saveImagePosition(slider);
+        });
+        this.addEventListener('keydown',e=>{
+          const viewport=e.target.closest('[data-record-carousel-viewport]');
+          if(!viewport || !['ArrowLeft','ArrowRight'].includes(e.key) || e.target.matches('input,button')) return;
+          e.preventDefault();this.changeCarousel(viewport.dataset.recordCarouselViewport,e.key==='ArrowRight'?1:-1);
+        });
+        this.addEventListener('pointerdown',e=>this.carouselPointerDown(e));
+        this.addEventListener('pointermove',e=>this.carouselPointerMove(e));
+        this.addEventListener('pointerup',e=>this.carouselPointerEnd(e));
+        this.addEventListener('pointercancel',e=>this.carouselPointerEnd(e,true));
+        this.addEventListener('dragover',e=>{
+          if(e.target.closest('[data-work-gallery-add],[data-record-draft-image]')) e.preventDefault();
+        });
+        this.addEventListener('drop',e=>{
+          if(e.target.closest('[data-work-gallery-add]')) { e.preventDefault(); this.addGalleryPhotos([...e.dataTransfer.files]); }
+          if(e.target.closest('[data-record-draft-image]')) { e.preventDefault(); this.pickRecordDraftImages([...e.dataTransfer.files]); }
         });
       }
       currentWork(){
         return WORKS.find(w=>w.slug===this.getAttribute('slug')) || WORKS[0] || null;
       }
+      recordById(id){return this.currentWork()?.activities?.find(a=>String(a.id)===String(id)) || null;}
+      recordCarousel(id){return [...this.querySelectorAll('[data-record-carousel]')].find(el=>el.dataset.recordCarousel===String(id)) || null;}
+      selectedIndex(id){
+        const count=activityImages(this.recordById(id)).length;
+        return Math.max(0,Math.min(this.carouselIndices?.get(String(id))||0,Math.max(0,count-1)));
+      }
+      selectCarousel(id,index){
+        const activity=this.recordById(id), carousel=this.recordCarousel(id);
+        if(!activity || !carousel)return;
+        const count=activityImages(activity).length;
+        if(!count)return;
+        const selected=Math.max(0,Math.min(Math.trunc(index)||0,count-1));
+        this.carouselIndices.set(String(id),selected);
+        carousel.querySelectorAll('[data-record-slide]').forEach((el,i)=>{
+          const active=i===selected;el.classList.toggle('is-active',active);el.setAttribute('aria-hidden',String(!active));
+          el.querySelector('img')?.setAttribute('loading',active?'eager':'lazy');
+        });
+        carousel.querySelectorAll('[data-record-carousel-thumb]').forEach((el,i)=>{
+          const active=i===selected;el.classList.toggle('is-active',active);
+          el.setAttribute('aria-current',active?'true':'false');
+          if(active)el.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});
+        });
+        const counter=carousel.querySelector('[data-record-carousel-count]');
+        if(counter)counter.textContent=`${selected+1} / ${count}`;
+        const navPrev=carousel.querySelector('[data-direction="-1"]');
+        const navNext=carousel.querySelector('[data-direction="1"]');
+        if(navPrev)navPrev.disabled=count<2;
+        if(navNext)navNext.disabled=count<2;
+        const positionPanel=carousel.querySelector('[data-record-position-controls]');
+        if(positionPanel && !positionPanel.hidden)this.fillPositionSliders(id,selected);
+      }
+      changeCarousel(id,direction){
+        const count=activityImages(this.recordById(id)).length;
+        if(!count)return;
+        this.selectCarousel(id,(this.selectedIndex(id)+direction+count)%count);
+      }
+      fillPositionSliders(id,index){
+        const carousel=this.recordCarousel(id);if(!carousel)return;
+        const position=activityImagePositions(this.recordById(id))[index]||{x:50,y:50};
+        for(const axis of ['x','y']){
+          const slider=carousel.querySelector(`[data-record-image-position="${axis}"]`);
+          if(slider)slider.value=position[axis];
+          const out=carousel.querySelector(`[data-record-position-output="${axis}"]`);
+          if(out)out.textContent=`${position[axis]}%`;
+        }
+      }
+      toggleImagePosition(id){
+        if(!cmsState.token)return navigateLogin();
+        const carousel=this.recordCarousel(id),panel=carousel?.querySelector('[data-record-position-controls]');
+        const viewport=carousel?.querySelector('[data-record-carousel-viewport]');
+        if(!panel || !viewport)return;
+        panel.hidden=!panel.hidden;
+        viewport.classList.toggle('is-adjusting',!panel.hidden);
+        if(!panel.hidden)this.fillPositionSliders(id,this.selectedIndex(id));
+      }
+      previewImagePosition(slider){
+        const carousel=slider.closest('[data-record-carousel]');if(!carousel)return;
+        const id=carousel.dataset.recordCarousel;
+        const position=activityImagePositions(this.recordById(id))[this.selectedIndex(id)]||{x:50,y:50};
+        const x=carousel.querySelector('[data-record-image-position="x"]');
+        const y=carousel.querySelector('[data-record-image-position="y"]');
+        const px=clampImagePosition(x?.value??position.x),py=clampImagePosition(y?.value??position.y);
+        this.previewSelectedPosition(id,px,py);
+      }
+      previewSelectedPosition(id,x,y){
+        const carousel=this.recordCarousel(id);if(!carousel)return;
+        const image=carousel.querySelector('.service-record-slide.is-active img');
+        if(image)image.style.objectPosition=`${x}% ${y}%`;
+        for(const axis of ['x','y']){
+          const out=carousel.querySelector(`[data-record-position-output="${axis}"]`);
+          if(out)out.textContent=`${axis==='x'?x:y}%`;
+        }
+      }
+      saveImagePosition(slider){
+        const carousel=slider.closest('[data-record-carousel]');if(!carousel)return;
+        const id=carousel.dataset.recordCarousel,index=this.selectedIndex(id);
+        const x=carousel.querySelector('[data-record-image-position="x"]');
+        const y=carousel.querySelector('[data-record-image-position="y"]');
+        this.commitImagePosition(id,index,clampImagePosition(x?.value),clampImagePosition(y?.value));
+      }
+      commitImagePosition(id,index,x,y){
+        if(!cmsState.token)return;
+        const activity=this.recordById(id);if(!activity)return;
+        const positions=activityImagePositions(activity);
+        if(index<0 || index>=positions.length)return;
+        const previous=positions[index];
+        if(previous.x===x && previous.y===y)return;
+        const previousList=cmsClone(positions);
+        const work=this.currentWork();
+        cmsRegisterChange({key:`record-position:${work.slug}:${id}:${index}`,label:`Enquadramento: ${activity.title} (foto ${index+1})`,
+          undo:()=>{activity.imagePositions=previousList;this.normalizeWorkMedia(work);}});
+        positions[index]={x,y};
+        activity.imagePositions=positions;
+        SITE_DATA.works=WORKS;cmsState.content.works=WORKS;
+        this.previewSelectedPosition(id,x,y);
+      }
+      resetImagePosition(id){
+        const carousel=this.recordCarousel(id);if(!carousel)return;
+        this.commitImagePosition(id,this.selectedIndex(id),50,50);
+        this.fillPositionSliders(id,this.selectedIndex(id));
+      }
+      carouselPointerDown(e){
+        const viewport=e.target.closest('[data-record-carousel-viewport]');
+        if(!viewport || e.target.closest('button,input') || this.pointerGesture)return;
+        const id=viewport.dataset.recordCarouselViewport,index=this.selectedIndex(id);
+        const adjusting=viewport.classList.contains('is-adjusting') && !!cmsState.token;
+        if(!adjusting && e.pointerType==='mouse')return;
+        const position=activityImagePositions(this.recordById(id))[index]||{x:50,y:50};
+        this.pointerGesture={pointerId:e.pointerId,viewport,id,index,adjusting,x:e.clientX,y:e.clientY,
+          base:{...position},newPosition:{...position}};
+        if(adjusting){e.preventDefault();viewport.setPointerCapture?.(e.pointerId);}
+      }
+      carouselPointerMove(e){
+        const g=this.pointerGesture;
+        if(!g || g.pointerId!==e.pointerId || !g.adjusting)return;
+        const box=g.viewport.getBoundingClientRect();
+        // The image follows the drag direction; object-position itself moves in reverse.
+        const x=clampImagePosition(g.base.x-(e.clientX-g.x)*100/Math.max(1,box.width));
+        const y=clampImagePosition(g.base.y-(e.clientY-g.y)*100/Math.max(1,box.height));
+        g.newPosition={x,y};
+        const carousel=this.recordCarousel(g.id);
+        const sliderX=carousel?.querySelector('[data-record-image-position="x"]');
+        const sliderY=carousel?.querySelector('[data-record-image-position="y"]');
+        if(sliderX)sliderX.value=x;if(sliderY)sliderY.value=y;
+        this.previewSelectedPosition(g.id,x,y);
+      }
+      carouselPointerEnd(e,cancel=false){
+        const g=this.pointerGesture;
+        if(!g || g.pointerId!==e.pointerId)return;
+        this.pointerGesture=null;
+        if(g.adjusting){
+          if(!cancel)this.commitImagePosition(g.id,g.index,g.newPosition.x,g.newPosition.y);
+          else this.previewSelectedPosition(g.id,g.base.x,g.base.y);
+          if(g.viewport.hasPointerCapture?.(e.pointerId))g.viewport.releasePointerCapture(e.pointerId);
+        } else if(!cancel){
+          const dx=e.clientX-g.x,dy=e.clientY-g.y;
+          if(Math.abs(dx)>42 && Math.abs(dx)>Math.abs(dy)*1.25) this.changeCarousel(g.id,dx<0?1:-1);
+        }
+      }
       normalizeWorkMedia(work){
         work.activities ||= [];
-        const photos=work.activities.map(activity=>activity.image).filter(Boolean);
-        work.photos=photos;
-        if(!photos.includes(work.cover)) work.cover=photos[0] || '';
+        work.gallery ||= [];
+        for(const activity of work.activities){
+          activity.images=activityImages(activity);
+          activity.imagePositions=activityImagePositions(activity);
+          activity.image=activity.images[0] || '';
+        }
+        work.photos=[...new Set([...work.activities.flatMap(activity=>activity.images),...work.gallery].filter(Boolean))];
+        if(!work.cover) work.cover=work.photos[0] || '';
       }
       async persistWorkChange(){
         SITE_DATA.works=WORKS;
@@ -3387,51 +4000,101 @@
         requestAnimationFrame(()=>{cmsApply(this);cmsEditor?.updateSaveFooter();});
       }
       revokeRecordDraftPreview(){
-        const preview=this.recordDraft?.imagePreview;
-        if(preview?.startsWith('blob:')) URL.revokeObjectURL(preview);
+        for(const preview of (this.recordDraft?.imagePreviews||[])) if(preview?.startsWith('blob:')) URL.revokeObjectURL(preview);
       }
       cancelRecordDraft(){
         this.revokeRecordDraftPreview();
         this.recordDraft=null;
-        this.render();
-        requestAnimationFrame(()=>{ cmsApply(this); cmsEditor?.updateSaveFooter(); });
+        this.render(); requestAnimationFrame(()=>{cmsApply(this);cmsEditor?.updateSaveFooter();});
       }
       openAddRecord(){
         if(!cmsState.token) { navigateLogin(); return; }
-        if(!this.recordDraft) {
-          this.recordDraft={title:'',description:'',imageFile:null,imagePreview:''};
+        if(!this.recordDraft){
+          this.recordDraft={title:'',description:'',imageFiles:[],imagePreviews:[]};
           this.render();
-          requestAnimationFrame(()=>{
-            cmsApply(this);
-            this.querySelector('[data-record-draft-session]')?.scrollIntoView({behavior:'smooth',block:'center'});
-          });
-          return;
-        }
-        this.querySelector('[data-record-draft-session]')?.scrollIntoView({behavior:'smooth',block:'center'});
+          requestAnimationFrame(()=>{cmsApply(this);this.querySelector('[data-record-draft-session]')?.scrollIntoView({behavior:'smooth',block:'center'});});
+        } else this.querySelector('[data-record-draft-session]')?.scrollIntoView({behavior:'smooth',block:'center'});
       }
-      editRecordDraftField(field){
+      pickRecordDraftImages(files){
         if(!this.recordDraft) return;
-        const labels={title:'Título do registro',description:'Descrição do registro'};
-        const value=prompt(`${labels[field] || field}:`,this.recordDraft[field] || '');
-        if(value===null) return;
-        this.recordDraft[field]=String(value).trim();
-        this.render();
-        requestAnimationFrame(()=>{
-          cmsApply(this);
-          this.querySelector('[data-record-draft-session]')?.scrollIntoView({behavior:'smooth',block:'center'});
-        });
+        const images=files.filter(file=>file?.type?.startsWith('image/'));
+        for(const file of images){
+          this.recordDraft.imageFiles.push(file);
+          this.recordDraft.imagePreviews.push(URL.createObjectURL(file));
+        }
+        if(images.length){this.render();requestAnimationFrame(()=>cmsApply(this));}
       }
-      pickRecordDraftImage(file){
-        if(!this.recordDraft || !file) return;
-        if(!file.type?.startsWith('image/')) { alert('Selecione uma imagem para o registro.'); return; }
-        this.revokeRecordDraftPreview();
-        this.recordDraft.imageFile=file;
-        this.recordDraft.imagePreview=URL.createObjectURL(file);
+      removeRecordDraftImage(index){
+        if(!this.recordDraft || index<0) return;
+        const preview=this.recordDraft.imagePreviews.splice(index,1)[0];
+        this.recordDraft.imageFiles.splice(index,1);
+        if(preview?.startsWith('blob:')) URL.revokeObjectURL(preview);
         this.render();
-        requestAnimationFrame(()=>{
-          cmsApply(this);
-          this.querySelector('[data-record-draft-session]')?.scrollIntoView({behavior:'smooth',block:'center'});
-        });
+      }
+      async addGalleryPhotos(files){
+        if(!cmsState.token) return navigateLogin();
+        const work=this.currentWork(); if(!work) return;
+        const valid=files.filter(f=>f?.type?.startsWith('image/'));
+        if(!valid.length) return;
+        work.gallery ||= [];
+        const batch=`gallery:${work.slug}:${Date.now().toString(36)}-${Math.random().toString(36).slice(2,7)}`;
+        const staged=valid.map((file,i)=>({key:`${batch}:${i}`,url:cmsStageAsset(file,`${batch}:${i}`,`galeria-${work.slug}`)}));
+        cmsRegisterChange({key:batch,label:`Galeria de ${work.name}: ${staged.length} imagem(ns)`,undo:()=>{
+          for(const item of staged){work.gallery=work.gallery.filter(url=>url!==item.url);cmsRemovePendingAsset(item.key);}
+          this.normalizeWorkMedia(work);cmsState.content.works=WORKS;
+        }});
+        work.gallery.push(...staged.map(item=>item.url));
+        this.normalizeWorkMedia(work);
+        await this.persistWorkChange();
+      }
+      async removeGalleryPhoto(index){
+        if(!cmsState.token) return navigateLogin();
+        const work=this.currentWork();
+        if(!work || !work.gallery?.[index]) return;
+        const url=work.gallery[index];
+        const key=`gallery-remove:${work.slug}:${Date.now().toString(36)}:${index}`;
+        cmsRegisterChange({key,label:`Remover imagem da galeria: ${work.name}`,undo:()=>{if(!work.gallery.includes(url)) work.gallery.splice(Math.min(index,work.gallery.length),0,url);this.normalizeWorkMedia(work);}});
+        work.gallery.splice(index,1);
+        this.normalizeWorkMedia(work);
+        await this.persistWorkChange();
+      }
+      addRecordImages(id){ this.querySelectorAll('[data-record-extra-input]').forEach(input=>{if(input.dataset.recordExtraInput===id) input.click();}); }
+      async stageRecordExtraImages(id,files){
+        if(!cmsState.token) return navigateLogin();
+        const work=this.currentWork();
+        const activity=work?.activities?.find(item=>String(item.id)===String(id));
+        const valid=files.filter(file=>file?.type?.startsWith('image/'));
+        if(!activity || !valid.length) return;
+        const before=activityImages(activity);
+        const beforePositions=activityImagePositions(activity);
+        const batch=`record-images:${work.slug}:${id}:${Date.now().toString(36)}`;
+        const staged=valid.map((file,i)=>({key:`${batch}:${i}`,url:cmsStageAsset(file,`${batch}:${i}`,`registro-${work.slug}`)}));
+        cmsRegisterChange({key:batch,label:`Imagens do registro: ${activity.title}`,undo:()=>{
+          for(const item of staged) cmsRemovePendingAsset(item.key);
+          activity.images=before;activity.imagePositions=beforePositions;activity.image=before[0] || '';
+          this.normalizeWorkMedia(work);
+        }});
+        activity.images=[...before,...staged.map(item=>item.url)];
+        activity.imagePositions=[...beforePositions,...staged.map(()=>({x:50,y:50}))];
+        activity.image=activity.images[0];
+        this.normalizeWorkMedia(work);
+        await this.persistWorkChange();
+      }
+      async removeRecordImage(id,index){
+        if(!cmsState.token) return navigateLogin();
+        const work=this.currentWork();
+        const activity=work?.activities?.find(item=>String(item.id)===String(id));
+        if(!activity) return;
+        const before=activityImages(activity);
+        const beforePositions=activityImagePositions(activity);
+        if(!before[index]) return;
+        cmsRegisterChange({key:`record-image-remove:${id}:${index}:${Date.now()}`,label:`Retirar imagem: ${activity.title}`,undo:()=>{activity.images=before;activity.imagePositions=beforePositions;activity.image=before[0] || '';this.normalizeWorkMedia(work);}});
+        activity.images=before.filter((_,i)=>i!==index);
+        activity.imagePositions=beforePositions.filter((_,i)=>i!==index);
+        this.carouselIndices.set(String(id),Math.max(0,Math.min(index-1,activity.images.length-1)));
+        activity.image=activity.images[0] || '';
+        this.normalizeWorkMedia(work);
+        await this.persistWorkChange();
       }
       async addRecord(){
         if(!cmsState.token) { navigateLogin(); return; }
@@ -3442,21 +4105,20 @@
         const description=String(draft.description||'').trim();
         if(!title) { alert('Clique no campo Título e preencha o registro.'); return; }
         if(!description) { alert('Clique no campo Descrição e preencha o registro.'); return; }
-        if(!draft.imageFile) { alert('Clique na área da imagem e selecione uma foto.'); return; }
+        if(!draft.imageFiles?.length) { alert('Selecione ao menos uma foto para o registro.'); return; }
         const button=this.querySelector('[data-record-draft-save]');
         const status=this.querySelector('[data-record-draft-status]');
         if(button) button.disabled=true;
         if(status) status.textContent='Adicionando registro ao rascunho…';
         try {
           work.activities ||= [];
-          const id=createActivityId(work);
+          const id=`${work.slug}-${Date.now().toString(36)}`;
           const changeKey=`record-add:${work.slug}:${id}`;
-          const image=cmsStageAsset(draft.imageFile,`${changeKey}:image`,`registro-${work.slug}`);
-          const preview=draft.imagePreview;
-          cmsRegisterChange({key:changeKey,label:`Novo registro: ${title}`,undo:()=>{ cmsRemovePendingAsset(`${changeKey}:image`); work.activities=(work.activities||[]).filter(item=>String(item.id)!==String(id)); this.normalizeWorkMedia(work); SITE_DATA.works=WORKS; cmsState.content.works=WORKS; }});
-          work.activities.push({id,title,image,description});
+          const images=draft.imageFiles.map((file,i)=>cmsStageAsset(file,`${changeKey}:image:${i}`,`registro-${work.slug}`));
+          cmsRegisterChange({key:changeKey,label:`Novo registro: ${title} (${images.length} fotos)`,undo:()=>{ for(let i=0;i<images.length;i++) cmsRemovePendingAsset(`${changeKey}:image:${i}`); work.activities=(work.activities||[]).filter(item=>String(item.id)!==String(id)); this.normalizeWorkMedia(work); SITE_DATA.works=WORKS; cmsState.content.works=WORKS; }});
+          work.activities.push({id,title,image:images[0],images,imagePositions:images.map(()=>({x:50,y:50})),description});
           this.normalizeWorkMedia(work);
-          if(preview?.startsWith('blob:')) URL.revokeObjectURL(preview);
+          this.revokeRecordDraftPreview();
           this.recordDraft=null;
           await this.persistWorkChange();
           requestAnimationFrame(()=>this.querySelector(`[data-record-id="${CSS.escape(id)}"]`)?.scrollIntoView({behavior:'smooth',block:'center'}));
@@ -3490,7 +4152,7 @@
         const draft=this.recordDraft;
         const draftTitle=draft?.title || '';
         const draftDescription=draft?.description || '';
-        const draftImage=draft?.imagePreview || '';
+        const draftImages=draft?.imagePreviews || [];
         this.innerHTML=`<main class="detail-route">
           <section class="detail-workspace">
             <div class="detail-gallery-panel" aria-label="Galeria de imagens da obra">
@@ -3524,6 +4186,15 @@
             </aside>
           </section>
 
+          <section class="work-gallery-section" aria-label="Galeria complementar da obra">
+            <header class="work-gallery-head"><div class="eyebrow">Galeria da obra</div><h2>Imagens complementares</h2></header>
+            <div class="work-gallery-list">
+              ${(work.gallery||[]).map((url,i)=>`<figure class="work-gallery-card"><img src="${escapeHTML(url)}" alt="${escapeHTML(work.name)} — galeria ${i+1}" loading="lazy"><button type="button" data-work-gallery-remove="${i}" aria-label="Remover imagem da galeria">×</button></figure>`).join('')}
+              <button class="work-gallery-add" type="button" data-work-gallery-add><strong>+ Adicionar fotos</strong><span>Clique ou arraste imagens para a galeria</span></button>
+              <input type="file" accept="image/*" multiple hidden data-work-gallery-input>
+            </div>
+          </section>
+
           <section class="detail-execution" id="execucao" aria-labelledby="execution-title">
             <div class="detail-execution-inner">
               <header class="detail-execution-head">
@@ -3553,22 +4224,13 @@
                   </header>
                   <div class="cms-record-create-layout">
                     <div class="cms-record-draft-fields">
-                      <div class="cms-record-draft-field" data-record-draft-field="title">
-                        <label>Título do registro</label>
-                        <strong class="${draftTitle ? '' : 'cms-record-draft-empty'}">${escapeHTML(draftTitle || 'Clique para informar o título')}</strong>
-                      </div>
-                      <div class="cms-record-draft-field description" data-record-draft-field="description">
-                        <label>Descrição da atividade</label>
-                        <p class="${draftDescription ? '' : 'cms-record-draft-empty'}">${escapeHTML(draftDescription || 'Clique para descrever o serviço executado e o que aparece na imagem.')}</p>
-                      </div>
+                      <label class="cms-record-draft-field"><span>Título do registro</span><input type="text" data-record-draft-input="title" value="${escapeHTML(draftTitle)}" placeholder="Clique para informar o título"></label>
+                      <label class="cms-record-draft-field description"><span>Descrição da atividade</span><textarea data-record-draft-input="description" rows="6" placeholder="Descreva o serviço executado e o que aparece nas imagens.">${escapeHTML(draftDescription)}</textarea></label>
                     </div>
-                    <div class="cms-record-draft-image${draftImage ? ' has-image' : ''}" data-record-draft-image title="Clique para selecionar a imagem">
-                      ${draftImage ? `<img src="${escapeHTML(draftImage)}" alt="Prévia do novo registro">` : ''}
-                      <div class="cms-record-draft-image-prompt">
-                        <strong>${draftImage ? 'Trocar imagem' : 'Adicionar imagem'}</strong>
-                        <span>Clique para selecionar a foto do registro</span>
-                      </div>
-                      <input type="file" accept="image/*" hidden data-record-draft-image-input>
+                    <div class="cms-record-draft-image${draftImages.length ? ' has-image':''}" data-record-draft-image title="Clique ou solte as imagens aqui">
+                      <div class="cms-record-preview-grid">${draftImages.map((url,i)=>`<figure><img src="${escapeHTML(url)}" alt="Foto ${i+1}"><button type="button" data-record-draft-remove-image="${i}" aria-label="Remover foto ${i+1}">×</button></figure>`).join('')}</div>
+                      <div class="cms-record-draft-image-prompt"><strong>+ Adicionar imagens</strong><span>Clique ou arraste várias fotos</span></div>
+                      <input type="file" accept="image/*" multiple hidden data-record-draft-image-input>
                     </div>
                   </div>
                   <div class="cms-record-create-actions">
@@ -3587,8 +4249,26 @@
                       <div class="service-journey-proof">Confidence Construtora · ${escapeHTML(work.city)}</div>
                     </div>
                     <figure class="service-journey-visual">
-                      <img src="${escapeHTML(activity.image)}" alt="${escapeHTML(work.name)} — registro ${i+1}">
-                      <figcaption class="service-journey-caption"><span>${String(i+1).padStart(2,'0')} · Registro da obra</span><span>${escapeHTML(work.type)}</span></figcaption>
+                      <div class="service-record-carousel" data-record-carousel="${escapeHTML(activity.id)}" role="group" aria-label="Fotos do registro ${i+1}: ${escapeHTML(activity.title)}">
+                        <div class="service-record-viewport" data-record-carousel-viewport="${escapeHTML(activity.id)}" tabindex="0" aria-label="Imagem principal. Use as setas para navegar pelas fotos.">
+                          ${(activity.images||[]).length ? (activity.images||[]).map((src,j)=>`<div class="service-record-slide${j===(this.selectedIndex(activity.id))?' is-active':''}" data-record-slide="${j}" aria-hidden="${j!==this.selectedIndex(activity.id)}"><img src="${escapeHTML(src)}" alt="${escapeHTML(work.name)}: ${escapeHTML(activity.title)}, foto ${j+1}" style="object-position:${clampImagePosition(activity.imagePositions?.[j]?.x)}% ${clampImagePosition(activity.imagePositions?.[j]?.y)}%" loading="${j===this.selectedIndex(activity.id)?'eager':'lazy'}"><button class="cms-record-image-remove" type="button" data-record-extra-remove="${escapeHTML(activity.id)}" data-record-extra-index="${j}" aria-label="Remover foto ${j+1}">×</button></div>`).join('') : `<div class="service-record-empty">Nenhuma imagem neste registro</div>`}
+                          ${(activity.images||[]).length>1?`<button class="service-record-nav prev" type="button" data-record-carousel-nav="${escapeHTML(activity.id)}" data-direction="-1" aria-label="Foto anterior">‹</button><button class="service-record-nav next" type="button" data-record-carousel-nav="${escapeHTML(activity.id)}" data-direction="1" aria-label="Próxima foto">›</button>`:''}
+                          <span class="service-record-count" data-record-carousel-count aria-live="polite">${(activity.images||[]).length?this.selectedIndex(activity.id)+1:0} / ${(activity.images||[]).length}</span>
+                          <figcaption class="service-journey-caption"><span>${String(i+1).padStart(2,'0')} · Registro da obra</span><span>${escapeHTML(work.type)}</span></figcaption>
+                        </div>
+                        ${(activity.images||[]).length>1?`<div class="service-record-thumbs" role="group" aria-label="Miniaturas das fotos">${(activity.images||[]).map((src,j)=>`<button class="service-record-thumb${j===this.selectedIndex(activity.id)?' is-active':''}" type="button" data-record-carousel-thumb="${escapeHTML(activity.id)}" data-image-index="${j}" aria-label="Mostrar foto ${j+1}" aria-current="${j===this.selectedIndex(activity.id)}"><img src="${escapeHTML(src)}" alt="" loading="lazy"></button>`).join('')}</div>`:''}
+                        <div class="service-record-toolbar">
+                          <button class="cms-record-image-add" type="button" data-record-extra-add="${escapeHTML(activity.id)}">+ Foto</button>
+                          ${(activity.images||[]).length?`<button class="service-record-position-button" type="button" data-record-position-toggle="${escapeHTML(activity.id)}">Ajustar posição</button>`:''}
+                        </div>
+                        <input type="file" accept="image/*" multiple hidden data-record-extra-input="${escapeHTML(activity.id)}">
+                        <div class="service-record-position-controls" data-record-position-controls hidden>
+                          <p>Arraste a imagem grande para ajustar o enquadramento ou use os controles abaixo. Cada foto mantém uma posição independente.</p>
+                          <label>Horizontal <input type="range" min="0" max="100" step="1" value="50" data-record-image-position="x" aria-label="Posição horizontal da imagem"><output data-record-position-output="x">50%</output></label>
+                          <label>Vertical <input type="range" min="0" max="100" step="1" value="50" data-record-image-position="y" aria-label="Posição vertical da imagem"><output data-record-position-output="y">50%</output></label>
+                          <button class="service-record-position-reset" type="button" data-record-position-reset="${escapeHTML(activity.id)}">Centralizar imagem</button>
+                        </div>
+                      </div>
                     </figure>
                   </article>`).join('')}
               </div>
@@ -3648,6 +4328,8 @@
       }
     }
     customElements.define('site-shell', SiteShell);
+
+    imageRetry.start();
 
     window.addEventListener('beforeunload',event=>{ if(cmsState.dirty){ event.preventDefault(); event.returnValue=''; } });
     window.addEventListener('hashchange', routeFromHash);

@@ -1,268 +1,83 @@
 # Confidence CMS
 
-Sistema de gerenciamento de conteúdo próprio desenvolvido para o site institucional da Confidence Construtora, integrado diretamente ao repositório publicado via GitHub Pages.
-
-O projeto transforma uma SPA estática em uma aplicação institucional editável, mantendo leitura pública dos conteúdos e restringindo operações de escrita ao modo administrativo autenticado por GitHub Personal Access Token (PAT).
+CMS visual próprio aplicado ao site institucional da Confidence Construtora, servido como SPA no GitHub Pages e persistido via GitHub Contents API com autenticação por PAT.
 
 ## Escopo
 
-O CMS opera sem backend dedicado. O próprio repositório GitHub funciona como camada de persistência, armazenamento de assets, histórico e publicação.
+- **Público:** leitura de `data/site-data.json`, navegação do portfólio de obras, mapa de atuação, cards, páginas de detalhe, galerias, certificações, clientes e contatos, sem autenticação.
+- **Administração:** `#/login` com PAT em `sessionStorage`; edição de textos e imagens por hover/clique, criação de obras e registros, galeria complementar, edição do painel de contato.
+- **Persistência:** alterações mantidas como rascunho, com backup local de versões e **Desfazer** por item. O botão **Salvar alterações** no rodapé consolida o JSON e envia os arquivos pendentes para `assets/uploads/`.
+- **Logout:** remove PAT do `sessionStorage` e `localStorage`, desmonta controles e recarrega a página; solicita confirmação quando há rascunho não salvo.
 
-A aplicação pública utiliza:
+## Edição diretamente nos elementos
 
-- `index.html` como SPA e interface de edição;
-- `data/site-data.json` como fonte estruturada de conteúdo;
-- `assets/` como armazenamento das imagens e arquivos;
-- GitHub Pages como publicação;
-- GitHub API como mecanismo autenticado de escrita.
+O botão de editar texto ativa `contenteditable` no próprio elemento destacado. Um pequeno menu flutuante permite negrito, itálico, sublinhado, **Aplicar** ou **Cancelar**. `Ctrl+Enter` confirma; `Esc` cancela. Os campos de criação de obra e registro usam `input` e `textarea` reais, destacados no hover/foco, sem diálogos de prompt. A inclusão de nova informação de contato utiliza um formulário inline.
 
-A leitura do site não exige autenticação. O PAT é usado somente quando o modo administrativo precisa gravar alterações no repositório.
+## Certificação ISO 9001
 
-## Conteúdo administrável
+O layout textual anteriormente representado por `div.iso-reference-logo` foi substituído por uma **imagem SVG local** (`assets/iso-9001-reference.svg`). A imagem é marcada com `data-cms-key="iso-9001-logo"` e pode ser substituída pelo CMS como as outras imagens do site. É apenas uma **referência gráfica à norma**, não um selo de certificação emitido pela ISO.
 
-O CMS permite editar diretamente sobre a interface publicada:
+## Obras, registros e imagens
 
-- textos institucionais;
-- títulos e descrições;
-- imagens e backgrounds;
-- informações de contato;
-- portfólio de obras;
-- dados de cada obra;
-- registros fotográficos de execução;
-- títulos e descrições técnicas de registros.
+`works[]` no arquivo `data/site-data.json` contém informações de cada obra (`slug`, `name`, `city`, `state`, `type`, `summary`, `cover`, `photos`, `activities`).
 
-Elementos editáveis são identificados visualmente durante o modo administrativo e podem ser alterados por interação direta.
+Cada registro de `activities[]` permite uma ou várias fotos:
 
-## Obras
-
-Cada obra é representada em `data/site-data.json` com estrutura própria:
-
-- `slug`;
-- nome;
-- cidade;
-- estado;
-- tipo;
-- resumo;
-- imagem de capa;
-- galeria;
-- registros de execução.
-
-Os mesmos dados alimentam automaticamente:
-
-- cards de **Obras e atuação**;
-- mapa de municípios;
-- slideshow;
-- páginas `#/obra/<slug>`;
-- galeria;
-- sequência de registros da execução.
-
-## Criação de obras
-
-No modo administrativo, a seção de obras exibe um card **Adicionar obra**.
-
-Esse fluxo abre `#/nova-obra`, uma página guiada onde os campos respondem a hover e clique.
-
-Campos disponíveis:
-
-- nome da obra;
-- cidade;
-- estado;
-- tipo;
-- resumo;
-- capa.
-
-A obra é adicionada primeiro ao rascunho do CMS. Depois do salvamento consolidado, passa a integrar `works[]` em `data/site-data.json`.
-
-## Registros de execução
-
-Cada obra pode possuir registros independentes contendo:
-
-- identificador;
-- título;
-- descrição técnica;
-- imagem.
-
-No modo de edição é possível:
-
-- adicionar registro;
-- remover registro;
-- editar textos;
-- alterar imagens.
-
-As novas imagens são preparadas em rascunho e enviadas para `assets/uploads/` somente durante o salvamento consolidado.
-
-### Isolamento dos conteúdos por obra
-
-Os textos editáveis dentro de uma página de obra são identificados também pelo `slug` da obra. Assim, seções com o mesmo `id` HTML — por exemplo, `#execucao` — não compartilham o mesmo override do CMS: editar um título ou uma descrição em uma obra não altera os slots das demais.
-
-Na inicialização, o CMS migra overrides antigos `text:execucao:*` para o escopo da obra `areninha-barra-do-choca`, preservando os valores legados dessa página e removendo as chaves globais ambíguas do estado carregado. A migração passa a ser persistida em `data/site-data.json` no próximo salvamento administrativo.
-
-### Verificações do fluxo de obras
-
-Foram verificados visualmente os casos abaixo na publicação e em uma execução local:
-
-- abrir Areninha Barra do Choça, Seabra e Canoagem Ubaitaba e confirmar que cada página mostra títulos, descrições, imagens e quantidade de registros próprios;
-- percorrer registros do início ao fim, incluindo os últimos IDs de cada obra;
-- carregar a migração dos overrides legados e confirmar que os valores são preservados sob a chave da Areninha, sem chaves globais `text:execucao:*` restantes;
-- conferir larguras desktop e móveis (1280, 768, 390 e 320 px), sem rolagem horizontal;
-- conferir as URLs das 50 imagens referenciadas, sem imagens inexistentes.
-
-O teste visual não executa um salvamento autenticado na publicação nem envia dados de teste ao repositório. A gravação final deve ser validada em ambiente administrativo com PAT autorizado, verificando que somente o arquivo JSON e os assets esperados sejam alterados.
-
-## Rascunho, backups e desfazer
-
-As alterações do CMS não são persistidas imediatamente.
-
-Cada nova modificação:
-
-1. cria uma versão de backup do conteúdo anterior;
-2. entra no estado de rascunho;
-3. aparece na lista de alterações pendentes;
-4. recebe seu próprio botão **Desfazer**.
-
-Os backups da sessão são mantidos localmente durante a edição e limitados às versões recentes.
-
-Tipos de alteração cobertos:
-
-- texto;
-- imagem;
-- informação de contato;
-- nova informação;
-- remoção de informação;
-- nova obra;
-- novo registro;
-- remoção de registro.
-
-Alterações repetidas no mesmo conteúdo são agrupadas para que o botão **Desfazer** volte ao estado anterior ao início daquela edição.
-
-## Salvamento consolidado
-
-Quando existe qualquer modificação pendente, o CMS mostra uma seção **Rascunho do CMS** no final da página.
-
-Essa seção apresenta:
-
-- quantidade de alterações pendentes;
-- lista das mudanças;
-- botão **Desfazer** individual;
-- botão **Salvar alterações**.
-
-Ao salvar:
-
-1. assets pendentes são enviados para `assets/uploads/`;
-2. URLs temporárias são substituídas pelas URLs persistidas;
-3. o estado atualizado é consolidado em `data/site-data.json`;
-4. o CMS cria o commit de conteúdo;
-5. a lista de alterações pendentes é limpa.
-
-Se houver alterações não salvas e o usuário tentar recarregar ou sair, a aplicação solicita confirmação.
-
-## Contato
-
-O painel de contato também é administrável.
-
-É possível:
-
-- editar título;
-- editar descrição;
-- trocar background;
-- alterar valores existentes;
-- adicionar informações;
-- remover informações.
-
-Os itens ficam em `contactPanel.items`.
-
-## Autenticação
-
-A rota administrativa é:
-
-```text
-#/login
+```json
+{
+  "id": "registro-001",
+  "title": "Preparação do terreno",
+  "description": "Movimentação e regularização de solo na frente de serviço.",
+  "image": "assets/obras/foto-01.jpg",
+  "images": ["assets/obras/foto-01.jpg", "assets/obras/foto-02.jpg"],
+  "imagePositions": [{"x": 50, "y": 50}, {"x": 70, "y": 35}]
+}
 ```
 
-Após validação do PAT, o modo de edição é ativado.
+- `image` continua sendo a primeira foto (compatibilidade com registros antigos).
+- `images[]` guarda todas as fotos da sessão; registros antigos com apenas `image` continuam funcionando.
+- **Adicionar registro** abre um bloco inline com título, descrição e seleção/arraste de múltiplas imagens.
+- Registros já criados ganham **+ Foto**, com possibilidade de retirar imagens individualmente.
+- As fotos de cada registro são exibidas em um **carrossel**, com uma imagem principal, miniaturas clicáveis, setas de navegação, indicação de posição e swipe horizontal no celular. O layout mantém a descrição do registro e não desloca horizontalmente a página, inclusive em telas estreitas de 320 px.
 
-Sem PAT:
+No modo de edição, **Ajustar posição** permite arrastar a imagem ou alterar o enquadramento por controles horizontal e vertical. Os ajustes são registrados por imagem em `imagePositions[]` no próprio registro, sem alterar o arquivo, e permanecem no rascunho com **Desfazer** antes de Salvar alterações. O array utiliza posições em porcentagem (0 a 100), alinhadas à ordem de `images[]`.
 
-- a toolbar administrativa não permanece montada;
-- não são exibidos controles de escrita;
-- o site funciona somente para leitura.
+Cada obra também admite `gallery[]`, um array independente de imagens complementares. A seção **Galeria da obra** possui um slot **+ Adicionar fotos** para selecionar ou arrastar vários arquivos e retirar imagens existentes no modo edição. Os arquivos só são enviados ao GitHub no salvamento consolidado. A galeria existente, a capa e os registros originais são preservados.
 
-Ao usar **Sair**:
+## Salvamento e conflitos
 
-- o PAT é removido de `sessionStorage`;
-- o PAT é removido de `localStorage`;
-- o modo de edição é desativado;
-- os controles administrativos são removidos;
-- a rota volta para `#/`;
-- a página é recarregada.
+Toda modificação cria entrada de rascunho com botão **Desfazer** no rodapé. O `data/site-data.json` somente é publicado após **Salvar alterações**. Na persistência, o CMS consulta o SHA atual do arquivo remoto usando nonce na URL (sem cabeçalhos extras incompatíveis com CORS). Se houver HTTP 409, busca o SHA novamente e tenta uma vez mais, sem descartar o rascunho.
 
-Se houver um rascunho não salvo, o CMS pede confirmação antes de descartá-lo.
+Uploads usam nomes normalizados com timestamp e sufixo aleatório em `assets/uploads/<ano>/`.
 
 ## Estrutura
 
 ```text
-/
-├── index.html
-├── README.md
-├── data/
-│   └── site-data.json
-└── assets/
-    ├── ...
-    └── uploads/
+index.html
+README.md
+data/site-data.json
+assets/
+  iso-9001-reference.svg
+  uploads/
 ```
 
-## Estrutura principal do conteúdo
+## Publicação desta atualização
 
-`data/site-data.json` centraliza:
+`apply-cms-multifoto.ps1` publica em um único commit apenas `index.html`, `README.md` e `assets/iso-9001-reference.svg`. **Não modifica** o JSON remoto, nem apaga imagens existentes. As alterações de conteúdo feitas pelo CMS são salvas depois, a partir da interface autenticada.
 
-```text
-brand
-works
-contactPanel
-text
-images
-updatedAt
-```
+## Imagens com recuperação automática
 
-## Objetivo
+Imagens comuns e de fundo (hero, institucional e painéis CMS) são acompanhadas de um mecanismo de recuperação que não modifica as URLs armazenadas no JSON.
 
-O objetivo é fornecer à Confidence Construtora autonomia para administrar o site institucional e o portfólio de obras sem banco de dados dedicado, painel externo ou CMS tradicional.
+- Após falha de rede ou timeout, o navegador repete o carregamento com intervalos crescentes, com limite de tentativas.
+- O retry altera somente a URL efetivamente usada na visualização, adicionando um identificador de tentativa quando apropriado; o dado salvo permanece como estava.
+- Ao atingir o limite sem sucesso, aparece **Tentar novamente**, permitindo outra rodada manual sem quebrar a página.
+- Os retries não exigem autenticação, não fazem commits e não enviam cabeçalhos de requisição incompatíveis com CORS.
 
-A arquitetura mantém a simplicidade de um site estático em GitHub Pages, mas adiciona edição visual, upload de assets, versionamento, rascunho, desfazer e persistência diretamente pelo GitHub.
+## Responsividade e acessibilidade do carrossel
 
-## Salvamento na página inicial
-
-O estado de rascunho também é exibido explicitamente na página inicial.
-
-Sempre que uma modificação é realizada na Home — incluindo textos institucionais, imagens, backgrounds ou informações de contato — o CMS monta uma área **Rascunho do CMS** imediatamente antes do footer.
-
-Essa área contém:
-
-- quantidade de alterações pendentes;
-- lista das modificações;
-- botão **Desfazer** para cada conteúdo alterado;
-- botão **Salvar alterações** para consolidar o rascunho no repositório.
-
-O painel é remontado automaticamente caso a Home seja renderizada novamente durante a edição, evitando que a interface de salvamento desapareça após alterações estruturais.
-
-## Tratamento de conflito de versão
-
-O CMS utiliza o SHA atual de `data/site-data.json` exigido pela GitHub Contents API.
-
-Antes de cada salvamento consolidado, o site busca novamente o arquivo remoto usando um parâmetro anti-cache único na URL. A chamada mantém somente os headers aceitos pelo CORS da API do GitHub.
-
-Se o GitHub responder `409 Conflict` indicando que o SHA mudou entre a leitura e a escrita:
-
-1. o rascunho permanece intacto;
-2. o CMS não limpa a lista de alterações;
-3. o SHA remoto é consultado novamente;
-4. o PUT é repetido automaticamente uma vez com a versão atual;
-5. o rascunho só é marcado como salvo depois de uma resposta de sucesso do GitHub.
-
-Isso evita que um SHA armazenado em cache impeça o salvamento e mantém o conteúdo pendente disponível caso a segunda tentativa também falhe.
-
-### Compatibilidade CORS da API do GitHub
-
-As chamadas executadas diretamente pelo navegador não enviam `Cache-Control` nem `Pragma`, pois esses headers não fazem parte da lista aceita pelo preflight CORS da API do GitHub.
-
-A atualização do SHA usa um parâmetro único na query string para impedir reutilização da URL anterior, preservando o retry automático de conflitos `409`.
+- Layout fluido para desktop e mobile, sem overflow horizontal da página, testado em 320, 375, 390 e 1440 px.
+- Miniaturas em faixa com rolagem horizontal independente; imagem principal com proporção fluida no mobile.
+- Botões de navegação e edição com alvo de toque de pelo menos 44 px; swipe lateral na imagem e rolagem vertical normal da página.
+- Navegação por setas de teclado, rótulos acessíveis, contagem da imagem ativa e preferência de movimento reduzido respeitada.
+- Foto e posição selecionadas são preservadas quando o registro é atualizado em rascunho; remover foto também remove seu enquadramento correspondente.
