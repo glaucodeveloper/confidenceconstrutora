@@ -311,6 +311,7 @@
     .city-button::before { content:""; width:6px; height:6px; margin-top:5px; background:var(--blue-soft); }
     .city-button-copy { min-width:0; display:grid; gap:3px; }
     .city-name { color:var(--blue-dark); font-size:11px; line-height:1.2; font-weight:900; letter-spacing:.015em; }
+    .city-works { min-width:0; display:grid; gap:3px; }
     .city-work { width:max-content; max-width:100%; border:0; padding:0; background:transparent; color:var(--muted); font:inherit; font-size:9px; line-height:1.35; font-weight:800; text-align:left; text-decoration:none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; cursor:pointer; transition:color .18s ease, transform .18s ease; }
     .city-work::after { content:" ↗"; opacity:.58; }
     .city-button:hover::before, .city-button.active::before, .city-button:focus-within::before { background:var(--blue); }
@@ -2935,7 +2936,13 @@
         }
       }
       render(){
-        const cityButtons=WORKS.map(work=>`<div class="city-button" data-city="${escapeHTML(work.city)}" tabindex="0"><span class="city-button-copy"><span class="city-name">${escapeHTML(work.city)}</span><a class="city-work" href="#/obra/${encodeURIComponent(work.slug)}" data-work-link="${escapeHTML(work.slug)}" aria-label="Abrir a obra ${escapeHTML(work.name)} em ${escapeHTML(work.city)}">${escapeHTML(work.name)}</a></span></div>`).join('');
+        const cityGroups=[...WORKS.reduce((groups,work)=>{
+          const key=normalizeName(work.city);
+          if(!groups.has(key))groups.set(key,{city:work.city,works:[]});
+          groups.get(key).works.push(work);
+          return groups;
+        },new Map()).values()];
+        const cityButtons=cityGroups.map(group=>`<div class="city-button" data-city="${escapeHTML(group.city)}"><span class="city-button-copy"><span class="city-name">${escapeHTML(group.city)}</span><span class="city-works">${group.works.map(work=>`<a class="city-work" href="#/obra/${encodeURIComponent(work.slug)}" data-work-link="${escapeHTML(work.slug)}" aria-label="Abrir a obra ${escapeHTML(work.name)} em ${escapeHTML(work.city)}">${escapeHTML(work.name)}</a>`).join('')}</span></span></div>`).join('');
         this.innerHTML=`<div class="territory-grid">
           <div class="territory-intro">
             <div class="eyebrow">Nossas obras na Bahia</div>
