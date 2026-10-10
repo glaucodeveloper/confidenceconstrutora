@@ -262,7 +262,7 @@
     "text:fixed-nav:fixed-nav>header.nav>div.nav-inner>button[data-section=contato]": "<i>Entre em contato conosco</i>",
     "text:contato:div.screen-inner>header.contact-head>div.eyebrow": "Tem algum projeto em mente?&nbsp;",
     "text:contato:div.screen-inner>header.contact-head>h2.title": "Entre em contato com a nossa equipe para tirar dúvidas e transformar a ideia do seu projeto em realidade.",
-    "text:site-footer:site-footer>footer.site-footer>div.footer-main>div.footer-col:nth-2>div.footer-contact>div:nth-3": "<span>Endereço</span>Av. Juracy Magalhães, 3340, Felícia — Vitória da Conquista, BA&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Edif. Empres. Multiplace Sala 303&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CEP:&nbsp;45.055-235<br>",
+    "text:site-footer:site-footer>footer.site-footer>div.footer-main>div.footer-col:nth-2>div.footer-contact>div:nth-3": "<span>Endereço</span>&nbsp;Av. Juracy Magalhães, 3340, Felícia — Vitória da Conquista, BA&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Edif. Empres. Multiplace Sala 303&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;CEP:&nbsp;45.055-235",
     "text:inicio:div.hero-inner>div>p.hero-lead": "Na Bahia, transformamos projetos em obras que ganham vida — da implantação ao acabamento, nós unimos experiência, precisão e atenção a cada detalhe.<br>",
     "text:inicio:div.hero-inner>aside.hero-aside>p": "Onde boas ideias encontram quem sabe construir.",
     "text:inicio:div.hero-inner>aside.hero-aside>strong": "<b>Construindo caminhos e marcando presença em cada canto da Bahia.</b>",
@@ -338,10 +338,11 @@
     "image:certificacoes:div.screen-inner>div.certs-layout>div.cert-board>article.cert-card:nth-1>div.cert-logo-wrap>img.cert-logo": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-18-862Z-2020_12_16_pbqph_colorida_horizontal.png?v=880f9588b2454038c076d21a03953be37ba4781d",
     "image:obra-centro-canoagem-ubaitaba:work-detail>main.detail-route>section.detail-workspace>div[aria-label=galeria-de-imagens-da-obra]>div.detail-gallery-grid>figure.detail-gallery-item:nth-1>img": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-52-31-843Z-xl35lc-whatsapp-image-2026-10-09-at-23.48.32.jpeg?v=ed982bbc7c46b35c815c5a4adc133f04f844705c",
     "image:obra-centro-canoagem-ubaitaba:work-detail>main.detail-route>section.detail-workspace>div[aria-label=galeria-de-imagens-da-obra]>div.detail-gallery-grid>figure.detail-gallery-item:nth-2>img": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-52-28-976Z-vvh3uh-whatsapp-image-2026-10-09-at-23.34.17.jpeg?v=00db8676b1a3fe4c2d11c12cc80ea971de0739b9",
-    "image:obra-centro-canoagem-ubaitaba:work-detail>main.detail-route>section.detail-workspace>div[aria-label=galeria-de-imagens-da-obra]>div.detail-gallery-grid>figure.detail-gallery-item:nth-3>img": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-52-33-470Z-spjks1-whatsapp-image-2026-10-09-at-23.47.34.jpeg?v=d6ee23c437fd210759342dfe72ce997c4c7f51b0"
+    "image:obra-centro-canoagem-ubaitaba:work-detail>main.detail-route>section.detail-workspace>div[aria-label=galeria-de-imagens-da-obra]>div.detail-gallery-grid>figure.detail-gallery-item:nth-3>img": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-52-33-470Z-spjks1-whatsapp-image-2026-10-09-at-23.47.34.jpeg?v=d6ee23c437fd210759342dfe72ce997c4c7f51b0",
+    "image:clientes:section#clientes>div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-2>div.client-logo-wrap.asset-retry-host>img.client-logo.sudesb-logo": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-11-37-841Z-iwwtzo-sudesblogo.png?v=3d0e6703ad85936bbced688f8e2f940aca29d3c4"
   },
   "videos": [],
-  "updatedAt": "2026-10-10T12:08:55.784Z",
+  "updatedAt": "2026-10-10T12:11:40.459Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
