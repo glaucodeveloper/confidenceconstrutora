@@ -1791,6 +1791,66 @@
       .service-record-viewport,.service-record-slide,.service-record-thumb {scroll-behavior:auto!important;animation:none!important;transition:none!important;}
     }
 
+
+    /* Markdown de corpo: textarea no local original e prévia segura. */
+    /* Controles Editar / Remover no canto direito de blocos Markdown. */
+    .cms-hover-control.cms-body-edit, .cms-hover-control.cms-body-remove {
+      width:auto; min-width:78px; height:33px; border-radius:8px;
+      padding:0 12px; font-size:11px; font-weight:800; gap:6px;
+    }
+    .cms-hover-control.cms-body-edit.visible, .cms-hover-control.cms-body-remove.visible {display:inline-flex;justify-content:center;}
+    .cms-hover-control.cms-body-remove {background:#8c2f3b;border-color:#f4ced4;}
+    .cms-hover-control.cms-body-remove:hover {background:#a92d41;}
+    .cms-hover-control.cms-body-edit:hover {background:#105584;}
+    @media(max-width:760px) {
+      .cms-hover-control.cms-body-edit, .cms-hover-control.cms-body-remove {height:40px;min-width:74px;}
+    }
+    .cms-md-panel { position:relative; z-index:3; width:100%; min-width:0; margin:12px 0 18px;
+      padding:14px; border:2px solid #377ba7; border-radius:14px; background:#f8fbfd;
+      box-shadow:0 12px 36px rgba(8,45,76,.12); color:#082d4c; }
+    .cms-md-panel[hidden]{display:none!important;}
+    .cms-md-panel-head {display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;}
+    .cms-md-panel-head strong {font:800 13px/1.4 Inter,"Segoe UI",Arial,sans-serif;}
+    .cms-md-panel-head span {font:600 11px/1.4 Inter,"Segoe UI",Arial,sans-serif;color:#607587;}
+    .cms-md-toolbar {display:flex;flex-wrap:wrap;gap:6px;padding:0 0 10px;}
+    .cms-md-toolbar button {min-width:34px;min-height:34px;padding:6px 9px;border-radius:7px;
+      border:1px solid #bbd1df;background:#fff;color:#082d4c;font-size:12px;font-weight:750;cursor:pointer;}
+    .cms-md-toolbar button:hover,.cms-md-toolbar button:focus-visible {background:#deedf7;outline:2px solid #105584;outline-offset:1px;}
+    .cms-md-source {display:block;width:100%;min-height:180px;max-height:55vh;resize:vertical;
+      padding:14px;border:1px solid #95b2c5;border-radius:8px;background:#fff;color:#12283b;
+      font:13px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;tab-size:2;overflow:auto;white-space:pre-wrap;}
+    .cms-md-preview {display:block;margin-top:10px;padding:12px;border:1px dashed #bbd1df;
+      border-radius:8px;background:white;color:#12283b;overflow-wrap:anywhere;}
+    .cms-md-preview[hidden] {display:none!important;}
+    .cms-md-actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin-top:10px;}
+    .cms-md-actions button{min-height:38px;padding:8px 13px;border:1px solid #105584;border-radius:7px;background:#fff;color:#105584;font-weight:850;cursor:pointer;}
+    .cms-md-actions [data-cms-md-apply]{background:#105584;color:white;}
+    .cms-md-prose {display:block;white-space:normal;overflow-wrap:anywhere;}
+    .cms-md-line {display:block;margin:0 0 .65em;}
+    .cms-md-line:last-child{margin-bottom:0;}
+    .cms-md-heading {display:block;font-weight:850;line-height:1.2;margin:.75em 0 .5em;}
+    .cms-md-heading.level-1{font-size:1.6em;} .cms-md-heading.level-2{font-size:1.35em;}
+    .cms-md-heading.level-3{font-size:1.2em;}
+    .cms-md-quote {display:block;border-left:3px solid #7cacc9;padding:4px 0 4px 12px;margin:8px 0;opacity:.9;}
+    .cms-md-list {display:block;margin:7px 0;padding-left:20px;}
+    .cms-md-list-item {display:list-item;list-style-type:disc;margin-bottom:3px;}
+    .cms-md-list.ordered .cms-md-list-item{list-style-type:decimal;}
+    .cms-md-code,.cms-md-codeblock {border-radius:5px;background:rgba(8,45,76,.09);font:0.88em/1.55 ui-monospace,monospace;padding:1px 5px;}
+    .cms-md-codeblock {display:block;padding:12px;margin:8px 0;white-space:pre-wrap;overflow-wrap:anywhere;}
+    .cms-md-rule{display:block;border-top:1px solid currentColor;opacity:.3;margin:12px 0;}
+    .cms-md-prose a {text-decoration:underline;text-underline-offset:2px;}
+    .cms-draft-shortcut{position:fixed;z-index:3006;right:18px;bottom:18px;display:none;
+      min-height:46px;padding:12px 18px;border:1px solid #d0e0ea;border-radius:999px;
+      background:#082d4c;color:#fff;box-shadow:0 8px 24px #0005;font-size:12px;font-weight:850;cursor:pointer;}
+    .cms-draft-shortcut.visible{display:block;}
+    @media (max-width:760px){
+      .cms-md-panel{padding:10px;margin:10px 0;} .cms-md-toolbar {gap:5px;}
+      .cms-md-toolbar button {min-height:40px;min-width:38px;}
+      .cms-md-panel-head{align-items:flex-start;flex-direction:column;gap:2px;}
+      .cms-md-source{font-size:16px;min-height:180px;}
+      .cms-draft-shortcut{left:12px;right:12px;bottom:12px;text-align:center;}
+    }
+
   </style>
 </head>
 <body>
@@ -3102,6 +3162,86 @@
       return doc.body.innerHTML;
     }
 
+
+    function cmsIsMarkdownBody(el) {
+      if(!el || el.nodeType!==1 || el.closest('.cms-toolbar,.cms-modal,.cms-md-panel,.cms-save-footer,.cms-login,.cms-inline-actions,.cms-record-create-session,.work-create-route')) return false;
+      return ['P','BLOCKQUOTE','LI'].includes(el.tagName) || el.matches('.copy,.hero-lead,.footer-about,.cms-markdown-body');
+    }
+
+    function cmsMarkdownInline(input) {
+      const source=String(input ?? '');
+      const tokens=/\[([^\]\n]+)\]\(([^\s)]+)\)|`([^`\n]+)`|\*\*([^*\n]+)\*\*|__([^_\n]+)__|~~([^~\n]+)~~|\*([^*\n]+)\*|_([^_\n]+)_/g;
+      let out='',offset=0,match;
+      while((match=tokens.exec(source))) {
+        out+=escapeHTML(source.slice(offset,match.index));
+        if(match[1]!==undefined) {
+          const href=match[2];
+          const safe=/^(https?:\/\/|mailto:|tel:|\/|#)/i.test(href);
+          out+=safe ? `<a href="${escapeHTML(href)}" target="_blank" rel="noopener noreferrer">${cmsMarkdownInline(match[1])}</a>` : escapeHTML(match[0]);
+        } else if(match[3]!==undefined) out+=`<code class="cms-md-code">${escapeHTML(match[3])}</code>`;
+        else if(match[4]!==undefined || match[5]!==undefined) out+=`<strong>${cmsMarkdownInline(match[4] ?? match[5])}</strong>`;
+        else if(match[6]!==undefined) out+=`<s>${cmsMarkdownInline(match[6])}</s>`;
+        else out+=`<em>${cmsMarkdownInline(match[7] ?? match[8])}</em>`;
+        offset=tokens.lastIndex;
+      }
+      return out+escapeHTML(source.slice(offset));
+    }
+
+    function cmsRenderMarkdown(input) {
+      const source=String(input??'').replace(/\r\n?/g,'\n');
+      const lines=source.split('\n'),parts=[];
+      let paragraph=[],list=[],listType='',quote=[],code=[],inCode=false;
+      const flushParagraph=()=>{if(paragraph.length){parts.push(`<span class="cms-md-line">${paragraph.map(cmsMarkdownInline).join('<br>')}</span>`);paragraph=[];}};
+      const flushList=()=>{if(list.length){parts.push(`<span class="cms-md-list ${listType}">${list.map(t=>`<span class="cms-md-list-item">${cmsMarkdownInline(t)}</span>`).join('')}</span>`);list=[];listType='';}};
+      const flushQuote=()=>{if(quote.length){parts.push(`<span class="cms-md-quote">${quote.map(cmsMarkdownInline).join('<br>')}</span>`);quote=[];}};
+      for(const line of lines) {
+        if(/^\s*```/.test(line)) {
+          flushParagraph();flushList();flushQuote();
+          if(inCode){parts.push(`<code class="cms-md-codeblock">${escapeHTML(code.join('\n'))}</code>`);code=[];inCode=false;}
+          else inCode=true;
+          continue;
+        }
+        if(inCode){code.push(line);continue;}
+        if(!line.trim()){flushParagraph();flushList();flushQuote();continue;}
+        const heading=line.match(/^\s{0,3}(#{1,3})\s+(.+)$/);
+        const bullet=line.match(/^\s*[-*+]\s+(.+)$/);
+        const numbered=line.match(/^\s*\d+[.)]\s+(.+)$/);
+        const blockQuote=line.match(/^\s*>\s?(.*)$/);
+        if(heading) {flushParagraph();flushList();flushQuote();parts.push(`<span class="cms-md-heading level-${heading[1].length}">${cmsMarkdownInline(heading[2])}</span>`);}
+        else if(/^\s*(---|\*\*\*|___)\s*$/.test(line)) {flushParagraph();flushList();flushQuote();parts.push('<span class="cms-md-rule"></span>');}
+        else if(bullet || numbered) {
+          flushParagraph();flushQuote();const type=bullet?'unordered':'ordered';
+          if(listType && listType!==type)flushList();listType=type;list.push((bullet||numbered)[1]);
+        } else if(blockQuote){flushParagraph();flushList();quote.push(blockQuote[1]);}
+        else {flushList();flushQuote();paragraph.push(line);}
+      }
+      flushParagraph();flushList();flushQuote();
+      if(inCode)parts.push(`<code class="cms-md-codeblock">${escapeHTML(code.join('\n'))}</code>`);
+      return `<span class="cms-md-prose">${parts.join('')}</span>`;
+    }
+
+    function cmsHtmlToMarkdown(html) {
+      const doc=new DOMParser().parseFromString(`<div id="markdown-root">${html}</div>`,'text/html');
+      const root=doc.getElementById('markdown-root');
+      const walk=node=>{
+        if(node.nodeType===Node.TEXT_NODE)return node.textContent;
+        if(node.nodeType!==Node.ELEMENT_NODE)return '';
+        const tag=node.tagName,inside=[...node.childNodes].map(walk).join('');
+        if(tag==='BR')return '\n';
+        if(tag==='STRONG'||tag==='B')return `**${inside}**`;
+        if(tag==='EM'||tag==='I')return `*${inside}*`;
+        if(tag==='S'||tag==='DEL'||tag==='STRIKE')return `~~${inside}~~`;
+        if(tag==='CODE')return '`'+inside+'`';
+        if(tag==='A') { const href=node.getAttribute('href')||''; return /^(https?:\/\/|mailto:|tel:|\/|#)/i.test(href)?`[${inside}](${href})`:inside; }
+        if(/^H[1-3]$/.test(tag))return `${'#'.repeat(Number(tag[1]))} ${inside}\n\n`;
+        if(tag==='LI')return `- ${inside}\n`;
+        if(tag==='BLOCKQUOTE')return '> '+inside.replace(/\n/g,'\n> ')+'\n\n';
+        if(tag==='P'||tag==='DIV')return inside+'\n\n';
+        return inside;
+      };
+      return [...root.childNodes].map(walk).join('').trim();
+    }
+
     function cmsElementSignature(el) {
       if (!el || el.nodeType !== 1) return '';
       if (el.id) return `${el.tagName.toLowerCase()}#${el.id}`;
@@ -3160,7 +3300,8 @@
 
     const cmsIgnoredTextTags = new Set(['SCRIPT','STYLE','INPUT','TEXTAREA','SELECT','OPTION','SVG','PATH']);
     function cmsHasDirectText(el) {
-      if (!el || cmsIgnoredTextTags.has(el.tagName) || el.closest('.asset-retry-action,.cms-toolbar,.cms-modal,.cms-login,.cms-record-modal,.cms-record-create-session')) return false;
+      if (!el || cmsIgnoredTextTags.has(el.tagName) || el.closest('.cms-md-prose,.cms-md-panel,.asset-retry-action,.cms-toolbar,.cms-modal,.cms-login,.cms-record-modal,.cms-record-create-session')) return false;
+      if(cmsIsMarkdownBody(el))return true;
       return [...el.childNodes].some(node=>node.nodeType===Node.TEXT_NODE && node.textContent.trim());
     }
     function cmsTextElements(root=document) {
@@ -3173,12 +3314,37 @@
     function cmsApply(root=document) {
       if (!cmsState.loaded) return;
       const textMap = cmsState.content.text || {};
+      const markdownMap = cmsState.content.markdown || {};
       const imageMap = cmsState.content.images || {};
       cmsTextElements(root).forEach(el=>{
         const key=cmsKeyFor(el,'text');
-        if (key && Object.prototype.hasOwnProperty.call(textMap,key)) {
+        if(!key || el.isContentEditable || cmsEditor?.markdownTarget===el) return;
+        if(Object.prototype.hasOwnProperty.call(markdownMap,key)) {
+          const safe=cmsRenderMarkdown(markdownMap[key]);
+          if(el.innerHTML!==safe) el.innerHTML=safe;
+        } else if(Object.prototype.hasOwnProperty.call(textMap,key)) {
           const safe=sanitizeRichHTML(textMap[key]);
-          if (!el.isContentEditable && el.innerHTML!==safe) el.innerHTML=safe;
+          if(el.innerHTML!==safe) el.innerHTML=safe;
+        }
+      });
+      const removedBlocks=cmsState.content.removedBlocks || {};
+      cmsTextElements(root).forEach(el=>{
+        if(!cmsIsMarkdownBody(el))return;
+        const key=cmsKeyFor(el,'text');
+        if(removedBlocks[key]) {
+          if(el.dataset.cmsRemovedBlock!=='1') {
+            el.dataset.cmsRemovedBlock='1';
+            el.dataset.cmsOriginalDisplay=el.style.getPropertyValue('display') || '';
+            el.dataset.cmsOriginalPriority=el.style.getPropertyPriority('display') || '';
+          }
+          if(el.style.getPropertyValue('display')!=='none')el.style.setProperty('display','none','important');
+        } else if(el.dataset.cmsRemovedBlock==='1') {
+          const original=el.dataset.cmsOriginalDisplay || '';
+          if(original)el.style.setProperty('display',original,el.dataset.cmsOriginalPriority || '');
+          else el.style.removeProperty('display');
+          delete el.dataset.cmsRemovedBlock;
+          delete el.dataset.cmsOriginalDisplay;
+          delete el.dataset.cmsOriginalPriority;
         }
       });
       root.querySelectorAll?.('img').forEach(img=>{
@@ -3198,7 +3364,9 @@
       cmsState.content = {
         ...SITE_DATA,
         text,
-        images: {...(SITE_DATA.images || {})}
+        images: {...(SITE_DATA.images || {})},
+        markdown: {...(SITE_DATA.markdown || {})},
+        removedBlocks: {...(SITE_DATA.removedBlocks || {})}
       };
       cmsState.loaded=true;
       cmsApply(document);
@@ -3388,13 +3556,15 @@
         this.ensureUI();
         if(!cmsState.token && this.toolbar?.isConnected) this.toolbar.remove();
         this.onPointerMove=this.onPointerMove.bind(this);
+        this.onPointerDown=this.onPointerDown.bind(this);
         this.onScroll=this.onScroll.bind(this);
       }
       ensureUI(){
         if(document.querySelector('[data-cms-toolbar]')) return;
         const toolbar=document.createElement('div'); toolbar.className='cms-toolbar'; toolbar.dataset.cmsToolbar=''; toolbar.hidden=true;
         toolbar.innerHTML='<strong>Confidence CMS</strong><span class="cms-save-state" data-cms-state>Modo edição</span><button type="button" data-cms-login>Trocar PAT</button><button type="button" data-cms-logout>Sair</button>';
-        const textBtn=document.createElement('button'); textBtn.type='button'; textBtn.className='cms-hover-control'; textBtn.dataset.cmsTextControl=''; textBtn.title='Editar texto'; textBtn.textContent='✎';
+        const textBtn=document.createElement('button'); textBtn.type='button'; textBtn.className='cms-hover-control'; textBtn.dataset.cmsTextControl=''; textBtn.title='Editar texto'; textBtn.setAttribute('aria-label','Editar texto'); textBtn.textContent='✎';
+        const removeTextBtn=document.createElement('button'); removeTextBtn.type='button'; removeTextBtn.className='cms-hover-control cms-body-remove'; removeTextBtn.dataset.cmsRemoveText=''; removeTextBtn.title='Remover este bloco de texto (desfazível)'; removeTextBtn.setAttribute('aria-label','Remover bloco de texto'); removeTextBtn.textContent='× Remover';
         const imageBtn=document.createElement('button'); imageBtn.type='button'; imageBtn.className='cms-hover-control'; imageBtn.dataset.cmsImageControl=''; imageBtn.title='Enviar/substituir imagem'; imageBtn.textContent='↑';
         const file=document.createElement('input'); file.type='file'; file.accept='image/*'; file.hidden=true; file.dataset.cmsFile='';
         const modal=document.createElement('div'); modal.className='cms-modal'; modal.dataset.cmsModal=''; modal.innerHTML=`<section class="cms-modal-card" role="dialog" aria-modal="true" aria-label="Editor de texto">
@@ -3407,8 +3577,8 @@
         </section>`;
         const saveFooter=document.createElement('section'); saveFooter.className='cms-save-footer'; saveFooter.dataset.cmsSaveFooter='';
         saveFooter.innerHTML=`<div class="cms-save-footer-copy"><div class="eyebrow">Rascunho do CMS</div><strong data-cms-pending-title>Alterações pendentes</strong><p>As mudanças abaixo ainda não foram gravadas no GitHub. Cada item pode ser desfeito individualmente.</p><div class="cms-change-list" data-cms-change-list></div></div><button class="cms-save-all" type="button" data-cms-save-all>Salvar alterações</button>`;
-        document.body.append(toolbar,textBtn,imageBtn,file,modal,saveFooter);
-        this.toolbar=toolbar; this.textBtn=textBtn; this.imageBtn=imageBtn; this.file=file; this.modal=modal; this.rich=modal.querySelector('[data-cms-rich-editor]'); this.saveFooter=saveFooter;
+        document.body.append(toolbar,textBtn,removeTextBtn,imageBtn,file,modal,saveFooter);
+        this.toolbar=toolbar; this.textBtn=textBtn; this.removeTextBtn=removeTextBtn; this.imageBtn=imageBtn; this.file=file; this.modal=modal; this.rich=modal.querySelector('[data-cms-rich-editor]'); this.saveFooter=saveFooter;
         toolbar.addEventListener('click',e=>{
           if(e.target.closest('[data-cms-logout]')) this.logout();
           if(e.target.closest('[data-cms-login]')) navigateLogin();
@@ -3421,6 +3591,15 @@
         const inlineActions=document.createElement('div'); inlineActions.className='cms-inline-actions'; inlineActions.hidden=true;
         inlineActions.innerHTML='<span>Editar na página</span><button type="button" data-cms-inline-cmd="bold" title="Negrito"><b>B</b></button><button type="button" data-cms-inline-cmd="italic" title="Itálico"><i>I</i></button><button type="button" data-cms-inline-cmd="underline" title="Sublinhado"><u>U</u></button><button type="button" data-cms-inline-save>Aplicar</button><button type="button" data-cms-inline-cancel>Cancelar</button>';
         document.body.append(inlineActions); this.inlineActions=inlineActions;
+        const saveShortcut=document.createElement('button');
+        saveShortcut.type='button'; saveShortcut.className='cms-draft-shortcut';
+        saveShortcut.dataset.cmsDraftShortcut='';
+        saveShortcut.textContent='Salvar alterações';
+        saveShortcut.addEventListener('click',()=>{
+          this.updateSaveFooter();
+          this.saveFooter?.scrollIntoView({behavior:'smooth',block:'center'});
+        });
+        document.body.appendChild(saveShortcut); this.saveShortcut=saveShortcut;
         inlineActions.addEventListener('mousedown',e=>{if(e.target.closest('button')) e.preventDefault();});
         inlineActions.addEventListener('click',e=>{
           if(e.target.closest('[data-cms-inline-save]')) this.commitInlineEditor();
@@ -3429,6 +3608,7 @@
           if(command && this.inlineTarget){ this.inlineTarget.focus(); document.execCommand(command,false,null); }
         });
         textBtn.addEventListener('click',()=>this.openTextEditor());
+        removeTextBtn.addEventListener('click',()=>this.removeTextBlock());
         imageBtn.addEventListener('click',()=>{ if(this.imageTarget) this.file.click(); });
         file.addEventListener('change',()=>this.handleImage());
         modal.addEventListener('click',e=>{
@@ -3449,6 +3629,7 @@
         if(this.toolbar && !this.toolbar.isConnected) document.body.appendChild(this.toolbar);
         this.active=true; this.toolbar.hidden=false; document.body.classList.add('cms-editing');
         document.addEventListener('pointermove',this.onPointerMove,{passive:true});
+        document.addEventListener('pointerdown',this.onPointerDown,{passive:true});
         window.addEventListener('scroll',this.onScroll,{passive:true,capture:true});
         window.addEventListener('resize',this.onScroll,{passive:true});
         cmsApply(document); this.setStatus(cmsState.dirty ? `${cmsState.changes.length} alteração(ões) pendente(s)` : 'Modo edição'); this.updateSaveFooter();
@@ -3458,8 +3639,9 @@
         if(this.toolbar) this.toolbar.hidden=true;
         if(!cmsState.token && this.toolbar?.isConnected) this.toolbar.remove();
         this.saveFooter?.classList.remove('visible');
-        document.body.classList.remove('cms-editing'); this.cancelInlineEditor(); this.hideControls(); this.closeModal();
+        document.body.classList.remove('cms-editing'); this.cancelMarkdownEditor(); this.cancelInlineEditor(); this.hideControls(); this.closeModal();
         document.removeEventListener('pointermove',this.onPointerMove);
+        document.removeEventListener('pointerdown',this.onPointerDown);
         window.removeEventListener('scroll',this.onScroll,true); window.removeEventListener('resize',this.onScroll);
       }
       logout(){
@@ -3484,6 +3666,10 @@
         if(this.saveFooter.parentElement!==host) host.appendChild(this.saveFooter);
         const visible=!!cmsState.token && cmsState.dirty && cmsState.changes.length>0;
         this.saveFooter.classList.toggle('visible',visible);
+        if(this.saveShortcut){
+          this.saveShortcut.classList.toggle('visible',visible);
+          this.saveShortcut.textContent=`${cmsState.changes.length} pendente(s) · Ir para salvar`;
+        }
         if(!visible) return;
         const title=this.saveFooter.querySelector('[data-cms-pending-title]');
         if(title) title.textContent=`${cmsState.changes.length} alteração(ões) pendente(s)`;
@@ -3507,9 +3693,9 @@
         return null;
       }
       onPointerMove(event){
-        if(!this.active || this.modal.classList.contains('open') || this.inlineTarget) return;
+        if(!this.active || this.modal.classList.contains('open') || this.inlineTarget || this.markdownTarget) return;
         if(event.target.closest?.('.work-create-route')) { this.hideControls(); return; }
-        if(event.target.closest?.('.cms-hover-control,.cms-toolbar,.cms-contact-remove,.cms-contact-add,.cms-record-add,.cms-record-remove,.cms-record-modal,.cms-record-create-session,.service-record-carousel,.work-gallery-section,.cms-inline-actions,.cms-contact-inline')) return;
+        if(event.target.closest?.('.cms-hover-control,.cms-toolbar,.cms-contact-remove,.cms-contact-add,.cms-record-add,.cms-record-remove,.cms-record-modal,.cms-record-create-session,.service-record-carousel,.work-gallery-section,.cms-inline-actions,.cms-contact-inline,.cms-md-panel')) return;
         const img=event.target.closest?.('img');
         if(img && !img.closest('.cms-toolbar,.cms-modal,.cms-login')) { this.setImageTarget({el:img,kind:'image'}); this.clearTextTarget(); return; }
         const text=this.textCandidate(event.target);
@@ -3518,7 +3704,39 @@
         if(bg && !bg.closest('.cms-toolbar,.cms-modal,.cms-login')) { this.setImageTarget({el:bg,kind:'background'}); this.clearTextTarget(); return; }
         this.hideControls();
       }
-      onScroll(){ if(this.textTarget) this.position(this.textBtn,this.textTarget); if(this.imageTarget) this.position(this.imageBtn,this.imageTarget); }
+      onPointerDown(event){
+        if(!this.active || !cmsState.token || event.pointerType!=='touch' || this.markdownTarget || this.inlineTarget)return;
+        if(event.target.closest?.('.cms-hover-control,.cms-toolbar,.cms-md-panel,.cms-save-footer,.cms-inline-actions'))return;
+        const candidate=this.textCandidate(event.target);
+        if(candidate && cmsIsMarkdownBody(candidate)) {this.setTextTarget(candidate);this.clearImageTarget();}
+      }
+      onScroll(){ if(this.textTarget) this.positionTextControls(this.textTarget); if(this.imageTarget) this.position(this.imageBtn,this.imageTarget); }
+      positionTextControls(target){
+        const isBody=cmsIsMarkdownBody(target);
+        this.textBtn.classList.toggle('cms-body-edit',isBody);
+        this.textBtn.textContent=isBody ? '✎ Editar' : '✎';
+        this.textBtn.title=isBody ? 'Editar Markdown deste bloco' : 'Editar texto';
+        if(!isBody) {
+          this.removeTextBtn.classList.remove('visible');
+          this.position(this.textBtn,target);
+          return;
+        }
+        const rect=target.getBoundingClientRect();
+        if(rect.width<2 || rect.height<2 || rect.bottom<0 || rect.top>innerHeight){
+          this.textBtn.classList.remove('visible');
+          this.removeTextBtn.classList.remove('visible');
+          return;
+        }
+        const width=176;
+        const left=Math.max(8,Math.min(innerWidth-width-8,rect.right-width));
+        const top=rect.top>=42 ? rect.top-38 : Math.max(8,Math.min(innerHeight-48,rect.top+5));
+        this.textBtn.style.left=`${left}px`;
+        this.textBtn.style.top=`${top}px`;
+        this.removeTextBtn.style.left=`${left+86}px`;
+        this.removeTextBtn.style.top=`${top}px`;
+        this.textBtn.classList.add('visible');
+        this.removeTextBtn.classList.add('visible');
+      }
       position(btn,target){
         const rect=target.getBoundingClientRect();
         if(rect.width<2 || rect.height<2 || rect.bottom<0 || rect.top>innerHeight) {btn.classList.remove('visible'); return;}
@@ -3526,13 +3744,189 @@
         btn.style.top=`${Math.min(innerHeight-38,Math.max(8,rect.top+6))}px`;
         btn.classList.add('visible');
       }
-      setTextTarget(el){ if(this.textTarget!==el){this.clearTextTarget();this.textTarget=el;el.classList.add('cms-edit-highlight');} this.position(this.textBtn,el); }
+      setTextTarget(el){ if(this.textTarget!==el){this.clearTextTarget();this.textTarget=el;el.classList.add('cms-edit-highlight');} this.positionTextControls(el); }
       setImageTarget(item){ if(this.imageTarget!==item.el){this.clearImageTarget();this.imageTarget=item.el;this.imageKind=item.kind;item.el.classList.add('cms-edit-highlight');} this.position(this.imageBtn,item.el); }
-      clearTextTarget(){ this.textTarget?.classList.remove('cms-edit-highlight'); this.textTarget=null; this.textBtn.classList.remove('visible'); }
+      clearTextTarget(){ this.textTarget?.classList.remove('cms-edit-highlight'); this.textTarget=null; this.textBtn.classList.remove('visible'); this.removeTextBtn.classList.remove('visible'); }
       clearImageTarget(){ this.imageTarget?.classList.remove('cms-edit-highlight'); this.imageTarget=null; this.imageKind=null; this.imageBtn.classList.remove('visible'); }
       hideControls(){ this.clearTextTarget(); this.clearImageTarget(); }
+
+      removeTextBlock(){
+        const target=this.textTarget;
+        if(!this.active || !cmsState.token || !target || !cmsIsMarkdownBody(target))return;
+        const key=cmsKeyFor(target,'text');
+        const map=cmsState.content.removedBlocks ||= {};
+        if(map[key])return;
+        const beforeExists=Object.prototype.hasOwnProperty.call(map,key);
+        const before=map[key];
+        const label=target.textContent.trim().replace(/\s+/g,' ').slice(0,72) || 'texto';
+        cmsRegisterChange({
+          key:`remove-body:${key}`,
+          label:`Remover bloco: ${label}`,
+          undo:()=>{
+            if(beforeExists) map[key]=before;
+            else delete map[key];
+            cmsApply(document);
+          }
+        });
+        map[key]=true;
+        this.hideControls();
+        cmsApply(document);
+        this.updateSaveFooter();
+      }
+
+      openMarkdownEditor(target){
+        this.cancelInlineEditor();
+        this.cancelMarkdownEditor();
+        const key=cmsKeyFor(target,'text');
+        const existing=cmsState.content.markdown || {};
+        const source=Object.prototype.hasOwnProperty.call(existing,key)
+          ? existing[key] : cmsHtmlToMarkdown(target.innerHTML);
+        this.markdownTarget=target;
+        this.markdownOriginalDisplay=target.style.display;
+        this.markdownInitial=source;
+        const panel=document.createElement('section');
+        panel.className='cms-md-panel';
+        panel.dataset.cmsMarkdownEditor='';
+        panel.innerHTML=`<div class="cms-md-panel-head"><strong>Editar conteúdo em Markdown</strong><span>Toolbar insere sintaxe Markdown · Ctrl+Enter aplica</span></div>
+          <div class="cms-md-toolbar" role="toolbar" aria-label="Formatação Markdown">
+            <button type="button" data-md="bold" title="**negrito**"><b>B</b></button>
+            <button type="button" data-md="italic" title="*itálico*"><i>I</i></button>
+            <button type="button" data-md="strike" title="~~tachado~~"><s>S</s></button>
+            <button type="button" data-md="h2" title="## Título">H2</button>
+            <button type="button" data-md="h3" title="### Subtítulo">H3</button>
+            <button type="button" data-md="bullet" title="- Lista">• Lista</button>
+            <button type="button" data-md="number" title="1. Lista">1. Lista</button>
+            <button type="button" data-md="quote" title="> Citação">❞</button>
+            <button type="button" data-md="link" title="[texto](URL)">Link</button>
+            <button type="button" data-md="code" title="Código inline">Código</button>
+            <button type="button" data-md="codeblock" title="Bloco de código">{ }</button>
+            <button type="button" data-md="rule" title="Separador">—</button>
+          </div>
+          <textarea class="cms-md-source" data-cms-md-source spellcheck="true" aria-label="Fonte Markdown"></textarea>
+          <div class="cms-md-actions">
+            <button type="button" data-cms-md-preview-toggle>Ocultar prévia</button>
+            <button type="button" data-cms-md-cancel>Cancelar</button>
+            <button type="button" data-cms-md-apply>Aplicar ao rascunho</button>
+          </div>
+          <div class="cms-md-preview" data-cms-md-preview aria-label="Prévia do Markdown"></div>`;
+        target.after(panel);
+        this.markdownPanel=panel;
+        this.markdownInput=panel.querySelector('[data-cms-md-source]');
+        this.markdownInput.value=source;
+        target.style.display='none';
+        const preview=panel.querySelector('[data-cms-md-preview]');
+        const refresh=()=>{preview.innerHTML=cmsRenderMarkdown(this.markdownInput.value);};
+        panel.addEventListener('input',refresh);
+        panel.addEventListener('click',event=>{
+          const button=event.target.closest('button');
+          if(!button)return;
+          if(button.hasAttribute('data-cms-md-cancel')){this.cancelMarkdownEditor();return;}
+          if(button.hasAttribute('data-cms-md-apply')){this.commitMarkdownEditor();return;}
+          if(button.hasAttribute('data-cms-md-preview-toggle')){
+            preview.hidden=!preview.hidden;
+            button.textContent=preview.hidden?'Mostrar prévia':'Ocultar prévia';
+            return;
+          }
+          const command=button.dataset.md;
+          if(command)this.applyMarkdownCommand(command);
+        });
+        panel.addEventListener('keydown',event=>{
+          if(event.key==='Escape') {event.preventDefault();this.cancelMarkdownEditor();}
+          if((event.ctrlKey||event.metaKey)&&event.key==='Enter') {event.preventDefault();this.commitMarkdownEditor();}
+        });
+        refresh();
+        this.textBtn.classList.remove('visible');
+        this.removeTextBtn.classList.remove('visible');
+        this.markdownInput.focus();
+      }
+      applyMarkdownCommand(command){
+        const el=this.markdownInput;if(!el)return;
+        const start=el.selectionStart,end=el.selectionEnd;
+        const value=el.value,selection=value.slice(start,end);
+        let replacement=selection,selectStart=0,selectEnd=0;
+        const wrap=(before,after=before,placeholder='texto')=>{
+          const inner=selection||placeholder;
+          replacement=before+inner+after;
+          selectStart=before.length;
+          selectEnd=before.length+inner.length;
+        };
+        const prefixLines=(prefix)=>{
+          const lineStart=value.lastIndexOf('\n',Math.max(0,start-1))+1;
+          const lineEnd=(()=>{const i=value.indexOf('\n',end);return i<0?value.length:i;})();
+          const before=value.slice(lineStart,lineEnd);
+          const next=before.split('\n').map((line,i)=>prefix.replace('{n}',String(i+1))+line).join('\n');
+          el.value=value.slice(0,lineStart)+next+value.slice(lineEnd);
+          el.setSelectionRange(lineStart,lineStart+next.length);
+          el.dispatchEvent(new Event('input',{bubbles:true}));el.focus();return;
+        };
+        switch(command){
+          case 'bold':wrap('**');break;
+          case 'italic':wrap('*');break;
+          case 'strike':wrap('~~');break;
+          case 'code':wrap('`');break;
+          case 'link':wrap('[','](https://)', 'texto do link');break;
+          case 'codeblock':wrap('```\n','\n```','código');break;
+          case 'h2':prefixLines('## ');return;
+          case 'h3':prefixLines('### ');return;
+          case 'bullet':prefixLines('- ');return;
+          case 'number':prefixLines('{n}. ');return;
+          case 'quote':prefixLines('> ');return;
+          case 'rule':replacement='\n---\n';break;
+          default:return;
+        }
+        el.setRangeText(replacement,start,end,'end');
+        if(selectEnd)el.setSelectionRange(start+selectStart,start+selectEnd);
+        el.dispatchEvent(new Event('input',{bubbles:true}));el.focus();
+      }
+      cancelMarkdownEditor(){
+        if(!this.markdownTarget)return;
+        this.markdownTarget.style.display=this.markdownOriginalDisplay??'';
+        this.markdownPanel?.remove();
+        this.markdownTarget=null;this.markdownPanel=null;this.markdownInput=null;this.markdownInitial=null;
+        this.markdownOriginalDisplay=null;
+      }
+      commitMarkdownEditor(){
+        if(!this.markdownTarget || !this.markdownInput)return;
+        const target=this.markdownTarget,source=this.markdownInput.value.replace(/\r\n?/g,'\n');
+        const oldSource=this.markdownInitial;
+        if(source===oldSource){this.cancelMarkdownEditor();return;}
+        const key=cmsKeyFor(target,'text');
+        const markdown=cmsState.content.markdown ||= {};
+        const text=cmsState.content.text ||= {};
+        const beforeMarkdown=Object.prototype.hasOwnProperty.call(markdown,key);
+        const beforeText=Object.prototype.hasOwnProperty.call(text,key);
+        const oldMarkdown=markdown[key],oldText=text[key];
+        const oldHTML=target.innerHTML;
+        const explicit=target.dataset?.cmsKey||'';
+        const panel=contactPanelData(),oldContactDescription=panel.description;
+        cmsRegisterChange({
+          key:`text:${key}`,
+          label:`Markdown: ${(target.textContent||'conteúdo').trim().slice(0,70)}`,
+          undo:()=>{
+            if(beforeMarkdown)cmsState.content.markdown[key]=oldMarkdown;
+            else delete cmsState.content.markdown[key];
+            if(beforeText)cmsState.content.text[key]=oldText;
+            else delete cmsState.content.text[key];
+            if(explicit==='contact-panel-description'){
+              const current=contactPanelData();current.description=oldContactDescription;
+              SITE_DATA.contactPanel=current;cmsState.content.contactPanel=current;
+            }
+            if(target.isConnected)target.innerHTML=oldHTML;
+          }
+        });
+        markdown[key]=source;
+        delete text[key];
+        if(explicit==='contact-panel-description'){
+          panel.description=source;SITE_DATA.contactPanel=panel;cmsState.content.contactPanel=panel;
+        }
+        this.cancelMarkdownEditor();
+        target.innerHTML=cmsRenderMarkdown(source);
+        this.updateSaveFooter();
+      }
+
       openTextEditor(){
         if(!this.textTarget || !cmsState.token) return;
+        if(cmsIsMarkdownBody(this.textTarget)) { this.openMarkdownEditor(this.textTarget); return; }
         this.cancelInlineEditor();
         const target=this.textTarget;
         this.inlineTarget=target;
