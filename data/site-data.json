@@ -367,7 +367,8 @@
     "text:obra-centro-canoagem-ubaitaba:work-detail>main.detail-route>section#execucao>div.detail-execution-inner>header.detail-execution-head>div.detail-execution-intro>div.detail-execution-meta>span:nth-2": "Segurança",
     "text:clientes:section#clientes>div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-1>div.client-meta>strong": "Solar Coca-Cola",
     "text:site-footer:site-footer>footer.site-footer>div.footer-main>div.footer-col:nth-1>div.footer-links>button:nth-3": "Contratantes",
-    "text:site-footer:site-footer>footer.site-footer>div.footer-main>div.footer-col:nth-1>div.footer-links>button:nth-2": "Atuação"
+    "text:site-footer:site-footer>footer.site-footer>div.footer-main>div.footer-col:nth-1>div.footer-links>button:nth-2": "Atuação",
+    "text:obra-adequacao-de-seguranca-simoes-filho:work-detail>main.detail-route>section.detail-workspace>aside[aria-label=informacoes-da-obra]>h1": "Adequações de Segurança"
   },
   "images": {
     "image:clientes:div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-2>div.client-logo-wrap>img.client-logo.sudesb-logo": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-15-658Z-sudesblogo.png?v=3d0e6703ad85936bbced688f8e2f940aca29d3c4",
@@ -380,7 +381,7 @@
     "image:clientes:section#clientes>div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-1>div.client-logo-wrap>img.client-logo.coca": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-16-31-809Z-nefvph-solar-coca-cola-logo.png?v=85e5c79299bc631b2421ee8e30632d46950b64fb"
   },
   "videos": [],
-  "updatedAt": "2026-10-10T12:36:20.706Z",
+  "updatedAt": "2026-10-10T12:43:59.447Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
