@@ -423,146 +423,10 @@
       "summary": "Reforma dos ambientes internos e externos do equipamento, incluindo instalação de forro, recuperação de áreas de circulação, preparação e execução de pisos e intervenções de infraestrutura junto à área externa voltada para o rio.",
       "cover": "assets/WhatsApp Image 2026-09-30 at 11.14.13.jpeg",
       "photos": [
-        "assets/WhatsApp Image 2026-09-30 at 11.14.13.jpeg",
-        "assets/WhatsApp Image 2026-09-30 at 11.14.13 (1).jpeg",
-        "assets/WhatsApp Image 2026-09-30 at 11.14.14.jpeg",
-        "assets/WhatsApp Image 2026-09-30 at 11.14.14 (1).jpeg",
-        "assets/WhatsApp Image 2026-09-30 at 11.14.14 (2).jpeg",
-        "assets/WhatsApp Image 2026-09-30 at 11.14.14 (3).jpeg",
-        "assets/WhatsApp Image 2026-09-30 at 11.14.15.jpeg",
-        "assets/WhatsApp Image 2026-09-30 at 11.14.15 (1).jpeg",
         "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-52-37-081Z-x4fgxj-whatsapp-image-2026-10-09-at-23.48.32.jpeg?v=ed982bbc7c46b35c815c5a4adc133f04f844705c",
         "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-52-35-219Z-b6z75a-whatsapp-image-2026-10-09-at-23.43.28.jpeg?v=e9e0ddad58169e57474a6f796e6c32092cb04bc1"
       ],
       "activities": [
-        {
-          "id": "ubaitaba-001",
-          "title": "Recuperação da circulação externa",
-          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.13.jpeg",
-          "description": "Reforma de ambiente voltado para o rio, com intervenção em esquadrias, abertura e área de circulação externa.",
-          "images": [
-            "assets/WhatsApp Image 2026-09-30 at 11.14.13.jpeg"
-          ],
-          "imagePositions": [
-            {
-              "x": 50,
-              "y": 50
-            }
-          ]
-        },
-        {
-          "id": "ubaitaba-002",
-          "title": "Recuperação da circulação externa",
-          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.13 (1).jpeg",
-          "description": "Recuperação e adequação da circulação externa situada às margens do rio.",
-          "images": [
-            "assets/WhatsApp Image 2026-09-30 at 11.14.13 (1).jpeg"
-          ],
-          "imagePositions": [
-            {
-              "x": 50,
-              "y": 50
-            }
-          ]
-        },
-        {
-          "id": "ubaitaba-003",
-          "title": "Instalação e acabamento de forro",
-          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.14.jpeg",
-          "description": "Instalação de novo forro interno para recuperação e acabamento dos ambientes do centro de canoagem.",
-          "images": [
-            "assets/WhatsApp Image 2026-09-30 at 11.14.14.jpeg"
-          ],
-          "imagePositions": [
-            {
-              "x": 50,
-              "y": 50
-            }
-          ]
-        },
-        {
-          "id": "ubaitaba-004",
-          "title": "Instalação e acabamento de forro",
-          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.14 (1).jpeg",
-          "description": "Execução de forro e acabamento superior em ambiente interno reformado.",
-          "images": [
-            "assets/WhatsApp Image 2026-09-30 at 11.14.14 (1).jpeg"
-          ],
-          "imagePositions": [
-            {
-              "x": 50,
-              "y": 50
-            }
-          ]
-        },
-        {
-          "id": "ubaitaba-005",
-          "title": "Instalação e acabamento de forro",
-          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.14 (2).jpeg",
-          "description": "Continuidade dos serviços de instalação do forro e adequação do acabamento interno.",
-          "images": [
-            "assets/WhatsApp Image 2026-09-30 at 11.14.14 (2).jpeg"
-          ],
-          "imagePositions": [
-            {
-              "x": 50,
-              "y": 50
-            }
-          ]
-        },
-        {
-          "id": "ubaitaba-006",
-          "title": "Instalação e acabamento de forro",
-          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.14 (3).jpeg",
-          "description": "Detalhe do novo revestimento de teto ou forro instalado no ambiente interno.",
-          "images": [
-            "assets/WhatsApp Image 2026-09-30 at 11.14.14 (3).jpeg"
-          ],
-          "imagePositions": [
-            {
-              "x": 50,
-              "y": 50
-            }
-          ]
-        },
-        {
-          "id": "ubaitaba-007",
-          "title": "Execução de piso",
-          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.15.jpeg",
-          "description": "Execução de revestimento de piso na área externa voltada para o rio, com preparação da base e assentamento das peças.",
-          "images": [
-            "assets/WhatsApp Image 2026-09-30 at 11.14.15.jpeg"
-          ],
-          "imagePositions": [
-            {
-              "x": 50,
-              "y": 50
-            }
-          ]
-        },
-        {
-          "id": "ubaitaba-008",
-          "title": "Execução de piso",
-          "image": "assets/WhatsApp Image 2026-09-30 at 11.14.15 (1).jpeg",
-          "description": "Regularização da base e aplicação de argamassa para execução do novo piso da área externa.",
-          "images": [
-            "assets/WhatsApp Image 2026-09-30 at 11.14.15 (1).jpeg"
-          ],
-          "imagePositions": [
-            {
-              "x": 50,
-              "y": 50
-            }
-          ]
-        },
-        {
-          "id": "ubaitaba-009",
-          "title": "Adequação de infraestrutura externa",
-          "image": "",
-          "description": "Abertura e intervenção no piso ou solo para adequação de infraestrutura e recomposição da área externa.",
-          "images": [],
-          "imagePositions": []
-        },
         {
           "id": "centro-canoagem-ubaitaba-7e5b674b-766e-43b0-8d8b-166266eac3c5",
           "title": "Adequação e implantação do caminho seguro.",
@@ -727,7 +591,7 @@
     "image:obra-centro-canoagem-ubaitaba:work-detail>main.detail-route>section.detail-workspace>div[aria-label=galeria-de-imagens-da-obra]>div.detail-gallery-grid>figure.detail-gallery-item:nth-3>img": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-52-33-470Z-spjks1-whatsapp-image-2026-10-09-at-23.47.34.jpeg?v=d6ee23c437fd210759342dfe72ce997c4c7f51b0"
   },
   "videos": [],
-  "updatedAt": "2026-10-10T02:52:38.369Z",
+  "updatedAt": "2026-10-10T02:54:41.222Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
