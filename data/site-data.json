@@ -512,22 +512,17 @@
       "gallery": []
     },
     {
-      "slug": "construcao-de-areninha-muquem-de-sao-francisco",
-      "name": "Construção de Areninha",
-      "city": "Muquém de São Francisco",
+      "slug": "obra-mv1rfng8",
+      "name": ".",
+      "city": ".",
       "state": "Bahia",
-      "type": "construção de areninha esportiva com gramado sintético",
-      "summary": "..........",
-      "cover": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-59-12-562Z-gmzp16-whatsapp-image-2026-10-09-at-22.20.53w.jpeg?v=6e7ff27b029519be22611394390b14c3767ff7ea",
+      "type": ".",
+      "summary": ".",
+      "cover": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-13-36-091Z-u491de-whatsapp-image-2026-10-09-at-22.20.52d.jpeg?v=321136480081de154fa9419faf136731ac9f90d8",
       "photos": [
-        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-59-17-016Z-33oioq-whatsapp-image-2026-10-09-at-22.20.52d.jpeg?v=321136480081de154fa9419faf136731ac9f90d8",
-        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-59-19-648Z-9rf4vd-whatsapp-image-2026-10-09-at-22.20.53w.jpeg?v=6e7ff27b029519be22611394390b14c3767ff7ea"
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-13-36-091Z-u491de-whatsapp-image-2026-10-09-at-22.20.52d.jpeg?v=321136480081de154fa9419faf136731ac9f90d8"
       ],
-      "activities": [],
-      "gallery": [
-        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-59-17-016Z-33oioq-whatsapp-image-2026-10-09-at-22.20.52d.jpeg?v=321136480081de154fa9419faf136731ac9f90d8",
-        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-59-19-648Z-9rf4vd-whatsapp-image-2026-10-09-at-22.20.53w.jpeg?v=6e7ff27b029519be22611394390b14c3767ff7ea"
-      ]
+      "activities": []
     }
   ],
   "contactPanel": {
@@ -631,10 +626,9 @@
   "images": {
     "image:clientes:div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-2>div.client-logo-wrap>img.client-logo.sudesb-logo": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-15-658Z-sudesblogo.png?v=3d0e6703ad85936bbced688f8e2f940aca29d3c4",
     "image:clientes:div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-1>div.client-logo-wrap>img.client-logo.coca": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-17-314Z-coca-cola_logo.svg?v=ef664f97948ac19a57d088ee344c226a3e50a188",
-    "image:certificacoes:div.screen-inner>div.certs-layout>div.cert-board>article.cert-card:nth-1>div.cert-logo-wrap>img.cert-logo": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-18-862Z-2020_12_16_pbqph_colorida_horizontal.png?v=880f9588b2454038c076d21a03953be37ba4781d",
-    "image:obra-construcao-de-areninha-muquem-de-sao-francisco:work-detail>main.detail-route>section.detail-workspace>div[aria-label=galeria-de-imagens-da-obra]>div.detail-gallery-grid>figure.detail-gallery-item:nth-3>img": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-59-21-558Z-jpvmmy-whatsapp-image-2026-10-09-at-22.20.52s.jpeg?v=788c704cb0f7f72a1e76fae429723af8dcbed4b4"
+    "image:certificacoes:div.screen-inner>div.certs-layout>div.cert-board>article.cert-card:nth-1>div.cert-logo-wrap>img.cert-logo": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-18-862Z-2020_12_16_pbqph_colorida_horizontal.png?v=880f9588b2454038c076d21a03953be37ba4781d"
   },
-  "updatedAt": "2026-10-10T01:59:23.342Z",
+  "updatedAt": "2026-10-10T02:13:38.579Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
