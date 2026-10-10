@@ -123,8 +123,10 @@
     .hero-indicator { position:absolute; z-index:3; right:var(--page-x); bottom:22px; font-size:10px; text-transform:uppercase; letter-spacing:.18em; color:#d5e5ef; writing-mode:vertical-rl; }
 
     /* 2 — INSTITUCIONAL · UMA ÚNICA SESSÃO */
-    .institutional-unified { background:#fff; }
+    .institutional-unified { height:auto; min-height:100svh; overflow:visible; background:#fff; }
     .institutional-unified .screen-inner {
+      height:auto;
+      min-height:100svh;
       justify-content:flex-start;
       gap:clamp(18px,2.4vh,28px);
       padding-top:calc(var(--nav-h) + clamp(26px,3.4vh,42px));
@@ -149,14 +151,13 @@
       padding-bottom:5px;
     }
     .institutional-stage {
-      flex:1;
-      min-height:0;
+      flex:none;
       display:grid;
       grid-template-columns:minmax(0,1.12fr) minmax(360px,.88fr);
       gap:18px;
     }
     .institutional-photo {
-      min-height:0;
+      min-height:620px;
       position:relative;
       overflow:hidden;
       border-radius:24px;
@@ -184,9 +185,8 @@
       letter-spacing:.02em;
     }
     .institutional-side {
-      min-height:0;
       display:grid;
-      grid-template-rows:auto auto 1fr;
+      grid-template-rows:auto auto minmax(260px,auto);
       gap:14px;
     }
     .institutional-statement {
@@ -218,7 +218,7 @@
     }
     .institutional-statement.primary p { color:#c8dce8; }
     .institutional-values-compact {
-      min-height:0;
+      min-height:260px;
       border-radius:20px;
       background:#0a3558;
       color:white;
@@ -1318,13 +1318,11 @@
     .toast.show { transform:none; opacity:1; }
 
     @media (max-width: 980px) {
-      .institutional-unified { height:auto; min-height:100svh; overflow:visible; }
-      .institutional-unified .screen-inner { height:auto; min-height:100svh; }
       .institutional-unified-head { grid-template-columns:1fr; gap:14px; }
       .institutional-stage { grid-template-columns:1fr; }
       .institutional-photo { min-height:430px; }
       .institutional-side { grid-template-columns:1fr 1fr; grid-template-rows:auto auto; }
-      .institutional-values-compact { grid-column:1/-1; min-height:210px; }
+      .institutional-values-compact { grid-column:1/-1; min-height:300px; }
     }
 
     @media (max-width: 1040px) {
@@ -1371,7 +1369,7 @@
       .institutional-stage { grid-template-columns:1fr; }
       .institutional-side { grid-template-columns:1fr; grid-template-rows:none; }
       .institutional-photo { min-height:340px; }
-      .institutional-values-compact { grid-column:auto; min-height:0; }
+      .institutional-values-compact { grid-column:auto; min-height:380px; }
       .values-compact-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
       .value-compact { min-height:88px; padding:12px; }
       .value-compact:first-child,
@@ -3017,7 +3015,10 @@
 
     function cmsReplaceDeep(value,from,to){
       if(value===from) return to;
-      if(Array.isArray(value)) return value.map(item=>cmsReplaceDeep(item,from,to));
+      if(Array.isArray(value)) {
+        for(let i=0;i<value.length;i+=1) value[i]=cmsReplaceDeep(value[i],from,to);
+        return value;
+      }
       if(value && typeof value==='object') {
         for(const key of Object.keys(value)) value[key]=cmsReplaceDeep(value[key],from,to);
       }
@@ -3126,16 +3127,28 @@
       if (explicit) return `${kind}:${explicit}`;
       const section = el.closest?.('section[id]');
       const detail = el.closest?.('work-detail');
-      const root = section || detail || el.closest?.('fixed-nav,site-footer,home-view,territory-map,works-showcase') || document.body;
-      let scope = section?.id || (detail ? `obra-${detail.getAttribute('slug') || 'detalhe'}` : root.tagName.toLowerCase());
+      const root = detail || section || el.closest?.('fixed-nav,site-footer,home-view,territory-map,works-showcase') || document.body;
+      const scope = detail ? `obra-${detail.getAttribute('slug') || 'detalhe'}` : (section?.id || root.tagName.toLowerCase());
       const parts=[];
       let node=el;
       while(node && node!==root && node!==document.body) {
         parts.unshift(cmsElementSignature(node));
         node=node.parentElement;
       }
-      if (root && root!==document.body && root!==section) parts.unshift(cmsElementSignature(root));
+      if (root && root!==document.body) parts.unshift(cmsElementSignature(root));
       return `${kind}:${scope}:${parts.join('>') || cmsElementSignature(el)}`;
+    }
+
+    function cmsMigrateLegacyExecutionText(textMap) {
+      const legacyPrefix='text:execucao:';
+      const scopedPrefix='text:obra-areninha-barra-do-choca:work-detail>main.detail-route>section#execucao>';
+      for(const key of Object.keys(textMap)) {
+        if(!key.startsWith(legacyPrefix)) continue;
+        const scopedKey=`${scopedPrefix}${key.slice(legacyPrefix.length)}`;
+        if(!Object.prototype.hasOwnProperty.call(textMap,scopedKey)) textMap[scopedKey]=textMap[key];
+        delete textMap[key];
+      }
+      return textMap;
     }
 
     function replaceBackgroundUrl(el, url) {
@@ -3180,9 +3193,11 @@
     }
 
     async function cmsLoad() {
+      const text=cmsMigrateLegacyExecutionText({...(SITE_DATA.text || {})});
+      SITE_DATA.text=text;
       cmsState.content = {
         ...SITE_DATA,
-        text: {...(SITE_DATA.text || {})},
+        text,
         images: {...(SITE_DATA.images || {})}
       };
       cmsState.loaded=true;
@@ -3659,6 +3674,17 @@
       }));
     }
 
+    let activityIdSequence=0;
+    function createActivityId(work) {
+      const existing=new Set((work.activities || []).map(activity=>String(activity.id)));
+      let id;
+      do {
+        const nonce=globalThis.crypto?.randomUUID?.() || `${Date.now().toString(36)}-${(++activityIdSequence).toString(36)}-${Math.random().toString(36).slice(2,8)}`;
+        id=`${work.slug}-${nonce}`;
+      } while(existing.has(id));
+      return id;
+    }
+
     function workPhotos(work) {
       const photos=(work.activities||[]).flatMap(activity=>activityImages(activity));
       const gallery=Array.isArray(work.gallery) ? work.gallery : [];
@@ -4112,7 +4138,7 @@
         if(status) status.textContent='Adicionando registro ao rascunho…';
         try {
           work.activities ||= [];
-          const id=`${work.slug}-${Date.now().toString(36)}`;
+          const id=createActivityId(work);
           const changeKey=`record-add:${work.slug}:${id}`;
           const images=draft.imageFiles.map((file,i)=>cmsStageAsset(file,`${changeKey}:image:${i}`,`registro-${work.slug}`));
           cmsRegisterChange({key:changeKey,label:`Novo registro: ${title} (${images.length} fotos)`,undo:()=>{ for(let i=0;i<images.length;i++) cmsRemovePendingAsset(`${changeKey}:image:${i}`); work.activities=(work.activities||[]).filter(item=>String(item.id)!==String(id)); this.normalizeWorkMedia(work); SITE_DATA.works=WORKS; cmsState.content.works=WORKS; }});
