@@ -4,8 +4,29 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#082d4c" />
-  <title>Confidence Construtora — Obras que deixam marca</title>
-  <meta name="description" content="Confidence Construtora — atuação, obras, certificações e contato em uma experiência SPA." />
+
+  <!-- SEO_CONFIDENCE_V1 -->
+  <title>Confidence Construtora | Engenharia, obras e infraestrutura na Bahia</title>
+  <meta name="description" content="Confidence Construtora: obras de construção, reforma e infraestrutura na Bahia. Conheça projetos, registros de execução e serviços de engenharia." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://construtoraconfidence.com/" />
+  <link rel="icon" href="/assets/branding/favicon-confidence.png" type="image/png" sizes="256x256" />
+  <link rel="apple-touch-icon" href="/assets/branding/favicon-confidence.png" />
+  <meta name="application-name" content="Confidence Construtora" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Confidence Construtora" />
+  <meta property="og:title" content="Confidence Construtora | Obras e engenharia na Bahia" />
+  <meta property="og:description" content="Confidence Construtora: obras de construção, reforma e infraestrutura na Bahia. Conheça projetos, registros de execução e serviços de engenharia." />
+  <meta property="og:url" content="https://construtoraconfidence.com/" />
+  <meta property="og:image" content="https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-32-20-353Z-whatsapp-image-2026-09-30-at-11.14.13.jpeg?v=075d93e0db64e5746f870e76d9f368488a496d21" />
+  <meta property="og:image:alt" content="Obra documentada pela Confidence Construtora" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Confidence Construtora | Obras e engenharia na Bahia" />
+  <meta name="twitter:description" content="Confidence Construtora: obras de construção, reforma e infraestrutura na Bahia. Conheça projetos, registros de execução e serviços de engenharia." />
+  <meta name="twitter:image" content="https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-32-20-353Z-whatsapp-image-2026-09-30-at-11.14.13.jpeg?v=075d93e0db64e5746f870e76d9f368488a496d21" />
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"GeneralContractor","@id":"https://construtoraconfidence.com/#empresa","name":"Confidence Construtora","url":"https://construtoraconfidence.com/","logo":"https://construtoraconfidence.com/assets/branding/logo-confidence-azul.png","description":"Construtora com atuação em obras, infraestrutura e serviços de engenharia na Bahia.","telephone":"(77) 99824-3876","email":"comercial@construtoraconfidence.com","address":{"@type":"PostalAddress","streetAddress":"Av. Juracy Magalhães, 3340","addressLocality":"Vitória da Conquista","addressRegion":"BA","addressCountry":"BR"}},{"@context":"https://schema.org","@type":"WebSite","@id":"https://construtoraconfidence.com/#website","url":"https://construtoraconfidence.com/","name":"Confidence Construtora","inLanguage":"pt-BR","publisher":{"@id":"https://construtoraconfidence.com/#empresa"}}]</script>
+  <!-- /SEO_CONFIDENCE_V1 -->
   <style>
     :root {
       --blue: #105584;
@@ -2053,6 +2074,14 @@
   <div class="toast" id="toast"></div>
 
   <script type="module">
+    /* SEO: disponibilizar localmente os arquivos oficiais de marca, sem alterar imagens personalizadas. */
+    const seoLocalBrandLogo = value => {
+      const current=String(value || '');
+      const prefix='https://raw.githubusercontent.com/glaucodeveloper/proposta-confidence/main/imagens/';
+      if(current===prefix+'logo_oficial_aplicacao_azul.png') return 'assets/branding/logo-confidence-azul.png';
+      if(current===prefix+'logo_oficial_aplicacao_clara.png') return 'assets/branding/logo-confidence-clara.png';
+      return current;
+    };
     let BRAND = {
       name: 'Confidence Construtora',
       logoBlue: 'https://raw.githubusercontent.com/glaucodeveloper/proposta-confidence/main/imagens/logo_oficial_aplicacao_azul.png',
@@ -2817,7 +2846,7 @@
       update(state){ this.querySelector('.nav-links')?.classList.toggle('open', state.mobileNav); }
       render(){
         this.innerHTML = `<header class="nav"><div class="nav-inner">
-          <a class="brand" href="#/" data-section="inicio" aria-label="Confidence Construtora"><img src="${BRAND.logoBlue}" alt="Confidence Construtora"></a>
+          <a class="brand" href="#/" data-section="inicio" aria-label="Confidence Construtora"><img src="${seoLocalBrandLogo(BRAND.logoBlue)}" alt="Confidence Construtora"></a>
           <nav class="nav-links" aria-label="Principal">
             <a href="#institucional" data-section="institucional">Institucional</a>
             <a href="#obras" data-section="obras">Obras e atuação</a>
@@ -3191,7 +3220,7 @@
       connectedCallback(){
         this.innerHTML=`<footer class="site-footer">
           <div class="footer-main">
-            <div class="footer-brand"><img class="footer-logo" src="${BRAND.logoLight}" alt="Confidence Construtora"><p class="footer-about">Construção, infraestrutura e execução de obras com organização técnica, controle e compromisso de entrega.</p></div>
+            <div class="footer-brand"><img class="footer-logo" src="${seoLocalBrandLogo(BRAND.logoLight)}" alt="Confidence Construtora"><p class="footer-about">Construção, infraestrutura e execução de obras com organização técnica, controle e compromisso de entrega.</p></div>
             <div class="footer-col"><h3>Navegação</h3><div class="footer-links"><button data-go="institucional">Institucional</button><button data-go="obras">Obras e atuação</button><button data-go="clientes">Clientes</button><button data-go="certificacoes">Certificações</button><button data-go="contato">Contato</button></div></div>
             <div class="footer-col"><h3>Contato</h3><div class="footer-contact"><div><span>Telefone</span>${BRAND.phone}</div><div><span>E-mail</span>${BRAND.email}</div><div><span>Endereço</span>${BRAND.address}</div></div></div>
           </div>
@@ -3296,7 +3325,7 @@
               <div>
                 <div class="hero-identity-stage">
                   <div class="hero-brand-phase">
-                    <img class="hero-logo" src="${BRAND.logoLight}" alt="Confidence Construtora">
+                    <img class="hero-logo" src="${seoLocalBrandLogo(BRAND.logoLight)}" alt="Confidence Construtora">
                   </div>
                   <div class="hero-title-phase">
                     <div class="eyebrow light">Engenharia · Construção · Infraestrutura</div>
@@ -3366,7 +3395,7 @@
 
           <section class="screen clients" id="clientes"><div class="screen-inner"><div class="clients-layout">
             <div class="section-brand-head">
-              <div class="section-brand-logo-wrap"><img class="section-brand-logo" src="${BRAND.logoLight}" alt="Confidence Construtora"></div>
+              <div class="section-brand-logo-wrap"><img class="section-brand-logo" src="${seoLocalBrandLogo(BRAND.logoLight)}" alt="Confidence Construtora"></div>
               <div class="section-brand-head-copy"><div class="eyebrow light">Nossos clientes</div><h2 class="title">Confiança que se transforma em parceria.</h2><p class="copy">Coca-Cola e SUDESB fazem parte das relações construídas pela Confidence por meio do trabalho entregue.</p></div>
             </div>
             <div class="client-board">
@@ -3377,7 +3406,7 @@
 
           <section class="screen certs" id="certificacoes"><div class="screen-inner"><div class="certs-layout">
             <div class="section-brand-head">
-              <div class="section-brand-logo-wrap"><img class="section-brand-logo" src="${BRAND.logoBlue}" alt="Confidence Construtora"></div>
+              <div class="section-brand-logo-wrap"><img class="section-brand-logo" src="${seoLocalBrandLogo(BRAND.logoBlue)}" alt="Confidence Construtora"></div>
               <div class="section-brand-head-copy"><div class="eyebrow">Certificações</div><h2 class="title">Qualidade reconhecida.</h2><p class="copy">Nosso padrão de gestão e execução é orientado por referências consolidadas de qualidade na construção.</p></div>
             </div>
             <div class="cert-board">
@@ -4009,7 +4038,7 @@
       disconnectedCallback(){ if(this._submit)this.removeEventListener('submit',this._submit); if(this._click)this.removeEventListener('click',this._click); }
       render(){
         this.innerHTML=`<main class="cms-login"><form class="cms-login-card" data-cms-login-form>
-          <img class="cms-login-logo" src="${BRAND.logoBlue}" alt="Confidence Construtora">
+          <img class="cms-login-logo" src="${seoLocalBrandLogo(BRAND.logoBlue)}" alt="Confidence Construtora">
           <div class="eyebrow">Área de edição</div>
           <h1>Editar o site.</h1>
           <p>A leitura pública do site não exige autenticação. Informe um GitHub Personal Access Token somente para habilitar alterações e uploads no repositório <strong>${CMS_CONFIG.owner}/${CMS_CONFIG.repo}</strong>. A chave fica somente nesta sessão do navegador e é enviada apenas à API do GitHub.</p>
@@ -5442,6 +5471,21 @@
     window.addEventListener('beforeunload',event=>{ if(cmsState.dirty && !cmsLocalPersist('draft')){ event.preventDefault(); event.returnValue=''; } });
     window.addEventListener('hashchange', routeFromHash);
     window.addEventListener('popstate', routeFromHash);
+
+    /* SEO: título e robots coerentes com a rota visível; páginas estáticas são o ponto de indexação. */
+    function seoRefreshRouteMeta(){
+      const match=location.hash.match(/^#\/obra\/([^/?]+)/);
+      const work=match && (typeof WORKS!=='undefined' ? WORKS : []).find(w=>w.slug===decodeURIComponent(match[1]));
+      const login=/^#\/(login|nova-obra)/.test(location.hash);
+      document.title=work ? `${work.name} em ${work.city}, BA | Confidence Construtora` :
+        login ? 'Área administrativa | Confidence Construtora' :
+        'Confidence Construtora | Engenharia, obras e infraestrutura na Bahia';
+      const robots=document.querySelector('meta[name="robots"]');
+      if(robots) robots.content=login ? 'noindex,nofollow' : 'index,follow,max-image-preview:large';
+    }
+    window.addEventListener('hashchange',seoRefreshRouteMeta);
+    window.addEventListener('cms-content-loaded',seoRefreshRouteMeta);
+    queueMicrotask(seoRefreshRouteMeta);
   </script>
 </body>
 </html>
