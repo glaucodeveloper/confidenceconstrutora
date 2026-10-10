@@ -100,6 +100,7 @@
         "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-49-43-101Z-2cp472-whatsapp-image-2026-10-09-at-22.20.52s.jpeg?v=788c704cb0f7f72a1e76fae429723af8dcbed4b4",
         "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-50-58-756Z-y9xxt6-whatsapp-image-2026-10-09-at-22.20.52d.jpeg?v=321136480081de154fa9419faf136731ac9f90d8",
         "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-55-36-754Z-zzcxph-whatsapp-image-2025-01-20-at-09.16.04-1-.jpeg?v=0be1c02d27358e31c07462a3dc63f71298efd066",
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-58-07-078Z-dse2bv-whatsapp-image-2025-01-20-at-09.16.03-2-.jpeg?v=792a2637fd76669afb8505b736c57c1c2b5f7563",
         "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-59-19-648Z-9rf4vd-whatsapp-image-2026-10-09-at-22.20.53w.jpeg?v=6e7ff27b029519be22611394390b14c3767ff7ea"
       ],
       "activities": [
@@ -147,6 +148,21 @@
             }
           ],
           "description": "Execução de passeio em piso intertravado ao longo da lateral do campo e instalação de poste de iluminação."
+        },
+        {
+          "id": "construcao-de-areninha-muquem-de-sao-francisco-4d6ee5cb-b8b5-4a25-8cdb-0b715e24f497",
+          "title": "Instalação de traves",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-58-07-078Z-dse2bv-whatsapp-image-2025-01-20-at-09.16.03-2-.jpeg?v=792a2637fd76669afb8505b736c57c1c2b5f7563",
+          "images": [
+            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-58-07-078Z-dse2bv-whatsapp-image-2025-01-20-at-09.16.03-2-.jpeg?v=792a2637fd76669afb8505b736c57c1c2b5f7563"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ],
+          "description": "Instalação e posicionamento de traves metálicas fixadas."
         }
       ],
       "gallery": [
@@ -428,7 +444,7 @@
     "image:clientes:section#clientes>div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-1>div.client-logo-wrap>img.client-logo.coca": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-16-31-809Z-nefvph-solar-coca-cola-logo.png?v=85e5c79299bc631b2421ee8e30632d46950b64fb"
   },
   "videos": [],
-  "updatedAt": "2026-10-10T12:55:38.359Z",
+  "updatedAt": "2026-10-10T12:58:09.350Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
