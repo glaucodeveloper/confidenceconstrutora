@@ -2875,9 +2875,11 @@
       const slides = [...media.querySelectorAll('.hero-slide')];
       let timer = null;
       if (!slides.length) return () => { media.dataset.bound = ''; };
-      // Escala linear: 7 fotos => 7 segundos; 19 fotos => 19 segundos.
-      // Para menos de 7 fotos, usa 7 segundos sem repetir imagens.
-      const photoDisplayMs = Math.max(7, Math.min(19, slides.length)) * 1000;
+      /* CONFIDENCE_HERO_FAST_SEQUENCE_V3 */
+      // Mais imagens (ate 19), mantendo a cadencia RAPIDA do slideshow original.
+      // A ultima imagem recebe uma pausa para concluir o efeito CSS "ease".
+      const rapidStepMs = 780;
+      const pauseMs = 3600;
 
       const setActive = index => {
         slides.forEach((slide, slideIndex) => slide.classList.toggle('active', slideIndex === index));
@@ -2889,7 +2891,7 @@
           setActive(step);
           const isLast = step === slides.length - 1;
           step += 1;
-          timer = window.setTimeout(isLast ? runSequence : advance, photoDisplayMs);
+          timer = window.setTimeout(isLast ? runSequence : advance, isLast ? pauseMs : rapidStepMs);
         };
         advance();
       };
