@@ -307,6 +307,14 @@
     .territory-intro .title { font-size:clamp(42px,4.7vw,68px); margin-bottom:13px; }
     .territory-intro .copy { max-width:565px; }
     .city-columns { margin-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:0 22px; border-top:1px solid var(--line); max-height:min(48vh,470px); overflow:auto; padding-right:8px; }
+    .city-list-actions { display:none; justify-content:flex-end; margin-top:10px; }
+    body.cms-editing .city-list-actions { display:flex; }
+    .city-work-row { min-width:0; display:flex; align-items:center; gap:7px; }
+    .city-work-row .city-work { flex:0 1 auto; }
+    .city-work-actions { display:none; flex:0 0 auto; gap:4px; }
+    body.cms-editing .city-work-actions { display:flex; }
+    .city-work-action, .city-add-work { border:1px solid var(--line); background:#fff; color:var(--blue-dark); font:inherit; font-size:9px; line-height:1.2; font-weight:850; padding:4px 6px; cursor:pointer; }
+    .city-work-action:hover, .city-work-action:focus-visible, .city-add-work:hover, .city-add-work:focus-visible { color:var(--blue); border-color:var(--blue); outline:none; }
     .city-button { border-bottom:1px solid var(--line); color:var(--muted); min-height:58px; padding:9px 0; text-align:left; cursor:default; display:grid; grid-template-columns:8px minmax(0,1fr); gap:9px; align-items:start; outline:none; }
     .city-button::before { content:""; width:6px; height:6px; margin-top:5px; background:var(--blue-soft); }
     .city-button-copy { min-width:0; display:grid; gap:3px; }
@@ -2888,6 +2896,16 @@
         this.addEventListener('mouseover', e=>{ const target=e.target.closest('[data-city]'); if(target) appState.dispatch({type:'CITY',city:target.dataset.city}); });
         this.addEventListener('focusin', e=>{ const target=e.target.closest('[data-city]'); if(target) appState.dispatch({type:'CITY',city:target.dataset.city}); });
         this.addEventListener('click', e=>{
+          const workAction=e.target.closest('[data-city-work-edit],[data-city-work-remove]');
+          if(workAction){
+            e.preventDefault();e.stopPropagation();
+            if(!cmsState.token)return;
+            const showcase=document.querySelector('works-showcase');
+            if(workAction.dataset.cityWorkEdit!==undefined)showcase?.openWorkEdit(workAction.dataset.cityWorkEdit);
+            else showcase?.removeWork(workAction.dataset.cityWorkRemove);
+            return;
+          }
+          if(e.target.closest('[data-city-add-work]')){e.preventDefault();e.stopPropagation();if(cmsState.token)navigateNewWork();return;}
           const workLink=e.target.closest('[data-work-link]');
           if(workLink){ e.preventDefault(); openWork(workLink.dataset.workLink); return; }
 
@@ -2942,12 +2960,13 @@
           groups.get(key).works.push(work);
           return groups;
         },new Map()).values()];
-        const cityButtons=cityGroups.map(group=>`<div class="city-button" data-city="${escapeHTML(group.city)}"><span class="city-button-copy"><span class="city-name">${escapeHTML(group.city)}</span><span class="city-works">${group.works.map(work=>`<a class="city-work" href="#/obra/${encodeURIComponent(work.slug)}" data-work-link="${escapeHTML(work.slug)}" aria-label="Abrir a obra ${escapeHTML(work.name)} em ${escapeHTML(work.city)}">${escapeHTML(work.name)}</a>`).join('')}</span></span></div>`).join('');
+        const cityButtons=cityGroups.map(group=>`<div class="city-button" data-city="${escapeHTML(group.city)}"><span class="city-button-copy"><span class="city-name">${escapeHTML(group.city)}</span><span class="city-works">${group.works.map(work=>`<span class="city-work-row"><a class="city-work" href="#/obra/${encodeURIComponent(work.slug)}" data-work-link="${escapeHTML(work.slug)}" aria-label="Abrir a obra ${escapeHTML(work.name)} em ${escapeHTML(work.city)}">${escapeHTML(work.name)}</a><span class="city-work-actions"><button class="city-work-action" type="button" data-city-work-edit="${escapeHTML(work.slug)}" aria-label="Editar ${escapeHTML(work.name)}" title="Editar obra">Editar</button><button class="city-work-action" type="button" data-city-work-remove="${escapeHTML(work.slug)}" aria-label="Remover ${escapeHTML(work.name)}" title="Remover obra">Excluir</button></span></span>`).join('')}</span></span></div>`).join('');
         this.innerHTML=`<div class="territory-grid">
           <div class="territory-intro">
             <div class="eyebrow">Nossas obras na Bahia</div>
             <h2 class="title">Obras que levam nossa marca pelo estado.</h2>
             <p class="copy">De Vitória da Conquista ao litoral, nossa engenharia está presente em diferentes municípios, tipos de obra e frentes de execução.</p>
+            <div class="city-list-actions"><button class="city-add-work" type="button" data-city-add-work>+ Adicionar obra</button></div>
             <div class="city-columns">${cityButtons}</div>
           </div>
           <div class="map-stage">
