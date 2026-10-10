@@ -18,7 +18,7 @@ data = json.loads(DATAPATH.read_text(encoding='utf-8'))
 works = data.get('works') if isinstance(data.get('works'),list) else []
 brand = data.get('brand') if isinstance(data.get('brand'),dict) else {}
 name = brand.get('name') or 'Confidence Construtora'
-logo_url = BASE + 'assets/branding/logo-confidence-azul.png'
+logo_url = BASE + 'assets/branding/logo-confidence-horizontal.png'
 now_date = datetime.now().strftime('%Y-%m-%d')
 updated = str(data.get('updatedAt',''))[:10]
 lastmod = updated if re.fullmatch(r'\d{4}-\d{2}-\d{2}',updated) else now_date
@@ -49,7 +49,7 @@ def head(title,description,url,cover,kind='website',schema=None):
 <meta name="theme-color" content="#082d4c">
 <title>{esc(title)}</title><meta name="description" content="{esc(description)}">
 <meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="{esc(url)}">
-<link rel="icon" href="/assets/branding/favicon-confidence.png" type="image/png" sizes="256x256">
+<link rel="icon" href="/assets/branding/logo-confidence-compacta.svg" type="image/svg+xml">
 <meta property="og:type" content="{esc(kind)}"><meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="{esc(name)}"><meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{esc(url)}">

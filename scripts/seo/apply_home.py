@@ -15,11 +15,11 @@ brand = content.get('brand') or {}
 name = brand.get('name') or 'Confidence Construtora'
 description = ('Confidence Construtora: obras de construção, reforma e infraestrutura na Bahia. '
                'Conheça projetos, registros de execução e serviços de engenharia.')
-raw_cover = next((w.get('cover') for w in works if w.get('cover')), 'assets/branding/logo-confidence-azul.png')
+raw_cover = next((w.get('cover') for w in works if w.get('cover')), 'assets/branding/logo-confidence-horizontal.png')
 from urllib.parse import urljoin,quote
 cover = urljoin(url, quote(str(raw_cover),safe='/:?=&%#'))
 # Older records contain github.io media URLs; those are valid media resources, not the page canonical.
-logo = url + 'assets/branding/logo-confidence-azul.png'
+logo = url + 'assets/branding/logo-confidence-horizontal.png'
 
 schema = [
     {'@context':'https://schema.org','@type':'GeneralContractor','@id':url+'#empresa','name':name,
@@ -38,8 +38,8 @@ head_tags = f'''  <!-- SEO_CONFIDENCE_V1 -->
   <meta name="description" content="{html.escape(description, quote=True)}" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="{url}" />
-  <link rel="icon" href="/assets/branding/favicon-confidence.png" type="image/png" sizes="256x256" />
-  <link rel="apple-touch-icon" href="/assets/branding/favicon-confidence.png" />
+  <link rel="icon" href="/assets/branding/logo-confidence-compacta.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/branding/logo-confidence-compacta.svg" />
   <meta name="application-name" content="{html.escape(name, quote=True)}" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
@@ -71,8 +71,8 @@ helper = '''    /* SEO: disponibilizar localmente os arquivos oficiais de marca,
     const seoLocalBrandLogo = value => {
       const current=String(value || '');
       const prefix='https://raw.githubusercontent.com/glaucodeveloper/proposta-confidence/main/imagens/';
-      if(current===prefix+'logo_oficial_aplicacao_azul.png') return 'assets/branding/logo-confidence-azul.png';
-      if(current===prefix+'logo_oficial_aplicacao_clara.png') return 'assets/branding/logo-confidence-clara.png';
+      if(current===prefix+'logo_oficial_aplicacao_azul.png') return 'assets/branding/logo-confidence-horizontal.png';
+      if(current===prefix+'logo_oficial_aplicacao_clara.png') return 'assets/branding/logo-confidence-horizontal.png';
       return current;
     };
 '''

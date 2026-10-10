@@ -10,8 +10,8 @@
   <meta name="description" content="Confidence Construtora: obras de construção, reforma e infraestrutura na Bahia. Conheça projetos, registros de execução e serviços de engenharia." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://construtoraconfidence.com/" />
-  <link rel="icon" href="/assets/branding/favicon-confidence.png" type="image/png" sizes="256x256" />
-  <link rel="apple-touch-icon" href="/assets/branding/favicon-confidence.png" />
+  <link rel="icon" href="/assets/branding/logo-confidence-compacta.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/branding/logo-confidence-compacta.svg" />
   <meta name="application-name" content="Confidence Construtora" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
@@ -25,7 +25,7 @@
   <meta name="twitter:title" content="Confidence Construtora | Obras e engenharia na Bahia" />
   <meta name="twitter:description" content="Confidence Construtora: obras de construção, reforma e infraestrutura na Bahia. Conheça projetos, registros de execução e serviços de engenharia." />
   <meta name="twitter:image" content="https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-32-20-353Z-whatsapp-image-2026-09-30-at-11.14.13.jpeg?v=075d93e0db64e5746f870e76d9f368488a496d21" />
-  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"GeneralContractor","@id":"https://construtoraconfidence.com/#empresa","name":"Confidence Construtora","url":"https://construtoraconfidence.com/","logo":"https://construtoraconfidence.com/assets/branding/logo-confidence-azul.png","description":"Construtora com atuação em obras, infraestrutura e serviços de engenharia na Bahia.","telephone":"(77) 99824-3876","email":"comercial@construtoraconfidence.com","address":{"@type":"PostalAddress","streetAddress":"Av. Juracy Magalhães, 3340","addressLocality":"Vitória da Conquista","addressRegion":"BA","addressCountry":"BR"}},{"@context":"https://schema.org","@type":"WebSite","@id":"https://construtoraconfidence.com/#website","url":"https://construtoraconfidence.com/","name":"Confidence Construtora","inLanguage":"pt-BR","publisher":{"@id":"https://construtoraconfidence.com/#empresa"}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"GeneralContractor","@id":"https://construtoraconfidence.com/#empresa","name":"Confidence Construtora","url":"https://construtoraconfidence.com/","logo":"https://construtoraconfidence.com/assets/branding/logo-confidence-horizontal.png","description":"Construtora com atuação em obras, infraestrutura e serviços de engenharia na Bahia.","telephone":"(77) 99824-3876","email":"comercial@construtoraconfidence.com","address":{"@type":"PostalAddress","streetAddress":"Av. Juracy Magalhães, 3340","addressLocality":"Vitória da Conquista","addressRegion":"BA","addressCountry":"BR"}},{"@context":"https://schema.org","@type":"WebSite","@id":"https://construtoraconfidence.com/#website","url":"https://construtoraconfidence.com/","name":"Confidence Construtora","inLanguage":"pt-BR","publisher":{"@id":"https://construtoraconfidence.com/#empresa"}}]</script>
   <!-- /SEO_CONFIDENCE_V1 -->
   <style>
     :root {
@@ -2067,7 +2067,21 @@
       .service-journey-item>.cms-card-actions{right:0;top:8px;}
       body.cms-editing .service-journey-item{padding-top:max(70px,7vh);}
     }
-</style>
+    /* CONFIDENCE_HORIZONTAL_BRAND_V2: logo C compacto + assinatura horizontal enviada. */
+    .nav .brand .nav-brand-mark {display:block;width:49px;height:49px;max-width:49px;object-fit:contain;}
+    .hero .hero-logo {display:block;width:min(640px,84vw);max-width:100%;height:auto;
+      padding:clamp(10px,1.6vw,19px);background:rgba(255,255,255,.97);
+      border-radius:12px;box-shadow:0 16px 46px rgba(0,0,0,.18);object-fit:contain;}
+    .footer-brand .footer-logo {display:block;width:min(335px,100%);max-height:none;height:auto;
+      background:#f7fafc;border-radius:9px;padding:12px;object-fit:contain;object-position:left center;}
+    .section-brand-logo {width:min(330px,100%);height:auto;max-height:none;object-fit:contain;}
+    .clients .section-brand-logo {background:#fff;border-radius:7px;padding:8px;}
+    .cms-login-logo {width:min(370px,100%);height:auto;max-height:none;object-fit:contain;}
+    @media(max-width:760px){
+      .nav .brand .nav-brand-mark {width:41px;height:41px;max-width:41px;}
+      .hero .hero-logo {width:min(88vw,520px);padding:10px;border-radius:9px;}
+    }
+  </style>
 </head>
 <body>
   <site-shell></site-shell>
@@ -2076,11 +2090,18 @@
   <script type="module">
     /* SEO: disponibilizar localmente os arquivos oficiais de marca, sem alterar imagens personalizadas. */
     const seoLocalBrandLogo = value => {
-      const current=String(value || '');
-      const prefix='https://raw.githubusercontent.com/glaucodeveloper/proposta-confidence/main/imagens/';
-      if(current===prefix+'logo_oficial_aplicacao_azul.png') return 'assets/branding/logo-confidence-azul.png';
-      if(current===prefix+'logo_oficial_aplicacao_clara.png') return 'assets/branding/logo-confidence-clara.png';
-      return current;
+      const current = String(value || '');
+      const prefix = 'https://raw.githubusercontent.com/glaucodeveloper/proposta-confidence/main/imagens/';
+      const defaults = [
+        prefix + 'logo_oficial_aplicacao_azul.png',
+        prefix + 'logo_oficial_aplicacao_clara.png',
+        'assets/branding/logo-confidence-azul.png',
+        'assets/branding/logo-confidence-clara.png',
+        'assets/branding/logo-confidence-completa.svg',
+        'assets/branding/logo-confidence-completa-clara.svg',
+        'assets/branding/logo-confidence-horizontal.png'
+      ];
+      return defaults.includes(current) ? 'assets/branding/logo-confidence-horizontal.png' : current;
     };
     let BRAND = {
       name: 'Confidence Construtora',
@@ -2846,7 +2867,7 @@
       update(state){ this.querySelector('.nav-links')?.classList.toggle('open', state.mobileNav); }
       render(){
         this.innerHTML = `<header class="nav"><div class="nav-inner">
-          <a class="brand" href="#/" data-section="inicio" aria-label="Confidence Construtora"><img src="${seoLocalBrandLogo(BRAND.logoBlue)}" alt="Confidence Construtora"></a>
+          <a class="brand" href="#/" data-section="inicio" aria-label="Confidence Construtora"><img class="nav-brand-mark" src="assets/branding/logo-confidence-compacta.svg" alt="Confidence Construtora — início"></a>
           <nav class="nav-links" aria-label="Principal">
             <a href="#institucional" data-section="institucional">Institucional</a>
             <a href="#obras" data-section="obras">Obras e atuação</a>
