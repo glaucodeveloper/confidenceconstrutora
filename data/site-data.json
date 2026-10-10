@@ -432,6 +432,26 @@
           "description": "Execução dos passeios de circulaço em piso intertravado."
         }
       ]
+    },
+    {
+      "slug": "reforma-canoagem-ubaitaba",
+      "name": "Reforma canoagem",
+      "city": "Ubaitaba",
+      "state": "Bahia",
+      "type": "Reforma",
+      "summary": "Execução de serviços de recuperação e melhoria da estrutura física.",
+      "cover": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-32-20-353Z-whatsapp-image-2026-09-30-at-11.14.13.jpeg?v=075d93e0db64e5746f870e76d9f368488a496d21",
+      "photos": [
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-32-20-353Z-whatsapp-image-2026-09-30-at-11.14.13.jpeg?v=075d93e0db64e5746f870e76d9f368488a496d21"
+      ],
+      "activities": [
+        {
+          "id": "reforma-canoagem-ubaitaba-3f54596e-d97b-4866-aec8-cb2e41e2c0ef",
+          "title": "Melhoria da estrutura",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-32-20-353Z-whatsapp-image-2026-09-30-at-11.14.13.jpeg?v=075d93e0db64e5746f870e76d9f368488a496d21",
+          "description": "Execução dos serviços de melhoria e recuperação da estrutura física."
+        }
+      ]
     }
   ],
   "contactPanel": {
@@ -536,7 +556,7 @@
     "image:clientes:div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-1>div.client-logo-wrap>img.client-logo.coca": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-17-314Z-coca-cola_logo.svg?v=ef664f97948ac19a57d088ee344c226a3e50a188",
     "image:certificacoes:div.screen-inner>div.certs-layout>div.cert-board>article.cert-card:nth-1>div.cert-logo-wrap>img.cert-logo": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-18-862Z-2020_12_16_pbqph_colorida_horizontal.png?v=880f9588b2454038c076d21a03953be37ba4781d"
   },
-  "updatedAt": "2026-10-10T00:58:01.732Z",
+  "updatedAt": "2026-10-10T01:32:22.095Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
