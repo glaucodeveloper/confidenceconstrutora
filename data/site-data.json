@@ -402,17 +402,22 @@
       "gallery": []
     },
     {
-      "slug": "obra-mv1rfng8",
-      "name": ".",
-      "city": ".",
+      "slug": "construcao-de-areninha-muquem-de-sao-francisco",
+      "name": "Construção de Areninha",
+      "city": "Muquém de São Francisco",
       "state": "Bahia",
-      "type": ".",
-      "summary": ".",
-      "cover": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-13-36-091Z-u491de-whatsapp-image-2026-10-09-at-22.20.52d.jpeg?v=321136480081de154fa9419faf136731ac9f90d8",
+      "type": "Construção",
+      "summary": "Construção de areninha esportiva com gramado sintético no município de Muquém de São Francisco.",
+      "cover": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-59-12-562Z-gmzp16-whatsapp-image-2026-10-09-at-22.20.53w.jpeg?v=6e7ff27b029519be22611394390b14c3767ff7ea",
       "photos": [
-        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-13-36-091Z-u491de-whatsapp-image-2026-10-09-at-22.20.52d.jpeg?v=321136480081de154fa9419faf136731ac9f90d8"
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-59-17-016Z-33oioq-whatsapp-image-2026-10-09-at-22.20.52d.jpeg?v=321136480081de154fa9419faf136731ac9f90d8",
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-59-19-648Z-9rf4vd-whatsapp-image-2026-10-09-at-22.20.53w.jpeg?v=6e7ff27b029519be22611394390b14c3767ff7ea"
       ],
-      "activities": []
+      "activities": [],
+      "gallery": [
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-59-17-016Z-33oioq-whatsapp-image-2026-10-09-at-22.20.52d.jpeg?v=321136480081de154fa9419faf136731ac9f90d8",
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-59-19-648Z-9rf4vd-whatsapp-image-2026-10-09-at-22.20.53w.jpeg?v=6e7ff27b029519be22611394390b14c3767ff7ea"
+      ]
     },
     {
       "slug": "centro-canoagem-ubaitaba",
@@ -625,7 +630,7 @@
     "image:obra-centro-canoagem-ubaitaba:work-detail>main.detail-route>section.detail-workspace>div[aria-label=galeria-de-imagens-da-obra]>div.detail-gallery-grid>figure.detail-gallery-item:nth-3>img": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T02-52-33-470Z-spjks1-whatsapp-image-2026-10-09-at-23.47.34.jpeg?v=d6ee23c437fd210759342dfe72ce997c4c7f51b0"
   },
   "videos": [],
-  "updatedAt": "2026-10-10T03:06:01.001Z",
+  "updatedAt": "2026-10-10T03:14:11Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
