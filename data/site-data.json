@@ -442,16 +442,74 @@
       "summary": "Execução de serviços de recuperação e melhoria da estrutura física.",
       "cover": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-32-20-353Z-whatsapp-image-2026-09-30-at-11.14.13.jpeg?v=075d93e0db64e5746f870e76d9f368488a496d21",
       "photos": [
-        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-32-20-353Z-whatsapp-image-2026-09-30-at-11.14.13.jpeg?v=075d93e0db64e5746f870e76d9f368488a496d21"
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-32-20-353Z-whatsapp-image-2026-09-30-at-11.14.13.jpeg?v=075d93e0db64e5746f870e76d9f368488a496d21",
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-50-564Z-qid0ui-whatsapp-image-2026-09-30-at-11.14.15-1-.jpeg?v=d05d9e2531512715c857a5cc92784f840f1b990b",
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-52-592Z-qzkwjr-whatsapp-image-2026-09-30-at-11.14.14-3-.jpeg?v=2558ad5b27ffa33dc403f9bd00388c384bf61de3",
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-54-447Z-d0xf03-whatsapp-image-2026-09-30-at-11.14.13-1-.jpeg?v=0b7877e2c936cb2cab716f373f29377b11cd9ebb"
       ],
       "activities": [
         {
           "id": "reforma-canoagem-ubaitaba-3f54596e-d97b-4866-aec8-cb2e41e2c0ef",
           "title": "Melhoria da estrutura",
           "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-32-20-353Z-whatsapp-image-2026-09-30-at-11.14.13.jpeg?v=075d93e0db64e5746f870e76d9f368488a496d21",
-          "description": "Execução dos serviços de melhoria e recuperação da estrutura física."
+          "description": "Execução dos serviços de melhoria e recuperação da estrutura física.",
+          "images": [
+            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-32-20-353Z-whatsapp-image-2026-09-30-at-11.14.13.jpeg?v=075d93e0db64e5746f870e76d9f368488a496d21"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ]
+        },
+        {
+          "id": "reforma-canoagem-ubaitaba-ca1d481f-5b59-4326-9603-77bc46d9a165",
+          "title": "Instalação de piso",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-50-564Z-qid0ui-whatsapp-image-2026-09-30-at-11.14.15-1-.jpeg?v=d05d9e2531512715c857a5cc92784f840f1b990b",
+          "images": [
+            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-50-564Z-qid0ui-whatsapp-image-2026-09-30-at-11.14.15-1-.jpeg?v=d05d9e2531512715c857a5cc92784f840f1b990b"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ],
+          "description": "Instalação de piso emborrachado."
+        },
+        {
+          "id": "reforma-canoagem-ubaitaba-e7a23c23-80e8-4717-bbe6-c420ec6e1af3",
+          "title": "recuperação",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-52-592Z-qzkwjr-whatsapp-image-2026-09-30-at-11.14.14-3-.jpeg?v=2558ad5b27ffa33dc403f9bd00388c384bf61de3",
+          "images": [
+            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-52-592Z-qzkwjr-whatsapp-image-2026-09-30-at-11.14.14-3-.jpeg?v=2558ad5b27ffa33dc403f9bd00388c384bf61de3"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ],
+          "description": "Recuperação de forro em madeira de lei."
+        },
+        {
+          "id": "reforma-canoagem-ubaitaba-7792016b-cd22-4063-8584-dc396f82fae3",
+          "title": "recuperação de deck",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-54-447Z-d0xf03-whatsapp-image-2026-09-30-at-11.14.13-1-.jpeg?v=0b7877e2c936cb2cab716f373f29377b11cd9ebb",
+          "images": [
+            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-54-447Z-d0xf03-whatsapp-image-2026-09-30-at-11.14.13-1-.jpeg?v=0b7877e2c936cb2cab716f373f29377b11cd9ebb"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ],
+          "description": "Recuperação de deck com substituição de piso."
         }
-      ]
+      ],
+      "gallery": []
     }
   ],
   "contactPanel": {
@@ -549,14 +607,15 @@
     "text:obra-areninha-barra-do-choca:work-detail>main.detail-route>section#execucao>div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-3>figure.service-journey-visual>figcaption.service-journey-caption>span:nth-2": "Cercamento",
     "text:obra-areninha-barra-do-choca:work-detail>main.detail-route>section#execucao>div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-4>div.service-journey-copy>h3": "Execução de passeio em pavimento intertravado",
     "text:obras:section#obras>div.portfolio-region-inner>territory-map>div.territory-grid>div.territory-intro>div.city-columns>div[data-city=barra-do-choca]>span.city-button-copy>a[data-work-link=areninha-barra-do-choca]": "Construção de Arena Esportiva",
-    "text:obras:section#obras>div.portfolio-region-inner>div.portfolio-works-block>works-showcase>div.works-scatter>div.works-grid>button[data-work=areninha-barra-do-choca]>div.work-card-content>h3": "Construção de Arena Esportiva"
+    "text:obras:section#obras>div.portfolio-region-inner>div.portfolio-works-block>works-showcase>div.works-scatter>div.works-grid>button[data-work=areninha-barra-do-choca]>div.work-card-content>h3": "Construção de Arena Esportiva",
+    "text:obra-reforma-canoagem-ubaitaba:work-detail>main.detail-route>section#execucao>div.detail-execution-inner>div.service-journey-list>article.service-journey-item:nth-2>div.service-journey-copy>p": "Instalação de revestimento antiderrapante."
   },
   "images": {
     "image:clientes:div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-2>div.client-logo-wrap>img.client-logo.sudesb-logo": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-15-658Z-sudesblogo.png?v=3d0e6703ad85936bbced688f8e2f940aca29d3c4",
     "image:clientes:div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-1>div.client-logo-wrap>img.client-logo.coca": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-17-314Z-coca-cola_logo.svg?v=ef664f97948ac19a57d088ee344c226a3e50a188",
     "image:certificacoes:div.screen-inner>div.certs-layout>div.cert-board>article.cert-card:nth-1>div.cert-logo-wrap>img.cert-logo": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-18-862Z-2020_12_16_pbqph_colorida_horizontal.png?v=880f9588b2454038c076d21a03953be37ba4781d"
   },
-  "updatedAt": "2026-10-10T01:32:22.095Z",
+  "updatedAt": "2026-10-10T01:52:56.499Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
