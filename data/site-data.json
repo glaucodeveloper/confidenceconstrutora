@@ -97,10 +97,27 @@
       "summary": "Construção de areninha esportiva com gramado sintético no município de Muquém de São Francisco.",
       "cover": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-59-12-562Z-gmzp16-whatsapp-image-2026-10-09-at-22.20.53w.jpeg?v=6e7ff27b029519be22611394390b14c3767ff7ea",
       "photos": [
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-49-43-101Z-2cp472-whatsapp-image-2026-10-09-at-22.20.52s.jpeg?v=788c704cb0f7f72a1e76fae429723af8dcbed4b4",
         "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-59-17-016Z-33oioq-whatsapp-image-2026-10-09-at-22.20.52d.jpeg?v=321136480081de154fa9419faf136731ac9f90d8",
         "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-59-19-648Z-9rf4vd-whatsapp-image-2026-10-09-at-22.20.53w.jpeg?v=6e7ff27b029519be22611394390b14c3767ff7ea"
       ],
-      "activities": [],
+      "activities": [
+        {
+          "id": "construcao-de-areninha-muquem-de-sao-francisco-fbbac179-893a-4fbf-a115-0f3b909eb420",
+          "title": "Instalação do gramado",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-49-43-101Z-2cp472-whatsapp-image-2026-10-09-at-22.20.52s.jpeg?v=788c704cb0f7f72a1e76fae429723af8dcbed4b4",
+          "images": [
+            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-49-43-101Z-2cp472-whatsapp-image-2026-10-09-at-22.20.52s.jpeg?v=788c704cb0f7f72a1e76fae429723af8dcbed4b4"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ],
+          "description": "Execução e instalação da grama sintética com demarcação das linhas de jogo."
+        }
+      ],
       "gallery": [
         "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-59-17-016Z-33oioq-whatsapp-image-2026-10-09-at-22.20.52d.jpeg?v=321136480081de154fa9419faf136731ac9f90d8",
         "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-59-19-648Z-9rf4vd-whatsapp-image-2026-10-09-at-22.20.53w.jpeg?v=6e7ff27b029519be22611394390b14c3767ff7ea"
@@ -381,7 +398,7 @@
     "image:clientes:section#clientes>div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-1>div.client-logo-wrap>img.client-logo.coca": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-16-31-809Z-nefvph-solar-coca-cola-logo.png?v=85e5c79299bc631b2421ee8e30632d46950b64fb"
   },
   "videos": [],
-  "updatedAt": "2026-10-10T12:43:59.447Z",
+  "updatedAt": "2026-10-10T12:49:44.928Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
