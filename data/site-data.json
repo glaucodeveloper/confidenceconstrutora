@@ -99,6 +99,7 @@
       "photos": [
         "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-49-43-101Z-2cp472-whatsapp-image-2026-10-09-at-22.20.52s.jpeg?v=788c704cb0f7f72a1e76fae429723af8dcbed4b4",
         "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-50-58-756Z-y9xxt6-whatsapp-image-2026-10-09-at-22.20.52d.jpeg?v=321136480081de154fa9419faf136731ac9f90d8",
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-55-36-754Z-zzcxph-whatsapp-image-2025-01-20-at-09.16.04-1-.jpeg?v=0be1c02d27358e31c07462a3dc63f71298efd066",
         "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-59-19-648Z-9rf4vd-whatsapp-image-2026-10-09-at-22.20.53w.jpeg?v=6e7ff27b029519be22611394390b14c3767ff7ea"
       ],
       "activities": [
@@ -131,6 +132,21 @@
             }
           ],
           "description": "Execução e instalação do alambrado metálico perimetral."
+        },
+        {
+          "id": "construcao-de-areninha-muquem-de-sao-francisco-4a6e24d2-c1be-4525-bbc2-420dde0a331d",
+          "title": "Implantação do piso intertravado e iluminação",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-55-36-754Z-zzcxph-whatsapp-image-2025-01-20-at-09.16.04-1-.jpeg?v=0be1c02d27358e31c07462a3dc63f71298efd066",
+          "images": [
+            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-55-36-754Z-zzcxph-whatsapp-image-2025-01-20-at-09.16.04-1-.jpeg?v=0be1c02d27358e31c07462a3dc63f71298efd066"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ],
+          "description": "Execução de passeio em piso intertravado ao longo da lateral do campo e instalação de poste de iluminação."
         }
       ],
       "gallery": [
@@ -412,7 +428,7 @@
     "image:clientes:section#clientes>div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-1>div.client-logo-wrap>img.client-logo.coca": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-16-31-809Z-nefvph-solar-coca-cola-logo.png?v=85e5c79299bc631b2421ee8e30632d46950b64fb"
   },
   "videos": [],
-  "updatedAt": "2026-10-10T12:51:00.762Z",
+  "updatedAt": "2026-10-10T12:55:38.359Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
