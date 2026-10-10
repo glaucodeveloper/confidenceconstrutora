@@ -2759,7 +2759,43 @@
     }
 
 
-    const HERO_SLIDES = WORKS.slice(0, 5).map(work => ({ image: work.cover, city: work.city, name: work.name }));
+    /* CONFIDENCE_HERO_SLIDES_PROPORCIONAL_V1 */
+    // Reune fotos de todas as obras. Mantem as capas primeiro para nao mudar os
+    // primeiros slots editaveis existentes no CMS; distribui os registros em rodadas.
+    function heroSlidesFromWorks() {
+      const works = Array.isArray(WORKS) ? WORKS : [];
+      const collected = [];
+      const seen = new Set();
+      const add = (imageValue, work) => {
+        if (typeof imageValue !== 'string') return;
+        const image = imageValue.trim();
+        if (!image) return;
+        const unique = image.split(/[?#]/, 1)[0].trim();
+        if (!unique || seen.has(unique)) return;
+        seen.add(unique);
+        collected.push({image, city: work.city || '', name: work.name || ''});
+      };
+
+      works.forEach(work => add(work.cover, work));
+      const extras = works.map(work => {
+        const images = [];
+        if (Array.isArray(work.photos)) images.push(...work.photos);
+        if (Array.isArray(work.gallery)) images.push(...work.gallery);
+        for (const activity of (Array.isArray(work.activities) ? work.activities : [])) {
+          if (Array.isArray(activity.images)) images.push(...activity.images);
+          if (activity.image) images.push(activity.image);
+        }
+        return images;
+      });
+      for (let position = 0; collected.length < 19 && extras.some(group => position < group.length); position++) {
+        extras.forEach((group, index) => {
+          if (collected.length < 19) add(group[position], works[index]);
+        });
+      }
+      // Menos de 7 fontes reais? Nao duplica imagens apenas para atingir o minimo.
+      return collected.slice(0, 19);
+    }
+
 
     function* stateIterator(initial) {
       let state = Object.freeze({...initial});
@@ -2826,11 +2862,22 @@
       const media = root.querySelector('.hero-media');
       if (!media || media.dataset.bound === '1') return () => {};
       media.dataset.bound = '1';
-      media.innerHTML = HERO_SLIDES.map((slide, index) => `<div class="hero-slide${index === 0 ? ' active' : ''}" data-cms-background style="background-image:url('${slide.image}')" aria-hidden="true"></div>`).join('');
+      const heroPhotos = heroSlidesFromWorks();
+      media.replaceChildren();
+      heroPhotos.forEach((slide, index) => {
+        const image = document.createElement('div');
+        image.className = `hero-slide${index === 0 ? ' active' : ''}`;
+        image.setAttribute('data-cms-background', '');
+        image.setAttribute('aria-hidden', 'true');
+        image.style.backgroundImage = `url(${JSON.stringify(slide.image)})`;
+        media.appendChild(image);
+      });
       const slides = [...media.querySelectorAll('.hero-slide')];
       let timer = null;
-      const rapidStepMs = 780;
-      const pauseMs = 3600;
+      if (!slides.length) return () => { media.dataset.bound = ''; };
+      // Escala linear: 7 fotos => 7 segundos; 19 fotos => 19 segundos.
+      // Para menos de 7 fotos, usa 7 segundos sem repetir imagens.
+      const photoDisplayMs = Math.max(7, Math.min(19, slides.length)) * 1000;
 
       const setActive = index => {
         slides.forEach((slide, slideIndex) => slide.classList.toggle('active', slideIndex === index));
@@ -2842,7 +2889,7 @@
           setActive(step);
           const isLast = step === slides.length - 1;
           step += 1;
-          timer = window.setTimeout(isLast ? runSequence : advance, isLast ? pauseMs : rapidStepMs);
+          timer = window.setTimeout(isLast ? runSequence : advance, photoDisplayMs);
         };
         advance();
       };
