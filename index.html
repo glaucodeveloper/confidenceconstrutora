@@ -3116,8 +3116,8 @@
         this.innerHTML = `<header class="nav"><div class="nav-inner">
           <a class="brand" href="#/" data-section="inicio" aria-label="Confidence Construtora"><img class="nav-brand-mark" src="assets/branding/logo-confidence-compacta.svg" alt="Confidence Construtora — início"></a>
           <nav class="nav-links" aria-label="Principal">
-            <a href="#institucional" data-section="institucional">Institucional</a>
             <a href="#obras" data-section="obras">Obras e atuação</a>
+            <a href="#institucional" data-section="institucional">Institucional</a>
             <a href="#clientes" data-section="clientes">Clientes</a>
             <a href="#certificacoes" data-section="certificacoes">Certificações</a>
           </nav>
@@ -3768,6 +3768,13 @@
             ${cmsLandingRailHTML()}
           </section>
 
+          <section class="portfolio-region" id="obras">
+            <div class="portfolio-region-inner">
+              <territory-map></territory-map>
+              <div class="portfolio-works-block"><works-showcase></works-showcase></div>
+            </div>
+          </section>
+
           <section class="screen institutional-unified" id="institucional">
             <div class="screen-inner">
               <header class="institutional-unified-head">
@@ -3811,13 +3818,6 @@
                   </section>
                 </div>
               </div>
-            </div>
-          </section>
-
-          <section class="portfolio-region" id="obras">
-            <div class="portfolio-region-inner">
-              <territory-map></territory-map>
-              <div class="portfolio-works-block"><works-showcase></works-showcase></div>
             </div>
           </section>
 
