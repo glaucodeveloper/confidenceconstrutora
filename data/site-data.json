@@ -396,6 +396,7 @@
       "cover": "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-16-33-841Z-909pvx-whatsapp-image-2026-10-09-at-23.30.54b.jpeg?v=f0a119a103105fcfa6941057aedf45960a1f9638",
       "photos": [
         "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-16-35-437Z-q3ywa5-whatsapp-image-2026-10-09-at-23.30.52.jpeg?v=9c071f4a4e9ed60c6988685a1e4cb7d3b4c89708",
+        "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-20-39-337Z-a7ldwa-whatsapp-image-2026-10-09-at-23.30.53e.jpeg?v=458b610c502c6407dbc65638cfb7823ad125125b",
         "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-19-31-098Z-hmp265-whatsapp-image-2026-10-09-at-22.20.09g.jpeg?v=0e85c2dd56fd921584dfe93af0bfa90030725ed5",
         "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-19-48-436Z-0s6pjd-whatsapp-image-2026-10-09-at-22.20.08w.jpeg?v=285baa1d94c22d4c4920cfefd0fd5d80e223d70b"
       ],
@@ -405,9 +406,14 @@
           "title": "Instalação de alambrado.",
           "image": "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-16-35-437Z-q3ywa5-whatsapp-image-2026-10-09-at-23.30.52.jpeg?v=9c071f4a4e9ed60c6988685a1e4cb7d3b4c89708",
           "images": [
-            "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-16-35-437Z-q3ywa5-whatsapp-image-2026-10-09-at-23.30.52.jpeg?v=9c071f4a4e9ed60c6988685a1e4cb7d3b4c89708"
+            "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-16-35-437Z-q3ywa5-whatsapp-image-2026-10-09-at-23.30.52.jpeg?v=9c071f4a4e9ed60c6988685a1e4cb7d3b4c89708",
+            "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-20-39-337Z-a7ldwa-whatsapp-image-2026-10-09-at-23.30.53e.jpeg?v=458b610c502c6407dbc65638cfb7823ad125125b"
           ],
           "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            },
             {
               "x": 50,
               "y": 50
@@ -562,7 +568,7 @@
     "image:obra-construcao-de-areninha-muquem-de-sao-francisco:work-detail>main.detail-route>section.detail-workspace>div[aria-label=galeria-de-imagens-da-obra]>div.detail-gallery-grid>figure.detail-gallery-item:nth-1>img": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-59-00-448Z-dwy09r-whatsapp-image-2025-01-10-at-13.21.17-1-.jpeg?v=fd9bbf20dff5d9698dd54146127224114997b4e3"
   },
   "videos": [],
-  "updatedAt": "2026-10-11T00:19:50.504Z",
+  "updatedAt": "2026-10-11T00:20:41.345Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
