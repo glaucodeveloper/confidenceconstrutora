@@ -648,7 +648,8 @@
     "text:clientes:section#clientes>div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-1>div.client-meta>strong": "Solar Coca-Cola",
     "text:site-footer:site-footer>footer.site-footer>div.footer-main>div.footer-col:nth-1>div.footer-links>button:nth-3": "Contratantes",
     "text:site-footer:site-footer>footer.site-footer>div.footer-main>div.footer-col:nth-1>div.footer-links>button:nth-2": "Atuações",
-    "text:obra-adequacao-de-seguranca-simoes-filho:work-detail>main.detail-route>section.detail-workspace>aside[aria-label=informacoes-da-obra]>h1": "Adequações de Segurança"
+    "text:obra-adequacao-de-seguranca-simoes-filho:work-detail>main.detail-route>section.detail-workspace>aside[aria-label=informacoes-da-obra]>h1": "Adequações de Segurança",
+    "text:site-footer:site-footer>footer.site-footer>div.footer-main>div.footer-col:nth-1>div.footer-links>button:nth-1": "Confidence"
   },
   "images": {
     "image:clientes:div.screen-inner>div.clients-layout>div.client-board>article.client-card:nth-2>div.client-logo-wrap>img.client-logo.sudesb-logo": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-02T14-43-15-658Z-sudesblogo.png?v=3d0e6703ad85936bbced688f8e2f940aca29d3c4",
@@ -662,7 +663,7 @@
     "image:obra-construcao-de-areninha-muquem-de-sao-francisco:work-detail>main.detail-route>section.detail-workspace>div[aria-label=galeria-de-imagens-da-obra]>div.detail-gallery-grid>figure.detail-gallery-item:nth-1>img": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-59-00-448Z-dwy09r-whatsapp-image-2025-01-10-at-13.21.17-1-.jpeg?v=fd9bbf20dff5d9698dd54146127224114997b4e3"
   },
   "videos": [],
-  "updatedAt": "2026-10-11T00:38:41.800Z",
+  "updatedAt": "2026-10-11T00:39:16.154Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
