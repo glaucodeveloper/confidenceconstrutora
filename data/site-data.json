@@ -332,7 +332,8 @@
       "photos": [
         "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-07-26-937Z-5i3v5r-whatsapp-image-2026-09-30-at-11.11.28-1-.jpeg?v=c3c421f76a590949ff72aab6dd267f860a2ff3b5",
         "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-07-28-268Z-b4sdiz-whatsapp-image-2026-09-30-at-11.11.31-1-.jpeg?v=6fba6ffde9c9615b72e0dc8e1db4b642fc4e20bd",
-        "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-07-30-041Z-4lxkxq-whatsapp-image-2026-09-30-at-11.11.28-3-.jpeg?v=b3692d8085be1ca4af3d8fbd1a8ea55d131f3993"
+        "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-07-30-041Z-4lxkxq-whatsapp-image-2026-09-30-at-11.11.28-3-.jpeg?v=b3692d8085be1ca4af3d8fbd1a8ea55d131f3993",
+        "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-08-21-293Z-uzb4mg-whatsapp-image-2026-09-30-at-11.11.27-1-.jpeg?v=8cc8fc32a75832bb6a5c1772e6d73ffcf9a99429"
       ],
       "activities": [
         {
@@ -381,7 +382,9 @@
           "description": "Vista lateral da quadra esportiva, evidenciando o cercamento completo em estrutura metálica com tela galvanizada, os postes de sustentação e a cobertura superior de proteção."
         }
       ],
-      "gallery": []
+      "gallery": [
+        "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-08-21-293Z-uzb4mg-whatsapp-image-2026-09-30-at-11.11.27-1-.jpeg?v=8cc8fc32a75832bb6a5c1772e6d73ffcf9a99429"
+      ]
     }
   ],
   "contactPanel": {
@@ -507,7 +510,7 @@
     "image:obra-construcao-de-areninha-muquem-de-sao-francisco:work-detail>main.detail-route>section.detail-workspace>div[aria-label=galeria-de-imagens-da-obra]>div.detail-gallery-grid>figure.detail-gallery-item:nth-1>img": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-59-00-448Z-dwy09r-whatsapp-image-2025-01-10-at-13.21.17-1-.jpeg?v=fd9bbf20dff5d9698dd54146127224114997b4e3"
   },
   "videos": [],
-  "updatedAt": "2026-10-11T00:07:31.509Z",
+  "updatedAt": "2026-10-11T00:08:22.818Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
