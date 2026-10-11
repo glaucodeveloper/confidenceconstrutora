@@ -2134,6 +2134,16 @@
       .landing-photo-url {right:106px;}
       .landing-photo-rail-list {padding-bottom:30px;}
     }
+
+    /* CONFIDENCE_HERO_VERTICAL_POSITION_V2 */
+    /* Elevar a assinatura, o titulo e o texto na abertura sem cortar telas baixas. */
+    @media (min-width: 901px) and (min-height: 680px) {
+      .hero .hero-identity-stage { margin-bottom:clamp(58px, 10vh, 112px); }
+      .hero .hero-aside { margin-bottom:clamp(50px, 8vh, 96px); }
+    }
+    @media (max-width: 900px) and (min-height: 640px) {
+      .hero .hero-identity-stage { margin-bottom:clamp(36px, 7vh, 72px); }
+    }
   </style>
 </head>
 <body>
@@ -2935,60 +2945,88 @@
       const slides = [...media.querySelectorAll('.hero-slide')];
       let timer = null;
       if (!slides.length) return () => { media.dataset.bound = ''; };
-      /* CONFIDENCE_HERO_GLIMPSE_ALTERNADO_V1 */
-      // Rajada: cada foto e somente um glimpse; desacelera nos ultimos quadros
-      // e repousa em uma foto DIFERENTE a cada ciclo, na ordem definida no CMS.
-      // Nao altera o array heroSlides, uploads, edicao ou ordem das miniaturas.
+      /* CONFIDENCE_HERO_GLIMPSE_REENTRY_V2 */
+      // Fotos intermediarias: flashes; ultimos flashes: desaceleracao progressiva.
+      // O destaque final nao reaparece na rajada seguinte, e a nova parada alterna.
       const glimpseStepMs = 90;
       const easeOutIntervalsMs = [0, 720, 460, 290, 190, 130];
-      const restingMs = 4000;
-      let nextFinish = (heroGlimpseLastFinish + 1) % slides.length;
-      let stopped = false;
+      const restingMs = 5600; // Pausa anterior 4000ms + 40%.
       const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches === true;
+      let nextFinish = (heroGlimpseLastFinish + 1) % slides.length;
+      let generation = 0;
+      let stopped = false;
+      let outsideTop = window.scrollY > 240;
+      let lastScrollY = window.scrollY;
 
+      const currentPhoto = () => slides.findIndex(slide => slide.classList.contains('active'));
       const setActive = (index, final = false) => {
         media.classList.toggle('hero-motion-settled', final);
         slides.forEach((slide, slideIndex) => slide.classList.toggle('active', slideIndex === index));
       };
-
+      const cancelTimer = () => {
+        generation++;
+        if (timer !== null) window.clearTimeout(timer);
+        timer = null;
+      };
       const runBurst = () => {
         if (stopped || !media.isConnected) return;
-        // Em movimento reduzido, mostra somente a foto escolhida e alterna sem flashes.
+        cancelTimer();
+        const run = generation;
+        const previous = currentPhoto();
+        let finish = nextFinish;
+        if (slides.length > 1 && finish === previous) finish = (finish + 1) % slides.length;
+        nextFinish = (finish + 1) % slides.length;
+
         if (reducedMotion || slides.length === 1) {
-          const finish = nextFinish;
-          heroGlimpseLastFinish = finish;
-          nextFinish = (finish + 1) % slides.length;
           setActive(finish, true);
+          heroGlimpseLastFinish = finish;
           if (slides.length > 1) timer = window.setTimeout(runBurst, restingMs);
           return;
         }
-        const finish = nextFinish;
-        nextFinish = (finish + 1) % slides.length;
-        // Cada foto aparece na rajada, mas o ponto de parada roda a cada repeticao.
-        const order = Array.from({length: slides.length}, (_, step) =>
-          (finish + 1 + step) % slides.length);
+
+        // Cada indice e exibido uma unica vez nesta rajada. A foto anterior
+        // nao e repetida depois do repouso e a nova final entra so uma vez.
+        const order = [];
+        for (let step = 1; step < slides.length; step++) {
+          const index = (finish + step) % slides.length;
+          if (index !== previous) order.push(index);
+        }
+        order.push(finish);
         let frame = 0;
         const flash = () => {
-          if (stopped || !media.isConnected) return;
-          const isFinal = frame === order.length - 1;
-          setActive(order[frame], isFinal);
-          if (isFinal) {
+          if (stopped || generation !== run || !media.isConnected) return;
+          const final = frame === order.length - 1;
+          setActive(order[frame], final);
+          if (final) {
             heroGlimpseLastFinish = finish;
             timer = window.setTimeout(runBurst, restingMs);
             return;
           }
           const remaining = order.length - 1 - frame;
           const delay = remaining <= 5 ? easeOutIntervalsMs[remaining] : glimpseStepMs;
-          frame += 1;
+          frame++;
           timer = window.setTimeout(flash, delay);
         };
         flash();
       };
 
+      // Armar depois que o visitante sair da zona do topo. Disparar apenas
+      // quando retornar por scroll para <= 120px, com histerese de 240px.
+      const onScroll = () => {
+        const y = Math.max(0, window.scrollY || 0);
+        if (y > 240) outsideTop = true;
+        else if (outsideTop && y <= 120 && y < lastScrollY) {
+          outsideTop = false;
+          runBurst();
+        }
+        lastScrollY = y;
+      };
+      window.addEventListener('scroll', onScroll, {passive:true});
       runBurst();
       return () => {
         stopped = true;
-        if (timer) window.clearTimeout(timer);
+        cancelTimer();
+        window.removeEventListener('scroll', onScroll);
         media.classList.remove('hero-motion-settled');
         media.dataset.bound = '';
       };
