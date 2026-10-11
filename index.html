@@ -122,6 +122,11 @@
     .hero-media { position:absolute; inset:0; overflow:hidden; background:var(--blue-dark); }
     .hero-slide { position:absolute; inset:-2%; background-position:center 43%; background-size:cover; background-repeat:no-repeat; opacity:0; transform:scale(1.08); transition:transform 2.4s ease; will-change:opacity,transform; }
     .hero-slide.active { opacity:1; transform:scale(1.015); }
+    /* Motion lento somente na fotografia em repouso da abertura */
+    .hero-media.hero-motion-settled .hero-slide.active {
+      transform:scale(1.002);
+      transition:transform 2.4s cubic-bezier(.16,1,.3,1);
+    }
     .hero-media::after { content:""; position:absolute; inset:0; background:radial-gradient(circle at 72% 28%, rgba(255,255,255,.08), transparent 22%), radial-gradient(circle at 22% 78%, rgba(255,255,255,.05), transparent 18%); pointer-events:none; }
     .hero-filter { position:absolute; inset:0; background:linear-gradient(90deg, rgba(4,29,52,.96) 0%, rgba(4,29,52,.80) 46%, rgba(4,29,52,.37) 74%, rgba(4,29,52,.54) 100%), linear-gradient(180deg, rgba(4,29,52,.08), rgba(4,29,52,.64)); }
     .hero-inner { position:relative; z-index:2; width:min(var(--max), calc(100% - 2 * var(--page-x))); height:100%; margin:auto; padding-top:calc(var(--nav-h) + 30px); padding-bottom:54px; display:grid; grid-template-columns:minmax(0,1.1fr) minmax(280px,.42fr); gap:72px; align-items:end; }
@@ -2911,6 +2916,8 @@
       appState.dispatch({type:'ROUTE', route:'detail', slug});
     }
 
+    let heroGlimpseLastFinish = -1;
+
     function mountHeroSlideshow(root) {
       const media = root.querySelector('.hero-media');
       if (!media || media.dataset.bound === '1') return () => {};
@@ -2928,29 +2935,63 @@
       const slides = [...media.querySelectorAll('.hero-slide')];
       let timer = null;
       if (!slides.length) return () => { media.dataset.bound = ''; };
-      /* CONFIDENCE_HERO_FAST_SEQUENCE_V3 */
-      // Mais imagens (ate 19), mantendo a cadencia RAPIDA do slideshow original.
-      // A ultima imagem recebe uma pausa para concluir o efeito CSS "ease".
-      const rapidStepMs = 780;
-      const pauseMs = 3600;
+      /* CONFIDENCE_HERO_GLIMPSE_ALTERNADO_V1 */
+      // Rajada: cada foto e somente um glimpse; desacelera nos ultimos quadros
+      // e repousa em uma foto DIFERENTE a cada ciclo, na ordem definida no CMS.
+      // Nao altera o array heroSlides, uploads, edicao ou ordem das miniaturas.
+      const glimpseStepMs = 90;
+      const easeOutIntervalsMs = [0, 720, 460, 290, 190, 130];
+      const restingMs = 4000;
+      let nextFinish = (heroGlimpseLastFinish + 1) % slides.length;
+      let stopped = false;
+      const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches === true;
 
-      const setActive = index => {
+      const setActive = (index, final = false) => {
+        media.classList.toggle('hero-motion-settled', final);
         slides.forEach((slide, slideIndex) => slide.classList.toggle('active', slideIndex === index));
       };
 
-      const runSequence = () => {
-        let step = 0;
-        const advance = () => {
-          setActive(step);
-          const isLast = step === slides.length - 1;
-          step += 1;
-          timer = window.setTimeout(isLast ? runSequence : advance, isLast ? pauseMs : rapidStepMs);
+      const runBurst = () => {
+        if (stopped || !media.isConnected) return;
+        // Em movimento reduzido, mostra somente a foto escolhida e alterna sem flashes.
+        if (reducedMotion || slides.length === 1) {
+          const finish = nextFinish;
+          heroGlimpseLastFinish = finish;
+          nextFinish = (finish + 1) % slides.length;
+          setActive(finish, true);
+          if (slides.length > 1) timer = window.setTimeout(runBurst, restingMs);
+          return;
+        }
+        const finish = nextFinish;
+        nextFinish = (finish + 1) % slides.length;
+        // Cada foto aparece na rajada, mas o ponto de parada roda a cada repeticao.
+        const order = Array.from({length: slides.length}, (_, step) =>
+          (finish + 1 + step) % slides.length);
+        let frame = 0;
+        const flash = () => {
+          if (stopped || !media.isConnected) return;
+          const isFinal = frame === order.length - 1;
+          setActive(order[frame], isFinal);
+          if (isFinal) {
+            heroGlimpseLastFinish = finish;
+            timer = window.setTimeout(runBurst, restingMs);
+            return;
+          }
+          const remaining = order.length - 1 - frame;
+          const delay = remaining <= 5 ? easeOutIntervalsMs[remaining] : glimpseStepMs;
+          frame += 1;
+          timer = window.setTimeout(flash, delay);
         };
-        advance();
+        flash();
       };
 
-      runSequence();
-      return () => { if (timer) window.clearTimeout(timer); };
+      runBurst();
+      return () => {
+        stopped = true;
+        if (timer) window.clearTimeout(timer);
+        media.classList.remove('hero-motion-settled');
+        media.dataset.bound = '';
+      };
     }
 
     class FixedNav extends HTMLElement {
