@@ -399,7 +399,8 @@
         "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-20-39-337Z-a7ldwa-whatsapp-image-2026-10-09-at-23.30.53e.jpeg?v=458b610c502c6407dbc65638cfb7823ad125125b",
         "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-19-31-098Z-hmp265-whatsapp-image-2026-10-09-at-22.20.09g.jpeg?v=0e85c2dd56fd921584dfe93af0bfa90030725ed5",
         "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-19-48-436Z-0s6pjd-whatsapp-image-2026-10-09-at-22.20.08w.jpeg?v=285baa1d94c22d4c4920cfefd0fd5d80e223d70b",
-        "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-22-16-209Z-y3nb4b-whatsapp-image-2026-10-09-at-23.30.53.jpeg?v=06490b0be89ae12a93f0c62d9fed4554549258af"
+        "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-22-16-209Z-y3nb4b-whatsapp-image-2026-10-09-at-23.30.53.jpeg?v=06490b0be89ae12a93f0c62d9fed4554549258af",
+        "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-23-42-412Z-qogscl-whatsapp-image-2026-10-09-at-23.30.54b.jpeg?v=f0a119a103105fcfa6941057aedf45960a1f9638"
       ],
       "activities": [
         {
@@ -456,6 +457,21 @@
             }
           ],
           "description": "Instalação de alambrado metálico com estrutura tubular complementando o fechamento perimetral da área esportiva."
+        },
+        {
+          "id": "reforma-do-ginasio-de-esportes-santa-maria-da-vitoria-508de163-bf87-464b-b8a9-a7c1c5771e9b",
+          "title": "Instalação de piso intertravado.",
+          "image": "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-23-42-412Z-qogscl-whatsapp-image-2026-10-09-at-23.30.54b.jpeg?v=f0a119a103105fcfa6941057aedf45960a1f9638",
+          "images": [
+            "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-23-42-412Z-qogscl-whatsapp-image-2026-10-09-at-23.30.54b.jpeg?v=f0a119a103105fcfa6941057aedf45960a1f9638"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ],
+          "description": "Pavimentação externa em piso intertravado na área externa proporcionando uma melhor circulação e acesso à edificação."
         }
       ],
       "gallery": []
@@ -584,7 +600,7 @@
     "image:obra-construcao-de-areninha-muquem-de-sao-francisco:work-detail>main.detail-route>section.detail-workspace>div[aria-label=galeria-de-imagens-da-obra]>div.detail-gallery-grid>figure.detail-gallery-item:nth-1>img": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-59-00-448Z-dwy09r-whatsapp-image-2025-01-10-at-13.21.17-1-.jpeg?v=fd9bbf20dff5d9698dd54146127224114997b4e3"
   },
   "videos": [],
-  "updatedAt": "2026-10-11T00:22:18.130Z",
+  "updatedAt": "2026-10-11T00:23:44.545Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
