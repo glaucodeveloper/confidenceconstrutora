@@ -11,56 +11,62 @@
   },
   "works": [
     {
-      "slug": "reforma-canoagem-ubaitaba",
-      "name": "Reforma do Centro de Canoagem",
-      "city": "Ubaitaba",
+      "slug": "adequacao-de-seguranca-simoes-filho",
+      "name": "Adequação de Segurança",
+      "city": "Simões Filho",
       "state": "Bahia",
-      "type": "Reforma",
-      "summary": "Execução de serviços de recuperação e melhoria da estrutura física.",
-      "cover": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-32-20-353Z-whatsapp-image-2026-09-30-at-11.14.13.jpeg?v=075d93e0db64e5746f870e76d9f368488a496d21",
+      "type": "Segurança",
+      "summary": "Obras de adequação e melhorias de segurança industrial",
+      "cover": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T11-56-08-321Z-67vp3i-whatsapp-image-2026-10-09-at-23.34.17.jpeg?v=072da509ebd82bd885d317574cd4f308792fa95c",
       "photos": [
-        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-32-20-353Z-whatsapp-image-2026-09-30-at-11.14.13.jpeg?v=075d93e0db64e5746f870e76d9f368488a496d21",
-        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-50-564Z-qid0ui-whatsapp-image-2026-09-30-at-11.14.15-1-.jpeg?v=d05d9e2531512715c857a5cc92784f840f1b990b",
-        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-52-592Z-qzkwjr-whatsapp-image-2026-09-30-at-11.14.14-3-.jpeg?v=2558ad5b27ffa33dc403f9bd00388c384bf61de3",
-        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-54-447Z-d0xf03-whatsapp-image-2026-09-30-at-11.14.13-1-.jpeg?v=0b7877e2c936cb2cab716f373f29377b11cd9ebb"
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T11-56-10-708Z-fn0y5k-whatsapp-image-2026-10-09-at-23.48.32.jpeg?v=217ca413f9eecb5f981d53e63632e3882655c1c4",
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-01-12-599Z-47a14c-d.jpeg?v=98de862f3ad98305e1598091337a953a6acb20af",
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-01-14-689Z-tc23iw-whatsapp-image-2026-10-09-at-23.43.28.jpeg?v=ad15cf554cf96c2000f7516ed15ed88554226f06",
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-03-33-377Z-mmsas4-whatsapp-image-2026-10-09-at-23.34.17.jpeg?v=072da509ebd82bd885d317574cd4f308792fa95c",
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-05-29-861Z-cwd1iu-whatsapp-image-2026-10-09-at-23.47.34.jpeg?v=de998c2914c0add17786903fa158a1137b4d13a8"
       ],
       "activities": [
         {
-          "id": "reforma-canoagem-ubaitaba-3f54596e-d97b-4866-aec8-cb2e41e2c0ef",
-          "title": "Melhoria da estrutura",
-          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-32-20-353Z-whatsapp-image-2026-09-30-at-11.14.13.jpeg?v=075d93e0db64e5746f870e76d9f368488a496d21",
-          "description": "Execução dos serviços de melhoria e recuperação da estrutura física.",
+          "id": "adequacao-de-seguranca-simoes-filho-bc0fd5e6-0163-442c-a884-0324fe82496b",
+          "title": "Caminho Seguro",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T11-56-10-708Z-fn0y5k-whatsapp-image-2026-10-09-at-23.48.32.jpeg?v=217ca413f9eecb5f981d53e63632e3882655c1c4",
           "images": [
-            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-32-20-353Z-whatsapp-image-2026-09-30-at-11.14.13.jpeg?v=075d93e0db64e5746f870e76d9f368488a496d21"
+            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T11-56-10-708Z-fn0y5k-whatsapp-image-2026-10-09-at-23.48.32.jpeg?v=217ca413f9eecb5f981d53e63632e3882655c1c4"
           ],
           "imagePositions": [
             {
               "x": 50,
               "y": 50
             }
-          ]
+          ],
+          "description": "Execução de serviços de adequação e implantação de caminho seguro e sinalização."
         },
         {
-          "id": "reforma-canoagem-ubaitaba-ca1d481f-5b59-4326-9603-77bc46d9a165",
-          "title": "Instalação de piso",
-          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-50-564Z-qid0ui-whatsapp-image-2026-09-30-at-11.14.15-1-.jpeg?v=d05d9e2531512715c857a5cc92784f840f1b990b",
+          "id": "adequacao-de-seguranca-simoes-filho-6ab8bd32-acde-49df-9060-25a24f6ce834",
+          "title": "Guarda-corpo perimetral",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-01-12-599Z-47a14c-d.jpeg?v=98de862f3ad98305e1598091337a953a6acb20af",
           "images": [
-            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-50-564Z-qid0ui-whatsapp-image-2026-09-30-at-11.14.15-1-.jpeg?v=d05d9e2531512715c857a5cc92784f840f1b990b"
+            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-01-12-599Z-47a14c-d.jpeg?v=98de862f3ad98305e1598091337a953a6acb20af",
+            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-01-14-689Z-tc23iw-whatsapp-image-2026-10-09-at-23.43.28.jpeg?v=ad15cf554cf96c2000f7516ed15ed88554226f06"
           ],
           "imagePositions": [
             {
               "x": 50,
               "y": 50
+            },
+            {
+              "x": 50,
+              "y": 50
             }
           ],
-          "description": "Instalação de piso emborrachado."
+          "description": "Execução e instalação de guarda-corpo metálico de proteção para delimitação e proteção do caminho seguro e adequação das áreas de circulação de pedestres"
         },
         {
-          "id": "reforma-canoagem-ubaitaba-e7a23c23-80e8-4717-bbe6-c420ec6e1af3",
-          "title": "recuperação",
-          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-52-592Z-qzkwjr-whatsapp-image-2026-09-30-at-11.14.14-3-.jpeg?v=2558ad5b27ffa33dc403f9bd00388c384bf61de3",
+          "id": "adequacao-de-seguranca-simoes-filho-27d054ba-e135-48ff-9348-1fb86e4d7d47",
+          "title": "Adequação do caminho seguro",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-03-33-377Z-mmsas4-whatsapp-image-2026-10-09-at-23.34.17.jpeg?v=072da509ebd82bd885d317574cd4f308792fa95c",
           "images": [
-            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-52-592Z-qzkwjr-whatsapp-image-2026-09-30-at-11.14.14-3-.jpeg?v=2558ad5b27ffa33dc403f9bd00388c384bf61de3"
+            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-03-33-377Z-mmsas4-whatsapp-image-2026-10-09-at-23.34.17.jpeg?v=072da509ebd82bd885d317574cd4f308792fa95c"
           ],
           "imagePositions": [
             {
@@ -68,14 +74,14 @@
               "y": 50
             }
           ],
-          "description": "Recuperação de forro em madeira de lei."
+          "description": "Execução de adequações do caminho seguro, com implantação de sinalização horizontal e instalação de guarda-corpo metálico."
         },
         {
-          "id": "reforma-canoagem-ubaitaba-7792016b-cd22-4063-8584-dc396f82fae3",
-          "title": "recuperação de deck",
-          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-54-447Z-d0xf03-whatsapp-image-2026-09-30-at-11.14.13-1-.jpeg?v=0b7877e2c936cb2cab716f373f29377b11cd9ebb",
+          "id": "adequacao-de-seguranca-simoes-filho-6d2e754f-ca07-4f74-a10a-8657c4663b02",
+          "title": "Instalação de plataforma",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-05-29-861Z-cwd1iu-whatsapp-image-2026-10-09-at-23.47.34.jpeg?v=de998c2914c0add17786903fa158a1137b4d13a8",
           "images": [
-            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-54-447Z-d0xf03-whatsapp-image-2026-09-30-at-11.14.13-1-.jpeg?v=0b7877e2c936cb2cab716f373f29377b11cd9ebb"
+            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-05-29-861Z-cwd1iu-whatsapp-image-2026-10-09-at-23.47.34.jpeg?v=de998c2914c0add17786903fa158a1137b4d13a8"
           ],
           "imagePositions": [
             {
@@ -83,7 +89,7 @@
               "y": 50
             }
           ],
-          "description": "Recuperação de deck com substituição de piso."
+          "description": "Fabricação e instalação de plataforma de acesso, equipada com escada fixa e guarda-corpo perimetral."
         }
       ],
       "gallery": []
@@ -238,62 +244,56 @@
       "gallery": []
     },
     {
-      "slug": "adequacao-de-seguranca-simoes-filho",
-      "name": "Adequação de Segurança",
-      "city": "Simões Filho",
+      "slug": "reforma-canoagem-ubaitaba",
+      "name": "Reforma do Centro de Canoagem",
+      "city": "Ubaitaba",
       "state": "Bahia",
-      "type": "Segurança",
-      "summary": "Obras de adequação e melhorias de segurança industrial",
-      "cover": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T11-56-08-321Z-67vp3i-whatsapp-image-2026-10-09-at-23.34.17.jpeg?v=072da509ebd82bd885d317574cd4f308792fa95c",
+      "type": "Reforma",
+      "summary": "Execução de serviços de recuperação e melhoria da estrutura física.",
+      "cover": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-32-20-353Z-whatsapp-image-2026-09-30-at-11.14.13.jpeg?v=075d93e0db64e5746f870e76d9f368488a496d21",
       "photos": [
-        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T11-56-10-708Z-fn0y5k-whatsapp-image-2026-10-09-at-23.48.32.jpeg?v=217ca413f9eecb5f981d53e63632e3882655c1c4",
-        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-01-12-599Z-47a14c-d.jpeg?v=98de862f3ad98305e1598091337a953a6acb20af",
-        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-01-14-689Z-tc23iw-whatsapp-image-2026-10-09-at-23.43.28.jpeg?v=ad15cf554cf96c2000f7516ed15ed88554226f06",
-        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-03-33-377Z-mmsas4-whatsapp-image-2026-10-09-at-23.34.17.jpeg?v=072da509ebd82bd885d317574cd4f308792fa95c",
-        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-05-29-861Z-cwd1iu-whatsapp-image-2026-10-09-at-23.47.34.jpeg?v=de998c2914c0add17786903fa158a1137b4d13a8"
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-32-20-353Z-whatsapp-image-2026-09-30-at-11.14.13.jpeg?v=075d93e0db64e5746f870e76d9f368488a496d21",
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-50-564Z-qid0ui-whatsapp-image-2026-09-30-at-11.14.15-1-.jpeg?v=d05d9e2531512715c857a5cc92784f840f1b990b",
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-52-592Z-qzkwjr-whatsapp-image-2026-09-30-at-11.14.14-3-.jpeg?v=2558ad5b27ffa33dc403f9bd00388c384bf61de3",
+        "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-54-447Z-d0xf03-whatsapp-image-2026-09-30-at-11.14.13-1-.jpeg?v=0b7877e2c936cb2cab716f373f29377b11cd9ebb"
       ],
       "activities": [
         {
-          "id": "adequacao-de-seguranca-simoes-filho-bc0fd5e6-0163-442c-a884-0324fe82496b",
-          "title": "Caminho Seguro",
-          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T11-56-10-708Z-fn0y5k-whatsapp-image-2026-10-09-at-23.48.32.jpeg?v=217ca413f9eecb5f981d53e63632e3882655c1c4",
+          "id": "reforma-canoagem-ubaitaba-3f54596e-d97b-4866-aec8-cb2e41e2c0ef",
+          "title": "Melhoria da estrutura",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-32-20-353Z-whatsapp-image-2026-09-30-at-11.14.13.jpeg?v=075d93e0db64e5746f870e76d9f368488a496d21",
+          "description": "Execução dos serviços de melhoria e recuperação da estrutura física.",
           "images": [
-            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T11-56-10-708Z-fn0y5k-whatsapp-image-2026-10-09-at-23.48.32.jpeg?v=217ca413f9eecb5f981d53e63632e3882655c1c4"
+            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-32-20-353Z-whatsapp-image-2026-09-30-at-11.14.13.jpeg?v=075d93e0db64e5746f870e76d9f368488a496d21"
           ],
           "imagePositions": [
             {
               "x": 50,
               "y": 50
             }
-          ],
-          "description": "Execução de serviços de adequação e implantação de caminho seguro e sinalização."
+          ]
         },
         {
-          "id": "adequacao-de-seguranca-simoes-filho-6ab8bd32-acde-49df-9060-25a24f6ce834",
-          "title": "Guarda-corpo perimetral",
-          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-01-12-599Z-47a14c-d.jpeg?v=98de862f3ad98305e1598091337a953a6acb20af",
+          "id": "reforma-canoagem-ubaitaba-ca1d481f-5b59-4326-9603-77bc46d9a165",
+          "title": "Instalação de piso",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-50-564Z-qid0ui-whatsapp-image-2026-09-30-at-11.14.15-1-.jpeg?v=d05d9e2531512715c857a5cc92784f840f1b990b",
           "images": [
-            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-01-12-599Z-47a14c-d.jpeg?v=98de862f3ad98305e1598091337a953a6acb20af",
-            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-01-14-689Z-tc23iw-whatsapp-image-2026-10-09-at-23.43.28.jpeg?v=ad15cf554cf96c2000f7516ed15ed88554226f06"
+            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-50-564Z-qid0ui-whatsapp-image-2026-09-30-at-11.14.15-1-.jpeg?v=d05d9e2531512715c857a5cc92784f840f1b990b"
           ],
           "imagePositions": [
             {
               "x": 50,
               "y": 50
-            },
-            {
-              "x": 50,
-              "y": 50
             }
           ],
-          "description": "Execução e instalação de guarda-corpo metálico de proteção para delimitação e proteção do caminho seguro e adequação das áreas de circulação de pedestres"
+          "description": "Instalação de piso emborrachado."
         },
         {
-          "id": "adequacao-de-seguranca-simoes-filho-27d054ba-e135-48ff-9348-1fb86e4d7d47",
-          "title": "Adequação do caminho seguro",
-          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-03-33-377Z-mmsas4-whatsapp-image-2026-10-09-at-23.34.17.jpeg?v=072da509ebd82bd885d317574cd4f308792fa95c",
+          "id": "reforma-canoagem-ubaitaba-e7a23c23-80e8-4717-bbe6-c420ec6e1af3",
+          "title": "recuperação",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-52-592Z-qzkwjr-whatsapp-image-2026-09-30-at-11.14.14-3-.jpeg?v=2558ad5b27ffa33dc403f9bd00388c384bf61de3",
           "images": [
-            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-03-33-377Z-mmsas4-whatsapp-image-2026-10-09-at-23.34.17.jpeg?v=072da509ebd82bd885d317574cd4f308792fa95c"
+            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-52-592Z-qzkwjr-whatsapp-image-2026-09-30-at-11.14.14-3-.jpeg?v=2558ad5b27ffa33dc403f9bd00388c384bf61de3"
           ],
           "imagePositions": [
             {
@@ -301,14 +301,14 @@
               "y": 50
             }
           ],
-          "description": "Execução de adequações do caminho seguro, com implantação de sinalização horizontal e instalação de guarda-corpo metálico."
+          "description": "Recuperação de forro em madeira de lei."
         },
         {
-          "id": "adequacao-de-seguranca-simoes-filho-6d2e754f-ca07-4f74-a10a-8657c4663b02",
-          "title": "Instalação de plataforma",
-          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-05-29-861Z-cwd1iu-whatsapp-image-2026-10-09-at-23.47.34.jpeg?v=de998c2914c0add17786903fa158a1137b4d13a8",
+          "id": "reforma-canoagem-ubaitaba-7792016b-cd22-4063-8584-dc396f82fae3",
+          "title": "recuperação de deck",
+          "image": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-54-447Z-d0xf03-whatsapp-image-2026-09-30-at-11.14.13-1-.jpeg?v=0b7877e2c936cb2cab716f373f29377b11cd9ebb",
           "images": [
-            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-05-29-861Z-cwd1iu-whatsapp-image-2026-10-09-at-23.47.34.jpeg?v=de998c2914c0add17786903fa158a1137b4d13a8"
+            "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T01-52-54-447Z-d0xf03-whatsapp-image-2026-09-30-at-11.14.13-1-.jpeg?v=0b7877e2c936cb2cab716f373f29377b11cd9ebb"
           ],
           "imagePositions": [
             {
@@ -316,7 +316,69 @@
               "y": 50
             }
           ],
-          "description": "Fabricação e instalação de plataforma de acesso, equipada com escada fixa e guarda-corpo perimetral."
+          "description": "Recuperação de deck com substituição de piso."
+        }
+      ],
+      "gallery": []
+    },
+    {
+      "slug": "construcao-de-quadra-esportiva-barra-do-choca",
+      "name": "Construção de Quadra Esportiva",
+      "city": "Barra do Choça",
+      "state": "Bahia",
+      "type": "Construção",
+      "summary": "Execução dos serviços de implantação da estrutura esportiva, contemplando preparação do terreno, execução da base, pavimentação, instalação de equipamentos e acabamentos.",
+      "cover": "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-07-25-034Z-7smh2i-whatsapp-image-2026-09-30-at-11.11.28-2-.jpeg?v=55a8f45ddb548895853aabbd4e2e348983aaa381",
+      "photos": [
+        "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-07-26-937Z-5i3v5r-whatsapp-image-2026-09-30-at-11.11.28-1-.jpeg?v=c3c421f76a590949ff72aab6dd267f860a2ff3b5",
+        "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-07-28-268Z-b4sdiz-whatsapp-image-2026-09-30-at-11.11.31-1-.jpeg?v=6fba6ffde9c9615b72e0dc8e1db4b642fc4e20bd",
+        "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-07-30-041Z-4lxkxq-whatsapp-image-2026-09-30-at-11.11.28-3-.jpeg?v=b3692d8085be1ca4af3d8fbd1a8ea55d131f3993"
+      ],
+      "activities": [
+        {
+          "id": "construcao-de-quadra-esportiva-barra-do-choca-a7dfcd78-93ab-4bb8-b0fd-21b54e3db539",
+          "title": "Instalção de alambrado.",
+          "image": "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-07-26-937Z-5i3v5r-whatsapp-image-2026-09-30-at-11.11.28-1-.jpeg?v=c3c421f76a590949ff72aab6dd267f860a2ff3b5",
+          "images": [
+            "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-07-26-937Z-5i3v5r-whatsapp-image-2026-09-30-at-11.11.28-1-.jpeg?v=c3c421f76a590949ff72aab6dd267f860a2ff3b5"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ],
+          "description": "Fechamento perimetral com alambrado metálico."
+        },
+        {
+          "id": "construcao-de-quadra-esportiva-barra-do-choca-b45cec41-e035-4055-8241-db1686baa0b3",
+          "title": "Calçada de piso intertravado",
+          "image": "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-07-28-268Z-b4sdiz-whatsapp-image-2026-09-30-at-11.11.31-1-.jpeg?v=6fba6ffde9c9615b72e0dc8e1db4b642fc4e20bd",
+          "images": [
+            "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-07-28-268Z-b4sdiz-whatsapp-image-2026-09-30-at-11.11.31-1-.jpeg?v=6fba6ffde9c9615b72e0dc8e1db4b642fc4e20bd"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ],
+          "description": "Instalação de calçada intertravado ao longo do perímetro da quadra e sistema de iluminação"
+        },
+        {
+          "id": "construcao-de-quadra-esportiva-barra-do-choca-e09d8bf7-d339-4d24-aa97-4b9c58915db6",
+          "title": "Cercamento e iluminação.",
+          "image": "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-07-30-041Z-4lxkxq-whatsapp-image-2026-09-30-at-11.11.28-3-.jpeg?v=b3692d8085be1ca4af3d8fbd1a8ea55d131f3993",
+          "images": [
+            "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-07-30-041Z-4lxkxq-whatsapp-image-2026-09-30-at-11.11.28-3-.jpeg?v=b3692d8085be1ca4af3d8fbd1a8ea55d131f3993"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ],
+          "description": "Vista lateral da quadra esportiva, evidenciando o cercamento completo em estrutura metálica com tela galvanizada, os postes de sustentação e a cobertura superior de proteção."
         }
       ],
       "gallery": []
@@ -445,7 +507,7 @@
     "image:obra-construcao-de-areninha-muquem-de-sao-francisco:work-detail>main.detail-route>section.detail-workspace>div[aria-label=galeria-de-imagens-da-obra]>div.detail-gallery-grid>figure.detail-gallery-item:nth-1>img": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-59-00-448Z-dwy09r-whatsapp-image-2025-01-10-at-13.21.17-1-.jpeg?v=fd9bbf20dff5d9698dd54146127224114997b4e3"
   },
   "videos": [],
-  "updatedAt": "2026-10-10T23:44:13.468Z",
+  "updatedAt": "2026-10-11T00:07:31.509Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
