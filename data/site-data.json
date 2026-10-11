@@ -485,7 +485,9 @@
       "summary": "Execução de obras de infraestrutura esportiva, contemplando a implantação do campo, construção de arquibancadas, instalação de alambrado e iluminação.",
       "cover": "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-30-39-880Z-g6kpf6-whatsapp-image-2026-10-09-at-22.20.30x.jpeg?v=7c8fcaffcee886c6b718a32e32f586ed65fe9f03",
       "photos": [
-        "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-32-27-480Z-4xemnx-whatsapp-image-2026-10-09-at-22.20.29s.jpeg?v=830a44a0b95f47cc41561a4e138b0991db038208"
+        "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-32-27-480Z-4xemnx-whatsapp-image-2026-10-09-at-22.20.29s.jpeg?v=830a44a0b95f47cc41561a4e138b0991db038208",
+        "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-35-49-924Z-zneqnj-whatsapp-image-2026-10-09-at-22.20.29a.jpeg?v=21642b4d2f4fa7f4c49c6284a4f44d574b653d16",
+        "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-35-52-042Z-pr3ief-whatsapp-image-2026-10-09-at-22.20.29ss.jpeg?v=a074050a7d1d9a28660e5ba450fd3f5a6041e55f"
       ],
       "activities": [
         {
@@ -502,6 +504,36 @@
             }
           ],
           "description": "Implantação do gramado natural com preparação e nivelamento do terreno."
+        },
+        {
+          "id": "construcao-de-estadio-barro-alto-d6c39081-9e81-478d-a139-9fff9218f815",
+          "title": "Pavimentação de acessos.",
+          "image": "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-35-49-924Z-zneqnj-whatsapp-image-2026-10-09-at-22.20.29a.jpeg?v=21642b4d2f4fa7f4c49c6284a4f44d574b653d16",
+          "images": [
+            "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-35-49-924Z-zneqnj-whatsapp-image-2026-10-09-at-22.20.29a.jpeg?v=21642b4d2f4fa7f4c49c6284a4f44d574b653d16"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ],
+          "description": "Execução da estrutura de arquibancadas com instalação de elementos pré-moldados, preparação do terreno e assentamento de piso intertravado nos acessos, incluindo a implantação de guias de concreto para delimitação da pavimentação."
+        },
+        {
+          "id": "construcao-de-estadio-barro-alto-19f33e30-dc7f-44ff-a8cb-77ce7b723eb8",
+          "title": "Montagem de estrutura das arquibancadas",
+          "image": "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-35-52-042Z-pr3ief-whatsapp-image-2026-10-09-at-22.20.29ss.jpeg?v=a074050a7d1d9a28660e5ba450fd3f5a6041e55f",
+          "images": [
+            "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-35-52-042Z-pr3ief-whatsapp-image-2026-10-09-at-22.20.29ss.jpeg?v=a074050a7d1d9a28660e5ba450fd3f5a6041e55f"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ],
+          "description": "Execução da montagem de elementos pré-moldados de concreto para composição da arquibancada do estádio, com içamento e posicionamento das peças mais içamento de poste de iluminação."
         }
       ],
       "gallery": []
@@ -630,7 +662,7 @@
     "image:obra-construcao-de-areninha-muquem-de-sao-francisco:work-detail>main.detail-route>section.detail-workspace>div[aria-label=galeria-de-imagens-da-obra]>div.detail-gallery-grid>figure.detail-gallery-item:nth-1>img": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-59-00-448Z-dwy09r-whatsapp-image-2025-01-10-at-13.21.17-1-.jpeg?v=fd9bbf20dff5d9698dd54146127224114997b4e3"
   },
   "videos": [],
-  "updatedAt": "2026-10-11T00:32:29.160Z",
+  "updatedAt": "2026-10-11T00:35:53.886Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
