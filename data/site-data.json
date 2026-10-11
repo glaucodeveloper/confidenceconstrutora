@@ -385,6 +385,36 @@
       "gallery": [
         "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-08-21-293Z-uzb4mg-whatsapp-image-2026-09-30-at-11.11.27-1-.jpeg?v=8cc8fc32a75832bb6a5c1772e6d73ffcf9a99429"
       ]
+    },
+    {
+      "slug": "reforma-do-ginasio-de-esportes-santa-maria-da-vitoria",
+      "name": "Reforma do Ginásio de Esportes",
+      "city": "Santa Maria da Vitória",
+      "state": "Bahia",
+      "type": "Reforma",
+      "summary": "Execução de serviços de recuperação e revitalização da estrutura, incluindo melhorias nas instalações e acabamentos, visando proporcionar mais segurança, funcionalidade e qualidade ao espaço esportivo.",
+      "cover": "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-16-33-841Z-909pvx-whatsapp-image-2026-10-09-at-23.30.54b.jpeg?v=f0a119a103105fcfa6941057aedf45960a1f9638",
+      "photos": [
+        "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-16-35-437Z-q3ywa5-whatsapp-image-2026-10-09-at-23.30.52.jpeg?v=9c071f4a4e9ed60c6988685a1e4cb7d3b4c89708"
+      ],
+      "activities": [
+        {
+          "id": "reforma-do-ginasio-de-esportes-santa-maria-da-vitoria-12039514-5126-499b-83bf-f46c75220572",
+          "title": "Instalação de alambrado.",
+          "image": "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-16-35-437Z-q3ywa5-whatsapp-image-2026-10-09-at-23.30.52.jpeg?v=9c071f4a4e9ed60c6988685a1e4cb7d3b4c89708",
+          "images": [
+            "https://construtoraconfidence.com/assets/uploads/2026/2026-10-11T00-16-35-437Z-q3ywa5-whatsapp-image-2026-10-09-at-23.30.52.jpeg?v=9c071f4a4e9ed60c6988685a1e4cb7d3b4c89708"
+          ],
+          "imagePositions": [
+            {
+              "x": 50,
+              "y": 50
+            }
+          ],
+          "description": "Execução e instalação de alambrado metálico visando o fechamento perimetral."
+        }
+      ],
+      "gallery": []
     }
   ],
   "contactPanel": {
@@ -510,7 +540,7 @@
     "image:obra-construcao-de-areninha-muquem-de-sao-francisco:work-detail>main.detail-route>section.detail-workspace>div[aria-label=galeria-de-imagens-da-obra]>div.detail-gallery-grid>figure.detail-gallery-item:nth-1>img": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-59-00-448Z-dwy09r-whatsapp-image-2025-01-10-at-13.21.17-1-.jpeg?v=fd9bbf20dff5d9698dd54146127224114997b4e3"
   },
   "videos": [],
-  "updatedAt": "2026-10-11T00:08:22.818Z",
+  "updatedAt": "2026-10-11T00:16:37.285Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
