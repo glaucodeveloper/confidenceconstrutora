@@ -664,14 +664,15 @@
     "image:obra-construcao-de-areninha-muquem-de-sao-francisco:work-detail>main.detail-route>section.detail-workspace>div[aria-label=galeria-de-imagens-da-obra]>div.detail-gallery-grid>figure.detail-gallery-item:nth-1>img": "https://glaucodeveloper.github.io/confidenceconstrutora/assets/uploads/2026/2026-10-10T12-59-00-448Z-dwy09r-whatsapp-image-2025-01-10-at-13.21.17-1-.jpeg?v=fd9bbf20dff5d9698dd54146127224114997b4e3"
   },
   "videos": [],
-  "updatedAt": "2026-10-11T00:40:43.928Z",
+  "updatedAt": "2026-10-11T00:58:51.304Z",
   "worksSource": {
     "file": "obras_organizadas(1).zip",
     "works": 3,
     "activities": 50
   },
   "markdown": {
-    "text:clientes:section#clientes>div.screen-inner>div.clients-layout>div.section-brand-head>div.section-brand-head-copy>p.copy": "A Solar Coca-Cola e a SUDESB fazem parte das relações construídas pela Confidence por meio do trabalho entregue."
+    "text:clientes:section#clientes>div.screen-inner>div.clients-layout>div.section-brand-head>div.section-brand-head-copy>p.copy": "A Solar Coca-Cola e a SUDESB fazem parte das relações construídas pela Confidence por meio do trabalho entregue.",
+    "text:institucional:section#institucional>div.screen-inner>header.institutional-unified-head>p.copy": "Somos a Confidence Construtora. \nAssumimos cada obra com planejamento, presença técnica e responsabilidade sobre o resultado — da implantação à entrega."
   },
   "removedBlocks": {},
   "heroSlides": [
